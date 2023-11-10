@@ -7,8 +7,8 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
-    <main className="bg-red-200">
-      <h3>My name is about page</h3>
+    <main className="">
+      <h3>About Gerald</h3>
     </main>
   );
 }

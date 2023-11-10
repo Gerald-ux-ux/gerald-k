@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 export default function Projects() {
   return (
     <main className="">
-      <h3>This are my projects</h3>
+      <h3>Projects</h3>
     </main>
   );
 }
