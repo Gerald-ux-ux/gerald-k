@@ -20,6 +20,7 @@
     "@radix-ui/react-popover": "1.0.7",
     "@radix-ui/react-tooltip": "^1.0.7",
     "@types/mdx": "^2.0.10",
+    "@vercel/analytics": "^1.1.1",
     "clsx": "^2.0.0",
     "framer-motion": "^10.16.4",
     "next": "14.0.1",

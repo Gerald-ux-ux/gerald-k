@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import clsx from "clsx";
 import Navigation from "@/components/Navigation";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,6 +29,7 @@ export default function RootLayout({
 
         <div className="flex max-w-[700px] px-6 pt-16 mx-auto md:pt-20 md:px-6">
           {children}
+          <Analytics />
         </div>
       </body>
     </html>
