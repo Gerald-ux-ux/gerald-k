@@ -4,6 +4,7 @@ import "./globals.css";
 import clsx from "clsx";
 import Navigation from "@/components/Navigation";
 import { Analytics } from "@vercel/analytics/react";
+import ThemeProvider from "@/components/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,12 +26,15 @@ export default function RootLayout({
           "antialiased bg-primary text-primary width-full"
         )}
       >
-        <Navigation />
+        <ThemeProvider>
+          <Navigation />
 
-        <div className="flex max-w-[700px] px-6 pt-16 mx-auto md:pt-20 md:px-6">
-          {children}
-          <Analytics />
-        </div>
+          <div className="flex max-w-[700px] px-6 pt-16 mx-auto md:pt-20 md:px-6">
+            {children}
+          </div>
+        </ThemeProvider>
+
+        <Analytics />
       </body>
     </html>
   );
