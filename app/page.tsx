@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Avatar from "@/public/avatar.png";
+import Avatar from "@/public/geraldavatar.jpeg";
 import Stats from "@/components/Stats";
 import Connect from "@/components/home/Connect";
 import PostList from "./blog/components/ui/PostList";
@@ -21,10 +21,10 @@ export default function Home() {
         <div className="animate-in flex-col text-secondary md:flex-row md:items-center flex">
           <Image
             src={Avatar}
-            width={85}
-            height={85}
-            alt="avatar"
-            className=" rounded bg-secondary"
+            width={70}
+            height={70}
+            alt="A photo of Gerald"
+            className="rounded-full"
           />
           <Stats />
         </div>
