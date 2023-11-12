@@ -1,10 +1,26 @@
+/**
+ * App entry point (in plain react this would be the "index.js" file)
+ * In this app every file that contains the  "use client" boundary is a client side component ("https://react.dev/reference/react/use-client")
+ * I have also practiced different codding practices like:
+ * Code splitting("https://nextjs.org/learn-pages-router/foundations/how-nextjs-works/code-splitting") so you will get to see different components inside other components
+ */
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import clsx from "clsx";
 import Navigation from "@/components/Navigation";
+import { Analytics } from "@vercel/analytics/react";
+import ThemeProvider from "@/components/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
+
+/**
+ * Clsx is just like using the $ to set the styles of a certain element based on a specific condition.
+ * I will be using it for the most part of the project
+ * For example:  className={`flex items-start justify-start ${ open ? "bg-red-200" : "bg-blue-200" }`}
+ * Can also be: className={clsx("flex items-start justify-start", open ? "bg-red-200" : "bg-blue-200")}
+ */
 
 export const metadata: Metadata = {
   title: "Home | Gerald",
@@ -24,11 +40,15 @@ export default function RootLayout({
           "antialiased bg-primary text-primary width-full"
         )}
       >
-        <Navigation />
+        {/* Wrap the whole app in the ThemeProvider & Set some props */}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Navigation />
+          <div className="flex max-w-[700px] px-6 pt-16 mx-auto md:pt-20 md:px-6">
+            {children}
+          </div>
+        </ThemeProvider>
 
-        <div className="flex max-w-[700px] px-6 pt-16 mx-auto md:pt-20 md:px-6">
-          {children}
-        </div>
+        <Analytics />
       </body>
     </html>
   );
