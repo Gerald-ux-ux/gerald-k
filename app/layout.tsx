@@ -12,6 +12,7 @@ import clsx from "clsx";
 import Navigation from "@/components/Navigation";
 import { Analytics } from "@vercel/analytics/react";
 import ThemeProvider from "@/components/ThemeProvider";
+import Footer from "@/components/ui/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -43,8 +44,9 @@ export default function RootLayout({
         {/* Wrap the whole app in the ThemeProvider & Set some props */}
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navigation />
-          <div className="flex max-w-[700px] px-6 pt-16 mx-auto md:pt-20 md:px-6">
+          <div className="flex  max-w-[700px] px-6 pt-16 mx-auto md:pt-20 md:px-6 flex-col">
             {children}
+            <Footer />
           </div>
         </ThemeProvider>
 

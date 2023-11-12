@@ -58,7 +58,6 @@ export default function Navigation() {
         </ul>
 
         <MobileNav links={links} />
-
         <div className=" flex justify-center items-center w-8">
           <ThemeSwitcher />
         </div>
