@@ -7,43 +7,37 @@ const links = [
   {
     label: "Github",
     href: "https://github.com/Gerald-ux-ux",
-    icon: <AiOutlineGithub />,
   },
   {
     label: "Blogs",
     href: "/blog",
-    icon: <BsFillChatQuoteFill />,
   },
   {
     label: "Code Snippets",
     href: "/code-snippets",
-    icon: <FaCodeBranch />,
   },
   {
     label: "Youtube",
     href: "https://www.youtube.com/@geralddd.g/featured",
-    icon: <FaYoutube />,
   },
 ];
 
 type links = {
   label: string;
   href: string;
-  icon: JSX.Element;
 };
 
 export default function FooterLinks() {
   return (
-    <ul className="flex items-center justify-between  border-t border-t-primary  ">
+    <ul className="flex items-center animate-list gap-4  ">
       {links.map((link) => (
-        <div key={link.href} className="">
+        <li key={link.href} className="transition-opacity">
           <Link href={link.href} className="">
-            <span className="flex mt-2  items-center underline-offset-4 gap-3 hover:text-primary text-secondary underline  justify-between">
-              {link.icon}
+            <span className="flex mt-2  items-center   gap-3  text-secondary hover:text-primary no-underline  justify-between">
               {link.label}
             </span>
           </Link>
-        </div>
+        </li>
       ))}
     </ul>
   );

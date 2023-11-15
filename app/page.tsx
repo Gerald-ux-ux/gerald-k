@@ -13,8 +13,8 @@ export default function Home() {
           <h1 className="animate-in text-3xl font-bold tracking-tight text-primary">
             Gerald Kamau
           </h1>
-          <p className="animate-in  text-secondary">
-            I am a software developer and I make beats.
+          <p className="animate-in   text-secondary">
+            I write code and  make beats.
           </p>
         </div>
 
