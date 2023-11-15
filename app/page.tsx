@@ -14,11 +14,11 @@ export default function Home() {
             Gerald Kamau
           </h1>
           <p className="animate-in  text-secondary">
-            I am a software developer and I make beats.
+            I write code and I make beats.
           </p>
         </div>
 
-        <div className="animate-in flex-col text-secondary md:flex-row md:items-center flex">
+        <div className="flex animate-in flex-col text-secondary md:flex-row md:items-center">
           <Image
             src={Avatar}
             width={70}
@@ -29,7 +29,7 @@ export default function Home() {
           <Stats />
         </div>
 
-        <p className="animate-in text-primary max-w-lg">
+        <p className="max-w-lg animate-in text-primary">
           Hi, I&apos;m Gerald kamau, a software engineer who loves building cool
           things with code. In addition to coding, I also make YouTube videos,
           where I focus on tech, creative vlogs, and personal development.
@@ -40,18 +40,18 @@ export default function Home() {
         <div className="flex animate-in flex-col gap-8">
           <h2 className="text-secondary">Latest posts & Code snippets</h2>
           <PostList />
-          small
-          <div className="flex  justify-between w-full">
+
+          <div className="flex  w-full justify-between">
             <Link
               href="/blog"
-              className=" underline underline-offset-4 hover:text-primary text-secondary"
+              className=" text-secondary underline underline-offset-4 hover:text-primary"
             >
               See all blogs
             </Link>
 
             <Link
               href="/blog"
-              className=" underline underline-offset-4 hover:text-primary text-secondary"
+              className=" text-secondary underline underline-offset-4 hover:text-primary"
             >
               See all code snippets
             </Link>

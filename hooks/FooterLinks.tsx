@@ -1,49 +1,40 @@
-import { AiOutlineGithub } from "react-icons/ai";
-import { BsFillChatQuoteFill } from "react-icons/bs";
-import { FaCodeBranch, FaYoutube } from "react-icons/fa";
 import Link from "next/link";
 
 const links = [
   {
     label: "Github",
     href: "https://github.com/Gerald-ux-ux",
-    icon: <AiOutlineGithub />,
   },
   {
     label: "Blogs",
     href: "/blog",
-    icon: <BsFillChatQuoteFill />,
   },
   {
     label: "Code Snippets",
     href: "/code-snippets",
-    icon: <FaCodeBranch />,
   },
   {
     label: "Youtube",
     href: "https://www.youtube.com/@geralddd.g/featured",
-    icon: <FaYoutube />,
   },
 ];
 
 type links = {
   label: string;
   href: string;
-  icon: JSX.Element;
 };
 
 export default function FooterLinks() {
   return (
-    <ul className="flex items-center justify-between  border-t border-t-primary  ">
+    <ul className="animated-list flex w-full items-center gap-2  ">
       {links.map((link) => (
-        <div key={link.href} className="">
-          <Link href={link.href} className="">
-            <span className="flex mt-2  items-center underline-offset-4 gap-3 hover:text-primary text-secondary underline  justify-between">
-              {link.icon}
+        <li key={link.href} className="transition-opacity  ">
+          <Link href={link.href} className="transition-opacity">
+            <span className="mt-2 flex  items-center justify-between text-secondary no-underline ">
               {link.label}
             </span>
           </Link>
-        </div>
+        </li>
       ))}
     </ul>
   );

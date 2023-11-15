@@ -3,6 +3,7 @@
  * In this app every file that contains the  "use client" boundary is a client side component ("https://react.dev/reference/react/use-client")
  * I have also practiced different codding practices like:
  * Code splitting("https://nextjs.org/learn-pages-router/foundations/how-nextjs-works/code-splitting") so you will get to see different components inside other components
+ * Make sure to head over to the next.config.js and configure your external links in the domain array
  */
 
 import type { Metadata } from "next";
@@ -38,13 +39,13 @@ export default function RootLayout({
       <body
         className={clsx(
           inter.className,
-          "antialiased bg-primary text-primary width-full"
+          "width-full bg-primary text-primary antialiased",
         )}
       >
         {/* Wrap the whole app in the ThemeProvider & Set some props */}
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navigation />
-          <div className="flex  max-w-[700px] px-6 pt-16 mx-auto md:pt-20 md:px-6 flex-col">
+          <div className="mx-auto  flex max-w-[700px] flex-col px-6 pt-16 md:px-6 md:pt-20">
             {children}
             <Footer />
           </div>

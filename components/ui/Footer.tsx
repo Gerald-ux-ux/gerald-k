@@ -2,18 +2,18 @@ import FooterLinks from "@/hooks/FooterLinks";
 
 export default function Footer() {
   return (
-    <footer className="mt-36  pb-36 w-full animate-in text-base">
+    <footer className="mt-36 w-full animate-in  pb-36 text-base">
       <FooterLinks />
 
-      <div className="mt-8 text-sm  ">
-        <div className="flex justify-between items-center w-full">
-          <span className="text-secondary">Built with </span>
+      <ul className="mt-8 animate-in text-sm md:text-sm  ">
+        <li className="flex w-full items-center gap-3 ">
+          <small className="text-secondary">Built with </small>
 
           <a
             href="https://nextjs.org"
             className="text-secondary hover:text-primary"
           >
-            Next.js.14.0.1
+            Next.js
           </a>
           <a
             href="https://www.prisma.io/"
@@ -32,7 +32,7 @@ export default function Footer() {
             href="https://tailwindcss.com"
             className="text-secondary hover:text-primary"
           >
-            Tailwind Css
+            Tailwind
           </a>
 
           <a
@@ -41,8 +41,8 @@ export default function Footer() {
           >
             Vercel
           </a>
-        </div>
-      </div>
+        </li>
+      </ul>
     </footer>
   );
 }
