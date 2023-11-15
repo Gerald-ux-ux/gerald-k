@@ -30,12 +30,12 @@ const ConnectLinks: ConnectLink[] = [
   },
   {
     label: "Linkedin",
-    href: "",
+    href: "https://www.linkedin.com/in/gerald-kamau-3bab10248",
     icon: <FaLinkedin />,
   },
   {
     label: "Instagram",
-    href: "",
+    href: "https://www.instagram.com/geralddd.g/",
     icon: <FaInstagram />,
   },
 ];
