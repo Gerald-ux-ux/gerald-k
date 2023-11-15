@@ -1,3 +1,3 @@
 export default function PostList() {
-  return <h3>My Blog posts</h3>;
+  return <div className="">Post list components</div>;
 }

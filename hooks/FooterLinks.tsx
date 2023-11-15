@@ -1,6 +1,3 @@
-import { AiOutlineGithub } from "react-icons/ai";
-import { BsFillChatQuoteFill } from "react-icons/bs";
-import { FaCodeBranch, FaYoutube } from "react-icons/fa";
 import Link from "next/link";
 
 const links = [

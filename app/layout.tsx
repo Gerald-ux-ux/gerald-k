@@ -3,6 +3,7 @@
  * In this app every file that contains the  "use client" boundary is a client side component ("https://react.dev/reference/react/use-client")
  * I have also practiced different codding practices like:
  * Code splitting("https://nextjs.org/learn-pages-router/foundations/how-nextjs-works/code-splitting") so you will get to see different components inside other components
+ * Make sure to head over to the next.config.js and configure your external links in the domain array
  */
 
 import type { Metadata } from "next";

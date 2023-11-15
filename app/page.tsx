@@ -13,8 +13,8 @@ export default function Home() {
           <h1 className="animate-in text-3xl font-bold tracking-tight text-primary">
             Gerald Kamau
           </h1>
-          <p className="animate-in   text-secondary">
-            I write code and  make beats.
+          <p className="animate-in  text-secondary">
+            I write code and I make beats.
           </p>
         </div>
 
@@ -40,7 +40,7 @@ export default function Home() {
         <div className="flex animate-in flex-col gap-8">
           <h2 className="text-secondary">Latest posts & Code snippets</h2>
           <PostList />
-          small
+
           <div className="flex  justify-between w-full">
             <Link
               href="/blog"
