@@ -1,4 +1,4 @@
-## [Gerald-k](https://gerald-k.vercel.app/)
+## [G.dev](https://gerald-k.vercel.app/)
 Welcome to my personal portfolio website designed to be minimalistic, clean and most importantly a place to learn from.
 
 ## Why i built it.
@@ -7,23 +7,25 @@ I have always wanted to have my own space on the internet and also be able to he
 
 ## Technologies
 
-backend:
+#### backend:
 - [Next.js](nextjs.org) / TypeScript
 - [MDX](https://mdxjs.com) / Contentlayer (CMS)
 - [Vercel](vercel.com) (Hosting)
 - [PlanetScale](http://planetscale.com) (Database)
 - [Prisma](https://www.prisma.io) (ORM)
 
-frontend:
+ #### frontend:
 - [Tailwind CSS](https://tailwindcss.com) (utility styles)
 - [Headless UI](https://headlessui.com) (UI components)
 - [Radix UI Colors](https://www.radix-ui.com/colors) (color system)
 - [Framer Motion](https://www.framer.com/motion/) (Animations)
 
+_checkout the package.json file_
+
 ## Prerequisites
 
 [Node.js](https://nodejs.org/en/)
-[PlanetScale-account] (https://planetscale.com/)
+[PlanetScale account](https://planetscale.com/)
 Prisma CLI installed (npm i -g prisma)
 
 ## Installation
@@ -35,6 +37,3 @@ Start the development server with `pnpm dev` || `npm run dev --turbo`.
 
 <!-- `````` -->
 
-## Learn More
-
-## Deploy on Vercel
