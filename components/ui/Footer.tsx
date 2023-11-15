@@ -2,11 +2,11 @@ import FooterLinks from "@/hooks/FooterLinks";
 
 export default function Footer() {
   return (
-    <footer className="mt-36   pb-36 w-full  animate-in text-base">
+    <footer className="mt-36 w-full animate-in  pb-36 text-base">
       <FooterLinks />
 
-      <ul className="mt-8 text-sm md:text-sm animated-list  ">
-        <li className="flex  gap-3 transition-opacity n items-center w-full">
+      <ul className="mt-8 animate-in text-sm md:text-sm  ">
+        <li className="flex w-full items-center gap-3 ">
           <small className="text-secondary">Built with </small>
 
           <a

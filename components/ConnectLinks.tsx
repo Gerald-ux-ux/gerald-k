@@ -14,7 +14,7 @@ type ConnectLink = {
 // Having the type as an array so we can be able to map over it
 const ConnectLinks: ConnectLink[] = [
   {
-    label: "Email (General)",
+    label: "Email",
     href: "mailto:kamaugerald36@gmail.com",
     icon: <IoIosMail />,
   },

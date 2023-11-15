@@ -26,11 +26,11 @@ type links = {
 
 export default function FooterLinks() {
   return (
-    <ul className="flex items-center animate-list gap-4  ">
+    <ul className="animated-list flex w-full items-center gap-2  ">
       {links.map((link) => (
-        <li key={link.href} className="transition-opacity">
-          <Link href={link.href} className="">
-            <span className="flex mt-2  items-center   gap-3  text-secondary hover:text-primary no-underline  justify-between">
+        <li key={link.href} className="transition-opacity  ">
+          <Link href={link.href} className="transition-opacity">
+            <span className="mt-2 flex  items-center justify-between text-secondary no-underline ">
               {link.label}
             </span>
           </Link>
