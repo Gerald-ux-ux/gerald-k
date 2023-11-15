@@ -30,7 +30,6 @@ export default function Connect() {
         </div>
 
         {/* Links to connect with me */}
-
         <ul
           className="animated-list grid flex-grow animate-in grid-cols-1 gap-2 lg:gap-3"
           style={{ "--index": 3 } as React.CSSProperties}

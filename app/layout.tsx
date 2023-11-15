@@ -39,13 +39,13 @@ export default function RootLayout({
       <body
         className={clsx(
           inter.className,
-          "antialiased bg-primary text-primary width-full"
+          "width-full bg-primary text-primary antialiased",
         )}
       >
         {/* Wrap the whole app in the ThemeProvider & Set some props */}
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navigation />
-          <div className="flex  max-w-[700px] px-6 pt-16 mx-auto md:pt-20 md:px-6 flex-col">
+          <div className="mx-auto  flex max-w-[700px] flex-col px-6 pt-16 md:px-6 md:pt-20">
             {children}
             <Footer />
           </div>
