@@ -6,11 +6,9 @@
 .pnp.js
 .yarn/install-state.gz
 
+
 # testing
 /coverage
-
-# contentlayer
-.contentLayer
 
 
 # next.js
@@ -40,3 +38,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# contentlayer
+.contentlayer
+
+
