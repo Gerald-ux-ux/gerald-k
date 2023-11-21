@@ -24,6 +24,7 @@ const inter = Inter({ subsets: ["latin"] });
  * Can also be: className={clsx("flex items-start justify-start", open ? "bg-red-200" : "bg-blue-200")}
  */
 
+// Static metadata
 export const metadata: Metadata = {
   title: "Home | Gerald",
   description: "Passionate front-end software developer",
