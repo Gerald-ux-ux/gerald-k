@@ -2,10 +2,6 @@ import { Metadata, ResolvingMetadata } from "next";
 import { allPosts, Post as PostType } from "../../../.contentlayer/generated";
 import { notFound } from "next/navigation";
 
-export const getStaticPaths = () => {};
-
-export const getStaticProps = () => {};
-
 type PostProps = {
   post: PostType;
   related: PostType[];
