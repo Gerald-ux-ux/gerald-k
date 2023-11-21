@@ -65,13 +65,12 @@ export async function GET(req: NextRequest) {
       }
     }
 
-    return (
-      new Response(JSON.stringify({ Views: viewCount })),
-      {
-        status: 200,
-        headers: { "Content-type": "application/json" },
-      }
-    );
+    return new Response(JSON.stringify({ Views: viewCount }), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   } catch (error) {
     console.log("Error found here", error);
     return new Response("Internal Server Error", { status: 500 });
