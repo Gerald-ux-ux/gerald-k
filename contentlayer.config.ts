@@ -44,38 +44,37 @@ export const Post = defineDocumentType(() => ({
   computedFields: postComputedFields,
 }));
 
-
 /**Code snippets (re-search) */
-const codeSnippetsComputedFields: ComputedFields = {
-  slug: {
-    type: "string",
-    resolve: (doc) => getSlug(doc),
-  },
-  image: {
-    type: "string",
-    resolve: (doc) => `/projects/${getSlug(doc)}/image.png`,
-  },
-};
+// const codeSnippetsComputedFields: ComputedFields = {
+//   slug: {
+//     type: "string",
+//     resolve: (doc) => getSlug(doc),
+//   },
+//   image: {
+//     type: "string",
+//     resolve: (doc) => `/projects/${getSlug(doc)}/image.png`,
+//   },
+// };
 
-export const CodeSnippets = defineDocumentType(() => ({
-  name: "Code snippets",
-  filePathPattern: `code-snippets/**/*.mdx`,
-  contentType: "mdx",
-  fields: {
-    title: { type: "string", required: true },
-    summary: { type: "string", required: true },
-    publishedAt: { type: "string", required: true },
-    updatedAt: { type: "string", required: false },
-    tags: { type: "json", required: false },
-    featured: { type: "boolean", required: false },
-    shortTitle: { type: "string", required: false, default: "" },
-  },
-  computedFields: codeSnippetsComputedFields,
-}));
+// export const CodeSnippets = defineDocumentType(() => ({
+//   name: "Code snippets",
+//   filePathPattern: `code-snippets/**/*.mdx`,
+//   contentType: "mdx",
+//   fields: {
+//     title: { type: "string", required: true },
+//     summary: { type: "string", required: true },
+//     publishedAt: { type: "string", required: true },
+//     updatedAt: { type: "string", required: false },
+//     tags: { type: "json", required: false },
+//     featured: { type: "boolean", required: false },
+//     shortTitle: { type: "string", required: false, default: "" },
+//   },
+//   computedFields: codeSnippetsComputedFields,
+// }));
 
 export default makeSource({
   contentDirPath: "content",
-  documentTypes: [Post, CodeSnippets],
+  documentTypes: [Post],
   mdx: {
     rehypePlugins: [rehypePrism, rehypeSlug],
   },
