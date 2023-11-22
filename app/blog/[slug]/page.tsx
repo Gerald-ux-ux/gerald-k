@@ -8,6 +8,7 @@ import Image from "next/image";
 import Avatar from "@/public/geraldavatar.jpeg";
 import { formatDate } from "@/lib/formatdate";
 import ViewCounter from "../components/ui/ViewCounter";
+
 type PostProps = {
   post: PostType;
   related: PostType[];
@@ -106,8 +107,8 @@ export default async function Post({ params }: { params: any }) {
               </p>
             </div>
           </div>
-        </article>
-      </div>
+        </div>
+      </article>
     </div>
   );
 }
