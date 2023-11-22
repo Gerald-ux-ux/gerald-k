@@ -8,7 +8,6 @@ import Image from "next/image";
 import Avatar from "@/public/geraldavatar.jpeg";
 import { formatDate } from "@/lib/formatdate";
 import ViewCounter from "../components/ui/ViewCounter";
-
 type PostProps = {
   post: PostType;
   related: PostType[];
