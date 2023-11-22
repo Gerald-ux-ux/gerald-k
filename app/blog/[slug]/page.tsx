@@ -95,7 +95,7 @@ export default async function Post({ params }: { params: any }) {
           </div>
 
           <div className="flex max-w-none items-center gap-4">
-            {/* Might change the sizing of the img */}
+            {/* Might add the url */}
             <Image
               src={Avatar}
               alt="avatar-img"
