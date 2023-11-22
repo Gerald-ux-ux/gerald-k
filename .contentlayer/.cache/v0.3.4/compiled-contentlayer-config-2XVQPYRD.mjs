@@ -62,6 +62,7 @@ var contentlayer_config_default = makeSource({
   contentDirPath: "content",
   documentTypes: [Post, Project],
   mdx: {
+    // @ts-expect-error
     rehypePlugins: [rehypePrism, rehypeSlug]
   }
 });
@@ -70,4 +71,4 @@ export {
   Project,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-5XXQSERA.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-2XVQPYRD.mjs.map

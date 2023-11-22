@@ -74,6 +74,7 @@ export default makeSource({
 
   documentTypes: [Post, Project],
   mdx: {
+    // @ts-expect-error
     rehypePlugins: [rehypePrism, rehypeSlug],
   },
 });
