@@ -70,7 +70,7 @@ export default async function Post({ params }: { params: any }) {
 
   return (
     <div className="flex flex-col gap-20">
-      {/* <article>
+      <article>
         <div className="flex animate-in flex-col gap-8">
           <div className="max-w-xl space-y-2">
             <h1 className="text-3xl font-bold leading-tight tracking-tight text-primary">
@@ -107,7 +107,7 @@ export default async function Post({ params }: { params: any }) {
             </div>
           </div>
         </div>
-      </article> */}
+      </article>
     </div>
   );
 }
