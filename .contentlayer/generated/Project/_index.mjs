@@ -2,4 +2,4 @@
 
 
 
-export const allCode snippets = []
+export const allProjects = []
