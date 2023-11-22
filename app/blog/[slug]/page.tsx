@@ -52,8 +52,8 @@ export async function generateMetadata(
     slug,
   } = post;
 
-  // Missing the image field
-  // Missing the image field
+  // Missing the image field.
+  // Missing the image field.
   const metadata: Metadata = {
     title: `${title} | Gerald`,
     description,
