@@ -5,4 +5,3 @@ export const formatDate = (date: string) => {
     year: "numeric",
   });
 };
-
