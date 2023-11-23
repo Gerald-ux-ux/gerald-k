@@ -1,3 +1,5 @@
+/** Animating the numbers */
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -16,6 +18,7 @@ export default function FlipNumber({ children }: FlipNumberProps) {
   );
   const duration = 75;
 
+  /** This as series of timeouts to animate the number movements */
   useEffect(() => {
     if (!isMount) {
       setTimeout(() => setKeyframe("out"), 0);
