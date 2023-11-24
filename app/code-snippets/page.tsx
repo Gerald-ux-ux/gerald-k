@@ -20,7 +20,6 @@ export default function CodeSnippets() {
         src={Construction}
         alt="under construction"
         className="rounded-md"
-        priority
         quality={100}
       />
     </main>
