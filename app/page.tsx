@@ -5,6 +5,7 @@ import Connect from "@/components/home/Connect";
 import PostList from "./blog/components/ui/PostList";
 import Link from "next/link";
 import { allPosts } from "@/.contentlayer/generated";
+import { PAGE_HEADER } from "@/lib/uiConstants";
 
 export default function Home() {
   const posts = allPosts
@@ -19,15 +20,13 @@ export default function Home() {
     <div className="flex flex-col gap-16 md:gap-24">
       <div className="flex animate-in flex-col gap-8">
         <div className="">
-          <h1 className="animate-in text-3xl font-bold tracking-tight text-primary">
-            Gerald Kamau
-          </h1>
+          <h1 className={PAGE_HEADER}>Gerald Kamau</h1>
           <p className="animate-in  text-secondary">
             I write code and I make beats.
           </p>
         </div>
 
-        <div className="flex animate-in flex-col text-secondary md:flex-row md:items-center">
+        <div className="flex animate-in flex-col gap-6 text-secondary md:flex-row md:items-center">
           <Image
             src={Avatar}
             width={70}
@@ -48,9 +47,7 @@ export default function Home() {
       </div>
 
       <div className="flex animate-in flex-col gap-8  ">
-        <h2 className="text-secondary">
-          Latest posts &<span className="">Code snippets</span>
-        </h2>
+        <h2 className="text-secondary">Latest posts & Code snippets</h2>
         <PostList posts={posts} />
 
         <div className="flex  w-full justify-between">

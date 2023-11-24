@@ -1,31 +1,26 @@
+// contentlayer.config.ts
 import {
   defineDocumentType,
-  makeSource,
-  ComputedFields,
-} from "contentlayer/source-files"; // eslint-disable-line
+  makeSource
+} from "contentlayer/source-files";
 import rehypePrism from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
-
-const getSlug = (doc: any) => doc._raw.sourceFileName.replace(/\.mdx$/, "");
-
-/** Post definition */
-
-const postComputeFields: ComputedFields = {
+var getSlug = (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, "");
+var postComputeFields = {
   slug: {
     type: "string",
-    resolve: (doc) => getSlug(doc),
+    resolve: (doc) => getSlug(doc)
   },
   image: {
     type: "string",
-    resolve: (doc) => `/blog/${getSlug(doc)}/image.png`,
+    resolve: (doc) => `/blog/${getSlug(doc)}/image.png`
   },
   og: {
     type: "string",
-    resolve: (doc) => `/blog/${getSlug(doc)}/image.png`,
-  },
+    resolve: (doc) => `/blog/${getSlug(doc)}/image.png`
+  }
 };
-
-export const Post = defineDocumentType(() => ({
+var Post = defineDocumentType(() => ({
   name: "Post",
   contentType: "mdx",
   filePathPattern: `blog/**/*.mdx`,
@@ -36,27 +31,21 @@ export const Post = defineDocumentType(() => ({
     updatedAt: { type: "string", required: false },
     tags: { type: "json", required: false },
     featured: { type: "boolean", required: false },
-    shortTitle: { type: "string", required: false },
+    shortTitle: { type: "string", required: false }
   },
-
-  computedFields: postComputeFields,
+  computedFields: postComputeFields
 }));
-
-/** Projects definition */
-
-const projectComputeFields: ComputedFields = {
+var projectComputeFields = {
   slug: {
     type: "string",
-    resolve: (doc) => getSlug(doc),
+    resolve: (doc) => getSlug(doc)
   },
   image: {
     type: "string",
-    resolve: (doc) => `/blog/${getSlug(doc)}/image.png`,
-  },
-
+    resolve: (doc) => `/blog/${getSlug(doc)}/image.png`
+  }
 };
-
-export const Project = defineDocumentType(() => ({
+var Project = defineDocumentType(() => ({
   name: "Project",
   contentType: "mdx",
   filePathPattern: `project/**/*.mdx`,
@@ -65,17 +54,21 @@ export const Project = defineDocumentType(() => ({
     description: { type: "string", required: true },
     time: { type: "string", required: true },
     url: { type: "string", required: false },
-    tags: { type: "json", required: false },
+    tags: { type: "json", required: false }
   },
-  computedFields: projectComputeFields,
+  computedFields: projectComputeFields
 }));
-
-export default makeSource({
+var contentlayer_config_default = makeSource({
   contentDirPath: "content",
-
   documentTypes: [Post, Project],
   mdx: {
     // @ts-expect-error
-    rehypePlugins: [rehypePrism, rehypeSlug],
-  },
+    rehypePlugins: [rehypePrism, rehypeSlug]
+  }
 });
+export {
+  Post,
+  Project,
+  contentlayer_config_default as default
+};
+//# sourceMappingURL=compiled-contentlayer-config-WS6ZKARF.mjs.map
