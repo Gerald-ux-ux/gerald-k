@@ -10,11 +10,13 @@ export default function ViewCounter({ post }: { post: PostType }) {
     revalidateOnFocus: false,
   });
 
-  const views = data?.views;
+  const views = data?.Views;
+
 
   return (
     <span>
-      <FlipNumber>{views}</FlipNumber> views
+      {views !== undefined ? <FlipNumber>{views}</FlipNumber> : "Loading..."}{" "}
+      views
     </span>
   );
 }

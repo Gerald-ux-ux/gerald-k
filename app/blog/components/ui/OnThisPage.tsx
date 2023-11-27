@@ -1,42 +1,7 @@
-// import { allPosts } from "@/.contentlayer/generated";
-// import clsx from "clsx";
-
-// // const post = allPosts.find((post) => post.slug === params.slug);
-
-// export default function OnThisPage() {
-//   return (
-
-//     <div className="sticky top-6 hidden h-0 xl:!col-start-4 xl:row-start-2 xl:block">
-//       {/* <div className="flex flex-col">
-//         {post?.title ? (
-//           <div className="flex flex-col text-sm">
-//             <h1 className="text-xl uppercase text-primary">On this page</h1>
-
-//             {post?.title.map((heading) => (
-//               <div className="" key={heading.slug}>
-//                 <a
-//                   href={`#${heading.slug}`}
-//                   className={clsx(
-//                     "hove:text-secondary block text-primary underline underline-offset-2 transition-all",
-//                     {
-//                       "pl-2": heading.heading === 2,
-//                       "pl-4": heading.heading === 3,
-//                     },
-//                   )}
-//                 >
-//                   {heading.text}
-//                 </a>
-//               </div>
-//             ))}
-//           </div>
-//         ) : null}
-//       </div> */}
-//     </div>
-//   );
-// }
+"use client";
 
 import clsx from "clsx";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 interface Heading {
   heading: number;
@@ -49,34 +14,59 @@ type HeadingProps = {
 };
 
 const OnThisPage = ({ headings }: HeadingProps) => {
+  const [activeHeading, setActiveHeading] = useState<string | null>(null);
+
+  const handleScroll = () => {
+    const scrollPosition = window.scrollY;
+
+    for (const heading of headings) {
+      const element = document.getElementById(heading.slug);
+      if (element) {
+        const offset = 100;
+        const elementTop = element.offsetTop - offset;
+        const elementBottom = elementTop + element.clientHeight;
+
+        if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
+          setActiveHeading(heading.slug);
+          return;
+        }
+      }
+    }
+
+    setActiveHeading(null);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [headings]);
+
   return (
     <>
-      <div className="sticky right-0 top-6"></div>
-      <div className="sticky  right-0 top-6 h-0 xl:!col-start-4 xl:row-start-2 xl:block">
-        <div className="flex flex-col">
-          <div className="sticky right-0 top-6 flex  h-0 flex-col text-sm  ">
-            <h2>On this page</h2>
-            {headings ? (
-              <ul>
-                {headings.map((heading) => (
-                  <li key={heading.slug}>
-                    <a
-                      href={`#${heading.slug}`}
-                      className={clsx(
-                        "hove:text-secondary block cursor-pointer text-primary underline underline-offset-2 transition-all",
-                        {
-                          "pl-2": heading.heading === 2,
-                          "pl-4": heading.heading === 3,
-                        },
-                      )}
-                    >
-                      {heading.text}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            ) : null}
-          </div>
+      <div className="sticky top-24 h-0 animate-in hidden shrink-0 md:flex  md:w-56 md:justify-end">
+        <div className="space-y-2 text-sm font-medium">
+          <h2 className="text-lg animate-in">On this page</h2>
+          {headings ? (
+            <ul className="animated-list animate-in border-b pb-1">
+              {headings.map((heading) => (
+                <li
+                  key={heading.slug}
+                  className="flex flex-col gap-2 transition-opacity"
+                >
+                  <a
+                    href={`#${heading.slug}`}
+                    className={clsx("block cursor-pointer transition-opacity", {
+                      "text-blue-600": heading.slug === activeHeading,
+                    })}
+                  >
+                    {heading.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : null}
         </div>
       </div>
     </>
