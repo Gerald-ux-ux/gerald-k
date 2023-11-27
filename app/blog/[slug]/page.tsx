@@ -60,6 +60,12 @@ export async function generateMetadata(
       type: "article",
       publishedTime,
       url: `https://gerald-k.vercel.app/${title}`,
+      // images: [
+      //   {
+      //     url: `https://b-r.io/api/og?title=${title}`,
+      //     alt: title,
+      //   },
+      // ],
     },
   };
 
@@ -101,7 +107,7 @@ export default async function Post({ params }: { params: any }) {
 
                 <div className="leading-light">
                   <p className="font-medium text-primary">Gerald Kamau</p>
-                  <p>
+                  <div className="flex gap-2">
                     <time dateTime={post.publishedAt}>
                       {formatDate(post.publishedAt)}
                     </time>
@@ -110,9 +116,8 @@ export default async function Post({ params }: { params: any }) {
                       ? `(updated ${formatDate(post.publishedAt)})`
                       : ""}
 
-                    {" . "}
                     <ViewCounter post={post} />
-                  </p>
+                  </div>
                 </div>
               </div>
             </div>

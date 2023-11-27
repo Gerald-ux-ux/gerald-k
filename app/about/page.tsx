@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
-    <main className="flex flex-col gap-16 md:gap-24">
+    <main className="flex  px-6 flex-col mx-auto max-w-[700px] gap-16 md:gap-24">
       <div>
         <h1 className={PAGE_HEADER}>About Me</h1>
 

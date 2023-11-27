@@ -2,7 +2,7 @@ import FooterLinks from "@/hooks/FooterLinks";
 
 export default function Footer() {
   return (
-    <footer className="mx-auto mt-36 w-full max-w-[700px] px-12 animate-in  pb-36 text-base">
+    <footer className="mx-auto mt-36 w-full max-w-[700px] animate-in   pb-36 text-base">
       <FooterLinks />
 
       <ul className="mt-8 animate-in text-sm md:text-sm  ">

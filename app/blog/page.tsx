@@ -16,7 +16,7 @@ export default function Blog() {
   );
 
   return (
-    <main className="flex flex-col gap-16 md:gap-24">
+    <main className="flex flex-col px-6 md:px-6 mx-auto max-w-[700px] gap-16 md:gap-24">
       <div className="flex flex-col gap-8">
         <div className="">
           <h1 className="animate-in text-3xl font-bold tracking-tight">Blog</h1>
