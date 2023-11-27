@@ -46,7 +46,7 @@ export default function RootLayout({
         {/* Wrap the whole app in the ThemeProvider & Set some props */}
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navigation />
-          <div className="mx-auto  flex max-w-[700px] flex-col px-6 pt-16 md:px-6 md:pt-20">
+          <div className="mx-auto  flex flex-col px-6 pt-16 md:px-6 md:pt-20">
             {children}
             <Footer />
           </div>

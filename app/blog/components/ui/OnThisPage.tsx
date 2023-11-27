@@ -1,35 +1,45 @@
-import { allPosts } from "@/.contentlayer/generated";
+"use client";
+
 import clsx from "clsx";
+import React from "react";
 
-// const post = allPosts.find((post) => post.slug === params.slug);
-
-export default function OnThisPage() {
-  return (
-    <div className="sticky top-6 hidden h-0 xl:!col-start-4 xl:row-start-2 xl:block">
-      {/* <div className="flex flex-col">
-        {post?.title ? (
-          <div className="flex flex-col text-sm">
-            <h1 className="text-xl uppercase text-primary">On this page</h1>
-
-            {post?.title.map((heading) => (
-              <div className="" key={heading.slug}>
-                <a
-                  href={`#${heading.slug}`}
-                  className={clsx(
-                    "hove:text-secondary block text-primary underline underline-offset-2 transition-all",
-                    {
-                      "pl-2": heading.heading === 2,
-                      "pl-4": heading.heading === 3,
-                    },
-                  )}
-                >
-                  {heading.text}
-                </a>
-              </div>
-            ))}
-          </div>
-        ) : null}
-      </div> */}
-    </div>
-  );
+interface Heading {
+  heading: number;
+  text: string;
+  slug: string;
 }
+
+type HeadingProps = {
+  headings: Heading[];
+};
+
+const OnThisPage = ({ headings }: HeadingProps) => {
+  return (
+    <>
+      <div className="sticky top-24 hidden h-0 shrink-0 animate-in md:flex  md:w-56 md:justify-end">
+        <div className="space-y-2 text-sm font-medium">
+          <h2 className="animate-in text-lg">On this page</h2>
+          {headings ? (
+            <ul className="animated-list animate-in border-b pb-1">
+              {headings.map((heading) => (
+                <li
+                  key={heading.slug}
+                  className="flex flex-col gap-2 transition-opacity"
+                >
+                  <a
+                    href={`#${heading.slug}`}
+                    className={clsx("block cursor-pointer transition-opacity")}
+                  >
+                    {heading.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default OnThisPage;

@@ -5,6 +5,7 @@ import {
 } from "contentlayer/source-files";
 import rehypePrism from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
+import GithubSlugger from "github-slugger";
 var getSlug = (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, "");
 var postComputeFields = {
   slug: {
@@ -18,6 +19,28 @@ var postComputeFields = {
   og: {
     type: "string",
     resolve: (doc) => `/blog/${getSlug(doc)}/image.png`
+  },
+  /**TH */
+  headings: {
+    type: "json",
+    resolve: async (doc) => {
+      const slugger = new GithubSlugger();
+      const regXHeader = /\n\n(?<flag>#{1,6})\s+(?<content>.+)/g;
+      if (doc.body.raw && doc.body.raw.trim() !== "") {
+        const matches = Array.from(doc.body.raw.matchAll(regXHeader));
+        const headings = matches.map(({ groups }) => {
+          const flag = groups?.flag;
+          const content = groups?.content;
+          return {
+            heading: flag?.length,
+            text: content,
+            slug: content ? slugger.slug(content) : void 0
+          };
+        });
+        return headings;
+      }
+      return [];
+    }
   }
 };
 var Post = defineDocumentType(() => ({
@@ -71,4 +94,4 @@ export {
   Project,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-WS6ZKARF.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-4Q3335V3.mjs.map

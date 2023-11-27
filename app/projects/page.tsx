@@ -5,7 +5,7 @@ export const metadata: Metadata = {
 };
 export default function Projects() {
   return (
-    <main className="">
+    <main className="mx-auto  flex max-w-[700px] flex-col md:px-16">
       <h3>Projects</h3>
     </main>
   );
