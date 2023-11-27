@@ -11,6 +11,8 @@ import { formatDate } from "@/lib/formatdate";
 import ViewCounter from "../components/ui/ViewCounter";
 import MdxWrapper from "../components/ui/MdxWrapper";
 import Link from "next/link";
+import OnThisPage from "../components/ui/OnThisPage";
+import Tags from "@/components/Tags";
 
 type PostProps = {
   post: PostType;
@@ -129,14 +131,19 @@ export default async function Post({ params }: { params: any }) {
             </>
           )}
 
-          <div className="h-16">
-            <div className="prose prose-neutral animate-in">
-              <MdxWrapper code={post.body.code} />
-            </div>
+          {/* Height between name and blog body */}
+          <div className="h-16" />
+          <div
+            className="prose prose-neutral animate-in"
+            style={{ "--index": 3 } as React.CSSProperties}
+          >
+            {/* <OnThisPage headings={post.headings} /> */}
+            <MdxWrapper code={post.body.code} />
           </div>
         </article>
 
         {/* Put the tags component */}
+        <Tags tags={post.tags} />
 
         <Link href="/blog">← All Blogs</Link>
       </div>

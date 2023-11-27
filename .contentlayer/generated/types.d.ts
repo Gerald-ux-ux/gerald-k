@@ -25,6 +25,7 @@ export type Post = {
   slug: string
   image: string
   og: string
+  headings: json
 }
 
 export type Project = {
