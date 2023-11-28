@@ -32,7 +32,7 @@ function WorkPlace({ title, company, imageSrc, time, link }: WorkPlaceProps) {
 
   return (
     <div className="">
-      <li className="transition-opacity" key={company}>
+      <li className="transition-opacity">
         {link ? (
           <Link
             href={link}
@@ -51,7 +51,9 @@ function WorkPlace({ title, company, imageSrc, time, link }: WorkPlaceProps) {
 export default function WorkPlaces({ items }: { items: WorkPlaceProps[] }) {
   return (
     <ul className="animated-list flex flex-col gap-8">
-      {items.map(WorkPlace)}
+      {items.map((item) => (
+        <WorkPlace key={item.company} {...item} />
+      ))}
     </ul>
   );
 }
