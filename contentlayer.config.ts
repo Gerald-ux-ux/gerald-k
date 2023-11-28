@@ -90,7 +90,7 @@ const projectComputeFields: ComputedFields = {
   },
   image: {
     type: "string",
-    resolve: (doc) => `/blog/${getSlug(doc)}/image.png`,
+    resolve: (doc) => `/projects/${getSlug(doc)}/image.png`,
   },
 };
 

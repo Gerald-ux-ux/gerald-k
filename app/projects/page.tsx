@@ -13,7 +13,7 @@ export default function Projects() {
   const projects = allProjects;
 
   return (
-    <main className="mx-auto  max-w-[700px] ">
+    <main className="mx-auto w-full  max-w-[700px] px-6 ">
       <div className="flex flex-col gap-16 md:gap-24">
         <div className="flex-col gap-8">
           <div>
@@ -51,7 +51,7 @@ export default function Projects() {
                   >
                     {project.title}
                   </Link>
-                  <time className="text-secondary">{project.time}</time>
+                  <time className="text-secondary"> . {project.time}</time>
                 </div>
                 <p className="line-clamp-3 text-tertiary">
                   {project.description}

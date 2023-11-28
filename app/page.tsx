@@ -17,7 +17,7 @@ export default function Home() {
     .filter((_, i) => i < 3);
 
   return (
-    <div className="flex max-w-[700px] flex-col mx-auto gap-16 md:gap-24">
+    <div className="flex max-w-[700px] flex-col mx-auto gap-16 px-6 md:gap-24">
       <div className="flex animate-in flex-col gap-8">
         <div className="">
           <h1 className={PAGE_HEADER}>Gerald Kamau</h1>

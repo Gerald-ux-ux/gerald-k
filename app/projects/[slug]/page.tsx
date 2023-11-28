@@ -3,17 +3,17 @@ import MdxWrapper from "@/app/blog/components/ui/MdxWrapper";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-type ProjectProps = {
-  post: PostType;
-  related: PostType[];
-};
+// type ProjectProps = {
+//   post: PostType;
+//   related: PostType[];
+// };
 
 export default function Project({ params }: { params: any }) {
   const project = allProjects.find((project) => project.slug === params.slug);
 
   if (!project) return notFound();
   return (
-    <div className="flex flex-col gap-20">
+    <div className="mx-auto flex max-w-[700px] flex-col gap-20 px-6">
       <article>
         <div className="flex animate-in flex-col gap-3">
           <div className="flex gap-3 text-secondary">
@@ -73,7 +73,7 @@ export default function Project({ params }: { params: any }) {
           </p>{" "}
         </div>
 
-        <Link href="/projects" className="text-primary underline">
+        <Link href="/projects" className="text-primary underline underline-offset-4">
           ← All Projects
         </Link>
       </div>
