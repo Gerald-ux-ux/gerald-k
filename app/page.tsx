@@ -17,12 +17,12 @@ export default function Home() {
     .filter((_, i) => i < 3);
 
   return (
-    <div className="flex max-w-[700px] flex-col mx-auto gap-16 px-6 md:gap-24">
+    <div className="mx-auto flex max-w-[700px] flex-col gap-16 px-6 md:gap-24">
       <div className="flex animate-in flex-col gap-8">
         <div className="">
           <h1 className={PAGE_HEADER}>Gerald Kamau</h1>
           <p className="animate-in  text-secondary">
-            I write code and I make beats.
+            I write code and make beats.
           </p>
         </div>
 
@@ -38,9 +38,15 @@ export default function Home() {
         </div>
 
         <p className="max-w-lg animate-in text-primary">
-          Hi, I&apos;m Gerald kamau, a software engineer who loves building cool
-          things with code. In addition to coding, I also make YouTube videos,
-          where I focus on tech, creative vlogs, and personal development.
+          Hi, I&apos;m Gerald kamau, a software engineer who loves and enjoys
+          writing code. In addition to coding, I also do music production and
+          occasionally upload some beats on {" "}
+          <Link
+            href="https://www.youtube.com/channel/UCAszclBzNqvwJpM4F1OdhXQ"
+            className="underline"
+          >
+            YouTube
+          </Link>
         </p>
 
         <Connect />
@@ -59,7 +65,7 @@ export default function Home() {
           </Link>
 
           <Link
-            href="/blog"
+            href="/code-snippets"
             className=" text-secondary underline underline-offset-4 hover:text-primary"
           >
             See all code snippets

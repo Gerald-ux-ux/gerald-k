@@ -8,7 +8,7 @@ export default function Connect() {
   return (
     <div className="">
       {/* About section */}
-      <div className="flex flex-col gap-16 mx-auto max-w-[700px] px-6 md:gap-24">
+      <div className="mx-auto flex max-w-[700px] flex-col gap-16 px-6 md:gap-24">
         <div className="flex animate-in flex-col gap-8">
           <Image
             src={Avatar}
@@ -22,9 +22,15 @@ export default function Connect() {
               Gerald Kamau
             </h1>
             <p className="mx-auto max-w-sm text-center text-secondary">
-              Software Engineer who believes in the power of consistency. In
+              A Software Engineer who believes in the power of consistency. In
               addition to code i also make beats and you can always reach out to
-              me on instagram for any musical inquires{" "}
+              me on{" "}
+              <Link
+                href="https://www.instagram.com/geralddd.g/"
+                className="underline"
+              >
+                Instagram
+              </Link>
             </p>
           </div>
         </div>
