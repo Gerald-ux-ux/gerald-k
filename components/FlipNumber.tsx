@@ -1,28 +1,23 @@
-/** Animating the numbers */
-
-"use client";
-
-import { useEffect, useState } from "react";
-import useIsMount from "../hooks/useIsMount";
+import React, { useState, useEffect } from "react";
 import clsx from "clsx";
+import useIsMount from "hooks/useIsMount";
 
 type FlipNumberProps = {
   children: number;
 };
 
-export default function FlipNumber({ children }: FlipNumberProps) {
+function FlipNumber({ children }: FlipNumberProps) {
   const isMount = useIsMount();
-  const [numToShow, setNumToShow] = useState(children);
   const [keyframe, setKeyframe] = useState<"initial" | "moveDown" | "out">(
     "initial",
   );
+  const [numberToShow, setNumberToShow] = useState(children);
   const duration = 75;
 
-  /** This as series of timeouts to animate the number movements */
   useEffect(() => {
     if (!isMount) {
       setTimeout(() => setKeyframe("out"), 0);
-      setTimeout(() => setNumToShow(children), duration);
+      setTimeout(() => setNumberToShow(children), duration);
       setTimeout(() => setKeyframe("moveDown"), duration);
       setTimeout(() => setKeyframe("initial"), duration * 2);
     }
@@ -39,7 +34,9 @@ export default function FlipNumber({ children }: FlipNumberProps) {
         keyframe === "moveDown" && "translate-y-3 opacity-0",
       )}
     >
-      {numToShow}
+      {numberToShow}
     </span>
   );
 }
+
+export default FlipNumber;

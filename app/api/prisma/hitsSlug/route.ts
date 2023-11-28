@@ -18,7 +18,7 @@ export async function GET(req: NextRequest) {
     const slug = searchParams.get("slug");
 
     if (!slug) {
-      return new Response("Please provide a slug", { status: 200 });
+      return new Response("Please provide a slug", { status: 500 });
     }
 
     let viewCount = 0;

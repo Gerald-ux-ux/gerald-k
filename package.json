@@ -35,6 +35,7 @@
     "prismjs": "^1.29.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-flip-numbers": "^3.0.8",
     "react-icons": "^4.11.0",
     "react-parallax-tilt": "^1.7.175",
     "rehype-autolink-headings": "^7.1.0",
