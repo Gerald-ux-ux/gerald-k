@@ -72,7 +72,7 @@ var projectComputeFields = {
   },
   image: {
     type: "string",
-    resolve: (doc) => `/blog/${getSlug(doc)}/image.png`
+    resolve: (doc) => `/projects/${getSlug(doc)}/image.png`
   }
 };
 var Project = defineDocumentType(() => ({
@@ -101,4 +101,4 @@ export {
   Project,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-LKCJAA7X.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-BNZ5FVBX.mjs.map

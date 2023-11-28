@@ -8,7 +8,7 @@ export default function Connect() {
   return (
     <div className="">
       {/* About section */}
-      <div className="flex flex-col gap-16 md:gap-24">
+      <div className="flex flex-col gap-16 mx-auto max-w-[700px] px-6 md:gap-24">
         <div className="flex animate-in flex-col gap-8">
           <Image
             src={Avatar}
