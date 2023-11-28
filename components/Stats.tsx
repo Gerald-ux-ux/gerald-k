@@ -13,17 +13,24 @@ export function Github() {
     `/api/github?username=gerald-ux-ux`,
     Fetcher,
   );
+
+  console.log("It is", githubData);
+
   if (githubDataError) return <div>failed to load</div>;
+
   return addCommas(githubData?.stars);
 }
 
 export default function Stats() {
   const username = "gerald-ux-ux";
+  const url = `api/github?username=${username}`;
 
-  const { data: githubData, error: githubDataError } = useSWR(
-    `/api/github?username=${username}`,
-    Fetcher,
-  );
+  console.log("URL", url);
+
+  const { data: githubData, error: githubDataError } = useSWR(url, Fetcher);
+
+  console.log("Data is", githubData);
+  console.log("Error is", githubDataError);
 
   return (
     <ul className="animated-list space-y-2">
@@ -34,11 +41,9 @@ export default function Stats() {
         >
           <FaGithub className="text-xl" />
           <div className="">
-            000
-            {/* */}
-            {/* <FlipNumber>
-            {githubData ? addCommas(githubData?.stars) : "000"}
-          </FlipNumber> */}
+            <FlipNumber>
+              {githubData ? addCommas(githubData?.stars) : "000"}
+            </FlipNumber>
             <span> Repository Stars</span>
           </div>
         </Link>
