@@ -63,7 +63,10 @@ export default function Stats() {
       </li>
 
       <li className="transition-opacity">
-        <Link className="flex items-center gap-3" href="/blog">
+        <Link
+          className="flex items-center gap-3"
+          href={"/https://www.youtube.com/channel/UCAszclBzNqvwJpM4F1OdhXQ"}
+        >
           <FaYoutube className="text-xl" />
           <div className="flex items-center gap-2">
             <FlipNumber>
