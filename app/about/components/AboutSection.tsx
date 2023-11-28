@@ -8,23 +8,22 @@ export default function AboutSection() {
         <p>Hello World My name is Gerald Kamau</p>
 
         <p>
-          I have a passion and a mission with the foundation of east africa we
-          decided to have ever
+          From crafting elegant solutions to embracing the occasional debugging
+          adventure, I enjoy writing code
         </p>
         <p>
-          In addition to coding, I also make{" "}
+          Beyond coding, I find joy in crafting music and producing songs for
+          various artists across the US. I also occasionally upload beats on{" "}
           <Link
             className="underline"
-            href="https://www.youtube.com/channel/@brianruizy"
+            href="https://www.youtube.com/channel/UCAszclBzNqvwJpM4F1OdhXQ"
           >
             YouTube
-          </Link>{" "}
-          videos, where I focus on tech gear, creative vlogs, and a bit of
-          personal development.
+          </Link>
         </p>
         <p>
-          When I&apos;m not at my desk I am probably lifting weights, playing
-          soccer, or at a coffee shop
+          The few times that I&apos;m not at my desk, i am out spending time
+          with my family or playing basketball
         </p>
       </div>
     </Section>

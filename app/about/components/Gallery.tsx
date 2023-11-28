@@ -6,6 +6,9 @@ import localFont from "next/font/local";
 import clsx from "clsx";
 import Hallo from "@/components/ui/Halo";
 import me from "@/public/gallery/me.jpg";
+import music from "@/public/gallery/makingmusic.jpg";
+import code from "@/public/gallery/code.jpg";
+import image from "@/public/gallery/image.jpg";
 
 const ticketingFont = localFont({
   src: "../../../public/ticketing.woff2",
@@ -85,7 +88,7 @@ function Photo({
           flipped: {
             scale: 1.1,
             rotateY: flipDirection === "right" ? -180 : 180,
-            rotateX: 5,
+            rotateX: 8,
           },
         }}
       >
@@ -95,6 +98,7 @@ function Photo({
             alt={alt}
             width={width}
             height={height}
+            priority
             className="pointer-events-none absolute inset-0 h-full w-full rounded-2xl bg-gray-400 object-cover"
           />
           {children}
@@ -102,7 +106,7 @@ function Photo({
         <div
           className={clsx(
             shared,
-            "flex items-center overflow-hidden rounded-2xl bg-[#FFFAF2]",
+            "flex items-center overflow-hidden rounded-2xl bg-[#00499d]/20",
           )}
           style={{
             backfaceVisibility: "hidden",
@@ -134,44 +138,44 @@ export default function Gallery() {
     <>
       <section className="relative flex h-[268px] gap-4">
         <Photo
-          src={me}
-          meta="2021-07-12"
-          alt="Brian and Lily"
-          width={324}
-          height={239}
+          src={image}
+          meta="2023-02-11"
+          alt="me"
+          width={250}
+          height={259}
           rotate={-6}
           left={-86}
           index={1}
         />
         <Photo
-          src={me}
-          meta="2017-07-04"
-          alt="my e-bike"
-          width={230}
+          src={music}
+          meta="2023-09-04"
+          alt="me making music"
+          width={220}
           height={250}
           rotate={6.3}
-          left={188}
+          left={150}
           index={2}
           flipDirection="left"
         />
         <Photo
-          src={me}
-          meta="2021-05-20"
-          alt="Texas"
-          width={280}
+          src={code}
+          meta="2022-05-20"
+          alt="Coding..."
+          width={240}
           height={235}
           rotate={-5.4}
-          left={343}
+          left={360}
           index={3}
         />
         <Photo
           src={me}
-          meta="2022-09-10"
-          alt={"Snowboarding in Colorado"}
-          width={220}
-          height={260}
+          meta="2022-12-28"
+          alt="an old picture of me"
+          width={240}
+          height={240}
           rotate={7.6}
-          left={557}
+          left={560}
           index={4}
           flipDirection="left"
         />

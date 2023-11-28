@@ -14,12 +14,13 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
-    <main className="flex  px-6 flex-col mx-auto max-w-[700px] gap-16 md:gap-24">
+    <main className="mx-auto  flex max-w-[700px] flex-col gap-16 px-6 md:gap-24">
       <div>
         <h1 className={PAGE_HEADER}>About Me</h1>
 
         <p className="animate-in text-secondary">Just a quick glimpse.</p>
       </div>
+      {/* Photos to show on mobile view */}
       <div className="mb-8 lg:hidden">
         <div className="animate-in">
           <Image
@@ -41,7 +42,7 @@ export default function About() {
           />
         </div>
       </div>
-
+      {/* Photos to show on desktop */}
       <div className="hidden lg:block">
         <Gallery />
       </div>
