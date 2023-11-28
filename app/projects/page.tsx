@@ -18,10 +18,12 @@ export default function Projects() {
         <div className="flex-col gap-8">
           <div>
             <h1 className={PAGE_HEADER}>Projects</h1>
-            <p>Here are some of the project I&apos;ve worked on</p>
+            <p className="animate-in">
+              Here are some of the project I&apos;ve worked on
+            </p>
           </div>
         </div>
-        <ul>
+        <ul className="animated-list flex animate-in flex-col">
           {projects.map((project, i) => (
             <li
               className={clsx(
