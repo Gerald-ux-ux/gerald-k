@@ -3,7 +3,7 @@ export async function GET() {
     return new Response("No API key specified", { status: 500 });
   }
 
-  const url = `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=UCAszclBzNqvwJpM4F1OdhXQ&key=AIzaSyAbnOPGlnSvPq7DLN5hJaWBjcuJyTBMtR0`;
+  const url = `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=UCAszclBzNqvwJpM4F1OdhXQ&key=${process.env.YOUTUBE_API_KEY}`;
 
   try {
     const res = await fetch(url);
