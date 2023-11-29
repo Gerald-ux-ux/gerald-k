@@ -126,17 +126,16 @@ export default async function Post({ params }: { params: any }) {
 
             {post.image && (
               <>
-                <div className="h-8">
-                  <Image
-                    src={post.image}
-                    alt={`${post.title} post image`}
-                    priority
-                    width={700}
-                    quality={100}
-                    height={350}
-                    className="lg:w[calc(100%+128px)] -ml-6 w-[calc(100%+48px)] max-w-none animate-in md:rounded-lg lg:-ml-6"
-                  />
-                </div>
+                <div className="h-8" />
+                <Image
+                  src={post.image}
+                  alt={`${post.title} post image`}
+                  priority
+                  width={700}
+                  quality={100}
+                  height={350}
+                  className="lg:w[calc(100%+128px)] -ml-6 w-[calc(100%+48px)] max-w-none animate-in md:rounded-lg lg:-ml-6"
+                />
               </>
             )}
 

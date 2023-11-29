@@ -51,8 +51,8 @@ export default function Post({ post, mousePosition }: PostProps) {
           <Section heading={formatDate(publishedAt)}>
             <Link href={`/blog/${slug}`} className="font-medium leading-tight">
               {title}
-              
             </Link>
+            {/* Add a new tag */}
           </Section>
           <div className="min-w-24 relative aspect-square h-24 w-24 drop-shadow-sm md:hidden">
             <Image
