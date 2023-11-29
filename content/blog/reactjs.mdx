@@ -1,6 +1,6 @@
 ---
 title: "Mastering React.js: Crafting Dynamic and Responsive Front-End Experiences"
-publishedAt: "2023-11-27"
+publishedAt: "2023-11-10"
 summary: "An  guide on how to structure you projects, in order to scale easily"
 tags: ["Front-end Development", "ReactJs"]
 ---
@@ -27,18 +27,17 @@ Having a good architecture enables you to easily scale your application and have
 
 This means that you have break down each component to only handle one thing. Break the UI down into small reusable components.
 
-
 ```tsx showLineNumbers
 import UserData from "./UserData";
 
 const UserProfile = ({ props }) => {
-return (
-<div className="flex flex-col items-center justify-center">
-{props.map((prop, i) => (
-<UserData key={i} data={prop} />
-))}
-</div>
-);
+  return (
+    <div className="flex flex-col items-center justify-center">
+      {props.map((prop, i) => (
+        <UserData key={i} data={prop} />
+      ))}
+    </div>
+  );
 };
 
 export default UserProfile;
