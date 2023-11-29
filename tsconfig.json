@@ -29,7 +29,9 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    ".contentlayer/generated"
-, "lib/fetcher.js"  ],
+    "next/types/index.d.ts",
+    ".contentlayer/generated",
+    "lib/fetcher.js"
+  ],
   "exclude": ["node_modules"]
 }

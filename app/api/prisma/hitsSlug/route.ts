@@ -15,7 +15,7 @@ const prisma = new PrismaClient();
 export async function GET(req: NextRequest) {
   try {
     const searchParams = req.nextUrl.searchParams;
-    const slug = searchParams.get("slug");
+    const slug = await searchParams.get("slug");
 
     if (!slug) {
       return new Response("Please provide a slug", { status: 500 });
