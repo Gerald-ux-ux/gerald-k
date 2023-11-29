@@ -60,12 +60,12 @@ export async function generateMetadata(
       type: "article",
       publishedTime,
       url: `https://gerald-k.vercel.app/${title}`,
-      // images: [
-      //   {
-      //     url: `https://b-r.io/api/og?title=${title}`,
-      //     alt: title,
-      //   },
-      // ],
+      images: [
+        {
+          url: `https://gerald-k.vercel.app?title=${title}`,
+          alt: title,
+        },
+      ],
     },
   };
 
@@ -78,6 +78,8 @@ export default async function Post({ params }: { params: any }) {
   if (!post) {
     notFound();
   }
+
+  console.log("Post img", post?.image);
 
   return (
     <>

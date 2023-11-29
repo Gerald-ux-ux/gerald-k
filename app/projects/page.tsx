@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
 export const metadata: Metadata = {
   title: "Projects | Gerald",
   description: "This are my projects",
@@ -19,7 +20,8 @@ export default function Projects() {
           <div>
             <h1 className={PAGE_HEADER}>Projects</h1>
             <p className="animate-in">
-              Here are some of the project I&apos;ve worked on
+              Here are some of the project I&apos;ve worked on ranging from code
+              to design
             </p>
           </div>
         </div>

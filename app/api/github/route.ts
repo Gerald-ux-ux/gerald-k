@@ -17,9 +17,10 @@ export async function GET(req: NextRequest) {
         acc + item.stargazers_count,
       0,
     );
+    console.log("Stars is: " + stars);
     return Response.json({ stars });
   } catch (error) {
     console.error(error);
-    return new Response(`Something went wrong ${error}`, { status: 200 });
+    return new Response(`Something went wrong ${error}`, { status: 500 });
   }
 }
