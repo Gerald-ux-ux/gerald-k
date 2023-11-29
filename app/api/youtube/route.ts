@@ -1,8 +1,7 @@
 export async function GET() {
-  if (!process.env.YOUTUBE_API_KEY) {
+  if (process.env.YOUTUBE_API_KEY === undefined) {
     return new Response("No API key specified", { status: 500 });
   }
-
   const url = `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=UCAszclBzNqvwJpM4F1OdhXQ&key=${process.env.YOUTUBE_API_KEY}`;
 
   try {
