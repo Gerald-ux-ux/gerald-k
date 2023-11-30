@@ -35,7 +35,6 @@ const components = {
   a: CustomLink,
   Link: CustomLink,
   // Alert: Alert,
-  // Parallax: Parallax,
   // Weather: Weather,
   // WeatherList: WeatherList,
   // LinkPreview: LinkPreview,
