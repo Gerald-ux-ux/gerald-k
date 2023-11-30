@@ -43,7 +43,7 @@ export default function CustomImage({
           priority={priority}
           className={clsx(
             "h-auto w-full",
-            breakout ? "bg-tertiary" : "",
+            breakout ? "bg-tertiary" : "bg-tertiary",
             (rounded || breakout) &&
               "overflow-hidden  rounded-md bg-tertiary md:rounded-lg",
           )}
