@@ -17,7 +17,7 @@ type HeadingProps = {
 const OnThisPage = ({ headings }: HeadingProps) => {
   return (
     <>
-      <div className="sticky  top-24 hidden  h-0 animate-in px-44  md:flex md:justify-end">
+      <div className="sticky  top-24 hidden  h-0 animate-in px-12  md:flex md:justify-end">
         <div className="space-y-2  font-medium">
           <h2 className="mb-4 animate-in ">On this page</h2>
           {headings ? (

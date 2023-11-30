@@ -55,7 +55,7 @@ export default function Home() {
         <Connect />
       </div>
 
-      <div className="flex animate-in flex-col gap-8  ">
+      <div className="flex animate-in flex-col gap-12  ">
         {/* <Projects /> */}
         <h2 className="text-secondary">
           Projects & solutions i have been a part of{" "}
