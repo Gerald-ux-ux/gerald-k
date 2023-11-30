@@ -37,15 +37,14 @@ export default function Projects() {
                 href={`/projects/${project.slug}`}
                 className="aspect-video w-full select-none overflow-clip rounded-lg border border-secondary bg-tertiary md:w-2/5"
               >
-                <Hallo strength={10}>
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    layout="fill"
-                    objectFit="cover"
-                    className="h-full w-full "
-                  />
-                </Hallo>
+                {/* <Hallo strength={10}> */}
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  width={300}
+                  height={150}
+                />
+                {/* </Hallo> */}
               </Link>
               <div className="w-full space-y-2 md:w-3/5">
                 <div>

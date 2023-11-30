@@ -18,7 +18,7 @@ export default function WorkSection() {
           bootcamp, mastering the foundational aspects of software development.
           This journey led me to a rewarding role as a full-stack software
           developer, with a special focus on front-end expertise at{" "}
-          <Link href="https://www.creativebrands.co.ke/" className="underline">
+          <Link href="https://www.thecbgroup.io/" className="underline">
             Creative Brands
           </Link>
         </p>
@@ -34,7 +34,7 @@ const workplaces = [
     company: "Creative Brands",
     time: "2022 -",
     imageSrc: cblogo,
-    link: "https://www.creativebrands.co.ke/",
+    link: "https://www.thecbgroup.io/",
   },
   {
     title: "Fronted end software Engineer",

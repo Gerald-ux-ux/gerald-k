@@ -1,5 +1,7 @@
 import { useMDXComponent } from "next-contentlayer/hooks";
-import Link from "next/link";
+
+import Link from "@/components/ui/Link";
+import CustomImage from "./Image";
 
 interface CustomLinkProps
   extends React.DetailedHTMLProps<
@@ -10,34 +12,32 @@ interface CustomLinkProps
 const CustomLink: React.FC<CustomLinkProps> = (props) => {
   const href = props?.href;
   const isInternalLink = href && (href.startsWith("/") || href.startsWith("#"));
+
   if (isInternalLink) {
     return (
-      // {...props} should be in the link
-      <Link href={href} className="underline">
+      <Link {...props} href={href} underline>
         {props.children}
       </Link>
     );
   }
-
   return (
     <a
       target="_blank"
-      //   href={href}
       rel="noopener noreferrer"
       className="font-normal text-link underline underline-offset-4"
-    ></a>
+      {...props}
+    />
   );
 };
 
 const components = {
-  //   Image: CustomImage,
+  Image: CustomImage,
   a: CustomLink,
   Link: CustomLink,
-  //   Alert: Alert,
-  //   Parallax: Parallax,
-  //   Weather: Weather,
-  //   WeatherList: WeatherList,
-  //   LinkPreview: LinkPreview,
+  // Alert: Alert,
+  // Weather: Weather,
+  // WeatherList: WeatherList,
+  // LinkPreview: LinkPreview,
 };
 
 export default function MdxWrapper({ code }: { code: string }) {

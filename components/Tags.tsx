@@ -16,12 +16,13 @@ const Tags = ({ tags }: TagsProps) => {
       <div className="animated-list flex flex-wrap gap-3">
         {tags.map((tag) => (
           <li key={tag} className="transition-opacity">
-            <Link
-              href={`/blog/tag/${slugify(tag, { lower: true })}`}
-              className="whitespace-nowrap rounded-lg bg-secondary px-4 py-2 text-sm text-primary "
+            {/* Will add links later */}
+            <div
+              // href={`/blog/${slugify(tag, { lower: true })}`}
+              className="cursor-pointer whitespace-nowrap rounded-lg bg-secondary px-4 py-2 text-sm text-primary "
             >
               {tag}
-            </Link>
+            </div>
           </li>
         ))}
       </div>

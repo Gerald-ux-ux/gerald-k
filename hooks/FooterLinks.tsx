@@ -9,10 +9,10 @@ const links = [
     label: "Blogs",
     href: "/blog",
   },
-  {
-    label: "Code Snippets",
-    href: "/code-snippets",
-  },
+  // {
+  //   label: "Code Snippets",
+  //   href: "/code-snippets",
+  // },
   {
     label: "Youtube",
     href: "https://www.youtube.com/@geralddd.g/featured",

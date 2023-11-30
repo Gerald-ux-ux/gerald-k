@@ -15,8 +15,8 @@ export default function MobileNav({ links }: NavLinkProps) {
 
   return (
     <Popover className="relative ml-auto md:hidden">
-      <Popover.Button className="flex items-center gap-1 text-secondary p-1 rounded-lg focus-visible:outline-none focus:ring-0">
-        <CiMenuFries className="h-6 w-6 text-black" />
+      <Popover.Button className="flex items-center gap-1 rounded-lg p-1 text-secondary focus:ring-0 focus-visible:outline-none">
+        <CiMenuFries className="h-6 w-6" />
       </Popover.Button>
 
       <Transition
@@ -27,17 +27,17 @@ export default function MobileNav({ links }: NavLinkProps) {
         leaveTo="translate-y-1 opacity-0"
         as={Fragment}
       >
-        <Popover.Panel className="absolute z-10 right-0 p-1 mt-2 overflow-auto text-base origin-top-right shadow-xl w-40 rounded-xl">
+        <Popover.Panel className="absolute right-0 z-10 mt-2 w-40 origin-top-right overflow-auto rounded-xl bg-white p-2 text-sm  shadow-lg focus:outline-none dark:bg-black sm:text-sm">
           <div className="grid">
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={clsx(
-                  "px-4 py-2 rounded-md hover:text-primary transition-colors",
+                  "rounded-md px-4 py-2 transition-colors hover:text-primary",
                   pathname === link.href
                     ? "bg-tertiary font-medium"
-                    : "font-normal"
+                    : "font-normal",
                 )}
               >
                 {link.label}

@@ -22,7 +22,10 @@ export default function Project({ params }: { params: any }) {
             {project.url && (
               <>
                 <span>&middot;</span>
-                <Link href={project.url} className="hover:text-primary">
+                <Link
+                  href={project.url}
+                  className="underline underline-offset-2 hover:text-primary"
+                >
                   Visit Project
                 </Link>
               </>
@@ -61,11 +64,10 @@ export default function Project({ params }: { params: any }) {
         <div className="flex flex-col gap-6">
           <h2>Contact</h2>
           <p className="max-w-lg text-secondary">
-            Need more project details, or interested in working together? Reach
-            out to me directly at{" "}
+            Need more project details, or interested in working? Reach out to me{" "}
             <a
               href="mailto:kamaugerald36@gmail.com"
-              className="text-primary underline"
+              className="text-primary underline underline-offset-2"
             >
               kamaugerald36@gmail.com
             </a>
@@ -73,7 +75,10 @@ export default function Project({ params }: { params: any }) {
           </p>{" "}
         </div>
 
-        <Link href="/projects" className="text-primary underline underline-offset-4">
+        <Link
+          href="/projects"
+          className="text-primary underline underline-offset-4"
+        >
           ← All Projects
         </Link>
       </div>
