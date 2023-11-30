@@ -1,5 +1,0 @@
-/** Bigsore photos */
-
-{
- 
-}
