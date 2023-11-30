@@ -45,7 +45,7 @@ export default function CustomImage({
             "h-auto w-full",
             breakout ? "bg-tertiary" : "",
             (rounded || breakout) &&
-              "overflow-hidden rounded-md bg-tertiary md:rounded-lg",
+              "overflow-hidden  rounded-md bg-tertiary md:rounded-lg",
           )}
         />
         {caption && (
