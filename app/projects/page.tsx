@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Projects | Gerald",
-  description: "This are my projects",
+  description: "Projects i have worked on",
 };
 export default function Projects() {
   const projects = allProjects;

@@ -9,7 +9,7 @@ import WorkSection from "./components/WorkSection";
 
 export const metadata: Metadata = {
   title: "About | Gerald ",
-  description: "I am a passionate front-end developer",
+  description: "A glimpse of my work life ",
 };
 
 export default function About() {

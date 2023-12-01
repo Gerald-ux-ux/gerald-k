@@ -4,8 +4,7 @@ import PostList from "./components/ui/PostList";
 
 export const metadata: Metadata = {
   title: "Blog | Gerald",
-  //  Update the description
-  description: "Description",
+  description: "Blogs about coding, productivity and more",
 };
 
 export default function Blog() {
@@ -16,7 +15,7 @@ export default function Blog() {
   );
 
   return (
-    <main className="flex flex-col px-6 md:px-6 mx-auto max-w-[700px] gap-16 md:gap-24">
+    <main className="mx-auto flex max-w-[700px] flex-col gap-16 px-6 md:gap-24 md:px-6">
       <div className="flex flex-col gap-8">
         <div className="">
           <h1 className="animate-in text-3xl font-bold tracking-tight">Blog</h1>
