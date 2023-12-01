@@ -1,7 +1,13 @@
 import { PAGE_HEADER } from "@/lib/uiConstants";
 import Construction from "@/public/images/construction.jpg";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Code-snippets | Gerald",
+  description: "Under construction...",
+};
 
 export default function CodeSnippets() {
   return (
