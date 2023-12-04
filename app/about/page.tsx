@@ -39,7 +39,7 @@ export default function About() {
             alt={"family photo"}
             width={324}
             height={139}
-            className="pointer-events-none absolute inset-0 -top-44 left-[20%] w-64 h-60 rotate-6 rounded-2xl bg-gray-400 object-cover shadow-md md:left-[60%] md:w-56"
+            className="pointer-events-none absolute inset-0 -top-44 left-[20%] w-64 h-72 rotate-6 rounded-2xl bg-gray-400 object-cover shadow-md md:left-[60%] md:w-56"
           />
         </div>
       </div>
