@@ -4,10 +4,8 @@ import Stats from "@/components/Stats";
 import Connect from "@/components/home/Connect";
 import PostList from "./blog/components/ui/PostList";
 import Link from "next/link";
-import { allPosts, allProjects } from "@/.contentlayer/generated";
+import { allPosts } from "@/.contentlayer/generated";
 import { PAGE_HEADER } from "@/lib/uiConstants";
-import Projects from "./projects/page";
-import clsx from "clsx";
 import ProjectComponent from "./projects/components/projects";
 
 export default function Home() {
@@ -18,7 +16,6 @@ export default function Home() {
     )
     // 3 most recent  (for now)
     .filter((_, i) => i < 3);
-  const projects = allProjects;
 
   return (
     <div className="mx-auto flex max-w-[700px] flex-col gap-16 px-6 md:gap-24">

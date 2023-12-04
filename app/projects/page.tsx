@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import ProjectComponent from "./components/projects";
 
 export const metadata: Metadata = {
   title: "Projects | Gerald",
@@ -25,44 +26,7 @@ export default function Projects() {
             </p>
           </div>
         </div>
-        <ul className="animated-list flex animate-in flex-col">
-          {projects.map((project, i) => (
-            <li
-              className={clsx(
-                "flex flex-col gap-4 py-6 transition-opacity first:pt-0 last:pb-0 md:flex-row md:gap-6",
-              )}
-              key={i}
-            >
-              <Link
-                href={`/projects/${project.slug}`}
-                className="aspect-video w-full select-none overflow-clip rounded-lg border border-secondary bg-tertiary md:w-2/5"
-              >
-                {/* <Hallo strength={10}> */}
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  width={300}
-                  height={150}
-                />
-                {/* </Hallo> */}
-              </Link>
-              <div className="w-full space-y-2 md:w-3/5">
-                <div>
-                  <Link
-                    href={`/projects/${project.slug}`}
-                    className="font-medium text-primary hover:underline"
-                  >
-                    {project.title}
-                  </Link>
-                  <time className="text-secondary"> . {project.time}</time>
-                </div>
-                <p className="line-clamp-3 text-tertiary">
-                  {project.description}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <ProjectComponent />
       </div>
     </main>
   );
