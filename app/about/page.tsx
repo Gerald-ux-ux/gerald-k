@@ -6,6 +6,7 @@ import Gallery from "./components/Gallery";
 import AboutSection from "./components/AboutSection";
 import ConnectSection from "./components/ConnectSection";
 import WorkSection from "./components/WorkSection";
+import music from "@/public/gallery/makingmusic.jpg";
 
 export const metadata: Metadata = {
   title: "About | Gerald ",
@@ -34,11 +35,11 @@ export default function About() {
 
         <div className="animate-in">
           <Image
-            src={Family}
+            src={music}
             alt={"family photo"}
             width={324}
             height={139}
-            className="pointer-events-none absolute inset-0 -top-48 left-[45%] w-48 rotate-6 rounded-2xl bg-gray-400 object-cover shadow-md md:left-[60%] md:w-56"
+            className="pointer-events-none absolute inset-0 -top-44 left-[20%] w-64 h-60 rotate-6 rounded-2xl bg-gray-400 object-cover shadow-md md:left-[60%] md:w-56"
           />
         </div>
       </div>
