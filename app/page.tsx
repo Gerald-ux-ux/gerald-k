@@ -4,10 +4,9 @@ import Stats from "@/components/Stats";
 import Connect from "@/components/home/Connect";
 import PostList from "./blog/components/ui/PostList";
 import Link from "next/link";
-import { allPosts, allProjects } from "@/.contentlayer/generated";
+import { allPosts } from "@/.contentlayer/generated";
 import { PAGE_HEADER } from "@/lib/uiConstants";
-import Projects from "./projects/page";
-import clsx from "clsx";
+import ProjectComponent from "./projects/components/projects";
 
 export default function Home() {
   const posts = allPosts
@@ -17,7 +16,6 @@ export default function Home() {
     )
     // 3 most recent  (for now)
     .filter((_, i) => i < 3);
-  const projects = allProjects;
 
   return (
     <div className="mx-auto flex max-w-[700px] flex-col gap-16 px-6 md:gap-24">
@@ -57,48 +55,11 @@ export default function Home() {
 
       <div className="flex animate-in flex-col gap-12  ">
         {/* <Projects /> */}
-        <h2 className="text-secondary">
-          Projects & solutions i have been a part of{" "}
+        <h2 className="animate-in text-xl  font-semibold tracking-tight">
+          My innovative ventures
         </h2>
 
-        <ul className="animated-list flex animate-in flex-col">
-          {projects.slice(0, 3).map((project, i) => (
-            <li
-              className={clsx(
-                "flex flex-col gap-4 py-3 transition-opacity first:pt-0 last:pb-0 md:flex-row md:gap-6",
-              )}
-              key={i}
-            >
-              <Link
-                href={`/projects/${project.slug}`}
-                className="aspect-video w-full select-none overflow-clip rounded-lg border border-secondary bg-tertiary md:w-2/5"
-              >
-                {/* <Hallo strength={10}> */}
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  width={300}
-                  height={150}
-                />
-                {/* </Hallo> */}
-              </Link>
-              <div className="w-full space-y-2 md:w-3/5">
-                <div>
-                  <Link
-                    href={`/projects/${project.slug}`}
-                    className="font-medium text-primary hover:underline"
-                  >
-                    {project.title}
-                  </Link>
-                  <time className="text-secondary"> . {project.time}</time>
-                </div>
-                <p className="line-clamp-3 text-tertiary">
-                  {project.description}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <ProjectComponent />
 
         <div className="flex flex-col py-4">
           <h2 className="text-secondary">Latest posts </h2>
