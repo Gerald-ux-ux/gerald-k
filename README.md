@@ -1,9 +1,5 @@
-## [G.dev](https://gerald-k.vercel.app/)
+## [gerald.io](https://gerald-k.vercel.app/)
 Welcome to my personal portfolio website designed to be minimalistic, clean and most importantly a place to learn from.
-
-## Why i built it.
-
-I have always wanted to have my own space on the internet and also be able to help inspire developers create and build what they envision. So feel free to clone the repository and learn something new
 
 ## Technologies
 
