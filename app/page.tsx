@@ -42,12 +42,12 @@ export default function Home() {
           Hi, I&apos;m Gerald kamau, a software engineer who loves and enjoys
           writing code. In addition to coding, I also do music production and
           occasionally upload some beats on{" "}
-          <Link
-            href="https://www.youtube.com/channel/UCAszclBzNqvwJpM4F1OdhXQ"
+          <a
+            href="https://www.youtube.com/@geralddd.g/featured"
             className="underline"
           >
             YouTube
-          </Link>
+          </a>
         </p>
 
         <Connect />

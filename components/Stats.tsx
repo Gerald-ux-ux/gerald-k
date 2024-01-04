@@ -63,9 +63,9 @@ export default function Stats() {
       </li>
 
       <li className="transition-opacity">
-        <Link
+        <a
           className="flex items-center gap-3"
-          href={"/https://www.youtube.com/channel/UCAszclBzNqvwJpM4F1OdhXQ"}
+          href={"https://www.youtube.com/@geralddd.g/featured"}
         >
           <FaYoutube className="text-xl" />
           <div className="flex items-center gap-2">
@@ -74,7 +74,7 @@ export default function Stats() {
             </FlipNumber>
             <span> Total Youtube Views</span>
           </div>
-        </Link>
+        </a>
       </li>
     </ul>
   );
