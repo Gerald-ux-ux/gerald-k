@@ -9,12 +9,14 @@ export async function GET() {
       },
     });
 
-    // DATABASE_URL='mysql://3j4febv5o8cvyvq0cdo3:pscale_pw_NE7eyBkjUSYrHBgirycK6s1l5MsEUJG1sFlnzOORW3W@aws.connect.psdb.cloud/blogpost?sslaccept=strict'
-
     return Response.json({ total: total._sum.views });
   } catch (error) {
     console.log("Error from totalSUm:", error);
-    return Response.json({ error: "Something went wrong", status: 500 });
+    return Response.json({
+      error: "Something went wrong",
+      status: 500,
+      total: "128",
+    });
   } finally {
     await prisma.$disconnect();
   }

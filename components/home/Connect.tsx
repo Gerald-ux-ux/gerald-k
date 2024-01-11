@@ -5,11 +5,6 @@ import { MdArrowOutward } from "react-icons/md";
 export default function Connect() {
   return (
     <ul className="animated-list flex animate-in flex-col gap-2 text-secondary md:flex-row md:gap-6">
-      <li>
-        <Link href="" className="">
-          Download resume
-        </Link>
-      </li>
       <li className="transition-opacity">
         <Link
           href="mailto:kamaugerald36@gmail.com"
