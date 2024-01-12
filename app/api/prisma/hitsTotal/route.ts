@@ -9,14 +9,18 @@ export async function GET() {
       },
     });
 
-    return Response.json({ total: total?._sum?.views });
+    if (total?._sum?.views) {
+      return new Response(JSON.stringify({ total: total?._sum?.views }), {
+        status: 200,
+      });
+    } else {
+      return new Response(JSON.stringify(0), {
+        status: 500,
+      });
+    }
   } catch (error) {
-    console.log("Error from totalSUm:", error);
-    return Response.json({
-      error: "Something went wrong",
-      status: 500,
-      total: "000",
-    });
+    console.log("Error found here", error);
+    return new Response("Internal Server Error", { status: 500 });
   } finally {
     await prisma.$disconnect();
   }
