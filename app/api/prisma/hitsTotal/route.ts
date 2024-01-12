@@ -9,13 +9,13 @@ export async function GET() {
       },
     });
 
-    return Response.json({ total: total._sum.views });
+    return Response.json({ total: total?._sum?.views });
   } catch (error) {
     console.log("Error from totalSUm:", error);
     return Response.json({
       error: "Something went wrong",
       status: 500,
-      total: "128",
+      total: "000",
     });
   } finally {
     await prisma.$disconnect();
