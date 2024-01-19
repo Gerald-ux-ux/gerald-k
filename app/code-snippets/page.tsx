@@ -12,11 +12,20 @@ export const metadata: Metadata = {
 export default function CodeSnippets() {
   return (
     <main className="mx-auto flex max-w-[700px] animate-in flex-col gap-8 px-6">
-      <h1 className={PAGE_HEADER}>Code snippets</h1>
+      <div className="flex  w-full items-center justify-between">
+        <h1 className={PAGE_HEADER}>Code snippets</h1>
+
+        <button className="rounded-lg md:text-base text-sm bg-secondaryA p-2 text-primary hover:text-secondary">
+          Add a snippet
+        </button>
+      </div>
 
       <div>
-        <h2 className="mb-2 flex animate-in items-center gap-4 text-lg font-semibold text-primary md:text-2xl">
-          This page is still under development
+        <h2 className="mb-2 flex animate-in items-center gap-4 text-lg font-semibold text-primary md:text-xl">
+          This page is still under development. I am Currently working on the ui
+          design and backend of the feature. The whole feature will be released
+          late next week and users will be able to add code snippets and share
+          their ideas with other developers.
         </h2>
         <Link
           href="/"
