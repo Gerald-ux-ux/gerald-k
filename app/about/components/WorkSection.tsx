@@ -9,7 +9,7 @@ export default function WorkSection() {
     <Section heading="Work" headingAlignment="left">
       <div className="flex w-full flex-col gap-8">
         <p>
-          {new Date().getFullYear() - 2022} + year(s) of professional software
+          {new Date().getFullYear() - 2023} + year(s) of professional software
           development experience.
         </p>
 
