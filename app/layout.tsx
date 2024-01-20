@@ -14,6 +14,7 @@ import Navigation from "@/components/Navigation";
 import { Analytics } from "@vercel/analytics/react";
 import ThemeProvider from "@/components/ThemeProvider";
 import Footer from "@/components/ui/Footer";
+import { Tooltip } from "react-tooltip";
 
 const inter = Inter({ subsets: ["latin"] });
 
