@@ -3,28 +3,13 @@ import Preview from "@/public/images/preview.png";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-// import * as Tooltip from "@radix-ui/react-tooltip";
+import { Tooltip as ReactTooltip } from "react-tooltip";
+import AddSnippet from "./components/AddSnippet";
 
 export const metadata: Metadata = {
   title: "Code-snippets | Gerald",
   description: "Coming soon ",
 };
-
-//   const ToolTipDemo = () => {
-//     return (
-//       <Tooltip.Provider>
-//         <Tooltip.Root>
-//           <Tooltip.Trigger asChild></Tooltip.Trigger>
-//           <Tooltip.Portal>
-//             <Tooltip.Content className="TooltipContent" sideOffset={5}>
-//               Add to library
-//               <Tooltip.Arrow className="TooltipArrow" />
-//             </Tooltip.Content>
-//           </Tooltip.Portal>
-//         </Tooltip.Root>
-//       </Tooltip.Provider>
-//     );
-//   };
 
 export default function CodeSnippets() {
   return (
@@ -32,9 +17,7 @@ export default function CodeSnippets() {
       <div className="flex  w-full items-center justify-between">
         <h1 className={PAGE_HEADER}>Code snippets</h1>
 
-        <button className="rounded-lg bg-secondaryA p-2 text-sm text-primary hover:text-secondary md:text-base">
-          Add a snippet
-        </button>
+        <AddSnippet message="Log in to add a snippet" />
       </div>
 
       <div>
