@@ -9,7 +9,7 @@ const projects = allProjects;
 export default function ProjectComponent() {
   return (
     <ul className="animated-list flex animate-in flex-col">
-      {projects.slice(0, 3).map((project, i) => (
+      {projects.slice(0, 4).map((project, i) => (
         <li
           className={clsx(
             "flex flex-col gap-4 py-3 transition-opacity first:pt-0 last:pb-0 md:flex-row md:gap-6",
