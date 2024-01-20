@@ -1,5 +1,5 @@
 import { PAGE_HEADER } from "@/lib/uiConstants";
-import Construction from "@/public/images/construction.jpg";
+import Preview from "@/public/images/preview.png";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -52,9 +52,9 @@ export default function CodeSnippets() {
         </Link>
       </div>
       <Image
-        src={Construction}
+        src={Preview}
         alt="under construction"
-        className="rounded-md"
+        className="overflow-hidden rounded-md bg-tertiary md:rounded-lg"
         quality={100}
       />
     </main>
