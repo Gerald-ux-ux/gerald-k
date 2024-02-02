@@ -9,9 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function AuthLayout({ children }: AuthProps) {
-  return (
-    <main className="mx-auto flex max-w-[700px] animate-in flex-col gap-8 px-6">
-      {children}
-    </main>
-  );
+  return <main className="">{children}</main>;
 }
