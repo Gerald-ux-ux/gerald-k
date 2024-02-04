@@ -6,8 +6,8 @@ import Info from "../components/Info";
 import TagLine from "../components/TagLine";
 
 export const metadata: Metadata = {
-  title: "Login | Gerald",
-  description: "Login to add snippets",
+  title: "Sign up | Gerald",
+  description: "Create your snippets account",
 };
 
 export default function SignUp() {
