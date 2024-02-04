@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function Login() {
   return (
     <div className="flex items-center flex-col animate-in justify-center   ">
-      {/* <CustomMessage text="Log in to add a snippet" /> */}
+      <CustomMessage text="Snippets will be available on Tuesday" />
       <div className="flex flex-col items-center   justify-center gap-6">
         <TagLine />
 

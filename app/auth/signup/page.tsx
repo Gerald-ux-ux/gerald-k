@@ -4,6 +4,7 @@ import Button from "../components/Button";
 import Form from "../components/Form";
 import Info from "../components/Info";
 import TagLine from "../components/TagLine";
+import CustomMessage from "../components/CustomMessage";
 
 export const metadata: Metadata = {
   title: "Sign up | Gerald",
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
 export default function SignUp() {
   return (
     <div className="flex animate-in flex-col items-center justify-center  ">
-      {/* <CustomMessage text="Log in to add a snippet" /> */}
+      <CustomMessage text="Snippets will be available on Tuesday" />
       <div className="flex flex-col items-center   justify-center gap-6">
         <TagLine />
 
@@ -24,7 +25,7 @@ export default function SignUp() {
 
           <Info
             text="Already have an account"
-            action="Sign up"
+            action="Login"
             href="/auth/login"
           />
         </div>

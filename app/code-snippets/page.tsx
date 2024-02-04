@@ -18,13 +18,13 @@ export default function CodeSnippets() {
       <div className="flex  w-full items-center justify-between">
         <span className="flex items-center  gap-2">
           <h1 className={PAGE_HEADER}>Code snippets</h1>
-          <div className="mt-1 flex items-center gap-1 rounded-md p-1.5 text-sm text-[#0070f3] font-medium animate-pulse hover:cursor-pointer  hover:bg-secondary">
+          <div className="mt-1 flex animate-pulse items-center gap-1 rounded-md p-1.5 text-sm font-medium text-[#0070f3] hover:cursor-pointer  hover:bg-secondary">
             <span className="h-2 w-2 rounded-full   bg-[#0070f3] p-0.5" />
             Beta
           </div>
         </span>
 
-        <AddSnippet message="Log in to add a snippet" />
+        <AddSnippet message="Log in, snippets be available on Tuesday" />
       </div>
 
       <div>

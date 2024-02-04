@@ -30,7 +30,7 @@ function CustomMessage({ text }: CustomMessageProps) {
             <div className="flex items-start">
               <div className="ml-3 flex w-full flex-1 items-center gap-2">
                 <SlInfo className="text-primary" />
-                <p className="text-md font-bold text-primary">{text}</p>
+                <p className="text-sm font-bold text-primary">{text}</p>
               </div>
             </div>
           </div>

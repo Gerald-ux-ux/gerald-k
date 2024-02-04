@@ -1,6 +1,5 @@
 "use client";
 import { CiSearch } from "react-icons/ci";
-import { useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 
 type SearchProps = {
