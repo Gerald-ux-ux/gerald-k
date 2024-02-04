@@ -1,4 +1,7 @@
+"use client";
 import { CiSearch } from "react-icons/ci";
+import { useSearchParams } from "next/navigation";
+import { useState, useEffect } from "react";
 
 type SearchProps = {
   query?: string;
@@ -6,20 +9,31 @@ type SearchProps = {
 };
 
 export default function Search({ query, data }: SearchProps) {
+  const [searchQuery, setSearchQuery] = useState<string>(query || "");
 
 
+  useEffect(() => {
+    const newSearchParams = new URLSearchParams();
+    newSearchParams.set("q", searchQuery);
+    console.log("New search params", newSearchParams);
+    window.history.replaceState({}, "", `?${newSearchParams.toString()}`);
+  }, [searchQuery]);
 
-
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(event.target.value);
+  };
 
   return (
     <form
       action=""
-      className="flex w-full items-center text-secondary  gap-2 rounded-lg bg-secondary p-3"
+      className="flex w-full items-center gap-2 rounded-lg bg-secondary p-3 text-secondary"
     >
-      <CiSearch className="text-xl " />
+      <CiSearch className="text-xl" />
 
       <input
         className="bg-inherit focus:outline-none"
+        onChange={handleInputChange}
+        value={searchQuery}
         placeholder="Search for a snippet..."
       />
     </form>
