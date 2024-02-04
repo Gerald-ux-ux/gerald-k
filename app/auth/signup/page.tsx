@@ -1,8 +1,14 @@
+import { Metadata } from "next";
 import { signupInputs } from "../components/AuthInputs";
 import Button from "../components/Button";
 import Form from "../components/Form";
 import Info from "../components/Info";
 import TagLine from "../components/TagLine";
+
+export const metadata: Metadata = {
+  title: "Login | Gerald",
+  description: "Login to add snippets",
+};
 
 export default function SignUp() {
   return (
