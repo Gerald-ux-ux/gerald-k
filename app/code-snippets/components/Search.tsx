@@ -29,9 +29,10 @@ export default function Search({ query, data }: SearchProps) {
       <CiSearch className="text-xl" />
 
       <input
-        className="bg-inherit focus:outline-none"
+        className="bg-inherit w-full focus:outline-none"
         onChange={handleInputChange}
         value={searchQuery}
+        type='text'
         placeholder="Search for a snippet..."
       />
     </form>
