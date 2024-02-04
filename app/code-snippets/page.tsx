@@ -2,7 +2,6 @@ import { PAGE_HEADER } from "@/lib/uiConstants";
 import Preview from "@/public/images/preview.png";
 import { Metadata } from "next";
 import Link from "next/link";
-import { Tooltip as ReactTooltip } from "react-tooltip";
 import AddSnippet from "./components/AddSnippet";
 import Search from "./components/Search";
 import BetaTag from "./components/BetaTag";
