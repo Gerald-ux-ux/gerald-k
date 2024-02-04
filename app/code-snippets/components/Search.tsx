@@ -5,17 +5,15 @@ import { useState, useEffect } from "react";
 
 type SearchProps = {
   query?: string;
-  data: string[];
+  data?: string[];
 };
 
 export default function Search({ query, data }: SearchProps) {
   const [searchQuery, setSearchQuery] = useState<string>(query || "");
 
-
   useEffect(() => {
     const newSearchParams = new URLSearchParams();
     newSearchParams.set("q", searchQuery);
-    console.log("New search params", newSearchParams);
     window.history.replaceState({}, "", `?${newSearchParams.toString()}`);
   }, [searchQuery]);
 
@@ -26,7 +24,7 @@ export default function Search({ query, data }: SearchProps) {
   return (
     <form
       action=""
-      className="flex w-full items-center gap-2 rounded-lg bg-secondary p-3 text-secondary"
+      className="flex w-full items-center gap-2 rounded-lg bg-secondary p-2  md:p-3 text-secondary"
     >
       <CiSearch className="text-xl" />
 

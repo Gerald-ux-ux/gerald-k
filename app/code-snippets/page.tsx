@@ -39,7 +39,7 @@ export default function CodeSnippets() {
         </Link>
       </div>
 
-      <Search query="" data="" />
+      <Search query="" />
     </main>
   );
 }

@@ -17,7 +17,7 @@ export default function AddSnippet({ message }: { message: string }) {
           router.push("/auth/login");
         }}
         data-tooltip-id="my-tooltip-1"
-        className="rounded-lg bg-secondaryA p-2 text-sm text-primary hover:text-secondary md:text-base"
+        className="rounded-lg bg-secondaryA md:p-2 p-1.5 text-sm text-primary hover:text-secondary md:text-base"
       >
         Add a snippet
       </button>

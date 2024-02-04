@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function SignUp() {
   return (
-    <div className="flex animate-in flex-col items-center justify-center md:mt-20  ">
+    <div className="flex animate-in flex-col items-center justify-center  ">
       {/* <CustomMessage text="Log in to add a snippet" /> */}
       <div className="flex flex-col items-center   justify-center gap-6">
         <TagLine />
@@ -20,7 +20,7 @@ export default function SignUp() {
         <div className="flex w-full flex-col gap-8">
           <Form inputs={signupInputs} />
 
-          <Button label="Sign up" action="" />
+          <Button href="/code-snippets" label="Sign up" action="" />
 
           <Info
             text="Already have an account"
