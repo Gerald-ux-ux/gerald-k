@@ -15,6 +15,7 @@ import { Analytics } from "@vercel/analytics/react";
 import ThemeProvider from "@/components/ThemeProvider";
 import Footer from "@/components/ui/Footer";
 import { Tooltip } from "react-tooltip";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -47,9 +48,10 @@ export default function RootLayout({
         {/* Wrap the whole app in the ThemeProvider & Set some props */}
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navigation />
-          <div className="mx-auto  flex flex-col px-6 pt-16 md:px6 md:pt-20">
+          <div className="md:px-6  mx-auto flex flex-col px-6 pt-16 md:pt-16">
             {children}
-            <Footer />
+
+            {/* <Footer /> */}
           </div>
         </ThemeProvider>
 
