@@ -23,7 +23,7 @@ export default function CodeSnippets() {
           </div>
         </span>
 
-        <AddSnippet message="Log in, snippets be available on Tuesday" />
+        <AddSnippet message="Log in, snippets will be available on Tuesday" />
       </div>
 
       <div>
