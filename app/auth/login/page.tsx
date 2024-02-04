@@ -1,8 +1,10 @@
 import { Metadata } from "next";
-import Toast from "../components/Toast";
 import TagLine from "../components/TagLine";
 import Form from "../components/Form";
 import { loginInputs } from "../components/AuthInputs";
+import CustomMessage from "../components/CustomMessage";
+import Info from "../components/Info";
+import Button from "../components/Button";
 
 export const metadata: Metadata = {
   title: "Login | Gerald",
@@ -11,12 +13,22 @@ export const metadata: Metadata = {
 
 export default function Login() {
   return (
-    <div className="flex  w-full items-center justify-center ">
-      {/* <Toast message="Log in to add a snippets" /> */}
-
-      <div className="flex flex-col items-start justify-center gap-4">
+    <div className="flex items-center flex-col animate-in justify-center md:mt-20  ">
+      {/* <CustomMessage text="Log in to add a snippet" /> */}
+      <div className="flex flex-col items-center   justify-center gap-6">
         <TagLine />
-        <Form inputs={loginInputs} />
+
+        <div className="flex w-full flex-col gap-8">
+          <Form inputs={loginInputs} />
+
+          <Button label="Login" action="" />
+
+          <Info
+            text="Don't have an account"
+            action="Create One"
+            href="/auth/signup"
+          />
+        </div>
       </div>
     </div>
   );
