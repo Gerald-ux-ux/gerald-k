@@ -38,24 +38,16 @@ export const registerUser = async ({ data }: AuthProps) => {
   }
 };
 
-interface LoginProps {
-  data: any;
-}
-
-export const loginUser = async ({ data }: LoginProps): Promise<any> => {
+export const loginUser = async ({ data }: AuthProps): Promise<any> => {
   try {
     const response = await axios.post(LOGIN_URL, { ...data });
 
     if (response.data) {
-      console.log("Server :", response.data);
-
       const { username, email, _id } = response.data.data;
       const { sessionToken } = response.data.data.authentication;
       const userInfo = [username, email, sessionToken, _id];
       const userInfoString = JSON.stringify(userInfo);
-
       Cookies.set("user-info", userInfoString);
-
       return response.data;
     } else {
       return {
@@ -64,10 +56,7 @@ export const loginUser = async ({ data }: LoginProps): Promise<any> => {
       };
     }
   } catch (error: any) {
-    console.error("Server Error:", error.response?.data || error.message);
-
     if (error) {
-      console.log("this error", error);
       return error.response.data;
     } else {
       return errorMessage;
