@@ -37,7 +37,7 @@ export const registerUser = async ({ data }: AuthProps) => {
   }
 };
 
-export const loginUser = async ({ data }: AuthProps) => {
+export const loginUser = async ( data : AuthProps) => {
   try {
     const res = await axios.post(LOGIN_URL, { ...data });
 

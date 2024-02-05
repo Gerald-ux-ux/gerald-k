@@ -21,7 +21,7 @@ export default function SignUp() {
         <div className="flex w-full flex-col gap-8">
           <Form inputs={signupInputs} />
 
-          <Button href="/code-snippets" label="Sign up" action="" />
+          <Button  label="Sign up" action="" />
 
           <Info
             text="Already have an account"

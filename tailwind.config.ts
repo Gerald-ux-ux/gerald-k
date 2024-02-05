@@ -22,6 +22,10 @@ module.exports = {
         tertiary: "var(--gray-9)",
         brand: "var(--brand)",
         link: "var(--blue-10)",
+        error: "#FF0000",
+        success: "#27AE60",
+        warning: "#C0C436",
+        info: "#29B6F6",
       },
       backgroundColor: {
         primary: "var(--gray-1)",
@@ -29,6 +33,9 @@ module.exports = {
         secondaryA: "var(--gray-a4)",
         tertiary: "var(--gray-3)",
         beta: "#0070f3",
+        error: "#FF5F5F33",
+        success: "#D4EFDF",
+        warning: "#DDE22566",
       },
       borderColor: {
         primary: "var(--gray-6)",

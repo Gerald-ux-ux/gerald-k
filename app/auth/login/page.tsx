@@ -1,3 +1,5 @@
+"use client";
+
 import { Metadata } from "next";
 import TagLine from "../components/TagLine";
 import Form from "../components/Form";
@@ -5,23 +7,88 @@ import { loginInputs } from "../components/AuthInputs";
 import CustomMessage from "../components/CustomMessage";
 import Info from "../components/Info";
 import Button from "../components/Button";
+import { useState } from "react";
+import { loginUser } from "@/app/api/codes-snippets/auth/lib";
+import toast from "react-hot-toast";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "Login | Gerald",
-  description: "Login to add snippets",
-};
+// export const metadata: Metadata = {
+//   title: "Login | Gerald",
+//   description: "Login to add snippets",
+// };
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleLogin = async () => {
+    setLoading(true);
+    try {
+      const data = {
+        email,
+        password,
+      };
+      const res = await loginUser(data);
+
+      if (res.success) {
+        setLoading(false);
+        toast.success(res.message);
+        redirect("/code-snippets");
+      } else if (res.success === false) {
+        
+        // toast.error(res.message);
+        setErrors(res.message);
+        setEmail("");
+        setPassword("");
+      }
+    } catch (error) {
+      setErrors(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div className="flex items-center flex-col animate-in justify-center   ">
+    <div className="flex animate-in flex-col items-center justify-center   ">
       <CustomMessage text="Snippets will be available on Tuesday" />
       <div className="flex flex-col items-center   justify-center gap-6">
         <TagLine />
 
         <div className="flex w-full flex-col gap-8">
-          <Form inputs={loginInputs} />
+          <Form
+            inputs={[
+              {
+                type: "string",
+                placeholder: "Email",
+                name: "email",
+                value: email,
+              },
+              {
+                type: "password",
+                placeholder: "Password",
+                name: "password",
+                value: password,
+              },
+            ]}
+            values={{ email, password }}
+            onChange={(name, value) =>
+              name === "email" ? setEmail(value) : setPassword(value)
+            }
+          />
 
-          <Button href='/code-snippets' label="Login" action="" />
+          {errors && (
+            <div className="bg-">
+              <p>{errors}</p>
+            </div>
+          )}
+
+          <Button
+            label="Login"
+            action={handleLogin}
+            disabled={errors || !email || !password || loading}
+          />
 
           <Info
             text="Don't have an account"
