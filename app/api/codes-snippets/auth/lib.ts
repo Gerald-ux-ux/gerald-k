@@ -1,6 +1,7 @@
 import { encrypt } from "@/lib/secrete";
 import axios from "axios";
-import { cookies } from "next/headers";
+import Cookies from "js-cookie";
+
 import { LOGIN_URL, REGISTER_URL } from "./constants";
 
 export const errorMessage = "Unexpected response from the server";
@@ -23,7 +24,7 @@ export const registerUser = async ({ data }: AuthProps) => {
       const { userName, email, sessionToken, id } = res.data;
       const userInfo = [userName, email, sessionToken, id];
       const encryptedData = await encrypt(userInfo);
-      cookies().set("user-info", encryptedData);
+      Cookies.set("user-info", encryptedData);
       return res.data;
     } else {
       return frontendError();
@@ -37,25 +38,46 @@ export const registerUser = async ({ data }: AuthProps) => {
   }
 };
 
-export const loginUser = async ( data : AuthProps) => {
-  try {
-    const res = await axios.post(LOGIN_URL, { ...data });
+interface LoginProps {
+  data: {
+    email: string;
+    password: string;
+  };
+}
 
-    if (res) {
-      const { userName, email, sessionToken, id } = res.data;
+interface LoginResponse {
+  success: boolean;
+  message?: string;
+  data?: any;
+}
+
+export const loginUser = async ({
+  data,
+}: LoginProps): Promise<LoginResponse> => {
+  try {
+    const response = await axios.post(LOGIN_URL, { ...data });
+
+    if (response.data && response.data.success) {
+      const { userName, email, sessionToken, id } = response.data;
       const userInfo = [userName, email, sessionToken, id];
       const encryptedData = await encrypt(userInfo);
-      cookies().set("user-info", encryptedData);
-      console.log("Encrypted data on login", encryptedData);
-      return res;
+      Cookies.set("user-info", encryptedData);
+
+      return {
+        success: true,
+        message: response.data.message,
+        data: response.data,
+      };
     } else {
-      return frontendError();
+      return {
+        success: false,
+        message: response.data.message,
+      };
     }
-  } catch (error) {
-    if (error) {
-      return error;
-    } else {
-      return frontendError();
-    }
+  } catch (error: any) {
+    return {
+      success: false,
+      message: error.message || { errorMessage },
+    };
   }
 };

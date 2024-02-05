@@ -22,7 +22,6 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState("");
   const [loading, setLoading] = useState(false);
-
   const handleLogin = async () => {
     setLoading(true);
     try {
@@ -30,25 +29,32 @@ export default function Login() {
         email,
         password,
       };
-      const res = await loginUser(data);
+      const res = await loginUser({
+        data,
+      });
 
       if (res.success) {
+        console.log("res", res);
+
         setLoading(false);
-        toast.success(res.message);
+        toast.success(res.data.message);
+
         redirect("/code-snippets");
       } else if (res.success === false) {
-        
-        // toast.error(res.message);
-        setErrors(res.message);
+        console.log("res", res);
+        setErrors(res.message || "An error occurred");
         setEmail("");
         setPassword("");
       }
     } catch (error) {
-      setErrors(error.message);
+      setErrors((error as Error).message || "An error occurred");
     } finally {
       setLoading(false);
     }
   };
+
+  console.log("email", email);
+  console.log("Pss", password);
 
   return (
     <div className="flex animate-in flex-col items-center justify-center   ">
@@ -79,7 +85,7 @@ export default function Login() {
           />
 
           {errors && (
-            <div className="bg-">
+            <div className="bg-error text-error animate-in rounded-lg p-2 text-center">
               <p>{errors}</p>
             </div>
           )}
@@ -87,7 +93,8 @@ export default function Login() {
           <Button
             label="Login"
             action={handleLogin}
-            disabled={errors || !email || !password || loading}
+            loading={loading}
+            disabled={!!errors || !email || !password || loading}
           />
 
           <Info
