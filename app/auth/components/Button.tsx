@@ -20,11 +20,11 @@ export default function Button({
     <button
       onClick={action}
       disabled={disabled}
-      className={
-        (clsx(disabled ? "cursor-not-allowed opacity-50" : ""),
+      className={clsx(
+        disabled ? "cursor-not-allowed opacity-50" : "",
         loading ? "cursor-progress" : "",
-        "w-full rounded-lg bg-secondary p-3 text-center text-primary  hover:bg-tertiary  hover:text-secondary")
-      }
+        "w-full rounded-lg bg-secondary p-3 text-center text-primary hover:bg-tertiary hover:text-secondary",
+      )}
     >
       {label}
     </button>

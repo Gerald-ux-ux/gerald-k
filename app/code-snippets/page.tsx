@@ -11,8 +11,6 @@ export const metadata: Metadata = {
   description: "Coming soon ",
 };
 
-
-
 export default function CodeSnippets() {
   return (
     <main className="mx-auto flex w-full max-w-[700px] animate-in flex-col gap-8 px-6">

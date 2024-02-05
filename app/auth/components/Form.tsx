@@ -18,17 +18,19 @@ type FormProps = {
 
 function Form({ inputs, values, onChange }: FormProps) {
   return (
-    <div className="flex  w-full flex-col  gap-4  ">
+    <form className="flex  w-full flex-col  gap-4  ">
       {inputs.map((input, i) => (
         <input
           value={values[input.name]}
           onChange={(e) => onChange(input.name, e.target.value)}
-          className="appearance-none rounded-md border border-primary bg-secondary p-1.5 shadow-none focus:border-transparent  focus:outline-none focus:ring-1  focus:ring-current md:p-2"
+          className="appearance-none rounded-md border border-primary bg-secondary p-1.5 shadow-none focus:border-transparent focus:outline-none focus:ring-1 focus:ring-current md:p-2"
           key={i}
-          {...input}
+          placeholder={input.placeholder}
+          type={input.type}
+          name={input.name}
         />
       ))}
-    </div>
+    </form>
   );
 }
 

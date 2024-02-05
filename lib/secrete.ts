@@ -5,7 +5,7 @@ export const generateSecretKey = () => {
   return crypto.randomBytes(32).toString("hex");
 };
 
-const key = new TextEncoder().encode(generateSecretKey());
+const key = new TextEncoder().encode("name");
 
 export async function encrypt(payload: any) {
   return await new SignJWT(payload)

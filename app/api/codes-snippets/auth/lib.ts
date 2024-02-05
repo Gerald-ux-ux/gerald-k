@@ -39,45 +39,38 @@ export const registerUser = async ({ data }: AuthProps) => {
 };
 
 interface LoginProps {
-  data: {
-    email: string;
-    password: string;
-  };
+  data: any;
 }
 
-interface LoginResponse {
-  success: boolean;
-  message?: string;
-  data?: any;
-}
-
-export const loginUser = async ({
-  data,
-}: LoginProps): Promise<LoginResponse> => {
+export const loginUser = async ({ data }: LoginProps): Promise<any> => {
   try {
     const response = await axios.post(LOGIN_URL, { ...data });
 
-    if (response.data && response.data.success) {
-      const { userName, email, sessionToken, id } = response.data;
-      const userInfo = [userName, email, sessionToken, id];
-      const encryptedData = await encrypt(userInfo);
-      Cookies.set("user-info", encryptedData);
+    if (response.data) {
+      console.log("Server :", response.data);
 
-      return {
-        success: true,
-        message: response.data.message,
-        data: response.data,
-      };
+      const { username, email, _id } = response.data.data;
+      const { sessionToken } = response.data.data.authentication;
+      const userInfo = [username, email, sessionToken, _id];
+      const userInfoString = JSON.stringify(userInfo);
+
+      Cookies.set("user-info", userInfoString);
+
+      return response.data;
     } else {
       return {
         success: false,
-        message: response.data.message,
+        message: { errorMessage },
       };
     }
   } catch (error: any) {
-    return {
-      success: false,
-      message: error.message || { errorMessage },
-    };
+    console.error("Server Error:", error.response?.data || error.message);
+
+    if (error) {
+      console.log("this error", error);
+      return error.response.data;
+    } else {
+      return errorMessage;
+    }
   }
 };

@@ -7,10 +7,10 @@ import { loginInputs } from "../components/AuthInputs";
 import CustomMessage from "../components/CustomMessage";
 import Info from "../components/Info";
 import Button from "../components/Button";
-import { useState } from "react";
+import { ReactHTMLElement, useState } from "react";
 import { loginUser } from "@/app/api/codes-snippets/auth/lib";
 import toast from "react-hot-toast";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 // export const metadata: Metadata = {
 //   title: "Login | Gerald",
@@ -22,6 +22,8 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const router = useRouter();
   const handleLogin = async () => {
     setLoading(true);
     try {
@@ -29,32 +31,24 @@ export default function Login() {
         email,
         password,
       };
+
       const res = await loginUser({
         data,
       });
 
-      if (res.success) {
-        console.log("res", res);
-
+      if (res?.success) {
+        router.push("/code-snippets");
         setLoading(false);
-        toast.success(res.data.message);
-
-        redirect("/code-snippets");
-      } else if (res.success === false) {
-        console.log("res", res);
-        setErrors(res.message || "An error occurred");
-        setEmail("");
-        setPassword("");
+        toast.success(res?.message);
+      } else if (res?.success === false) {
+        setErrors(res?.message);
       }
-    } catch (error) {
-      setErrors((error as Error).message || "An error occurred");
+    } catch (error: any) {
+      setErrors(error.message);
     } finally {
       setLoading(false);
     }
   };
-
-  console.log("email", email);
-  console.log("Pss", password);
 
   return (
     <div className="flex animate-in flex-col items-center justify-center   ">
@@ -84,17 +78,17 @@ export default function Login() {
             }
           />
 
-          {errors && (
-            <div className="bg-error text-error animate-in rounded-lg p-2 text-center">
+          {errors ? (
+            <div className="bg-error text-error animate-in rounded-lg p-2 text-center text-base">
               <p>{errors}</p>
             </div>
-          )}
+          ) : null}
 
           <Button
             label="Login"
             action={handleLogin}
             loading={loading}
-            disabled={!!errors || !email || !password || loading}
+            disabled={!email || !password || loading}
           />
 
           <Info

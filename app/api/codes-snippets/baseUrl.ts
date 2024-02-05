@@ -3,5 +3,5 @@ type BaseUrlProps = {
 };
 
 export const baseUrl: BaseUrlProps = {
-  baseUrl: process.env.BACKEND_URL,
+  baseUrl: "https://code-snippets-api-8bfb68a44868.herokuapp.com",
 };
