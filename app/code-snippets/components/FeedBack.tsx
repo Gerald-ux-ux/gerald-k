@@ -7,12 +7,12 @@ export default function FeedBack() {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
-        <button className="rounded-lg bg-primary p-1 ">Feedback</button>
+        <button className="rounded-lg bg-secondary p-1">Feedback</button>
       </Dialog.Trigger>
 
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed  inset-0 flex animate-in items-center justify-center">
-          <Dialog.Content className="flex w-[450px] flex-col items-center justify-center gap-2 rounded-lg bg-tertiary p-4">
+        <div className="animate- fixed inset-0 z-50  flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm backdrop-filter">
+          <Dialog.Overlay className="relative flex md:w-[450px] mx-6  md:mx-auto flex-col items-center justify-center gap-2 rounded-lg bg-tertiary p-4 text-sm w-[300px] md:text-base">
             <div className="flex w-full items-center justify-between">
               <Dialog.Title className="font-medium">
                 Leave some feedback
@@ -36,7 +36,7 @@ export default function FeedBack() {
             </fieldset>
             <div className="i my-2 flex w-full justify-center">
               <Dialog.Close className="flex w-full  flex-col items-center gap-3 text-center">
-                <button className=" border-secondaryA w-full hover:text-secondary rounded-lg border p-2 ">
+                <button className=" border-secondaryA w-full rounded-lg border p-2 hover:text-secondary ">
                   Skip
                 </button>
                 <button className="w-full rounded-lg bg-secondaryA p-2 hover:bg-secondary">
@@ -44,8 +44,8 @@ export default function FeedBack() {
                 </button>
               </Dialog.Close>
             </div>
-          </Dialog.Content>
-        </Dialog.Overlay>
+          </Dialog.Overlay>
+        </div>
       </Dialog.Portal>
     </Dialog.Root>
   );
