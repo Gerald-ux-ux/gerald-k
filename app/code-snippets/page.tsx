@@ -13,6 +13,7 @@ import Snippets from "./components/Snippets";
 import React, { useState } from "react";
 import useCodeSnippets from "./hooks/useCodeSnippets";
 import Head from "next/head";
+import FeedBack from "./components/FeedBack";
 
 // export const metadata: Metadata = {
 //   title: "Code-snippets | Gerald",
@@ -39,6 +40,7 @@ export default function CodeSnippets() {
               <span className="h-2 w-2 rounded-full   bg-[#0070f3] p-0.5" />
               Beta
             </div>
+            <FeedBack />
           </span>
 
           <AddSnippet message="Log in, snippets will be available on Tuesday" />

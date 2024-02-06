@@ -40,6 +40,7 @@ module.exports = {
       borderColor: {
         primary: "var(--gray-6)",
         secondary: "var(--gray-4)",
+        secondaryA: "var(--gray-a8)",
       },
       ringOffsetColor: {
         primary: "var(--gray-12)",

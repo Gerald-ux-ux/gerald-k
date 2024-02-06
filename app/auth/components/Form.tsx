@@ -1,5 +1,6 @@
 "use client";
 
+import { INPUT_STYLE } from "@/app/code-snippets/styles/inputStyle";
 import { getRandomValues } from "crypto";
 import React from "react";
 
@@ -23,7 +24,7 @@ function Form({ inputs, values, onChange }: FormProps) {
         <input
           value={values[input.name]}
           onChange={(e) => onChange(input.name, e.target.value)}
-          className="appearance-none rounded-md border border-primary bg-secondary p-1.5 shadow-none focus:border-transparent focus:outline-none focus:ring-1 focus:ring-current md:p-2"
+          className={INPUT_STYLE}
           key={i}
           placeholder={input.placeholder}
           type={input.type}

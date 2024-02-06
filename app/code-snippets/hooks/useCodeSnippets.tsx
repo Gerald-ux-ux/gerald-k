@@ -7,14 +7,6 @@ export default function useCodeSnippets() {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [data, setData] = useState<string[]>([]);
 
-  useEffect(() => {
-    const log = () => {
-      console.log("i logged");
-    };
-
-    return () => log();
-  }, []);
-
   const handleResultClick = (result: string) => {
     setSelectedSnippet(result);
   };
