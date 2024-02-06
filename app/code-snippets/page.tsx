@@ -8,6 +8,7 @@ import BetaTag from "./components/BetaTag";
 import Cookies from "js-cookie";
 import { secretKey } from "../api/codes-snippets/auth/lib";
 import { userInfo } from "@/lib/secrete";
+import Snippets from "./components/Snippets";
 
 export const metadata: Metadata = {
   title: "Code-snippets | Gerald",
@@ -24,6 +25,8 @@ export default function CodeSnippets() {
 
   const { username, email, _id } = user;
 
+  const data = ["Yes", "No", "Yes sir", "No sir", "Yes ma", "No ma"];
+
   console.log("email", user);
   return (
     <main className="mx-auto flex w-full max-w-[700px] animate-in flex-col gap-8 px-6">
@@ -39,19 +42,16 @@ export default function CodeSnippets() {
         <AddSnippet message="Log in, snippets will be available on Tuesday" />
       </div>
 
-      <div>
-        <h2 className="mb-2 flex animate-in items-center gap-4 text-lg font-semibold text-primary md:text-xl">
-          Beta version releases on Tuesday
+      <div className="">
+        <h2 className="mb-2 flex w-full animate-in items-center gap-4 text-lg font-semibold text-primary md:text-xl">
+          Search for popular code snippets
         </h2>
-        <Link
-          href="/"
-          className="text-sm text-secondary underline underline-offset-2 hover:text-primary  md:text-base"
-        >
-          Go Home{" "}
-        </Link>
       </div>
 
-      <Search query="" />
+      <div className="flex flex-col gap-12">
+        <Search query="" data={data} />
+        <Snippets data={data} />
+      </div>
     </main>
   );
 }

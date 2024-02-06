@@ -9,31 +9,81 @@ type SearchProps = {
 
 export default function Search({ query, data }: SearchProps) {
   const [searchQuery, setSearchQuery] = useState<string>(query || "");
+  const [searchResults, setSearchResults] = useState<string[]>([]);
 
   useEffect(() => {
-    const newSearchParams = new URLSearchParams();
-    newSearchParams.set("q", searchQuery);
-    window.history.replaceState({}, "", `?${newSearchParams.toString()}`);
+    let newSearchParams: URLSearchParams | undefined;
+
+    if (searchQuery) {
+      newSearchParams = new URLSearchParams();
+      newSearchParams.set("q", searchQuery);
+    }
+
+    if (newSearchParams) {
+      window.history.replaceState({}, "", `?${newSearchParams.toString()}`);
+    } else {
+      const params = new URLSearchParams(window.location.search);
+      params.delete("q");
+      window.history.replaceState({}, "", `?${params.toString()}`);
+    }
   }, [searchQuery]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
   };
 
-  return (
-    <form
-      action=""
-      className="flex w-full items-center gap-2 rounded-lg bg-secondary p-2  md:p-3 text-secondary"
-    >
-      <CiSearch className="text-xl" />
+  useEffect(() => {
+    if (data && searchQuery) {
+      const filteredResults = data.filter((item) =>
+        item.toLowerCase().includes(searchQuery.toLowerCase()),
+      );
 
-      <input
-        className="bg-inherit w-full focus:outline-none"
-        onChange={handleInputChange}
-        value={searchQuery}
-        type='text'
-        placeholder="Search for a snippet..."
-      />
-    </form>
+      setSearchResults(filteredResults);
+    } else {
+      setSearchResults([]);
+    }
+  }, [data, searchQuery]);
+
+  const handleResultsClick = (result: any) => {
+    setSearchQuery(result);
+  };
+
+  return (
+    <div className="relative  ">
+      <form
+        action=""
+        className="flex w-full items-center gap-2 rounded-lg bg-secondary p-2  text-secondary md:p-3"
+      >
+        <CiSearch className="text-xl" />
+
+        <input
+          className="w-full bg-inherit focus:outline-none"
+          onChange={handleInputChange}
+          value={searchQuery}
+          type="text"
+          placeholder="Search for a snippet..."
+        />
+      </form>
+
+      {searchResults.length > 0 ? (
+        <ul className="animated-list absolute left-0  mt-1 z-10 w-full rounded-lg  bg-secondary shadow-md">
+          {searchResults.map((res, i) => (
+            <li
+              key={i}
+              onClick={() => handleResultsClick(res)}
+              className="animated-list cursor-pointer  px-4 py-2 hover:bg-tertiary"
+            >
+              {res}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        searchQuery &&  (
+          <span className=" absolute  mt-2 w-full">
+            No results found for <strong>{searchQuery}</strong>
+          </span>
+        )
+      )}
+    </div>
   );
 }
