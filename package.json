@@ -29,6 +29,7 @@
     "clsx": "^2.0.0",
     "contentlayer": "^0.3.4",
     "cryptr": "^6.3.0",
+    "dotenv": "^16.4.1",
     "express": "^4.18.2",
     "framer-motion": "^10.16.4",
     "github-slugger": "^2.0.0",

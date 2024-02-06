@@ -36,12 +36,11 @@ export default function Login() {
         data,
       });
 
-      if (res?.success) {
+      if (res?.data?.success) {
         router.push("/code-snippets");
         setLoading(false);
-        toast.success(res?.message);
-      } else if (res?.success === false) {
-        setErrors(res?.message);
+      } else if (res?.data?.success === false) {
+        setErrors(res?.data?.message);
       }
     } catch (error: any) {
       setErrors(error.message);
@@ -79,7 +78,7 @@ export default function Login() {
           />
 
           {errors ? (
-            <div className="bg-error text-error animate-in rounded-lg p-2 text-center text-base">
+            <div className="animate-in rounded-lg bg-error p-2 text-center text-base text-error">
               <p>{errors}</p>
             </div>
           ) : null}

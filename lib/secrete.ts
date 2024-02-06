@@ -1,24 +1,26 @@
-import * as crypto from "crypto";
-import { SignJWT, jwtVerify } from "jose";
 
-export const generateSecretKey = () => {
-  return crypto.randomBytes(32).toString("hex");
-};
 
-const key = new TextEncoder().encode("name");
+export function encrypt(text: string, key: string): string {
+  let encryptedText = "";
 
-export async function encrypt(payload: any) {
-  return await new SignJWT(payload)
-    .setProtectedHeader({ alg: "ES256", typ: "JWT" })
-    .sign(key);
-  // .setIssuedAt()
-  // .setExpirationTime(new Date(payload.issuedAt))
+  for (let i = 0; i < text.length; i++) {
+    const charCode = text.charCodeAt(i) ^ key.charCodeAt(0);
+    encryptedText += String.fromCharCode(charCode);
+  }
+
+  console.log("encrypted", encryptedText);
+
+  return encryptedText;
 }
 
-export async function decrypt(input: string): Promise<any> {
-  const { payload } = await jwtVerify(input, key, {
-    algorithms: ["ES256"],
-  });
+export function decrypt(text: string, key: string): string {
+  let decryptedText = "";
 
-  return payload;
+  for (let i = 0; i < text.length; i++) {
+    const charCode = text.charCodeAt(i) ^ key.charCodeAt(0);
+    decryptedText += String.fromCharCode(charCode);
+  }
+
+  return decryptedText;
 }
+

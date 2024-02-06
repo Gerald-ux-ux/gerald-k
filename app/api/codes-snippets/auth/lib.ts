@@ -23,8 +23,8 @@ export const registerUser = async ({ data }: AuthProps) => {
     if (res.data) {
       const { userName, email, sessionToken, id } = res.data;
       const userInfo = [userName, email, sessionToken, id];
-      const encryptedData = await encrypt(userInfo);
-      Cookies.set("user-info", encryptedData);
+      // const encryptedData = await encrypt(userInfo);
+      // Cookies.set("user-info", encryptedData);
       return res.data;
     } else {
       return frontendError();
@@ -43,12 +43,22 @@ export const loginUser = async ({ data }: AuthProps): Promise<any> => {
     const response = await axios.post(LOGIN_URL, { ...data });
 
     if (response.data) {
-      const { username, email, _id } = response.data.data;
-      const { sessionToken } = response.data.data.authentication;
-      const userInfo = [username, email, sessionToken, _id];
-      const userInfoString = JSON.stringify(userInfo);
-      Cookies.set("user-info", userInfoString);
-      return response.data;
+      const { username, email, _id } = response?.data?.data;
+      const { sessionToken } = response?.data?.data?.authentication;
+
+      const user = { username, email, _id };
+      const userInfo = JSON.stringify(user);
+
+      const secretKey = process.env.SECRETE_KEY || "";
+      console.log("SECRETE_KEY:", process.env.SECRETE_KEY);
+
+      const encryptedInfo = encrypt(userInfo, secretKey);
+      const encryptedToken = encrypt(sessionToken, secretKey);
+
+      Cookies.set("user-info", JSON.stringify(encryptedInfo));
+      Cookies.set("auth", JSON.stringify(encryptedToken));
+
+      return response;
     } else {
       return {
         success: false,
@@ -57,7 +67,7 @@ export const loginUser = async ({ data }: AuthProps): Promise<any> => {
     }
   } catch (error: any) {
     if (error) {
-      return error.response.data;
+      return error.response;
     } else {
       return errorMessage;
     }

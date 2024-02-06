@@ -5,14 +5,18 @@ import { NextRequest, NextResponse } from "next/server";
  *
  */
 export function middleware(req: NextRequest) {
-  const isAuth = req.cookies.get("auth");
+  const isAuth = req.cookies.has("auth");
+
+  console.log("cookie", req.cookies.has("auth"));
 
   if (isAuth) {
     return NextResponse.redirect("/code-snippets");
   }
+
+  return NextResponse.next();
 }
 
 // Only run on this router
-export const config = {
-  matcher: "/code-snippets",
-};
+// export const config = {
+//   matcher: "/",
+// };
