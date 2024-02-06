@@ -38,6 +38,8 @@ export const registerUser = async ({ data }: AuthProps) => {
   }
 };
 
+export const secretKey = process.env.SECRETE_KEY || "1Q2S3D";
+
 export const loginUser = async ({ data }: AuthProps): Promise<any> => {
   try {
     const response = await axios.post(LOGIN_URL, { ...data });
@@ -48,9 +50,6 @@ export const loginUser = async ({ data }: AuthProps): Promise<any> => {
 
       const user = { username, email, _id };
       const userInfo = JSON.stringify(user);
-
-      const secretKey = process.env.SECRETE_KEY || "";
-      console.log("SECRETE_KEY:", process.env.SECRETE_KEY);
 
       const encryptedInfo = encrypt(userInfo, secretKey);
       const encryptedToken = encrypt(sessionToken, secretKey);

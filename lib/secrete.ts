@@ -1,4 +1,4 @@
-
+import Cookies from "js-cookie";
 
 export function encrypt(text: string, key: string): string {
   let encryptedText = "";
@@ -7,8 +7,6 @@ export function encrypt(text: string, key: string): string {
     const charCode = text.charCodeAt(i) ^ key.charCodeAt(0);
     encryptedText += String.fromCharCode(charCode);
   }
-
-  console.log("encrypted", encryptedText);
 
   return encryptedText;
 }
@@ -24,3 +22,6 @@ export function decrypt(text: string, key: string): string {
   return decryptedText;
 }
 
+export const userInfo = () => {
+  const user = Cookies.get("user-info");
+};

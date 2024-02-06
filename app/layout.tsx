@@ -31,7 +31,6 @@ export const metadata: Metadata = {
   title: "Home | Gerald",
   description: "Passionate software developer",
 };
-require("dotenv").config();
 
 export default function RootLayout({
   children,
