@@ -10,6 +10,7 @@ type SearchProps = {
 export default function Search({ query, data }: SearchProps) {
   const [searchQuery, setSearchQuery] = useState<string>(query || "");
   const [searchResults, setSearchResults] = useState<string[]>([]);
+  const [resultClicked, setResultClicked] = useState<boolean>(false);
 
   useEffect(() => {
     let newSearchParams: URLSearchParams | undefined;
@@ -46,6 +47,7 @@ export default function Search({ query, data }: SearchProps) {
 
   const handleResultsClick = (result: any) => {
     setSearchQuery(result);
+    setResultClicked(true);
   };
 
   return (
@@ -65,8 +67,8 @@ export default function Search({ query, data }: SearchProps) {
         />
       </form>
 
-      {searchResults.length > 0 ? (
-        <ul className="animated-list absolute left-0  mt-1 z-10 w-full rounded-lg  bg-secondary shadow-md">
+      {!resultClicked && searchResults.length > 0 ? (
+        <ul className="animated-list absolute left-0  z-10 mt-1 w-full rounded-lg  bg-secondary shadow-md">
           {searchResults.map((res, i) => (
             <li
               key={i}
@@ -78,7 +80,7 @@ export default function Search({ query, data }: SearchProps) {
           ))}
         </ul>
       ) : (
-        searchQuery &&  (
+        searchQuery && (
           <span className=" absolute  mt-2 w-full">
             No results found for <strong>{searchQuery}</strong>
           </span>
