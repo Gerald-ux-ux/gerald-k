@@ -3,5 +3,11 @@ type SnippetProps = {
 };
 
 export default function Snippets({ data }: SnippetProps) {
-  return <div className="">Snippets</div>;
+  return (
+    <ul className="">
+      {data?.map((item, i) => (
+        <li key={i}>{item}</li>
+      ))}
+    </ul>
+  );
 }

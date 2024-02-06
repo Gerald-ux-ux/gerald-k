@@ -1,19 +1,22 @@
+"use client";
+
 import { PAGE_HEADER } from "@/lib/uiConstants";
 import Preview from "@/public/images/preview.png";
-import { Metadata } from "next";
+// import { Metadata } from "next";
 import Link from "next/link";
 import AddSnippet from "./components/AddSnippet";
 import Search from "./components/Search";
 import BetaTag from "./components/BetaTag";
 import Cookies from "js-cookie";
-import { secretKey } from "../api/codes-snippets/auth/lib";
-import { userInfo } from "@/lib/secrete";
+// import { secretKey } from "../api/codes-snippets/auth/lib";
+// import { userInfo } from "@/lib/secrete";
 import Snippets from "./components/Snippets";
+import { useState } from "react";
 
-export const metadata: Metadata = {
-  title: "Code-snippets | Gerald",
-  description: "Coming soon ",
-};
+// export const metadata: Metadata = {
+//   title: "Code-snippets | Gerald",
+//   description: "Coming soon ",
+// };
 
 export default function CodeSnippets() {
   // const encryptedData =
@@ -21,13 +24,13 @@ export default function CodeSnippets() {
   // const decryptedData = decrypt(encryptedData, secretKey);
   // console.log("Decrypted Data:", decryptedData);
 
-  const user = userInfo();
-
-  const { username, email, _id } = user;
+  const [selectedSnippet, setSelectedSnippet] = useState<string | null>(null);
 
   const data = ["Yes", "No", "Yes sir", "No sir", "Yes ma", "No ma"];
+  const handleResultClick = (result: string) => {
+    setSelectedSnippet(result);
+  };
 
-  console.log("email", user);
   return (
     <main className="mx-auto flex w-full max-w-[700px] animate-in flex-col gap-8 px-6">
       <div className="flex  w-full items-center justify-between">
@@ -49,8 +52,8 @@ export default function CodeSnippets() {
       </div>
 
       <div className="flex flex-col gap-12">
-        <Search query="" data={data} />
-        <Snippets data={data} />
+        <Search query="" data={data} onResultClick={handleResultClick} />
+        <Snippets data={selectedSnippet ? [selectedSnippet] : data}  />
       </div>
     </main>
   );
