@@ -1,6 +1,6 @@
 import { encrypt } from "@/lib/secrete";
 import axios from "axios";
-import Cookies from "js-cookie";
+import { cookies } from "next/headers";
 
 import { LOGIN_URL, REGISTER_URL } from "./constants";
 
@@ -54,10 +54,10 @@ export const loginUser = async ({ data }: AuthProps): Promise<any> => {
       const encryptedInfo = encrypt(userInfo, secretKey);
       const encryptedToken = encrypt(sessionToken, secretKey);
 
-      Cookies.set("user-info", JSON.stringify(encryptedInfo));
-      console.log("User info set:", Cookies.get("user-info"));
+      cookies().set("user-info", JSON.stringify(encryptedInfo));
+      console.log("User info set:", cookies().get("user-info"));
 
-      Cookies.set("auth", JSON.stringify(encryptedToken));
+      cookies().set("auth", JSON.stringify(encryptedToken));
 
       return response;
     } else {

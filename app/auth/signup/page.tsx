@@ -1,3 +1,4 @@
+
 import { Metadata } from "next";
 import { signupInputs } from "../components/AuthInputs";
 import Button from "../components/Button";
