@@ -1,3 +1,4 @@
+import { secretKey } from "@/app/api/codes-snippets/auth/lib";
 import Cookies from "js-cookie";
 
 export function encrypt(text: string, key: string): string {
@@ -22,6 +23,20 @@ export function decrypt(text: string, key: string): string {
   return decryptedText;
 }
 
-export const userInfo = () => {
-  const user = Cookies.get("user-info");
-};
+export function userInfo() {
+  const user = Cookies.get("auth");
+
+  console.log("userInfo is", user);
+
+  if (!user) {
+    return {
+      username: null,
+      email: null,
+      _id: null,
+    };
+  }
+
+  const decryptedData = decrypt(user, secretKey);
+  const { username, email, _id } = JSON.parse(decryptedData);
+  return { username, email, _id };
+}

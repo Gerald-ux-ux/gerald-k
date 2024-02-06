@@ -55,6 +55,8 @@ export const loginUser = async ({ data }: AuthProps): Promise<any> => {
       const encryptedToken = encrypt(sessionToken, secretKey);
 
       Cookies.set("user-info", JSON.stringify(encryptedInfo));
+      console.log("User info set:", Cookies.get("user-info"));
+
       Cookies.set("auth", JSON.stringify(encryptedToken));
 
       return response;

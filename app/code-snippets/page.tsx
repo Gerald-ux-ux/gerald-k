@@ -5,6 +5,9 @@ import Link from "next/link";
 import AddSnippet from "./components/AddSnippet";
 import Search from "./components/Search";
 import BetaTag from "./components/BetaTag";
+import Cookies from "js-cookie";
+import { secretKey } from "../api/codes-snippets/auth/lib";
+import { userInfo } from "@/lib/secrete";
 
 export const metadata: Metadata = {
   title: "Code-snippets | Gerald",
@@ -12,6 +15,16 @@ export const metadata: Metadata = {
 };
 
 export default function CodeSnippets() {
+  // const encryptedData =
+  //   "J\u0013DBTC_P\\T\u0013\u000b\u0013zP\\PD\u0011vTCP]U\u0013\u001d\u0013T\\PX]\u0013\u000b\u0013\u0000\u0000VTCP]U\\^_THqV\\PX]\u001fR^\\\u0013\u001d\u0013nXU\u0013\u000b\u0013\u0007\u0004P\tS\bWPW\u0000\u0005PS\u0005\t\u0003U\u0003\u0002\u0007S\u0007W\u0007\u0013L";
+  // const decryptedData = decrypt(encryptedData, secretKey);
+  // console.log("Decrypted Data:", decryptedData);
+
+  const user = userInfo();
+
+  const { username, email, _id } = user;
+
+  console.log("email", user);
   return (
     <main className="mx-auto flex w-full max-w-[700px] animate-in flex-col gap-8 px-6">
       <div className="flex  w-full items-center justify-between">

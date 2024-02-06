@@ -1,53 +1,27 @@
-"use client";
-
 import { Metadata } from "next";
 import TagLine from "../components/TagLine";
 import Form from "../components/Form";
-import { loginInputs } from "../components/AuthInputs";
 import CustomMessage from "../components/CustomMessage";
 import Info from "../components/Info";
 import Button from "../components/Button";
-import { ReactHTMLElement, useState } from "react";
-import { loginUser } from "@/app/api/codes-snippets/auth/lib";
-import toast from "react-hot-toast";
-import { redirect, useRouter } from "next/navigation";
 
-// export const metadata: Metadata = {
-//   title: "Login | Gerald",
-//   description: "Login to add snippets",
-// };
+import useLoginClient from "../hooks/useLoginClient";
+
+export const metadata: Metadata = {
+  title: "Login | Gerald",
+  description: "Login to add snippets",
+};
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState("");
-  const [loading, setLoading] = useState(false);
-
-  const router = useRouter();
-  const handleLogin = async () => {
-    setLoading(true);
-    try {
-      const data = {
-        email,
-        password,
-      };
-
-      const res = await loginUser({
-        data,
-      });
-
-      if (res?.data?.success) {
-        router.push("/code-snippets");
-        setLoading(false);
-      } else if (res?.data?.success === false) {
-        setErrors(res?.data?.message);
-      }
-    } catch (error: any) {
-      setErrors(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const {
+    loading,
+    errors,
+    handleLogin,
+    setEmail,
+    setPassword,
+    email,
+    password,
+  } = useLoginClient();
 
   return (
     <div className="flex animate-in flex-col items-center justify-center   ">
@@ -85,7 +59,7 @@ export default function Login() {
 
           <Button
             label="Login"
-            action={handleLogin}
+            action={() => handleLogin(email, password)}
             loading={loading}
             disabled={!email || !password || loading}
           />
