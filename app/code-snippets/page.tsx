@@ -25,6 +25,7 @@ export default function CodeSnippets() {
   // console.log("Decrypted Data:", decryptedData);
 
   const [selectedSnippet, setSelectedSnippet] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   const data = ["Yes", "No", "Yes sir", "No sir", "Yes ma", "No ma"];
   const handleResultClick = (result: string) => {
@@ -53,7 +54,10 @@ export default function CodeSnippets() {
 
       <div className="flex flex-col gap-12">
         <Search query="" data={data} onResultClick={handleResultClick} />
-        <Snippets data={selectedSnippet ? [selectedSnippet] : data}  />
+        <Snippets
+          data={selectedSnippet ? [selectedSnippet] : data}
+          // searchQuery={searchQuery}
+        />
       </div>
     </main>
   );

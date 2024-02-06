@@ -1,8 +1,9 @@
 type SnippetProps = {
   data?: string[];
+  setSearchQuery?: string;
 };
 
-export default function Snippets({ data }: SnippetProps) {
+export default function Snippets({ data, setSearchQuery }: SnippetProps) {
   return (
     <ul className="">
       {data?.map((item, i) => (

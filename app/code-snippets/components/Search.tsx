@@ -78,7 +78,7 @@ export default function Search({ query, data, onResultClick }: SearchProps) {
         />
       </form>
 
-      {!resultClicked && searchResults.length >  0 && (
+      {!resultClicked && searchResults.length > 0 && (
         <ul className="animated-list absolute left-0 z-10 mt-1 w-full rounded-lg bg-secondary shadow-md">
           {(searchQuery ? searchResults : data || []).map((res, i) => (
             <li
