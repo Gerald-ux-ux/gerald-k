@@ -15,15 +15,10 @@ import { useState } from "react";
 
 // export const metadata: Metadata = {
 //   title: "Code-snippets | Gerald",
-//   description: "Coming soon ",
+//   description: "Search for code snippets",
 // };
 
 export default function CodeSnippets() {
-  // const encryptedData =
-  //   "J\u0013DBTC_P\\T\u0013\u000b\u0013zP\\PD\u0011vTCP]U\u0013\u001d\u0013T\\PX]\u0013\u000b\u0013\u0000\u0000VTCP]U\\^_THqV\\PX]\u001fR^\\\u0013\u001d\u0013nXU\u0013\u000b\u0013\u0007\u0004P\tS\bWPW\u0000\u0005PS\u0005\t\u0003U\u0003\u0002\u0007S\u0007W\u0007\u0013L";
-  // const decryptedData = decrypt(encryptedData, secretKey);
-  // console.log("Decrypted Data:", decryptedData);
-
   const [selectedSnippet, setSelectedSnippet] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
 
