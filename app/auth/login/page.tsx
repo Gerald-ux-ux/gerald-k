@@ -26,7 +26,7 @@ export default function Login() {
       password,
     });
 
-    console.log("email", res.data?.message);
+    console.log("email", res.data?.status);
     redirect("/code-snippets");
   };
   return (
