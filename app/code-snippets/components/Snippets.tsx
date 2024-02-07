@@ -1,8 +1,9 @@
 "use client";
 
 import { formatDate } from "@/lib/formatdate";
-import React from "react";
+import React, { useState } from "react";
 import { FaRegUser } from "react-icons/fa";
+import SnippetCodeList from "./SnippetCodeList";
 
 type SnippetProps = {
   data?: [];
@@ -10,10 +11,21 @@ type SnippetProps = {
 };
 
 export default function Snippets({ data, setSearchQuery }: SnippetProps) {
+  const [expanded, setExpanded] = useState<boolean[]>([]);
+
+  const handleToggle = (id: number) => {
+    setExpanded((prevExpanded: any) => {
+      const newExpanded = [...prevExpanded];
+      newExpanded[id] = !prevExpanded[id];
+      return newExpanded;
+    });
+  };
+
   return (
     <ul className="animated-list flex w-full flex-col gap-2">
       {data?.map((snippet: any, i) => (
         <li
+          onClick={() => handleToggle(i)}
           key={i}
           className="flex cursor-pointer flex-col gap-3 rounded-lg border border-secondaryA  p-2"
         >
@@ -35,6 +47,14 @@ export default function Snippets({ data, setSearchQuery }: SnippetProps) {
 
             <p>{formatDate(snippet.createdAt)}</p>
           </span>
+
+          {expanded[i] && (
+            <span>
+              {snippet.code.map((code: any) => (
+                <SnippetCodeList code={code} key={code._id} />
+              ))}
+            </span>
+          )}
 
           <span className=" whitespace-nowrap rounded-lg bg-secondary px-4 py-2 text-sm text-primary">
             {snippet.tags}
