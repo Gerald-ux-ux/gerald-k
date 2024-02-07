@@ -1,7 +1,6 @@
-"use client";
 import { PAGE_HEADER } from "@/lib/uiConstants";
 import Preview from "@/public/images/preview.png";
-// import { Metadata } from "next";
+import { Metadata } from "next";
 import Link from "next/link";
 import AddSnippet from "./components/AddSnippet";
 import Search from "./components/Search";
@@ -10,25 +9,36 @@ import Cookies from "js-cookie";
 // import { secretKey } from "../api/codes-snippets/auth/lib";
 // import { userInfo } from "@/lib/secrete";
 import Snippets from "./components/Snippets";
-import React, { useState } from "react";
 import useCodeSnippets from "./hooks/useCodeSnippets";
 import Head from "next/head";
 import FeedBack from "./components/FeedBack";
+import axios from "axios";
+import { GET_SNIPPETS } from "../api/codes-snippets/snippets/lib";
+import { errorMessage, frontendError } from "../api/codes-snippets/auth/lib";
+import Error from "next/error";
 
-// export const metadata: Metadata = {
-//   title: "Code-snippets | Gerald",
-//   description: "Search for code snippets",
-// };
+export const metadata: Metadata = {
+  title: "Code-snippets | Gerald",
+  description: "Search for code snippets",
+};
 
-export default function CodeSnippets() {
-  const {
-    handleResultClick,
-    data,
-    selectedSnippet,
-    setSelectedSnippet,
-    setSearchQuery,
-    searchQuery,
-  } = useCodeSnippets();
+async function getCodeSnippets() {
+  try {
+    const res = await axios.get(GET_SNIPPETS);
+    if (res?.data?.success) {
+      return res?.data?.data;
+    } else {
+      return res.data.message;
+    }
+  } catch (error: any) {
+    error = error.message;
+  }
+}
+
+export default async function CodeSnippets() {
+  const snippets = await getCodeSnippets();
+
+  console.log("snippets are", snippets);
 
   return (
     <>
@@ -53,9 +63,9 @@ export default function CodeSnippets() {
         </div>
 
         <div className="flex flex-col gap-12">
-          <Search query="" data={data} onResultClick={handleResultClick} />
+          <Search query="" data={snippets} />
           <Snippets
-            data={selectedSnippet ? [selectedSnippet] : data}
+            data={snippets}
             // searchQuery={searchQuery}
           />
         </div>

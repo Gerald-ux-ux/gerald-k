@@ -9,7 +9,7 @@ export const errorMessage = "Unexpected response from the server";
 export const frontendError = () => {
   return {
     success: false,
-    message: { errorMessage },
+    message: errorMessage,
   };
 };
 

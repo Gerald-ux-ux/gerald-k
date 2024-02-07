@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 
 type SearchProps = {
   query?: string;
-  data?: string[];
-  onResultClick: (result: string) => void;
+  data?: any;
+  onResultClick?: (result: string) => void;
 };
 
 export default function Search({ query, data, onResultClick }: SearchProps) {
@@ -13,6 +13,8 @@ export default function Search({ query, data, onResultClick }: SearchProps) {
   const [searchResults, setSearchResults] = useState<string[]>([]);
   const [resultClicked, setResultClicked] = useState<boolean>(false);
 
+  console.log("data", data);
+  console.log("searchResults", searchResults);
   useEffect(() => {
     let newSearchParams: URLSearchParams | undefined;
 
@@ -36,8 +38,8 @@ export default function Search({ query, data, onResultClick }: SearchProps) {
 
   useEffect(() => {
     if (data && searchQuery) {
-      const filteredResults = data.filter((item) =>
-        item.toLowerCase().includes(searchQuery.toLowerCase()),
+      const filteredResults = data?.filter((item: any) =>
+        item.title.toLowerCase().includes(searchQuery.toLowerCase()),
       );
 
       setSearchResults(filteredResults);
@@ -50,7 +52,7 @@ export default function Search({ query, data, onResultClick }: SearchProps) {
 
   const handleResultsClick = (result: any) => {
     setSearchQuery(result);
-    onResultClick(result);
+    // onResultClick(result);
 
     setResultClicked(true);
   };
@@ -67,7 +69,7 @@ export default function Search({ query, data, onResultClick }: SearchProps) {
         action=""
         className="flex w-full items-center gap-2 rounded-lg bg-secondary p-2 text-secondary md:p-3"
       >
-        <CiSearch className="md:text-xl text-lg" />
+        <CiSearch className="text-lg md:text-xl" />
         <input
           className="w-full bg-inherit focus:outline-none"
           onChange={handleInputChange}
@@ -78,17 +80,19 @@ export default function Search({ query, data, onResultClick }: SearchProps) {
         />
       </form>
 
-      {!resultClicked && searchResults.length > 0 && (
-        <ul className="animated-list absolute left-0 z-10 mt-1 w-full rounded-lg bg-secondary shadow-md">
-          {(searchQuery ? searchResults : data || []).map((res, i) => (
-            <li
-              key={i}
-              onClick={() => handleResultsClick(res)}
-              className="animated-list cursor-pointer px-4 py-2 hover:bg-tertiary"
-            >
-              {res}
-            </li>
-          ))}
+      {!resultClicked && searchResults && searchResults.length > 0 && (
+        <ul className="animated-list absolute left-0 z-10 mt-1 max-h-[250px] w-full overflow-y-scroll rounded-lg bg-secondary shadow-md">
+          {(searchQuery ? searchResults : data || []).map(
+            (res: { title: string }, i: number) => (
+              <li
+                key={i}
+                onClick={() => handleResultsClick(res.title)}
+                className="animated-list cursor-pointer px-4 py-2 hover:bg-tertiary"
+              >
+                {res.title}
+              </li>
+            ),
+          )}
         </ul>
       )}
 
