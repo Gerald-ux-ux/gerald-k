@@ -21,13 +21,13 @@ export default function Login() {
 
     const email = formData.get("email");
     const password = formData.get("password");
-     const res = await axios.post(LOGIN_URL, {
+    const res = await axios.post(LOGIN_URL, {
       email,
       password,
     });
 
     console.log("email", res.data?.message);
-    // redirect("/code-snippets");
+    redirect("/code-snippets");
   };
   return (
     <div className="flex animate-in flex-col items-center justify-center   ">
