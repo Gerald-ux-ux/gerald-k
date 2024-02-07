@@ -20,12 +20,14 @@ export default function Login() {
     "use server";
 
     const email = formData.get("email");
-    const pass = formData.get("password");
-    await axios.post(LOGIN_URL, {
+    const password = formData.get("password");
+     const res = await axios.post(LOGIN_URL, {
       email,
-      pass,
+      password,
     });
-    redirect('/code-snippets')
+
+    console.log("email", res.data?.message);
+    // redirect("/code-snippets");
   };
   return (
     <div className="flex animate-in flex-col items-center justify-center   ">
