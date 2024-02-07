@@ -48,7 +48,7 @@ export default function RootLayout({
         {/* Wrap the whole app in the ThemeProvider & Set some props */}
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navigation />
-          <div className="mx-auto  flex flex-col px-6 pt-16 md:px-6 md:pt-16">
+          <div className="mx-auto  flex flex-col px-6 pb-8 pt-16 md:px-6 md:pt-16">
             {children}
             <Toaster position="top-right" reverseOrder={false} />
             {/* <Footer /> */}

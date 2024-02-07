@@ -16,7 +16,7 @@ import axios from "axios";
 import { GET_SNIPPETS } from "../api/codes-snippets/snippets/lib";
 import { errorMessage, frontendError } from "../api/codes-snippets/auth/lib";
 import Error from "next/error";
-
+import { jsonData } from "../code-snippets/json/data.js";
 export const metadata: Metadata = {
   title: "Code-snippets | Gerald",
   description: "Search for code snippets",
@@ -24,15 +24,27 @@ export const metadata: Metadata = {
 
 async function getCodeSnippets() {
   try {
-    const res = await axios.get(GET_SNIPPETS);
-    if (res?.data?.success) {
-      return res?.data?.data;
+    const res = jsonData;
+    if (res?.success) {
+      return res.data;
     } else {
-      return res.data.message;
+      return res.message;
     }
   } catch (error: any) {
     error = error.message;
   }
+  // try {
+  //   // const res = await axios.get(GET_SNIPPETS, { cache: "force-cache" } as any);
+
+  //   const res = jsonData;
+  //   if (res?.data?.success) {
+  //     return res?.data?.data;
+  //   } else {
+  //     return res.data.message;
+  //   }
+  // } catch (error: any) {
+  //   error = error.message;
+  // }
 }
 
 export default async function CodeSnippets() {

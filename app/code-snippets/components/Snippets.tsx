@@ -6,7 +6,7 @@ import { FaRegUser } from "react-icons/fa";
 import SnippetCodeList from "./SnippetCodeList";
 
 type SnippetProps = {
-  data?: [];
+  data?: any;
   setSearchQuery?: string;
 };
 
@@ -23,7 +23,7 @@ export default function Snippets({ data, setSearchQuery }: SnippetProps) {
 
   return (
     <ul className="animated-list flex w-full flex-col gap-2">
-      {data?.map((snippet: any, i) => (
+      {data?.map((snippet: any, i: number) => (
         <li
           onClick={() => handleToggle(i)}
           key={i}
