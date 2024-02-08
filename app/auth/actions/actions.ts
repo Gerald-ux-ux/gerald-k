@@ -28,9 +28,10 @@ export const loginUser = async (formData: FormData) => {
       email,
       password,
     });
+
     if (res.data.success) {
       const { username, email, _id } = res.data?.data;
-      const { sessionToken } = res.data.data?.authentication;
+      const { sessionToken } = res?.data.data?.authentication;
 
       const user: any = { username, email, _id };
       const encryptedUserInfo = encrypt(JSON.stringify(user), secretKey);
@@ -48,10 +49,8 @@ export const loginUser = async (formData: FormData) => {
         value: encryptedSession,
       });
       // redirect("/code-snippets");
-    } else {
-      return res.data;
     }
   } catch (error: any) {
-    return error.message || errorMessage;
+    return error?.response?.data || errorMessage;
   }
 };

@@ -50,14 +50,12 @@ function Form() {
         placeholder="Password"
         required
       />
-
-      <Button />
-
       {message ? (
-        <div className="animate-in truncate rounded-lg bg-error p-2 text-center text-base text-error">
-          <p className="w-1">{message}</p>
+        <div className="animate-in  truncate rounded-lg bg-error p-2 text-center text-base text-error">
+          <p className="text-center">{message}</p>
         </div>
       ) : null}
+      <Button />
     </form>
   );
 }
