@@ -1,8 +1,6 @@
-
 import { Metadata } from "next";
 import { signupInputs } from "../components/AuthInputs";
-import Button from "../components/Button";
-import Form from "../components/Form";
+// import Form from "../login/components/Form";
 import Info from "../components/Info";
 import TagLine from "../components/TagLine";
 import CustomMessage from "../components/CustomMessage";
@@ -20,9 +18,7 @@ export default function SignUp() {
         <TagLine />
 
         <div className="flex w-full flex-col gap-8">
-          <Form inputs={signupInputs} />
-
-          <Button  label="Sign up" action="" />
+          {/* <Form inputs={signupInputs} /> */}
 
           <Info
             text="Already have an account"

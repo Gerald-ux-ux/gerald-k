@@ -1,7 +1,6 @@
-
 import { Metadata } from "next";
 import TagLine from "../components/TagLine";
-import Form from "../components/Form";
+import Form from "./components/Form";
 import CustomMessage from "../components/CustomMessage";
 import Info from "../components/Info";
 

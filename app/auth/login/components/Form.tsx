@@ -1,11 +1,11 @@
 "use client";
 import { INPUT_STYLE } from "@/app/code-snippets/styles/inputStyle";
 import React, { useState } from "react";
-import { loginUser } from "../actions/actions";
+import { loginUser } from "../../actions/actions";
+import { redirect } from "next/navigation";
 
 // @ts-ignore
 import { experimental_useFormStatus as useFormStatus } from "react-dom";
-import { redirect } from "next/navigation";
 
 function Button() {
   const { pending } = useFormStatus();
