@@ -6,15 +6,13 @@ import { redirect } from "next/navigation";
 
 // @ts-ignore
 import { experimental_useFormStatus as useFormStatus } from "react-dom";
+import { AUTH_BTN } from "../../styles/authStyles";
 
 function Button() {
   const { pending } = useFormStatus();
 
   return (
-    <button
-      disabled={pending}
-      className="w-full rounded-lg bg-secondary p-3 text-center text-primary hover:bg-tertiary hover:text-secondary"
-    >
+    <button disabled={pending} className={AUTH_BTN}>
       {pending ? "Loading..." : "Login"}
     </button>
   );
