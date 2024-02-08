@@ -1,29 +1,26 @@
 "use client";
 
 import { INPUT_STYLE } from "@/app/code-snippets/styles/inputStyle";
-import { getRandomValues } from "crypto";
 import React from "react";
+import Button from "./Button";
 
 type InputConfig = {
   placeholder: string;
   type: string;
   name: string;
-  value: string;
+
 };
 
 type FormProps = {
   inputs: InputConfig[];
-  values: { [key: string]: string };
-  onChange: (name: string, value: string) => void;
+  loginUser: (formData: FormData) => Promise<void>;
 };
 
-function Form({ inputs, values, onChange }: FormProps) {
+function Form({ inputs, loginUser }: FormProps) {
   return (
-    <form className="flex  w-full flex-col  gap-4  ">
+    <form action={loginUser} className="flex  w-full flex-col  gap-4  ">
       {inputs.map((input, i) => (
         <input
-          value={values[input.name]}
-          onChange={(e) => onChange(input.name, e.target.value)}
           className={INPUT_STYLE}
           key={i}
           placeholder={input.placeholder}
@@ -31,6 +28,7 @@ function Form({ inputs, values, onChange }: FormProps) {
           name={input.name}
         />
       ))}
+      <Button label="Login" />
     </form>
   );
 }
