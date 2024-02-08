@@ -4,9 +4,10 @@ import { signupInputs } from "../components/AuthInputs";
 import Info from "../components/Info";
 import TagLine from "../components/TagLine";
 import CustomMessage from "../components/CustomMessage";
+import Form from "./components/Form";
 
 export const metadata: Metadata = {
-  title: "Sign up | Gerald",
+  title: "Sign up | Code-Snippets",
   description: "Create your snippets account",
 };
 
@@ -18,8 +19,7 @@ export default function SignUp() {
         <TagLine />
 
         <div className="flex w-full flex-col gap-8">
-          {/* <Form inputs={signupInputs} /> */}
-
+          <Form />
           <Info
             text="Already have an account"
             action="Login"
