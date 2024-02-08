@@ -33,11 +33,20 @@ export const loginUser = async (formData: FormData) => {
       const { sessionToken } = res.data.data?.authentication;
 
       const user: any = { username, email, _id };
-      // console.log("user is", user);
       const encryptedUserInfo = encrypt(JSON.stringify(user), secretKey);
       const encryptedSession = encrypt(sessionToken, secretKey);
-      cookies().set("user_info", encryptedUserInfo);
-      cookies().set("auth", encryptedSession);
+      cookies().set({
+        name: "user_info",
+        httpOnly: true,
+        value: encryptedUserInfo,
+        expires: new Date(Date.now() + 1000 * 60 * 60 * 2),
+      });
+      cookies().set({
+        name: "auth",
+        expires: new Date(Date.now() + 1000 * 60 * 60 * 2),
+        httpOnly: true,
+        value: encryptedSession,
+      });
       // redirect("/code-snippets");
     } else {
       return res.data;
