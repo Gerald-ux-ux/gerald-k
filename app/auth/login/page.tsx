@@ -5,8 +5,8 @@ import CustomMessage from "../components/CustomMessage";
 import Info from "../components/Info";
 
 export const metadata: Metadata = {
-  title: "Login | Code-snippets",
-  description: "Login to add snippets",
+  title: "Login | Code-Snippets",
+  description: "Login int to your snippet account",
 };
 
 export default function Login() {

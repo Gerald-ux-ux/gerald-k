@@ -7,7 +7,7 @@ import CustomMessage from "../components/CustomMessage";
 import Form from "./components/Form";
 
 export const metadata: Metadata = {
-  title: "Sign up | Gerald",
+  title: "Sign up | Code-Snippets",
   description: "Create your snippets account",
 };
 
