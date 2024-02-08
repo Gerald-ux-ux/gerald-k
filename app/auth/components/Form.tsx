@@ -5,6 +5,7 @@ import { loginUser } from "../actions/actions";
 
 // @ts-ignore
 import { experimental_useFormStatus as useFormStatus } from "react-dom";
+import { redirect } from "next/navigation";
 
 function Button() {
   const { pending } = useFormStatus();
@@ -24,8 +25,9 @@ function Form() {
 
   const handleSubmit = async (formData: FormData) => {
     const res = await loginUser(formData);
-    console.log("res is", res);
-    if (res?.success === false) {
+    if (res.success) {
+      redirect("/code-snippets");
+    } else if (res?.success === false) {
       setMessage(
         res?.message || "An unexpected error occurred, please try again",
       );

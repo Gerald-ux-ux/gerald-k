@@ -1,24 +1,17 @@
 "use server";
-
 import { LOGIN_URL } from "@/app/api/codes-snippets/auth/constants";
 import axios from "axios";
-import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { encrypt } from "@/lib/secrete";
-import { DataExports } from "../../../.contentlayer/generated/types";
-import { secretKey } from "@/app/api/codes-snippets/auth/lib";
 
-// type user = {
-//   username: string;
-//   email: string;
-//   _id: string;
-// };
-
-// type UserObject = {
-//   userInfo: user[];
-// };
+type user = {
+  username: string;
+  email: string;
+  _id: string;
+};
 
 const errorMessage = "Unexpected response from the server";
+const secretKey = process.env.SECRETE_KEY || "1Q2S3D";
 
 export const loginUser = async (formData: FormData) => {
   try {
@@ -33,7 +26,7 @@ export const loginUser = async (formData: FormData) => {
       const { username, email, _id } = res.data?.data;
       const { sessionToken } = res?.data.data?.authentication;
 
-      const user: any = { username, email, _id };
+      const user: user = { username, email, _id };
       const encryptedUserInfo = encrypt(JSON.stringify(user), secretKey);
       const encryptedSession = encrypt(sessionToken, secretKey);
       cookies().set({
@@ -48,7 +41,7 @@ export const loginUser = async (formData: FormData) => {
         httpOnly: true,
         value: encryptedSession,
       });
-      // redirect("/code-snippets");
+      return res.data;
     }
   } catch (error: any) {
     return error?.response?.data || errorMessage;
