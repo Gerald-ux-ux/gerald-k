@@ -20,13 +20,22 @@ function Button() {
 }
 
 function Form() {
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (formData: FormData) => {
+    const res = await loginUser(formData);
+    console.log("res is", res);
+    if (res?.success === false) {
+      setMessage(
+        res?.message || "An unexpected error occurred, please try again",
+      );
+    } else {
+      setMessage(res);
+    }
+  };
+
   return (
-    <form
-      action={(formData) => {
-        loginUser(formData);
-      }}
-      className="flex  w-full flex-col  gap-4  "
-    >
+    <form action={handleSubmit} className="flex  w-full flex-col  gap-4  ">
       <input
         type="text"
         name="email"
@@ -44,16 +53,11 @@ function Form() {
 
       <Button />
 
-      {/* <button className="w-full rounded-lg bg-secondary p-3 text-center text-primary hover:bg-tertiary hover:text-secondary">
-        login
-      </button> */}
-
-      {/* {error ? (
-        <div className="animate-in rounded-lg bg-error p-2 text-center text-base text-error">
-          <p>{error}</p>
+      {message ? (
+        <div className="animate-in truncate rounded-lg bg-error p-2 text-center text-base text-error">
+          <p className="w-1">{message}</p>
         </div>
-      ) : null} */}
-      {/* <Button label="Login" /> */}
+      ) : null}
     </form>
   );
 }
