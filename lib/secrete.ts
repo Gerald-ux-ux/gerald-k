@@ -1,3 +1,5 @@
+import { cookies } from "next/headers";
+
 export function encrypt(text: string, key: string): string {
   let encryptedText = "";
 
@@ -18,4 +20,13 @@ export function decrypt(text: string, key: string): string {
   }
 
   return decryptedText;
+}
+
+export function setCookie(name: string, value: string) {
+  return cookies().set({
+    name,
+    value,
+    expires: new Date(Date.now() + 1000 * 60 * 60 * 2),
+    httpOnly: true,
+  });
 }

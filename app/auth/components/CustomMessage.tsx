@@ -25,7 +25,7 @@ function CustomMessage({ text }: CustomMessageProps) {
   return (
     <>
       {showMessage && (
-        <div className="pointer-events-auto mb-6 flex  w-full max-w-md animate-in rounded-lg bg-secondary shadow-lg ring-black ring-opacity-5 md:mb-12">
+        <div className="pointer-events-auto mb-6 flex  w-full max-w-md  rounded-lg bg-secondary shadow-lg ring-black ring-opacity-5 md:mb-12">
           <div className="w-0 flex-1 p-4">
             <div className="flex items-start">
               <div className="ml-3 flex w-full flex-1 items-center gap-2">

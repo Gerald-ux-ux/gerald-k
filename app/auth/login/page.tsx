@@ -6,7 +6,7 @@ import Info from "../components/Info";
 
 export const metadata: Metadata = {
   title: "Login | Code-Snippets",
-  description: "Login int to your snippet account",
+  description: "Login in to your snippet account",
 };
 
 export default function Login() {
