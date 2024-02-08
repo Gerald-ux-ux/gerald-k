@@ -2,20 +2,19 @@ import { NextRequest, NextResponse } from "next/server";
 
 export function middleware(req: NextRequest) {
   const isAuth = req.cookies.has("auth");
-  const url = req.nextUrl.clone();
-  const snippetUrl = (url.pathname = "/code-snippets");
+  const requestedPath = req.nextUrl.pathname;
 
-  console.log("url: ", url);
-
-  console.log("cookie", isAuth);
   if (
     isAuth &&
-    (url.pathname === "/auth/login" || url.pathname === "/auth/signup")
+    (requestedPath === "/auth/login" || requestedPath === "/auth/signup")
   ) {
-    // Redirect to "/code-snippets" if the user is logged in and trying to access "/auth/login" or "/auth/signup"
-    return NextResponse.rewrite(snippetUrl);
+    return NextResponse.redirect(
+      // Protecting the auth route
+      process.env.NODE_ENV !== "production"
+        ? "http://localhost:3000/code-snippets?"
+        : "https://gerald-k.vercel.app/code-snippets",
+    );
   }
 
-  // Allow the request to continue unchanged if the user is not logged in or is accessing other paths
   return NextResponse.next();
 }
