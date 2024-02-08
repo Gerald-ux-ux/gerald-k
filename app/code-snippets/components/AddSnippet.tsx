@@ -8,6 +8,8 @@ import { Tooltip as ReactTooltip } from "react-tooltip";
 // if not logged in redirect to the auth log the user in then show the modal again
 
 export default function AddSnippet({ message }: { message: string }) {
+  const handleUploadSnippetFrom = () => {};
+
   const router = useRouter();
 
   return (
@@ -17,7 +19,7 @@ export default function AddSnippet({ message }: { message: string }) {
           router.push("/auth/login");
         }}
         data-tooltip-id="my-tooltip-1"
-        className="rounded-lg bg-secondaryA md:p-2 p-1.5 text-sm text-primary hover:text-secondary md:text-base"
+        className="rounded-lg bg-secondaryA p-1.5 text-sm text-primary hover:text-secondary md:p-2 md:text-base"
       >
         Add a snippet
       </button>

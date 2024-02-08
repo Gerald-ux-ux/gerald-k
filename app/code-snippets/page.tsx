@@ -1,21 +1,10 @@
 import { PAGE_HEADER } from "@/lib/uiConstants";
-import Preview from "@/public/images/preview.png";
 import { Metadata } from "next";
-import Link from "next/link";
+
 import AddSnippet from "./components/AddSnippet";
 import Search from "./components/Search";
-import BetaTag from "./components/BetaTag";
-import Cookies from "js-cookie";
-// import { secretKey } from "../api/codes-snippets/auth/lib";
-// import { userInfo } from "@/lib/secrete";
 import Snippets from "./components/Snippets";
-import useCodeSnippets from "./hooks/useCodeSnippets";
-import Head from "next/head";
 import FeedBack from "./components/FeedBack";
-import axios from "axios";
-import { GET_SNIPPETS } from "../api/codes-snippets/snippets/lib";
-import { errorMessage, frontendError } from "../api/codes-snippets/auth/lib";
-import Error from "next/error";
 import { jsonData } from "../code-snippets/json/data.js";
 export const metadata: Metadata = {
   title: "Code-snippets | Gerald",

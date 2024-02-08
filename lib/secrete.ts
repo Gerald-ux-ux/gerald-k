@@ -1,4 +1,6 @@
 import { cookies } from "next/headers";
+import { NextRequest, NextResponse } from "next/server";
+const secretKey = process.env.SECRETE_KEY || "1Q2S3D";
 
 export function encrypt(text: string, key: string): string {
   let encryptedText = "";
@@ -29,4 +31,10 @@ export function setCookie(name: string, value: string) {
     expires: new Date(Date.now() + 1000 * 60 * 60 * 2),
     httpOnly: true,
   });
+}
+
+export default function getCookie() {
+  const cookieStore = cookies();
+  const cookie = cookieStore.get("auth")?.valueOf();
+  return cookie;
 }
