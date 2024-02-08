@@ -60,12 +60,11 @@ export default function Form() {
           placeholder="Password"
           required
         />
-
         <span
           className="absolute right-8 top-3 cursor-pointer"
           onClick={() => setShowPass(!showPass)}
         >
-          {showPass ? <FaEyeSlash className="" /> : <FaRegEye />}
+          {showPass ? <FaEyeSlash /> : <FaRegEye />}
         </span>
       </span>
 
