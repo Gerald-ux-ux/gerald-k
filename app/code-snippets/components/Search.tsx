@@ -13,8 +13,8 @@ export default function Search({ query, data, onResultClick }: SearchProps) {
   const [searchResults, setSearchResults] = useState<string[]>([]);
   const [resultClicked, setResultClicked] = useState<boolean>(false);
 
-  console.log("data is", data[0].code.length);
   console.log("searchResults", searchResults);
+
   useEffect(() => {
     let newSearchParams: URLSearchParams | undefined;
 
@@ -52,7 +52,6 @@ export default function Search({ query, data, onResultClick }: SearchProps) {
 
   const handleResultsClick = (result: any) => {
     setSearchQuery(result);
-    // onResultClick(result);
 
     setResultClicked(true);
   };
@@ -83,7 +82,7 @@ export default function Search({ query, data, onResultClick }: SearchProps) {
       {!resultClicked && searchResults && searchResults.length > 0 && (
         <ul className="animated-list absolute left-0 z-10 mt-1 max-h-[250px] w-full overflow-y-scroll rounded-lg bg-secondary shadow-md">
           {(searchQuery ? searchResults : data || []).map(
-            (res: { title: string, code: string[], }, i: number) => (
+            (res: { title: string; code: string[] }, i: number) => (
               <li
                 key={i}
                 onClick={() => handleResultsClick(res.title)}

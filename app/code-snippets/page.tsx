@@ -39,7 +39,7 @@ async function getCodeSnippets() {
 export default async function CodeSnippets() {
   const snippets = await getCodeSnippets();
 
-  console.log("snippets are", snippets);
+  // console.log("snippets are", snippets);
 
   return (
     <>
