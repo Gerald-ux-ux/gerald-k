@@ -1,7 +1,7 @@
 "use client";
 
 import { formatDate } from "@/lib/formatdate";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaRegUser } from "react-icons/fa";
 import SnippetCodeList from "./SnippetCodeList";
 
@@ -12,6 +12,8 @@ type SnippetProps = {
 
 export default function Snippets({ data, setSearchQuery }: SnippetProps) {
   const [expanded, setExpanded] = useState<boolean[]>([]);
+
+  // const searchResults
 
   const handleToggle = (id: number) => {
     setExpanded((prevExpanded: any) => {
