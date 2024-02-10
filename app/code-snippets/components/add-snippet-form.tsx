@@ -1,3 +1,11 @@
-export default function AddSnippetForm() {
-  return <div>Add a snip</div>;
+type FormSnippetProps = {
+
+};
+
+export default function AddSnippetForm({  }: FormSnippetProps) {
+  return (
+    <div className="">
+
+    </div>
+  );
 }
