@@ -1,23 +1,32 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { Tooltip as ReactTooltip } from "react-tooltip";
+import AddSnippetForm from "./add-snippet-form";
+import { Dialog } from "@headlessui/react";
 
-// Need a way of knowing whether the user is logged in or not
-// If logged in show the modal
-// if not logged in redirect to the auth log the user in then show the modal again
+type AddSnippetsProps = {
+  isAuth: { name: string; value: string } | undefined;
+  message: string;
+};
 
-export default function AddSnippet({ message }: { message: string }) {
-  const handleUploadSnippetFrom = () => {};
+export default function AddSnippet({ message, isAuth }: AddSnippetsProps) {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const handleUploadSnippetFrom = () => {
+    if (isAuth) {
+      setIsModalOpen(!isModalOpen);
+    } else {
+      router.push("/auth/login");
+    }
+  };
 
   const router = useRouter();
 
   return (
     <div>
       <button
-        onClick={() => {
-          router.push("/auth/login");
-        }}
+        onClick={handleUploadSnippetFrom}
         data-tooltip-id="my-tooltip-1"
         className="rounded-lg bg-secondaryA p-1.5 text-sm text-primary hover:text-secondary md:p-2 md:text-base"
       >
@@ -30,6 +39,8 @@ export default function AddSnippet({ message }: { message: string }) {
         content={message}
         style={{ borderRadius: "8px" }}
       />
+
+      {isModalOpen && <AddSnippetForm isOpen={isModalOpen} />}
     </div>
   );
 }

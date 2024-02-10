@@ -6,6 +6,7 @@ import Search from "./components/Search";
 import Snippets from "./components/Snippets";
 import FeedBack from "./components/FeedBack";
 import { jsonData } from "../code-snippets/json/data.js";
+import { cookies } from "next/headers";
 export const metadata: Metadata = {
   title: "Code-snippets | Gerald",
   description: "Search for code snippets",
@@ -38,6 +39,7 @@ async function getCodeSnippets() {
 
 export default async function CodeSnippets() {
   const snippets = await getCodeSnippets();
+  const isAuth = cookies().get("auth");
 
   // console.log("snippets are", snippets);
 
@@ -54,7 +56,10 @@ export default async function CodeSnippets() {
             <FeedBack />
           </span>
 
-          <AddSnippet message="Log in, snippets will be available on Tuesday" />
+          <AddSnippet
+            isAuth={isAuth}
+            message="Log in, snippets will be available on Tuesday"
+          />
         </div>
 
         <div className="">
