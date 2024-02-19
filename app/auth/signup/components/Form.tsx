@@ -10,13 +10,14 @@ import { useState } from "react";
 import { experimental_useFormStatus as useFormStatus } from "react-dom";
 import { FaEyeSlash, FaRegEye } from "react-icons/fa";
 import clsx from "clsx";
+import BtnLoader from "@/components/ui/btn-loader";
 
 function Button() {
   const { pending } = useFormStatus();
 
   return (
     <button disabled={pending} className={AUTH_BTN}>
-      {pending ? "Loading..." : "Sign Up"}
+      {pending ? <BtnLoader /> : "Sign Up"}
     </button>
   );
 }
