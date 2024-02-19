@@ -7,13 +7,14 @@ import { redirect } from "next/navigation";
 // @ts-ignore
 import { experimental_useFormStatus as useFormStatus } from "react-dom";
 import { AUTH_BTN } from "../../styles/authStyles";
+import BtnLoader from "@/components/ui/btn-loader";
 
 function Button() {
   const { pending } = useFormStatus();
 
   return (
     <button disabled={pending} className={AUTH_BTN}>
-      {pending ? "Loading..." : "Login"}
+      {pending ? <BtnLoader/>  : "Login"}
     </button>
   );
 }

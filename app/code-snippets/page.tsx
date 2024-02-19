@@ -41,8 +41,6 @@ export default async function CodeSnippets() {
   const snippets = await getCodeSnippets();
   const isAuth = cookies().get("auth");
 
-  // console.log("snippets are", snippets);
-
   return (
     <>
       <main className="mx-auto flex w-full max-w-[700px] animate-in flex-col gap-8 px-6">
@@ -70,10 +68,7 @@ export default async function CodeSnippets() {
 
         <div className="flex flex-col gap-12">
           <Search query="" data={snippets} />
-          <Snippets
-            data={snippets}
-            // searchQuery={searchQuery}
-          />
+          <Snippets data={snippets} />
         </div>
       </main>
     </>
