@@ -1,13 +1,13 @@
 import { Metadata } from "next";
 import { signupInputs } from "../components/AuthInputs";
-import Button from "../components/Button";
-import Form from "../components/Form";
+// import Form from "../login/components/Form";
 import Info from "../components/Info";
 import TagLine from "../components/TagLine";
 import CustomMessage from "../components/CustomMessage";
+import Form from "./components/Form";
 
 export const metadata: Metadata = {
-  title: "Sign up | Gerald",
+  title: "Sign up | Code-Snippets",
   description: "Create your snippets account",
 };
 
@@ -19,10 +19,7 @@ export default function SignUp() {
         <TagLine />
 
         <div className="flex w-full flex-col gap-8">
-          <Form inputs={signupInputs} />
-
-          <Button href="/code-snippets" label="Sign up" action="" />
-
+          <Form />
           <Info
             text="Already have an account"
             action="Login"
