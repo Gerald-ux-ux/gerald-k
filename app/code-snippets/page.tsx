@@ -5,44 +5,19 @@ import AddSnippet from "./components/AddSnippet";
 import Search from "./components/Search";
 import Snippets from "./components/Snippets";
 import FeedBack from "./components/FeedBack";
-import { jsonData } from "../code-snippets/json/data.js";
 import { cookies } from "next/headers";
-
-
+import { getCodeSnippets } from "./actions/action";
 
 export const metadata: Metadata = {
   title: "Code-snippets | Gerald",
   description: "Search for code snippets",
 };
 
-async function getCodeSnippets() {
-  try {
-    const res = jsonData;
-    if (res?.success) {
-      return res.data;
-    } else {
-      return res.message;
-    }
-  } catch (error: any) {
-    error = error.message;
-  }
-  // try {
-  //   // const res = await axios.get(GET_SNIPPETS, { cache: "force-cache" } as any);
-
-  //   const res = jsonData;
-  //   if (res?.data?.success) {
-  //     return res?.data?.data;
-  //   } else {
-  //     return res.data.message;
-  //   }
-  // } catch (error: any) {
-  //   error = error.message;
-  // }
-}
-
 export default async function CodeSnippets() {
   const snippets = await getCodeSnippets();
   const isAuth = cookies().get("auth");
+
+  console.log("data is fetched again", snippets);
 
   return (
     <>

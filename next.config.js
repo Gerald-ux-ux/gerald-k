@@ -7,6 +7,11 @@ const nextConfig = {
   },
   reactStrictMode: true,
   swcMinify: true,
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
+  },
 };
 
 module.exports = withContentlayer(nextConfig);
