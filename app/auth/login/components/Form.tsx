@@ -23,16 +23,16 @@ function Form() {
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (formData: FormData) => {
-    const res = await loginUser(formData);
-    if (res.success) {
-      redirect("/code-snippets");
-    } else if (res?.success === false) {
-      setMessage(
-        res?.message || "An unexpected error occurred, please try again",
-      );
-    } else {
-      setMessage(res);
-    }
+    // const res = await loginUser(formData);
+    // if (res.success) {
+    //   redirect("/code-snippets");
+    // } else if (res?.success === false) {
+    //   setMessage(
+    //     res?.message || "An unexpected error occurred, please try again",
+    //   );
+    // } else {
+    //   setMessage(res);
+    // }
   };
 
   return (

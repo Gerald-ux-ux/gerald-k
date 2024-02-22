@@ -35,7 +35,7 @@ export default async function CodeSnippets() {
 
           <AddSnippet
             isAuth={isAuth}
-            message="Log in, snippets will be available on Tuesday"
+            message=""
           />
         </div>
 
