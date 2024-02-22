@@ -4,7 +4,7 @@ import { formatDate } from "@/lib/formatdate";
 import React, { useEffect, useState } from "react";
 import { FaRegUser } from "react-icons/fa";
 import SnippetCodeList from "./SnippetCodeList";
-import { useSearchParams } from "next/navigation";
+// import { useSearchParams } from "next/navigation";
 
 type SnippetProps = {
   data?: any;
@@ -15,8 +15,8 @@ export default function Snippets({ data }: SnippetProps) {
   const [expanded, setExpanded] = useState<boolean[]>([]);
 
   // const searchResults
-  const searchParams = useSearchParams();
-  const searchItem = searchParams.get("q");
+  // const searchParams = useSearchParams();
+  // const searchItem = searchParams.get("q");
 
   // useEffect(() => {
   //   if (searchItem) {
@@ -35,11 +35,11 @@ export default function Snippets({ data }: SnippetProps) {
   return (
     <ul className="animated-list flex w-full flex-col gap-2">
       {data
-        ?.filter((snippet: any) =>
-          searchItem
-            ? snippet.title.toLowerCase().includes(searchItem.toLowerCase())
-            : true,
-        )
+        // ?.filter((snippet: any) =>
+        //   searchItem
+        //     ? snippet.title.toLowerCase().includes(searchItem.toLowerCase())
+        //     : true,
+        // )
         .map((snippet: any, i: number) => (
           <li
             onClick={() => handleToggle(i)}
