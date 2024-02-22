@@ -4,8 +4,7 @@ import {
   REGISTER_URL,
 } from "@/app/api/codes-snippets/auth/constants";
 import axios from "axios";
-import { cookies } from "next/headers";
-import { encrypt, setCookie } from "@/lib/secrete";
+import { encrypt, errorMessage, secretKey, setCookie } from "@/lib/secrete";
 
 type User = {
   username: string;
@@ -13,8 +12,6 @@ type User = {
   _id: string;
 };
 
-const errorMessage = "Unexpected response from the server";
-const secretKey = process.env.SECRETE_KEY || "1Q2S3D";
 
 export async function registerUser(formData: FormData) {
   try {
@@ -36,8 +33,8 @@ export async function registerUser(formData: FormData) {
       const { sessionToken } = res?.data?.data?.authentication;
 
       const user: User = { username, email, _id };
-      const encryptedUserInfo = encrypt(JSON.stringify(user), secretKey);
-      const encryptedSession = encrypt(sessionToken, secretKey);
+      const encryptedUserInfo = encrypt(JSON.stringify(user), secretKey!);
+      const encryptedSession = encrypt(sessionToken, secretKey as string);
       setCookie("user_info", encryptedUserInfo);
       setCookie("auth", encryptedSession);
       return res.data;
@@ -61,8 +58,8 @@ export const loginUser = async (formData: FormData) => {
       const { sessionToken } = res?.data.data?.authentication;
 
       const user: User = { username, email, _id };
-      const encryptedUserInfo = encrypt(JSON.stringify(user), secretKey);
-      const encryptedSession = encrypt(sessionToken, secretKey);
+      const encryptedUserInfo = encrypt(JSON.stringify(user), secretKey!);
+      const encryptedSession = encrypt(sessionToken, secretKey!);
       setCookie("user_info", encryptedUserInfo);
       setCookie("auth", encryptedSession);
       return res.data;

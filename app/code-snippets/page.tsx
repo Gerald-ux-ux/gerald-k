@@ -7,6 +7,9 @@ import Snippets from "./components/Snippets";
 import FeedBack from "./components/FeedBack";
 import { jsonData } from "../code-snippets/json/data.js";
 import { cookies } from "next/headers";
+
+
+
 export const metadata: Metadata = {
   title: "Code-snippets | Gerald",
   description: "Search for code snippets",
