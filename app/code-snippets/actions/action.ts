@@ -9,7 +9,7 @@ export async function getCodeSnippets(): Promise<CodeSnippets[]> {
   try {
     const fakeRes = jsonData;
     const res = await fetch(GET_SNIPPETS, { next: { tags: ["code"] } });
-    const data =  fakeRes;
+    const data = await fakeRes;
     if (data.success) {
       return data.data;
     }
