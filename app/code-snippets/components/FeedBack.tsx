@@ -12,7 +12,7 @@ export default function FeedBack() {
       </Dialog.Trigger>
 
       <Dialog.Portal>
-        <div className=" fixed inset-0 z-50  flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm backdrop-filter">
+        <div className=" fixed inset-0 z-50  flex items-center justify-center bg-black bg-opacity-50 ">
           <Dialog.Overlay className="relative mx-6 flex w-[300px]  flex-col items-center justify-center gap-2 rounded-lg bg-tertiary p-4 text-sm md:mx-auto md:w-[450px] md:text-base">
             <div className="flex w-full items-center justify-between">
               <Dialog.Title className="font-medium">

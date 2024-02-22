@@ -15,22 +15,22 @@ export default function Search({ query, data, onResultClick }: SearchProps) {
 
   console.log("searchResults", searchResults);
 
-  useEffect(() => {
-    let newSearchParams: URLSearchParams | undefined;
+  // useEffect(() => {
+  //   let newSearchParams: URLSearchParams | undefined;
 
-    if (searchQuery) {
-      newSearchParams = new URLSearchParams();
-      newSearchParams.set("q", searchQuery);
-    }
+  //   if (searchQuery) {
+  //     newSearchParams = new URLSearchParams();
+  //     newSearchParams.set("q", searchQuery);
+  //   }
 
-    if (newSearchParams) {
-      window.history.replaceState({}, "", `?${newSearchParams.toString()}`);
-    } else {
-      const params = new URLSearchParams(window.location.search);
-      params.delete("q");
-      window.history.replaceState({}, "", `?${params.toString()}`);
-    }
-  }, [searchQuery]);
+  //   if (newSearchParams) {
+  //     window.history.replaceState({}, "", `?${newSearchParams.toString()}`);
+  //   } else {
+  //     const params = new URLSearchParams(window.location.search);
+  //     params.delete("q");
+  //     window.history.replaceState({}, "", `?${params.toString()}`);
+  //   }
+  // }, [searchQuery]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
