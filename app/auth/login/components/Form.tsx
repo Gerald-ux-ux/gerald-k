@@ -14,7 +14,7 @@ function Button() {
 
   return (
     <button disabled={pending} className={AUTH_BTN}>
-      {pending ? <BtnLoader/>  : "Login"}
+      {pending ? <BtnLoader /> : "Login"}
     </button>
   );
 }
