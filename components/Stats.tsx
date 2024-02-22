@@ -55,7 +55,7 @@ export default function Stats() {
           <ArrowTrendingUpIcon className="h-5 w-5" />
           <div className="flex items-center gap-2">
             <FlipNumber>
-              {postsData ? addCommas(148) : "000"}
+              {postsData ? addCommas(148) : addCommas(148)}
             </FlipNumber>
             <span> Total Blog Views</span>
           </div>
