@@ -18,8 +18,6 @@ export default async function CodeSnippets() {
   const snippets = await getCodeSnippets();
   const isAuth = cookies().get("auth");
 
-  console.log("data is fetched again", snippets);
-
   return (
     <>
       <main className="mx-auto flex w-full max-w-[700px] animate-in flex-col gap-8 px-6">
@@ -30,13 +28,10 @@ export default async function CodeSnippets() {
               <span className="h-2 w-2 rounded-full   bg-[#0070f3] p-0.5" />
               Beta
             </div>
-            <FeedBack />
+            {/* <FeedBack /> */}
           </span>
 
-          <AddSnippet
-            isAuth={isAuth}
-            message=""
-          />
+          <AddSnippet isAuth={isAuth} message="" />
         </div>
 
         <div className="">
