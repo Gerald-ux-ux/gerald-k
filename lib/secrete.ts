@@ -1,6 +1,10 @@
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
-const secretKey = process.env.SECRETE_KEY || "1Q2S3D";
+
+
+
+export const errorMessage = "Unexpected response from the server";
+export const secretKey = process.env.SECRETE_KEY
 
 export function encrypt(text: string, key: string): string {
   let encryptedText = "";

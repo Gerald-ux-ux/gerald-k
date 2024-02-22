@@ -26,16 +26,16 @@ export default function Form() {
   const [showPass, setShowPass] = useState<boolean>(false);
 
   async function handleSubmit(formData: FormData) {
-    const res = await registerUser(formData);
-    if (res.success) {
-      redirect("/code-snippets");
-    } else if (res?.success === false) {
-      setMessage(
-        res?.message || "An unexpected error occurred, please try again",
-      );
-    } else {
-      setMessage(res);
-    }
+    // const res = await registerUser(formData);
+    // if (res.success) {
+    //   redirect("/code-snippets");
+    // } else if (res?.success === false) {
+    //   setMessage(
+    //     res?.message || "An unexpected error occurred, please try again",
+    //   );
+    // } else {
+    //   setMessage(res);
+    // }
   }
   return (
     <form action={handleSubmit} className="flex w-full flex-col gap-4">
@@ -62,7 +62,7 @@ export default function Form() {
           required
         />
         <span
-          className="absolute right-8 top-3 cursor-pointer"
+          className="absolute right-4 top-3 cursor-pointer"
           onClick={() => setShowPass(!showPass)}
         >
           {showPass ? <FaEyeSlash /> : <FaRegEye />}

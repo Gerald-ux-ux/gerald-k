@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function SignUp() {
   return (
     <div className="flex animate-in flex-col items-center justify-center  ">
-      <CustomMessage text="Snippets will be available on Tuesday" />
+      {/* <CustomMessage text="Snippets will be available on Tuesday" /> */}
       <div className="flex flex-col items-center   justify-center gap-6">
         <TagLine />
 
