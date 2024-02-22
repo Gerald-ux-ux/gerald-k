@@ -73,8 +73,15 @@ export default function Snippets({ data }: SnippetProps) {
               </span>
             )}
 
-            <span className=" whitespace-nowrap rounded-lg bg-secondary px-4 py-2 text-sm text-primary">
-              {snippet.tags}
+            <span className=" flex flex-row gap-2 ">
+              {snippet.tags.map((tag: string) => (
+                <span
+                  key={tag}
+                  className=" whitespace-nowrap  rounded-lg bg-secondary p-1.5 text-sm text-primary "
+                >
+                  {tag}
+                </span>
+              ))}
             </span>
           </li>
         ))}

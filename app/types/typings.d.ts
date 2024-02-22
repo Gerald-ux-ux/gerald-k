@@ -3,7 +3,7 @@ export type CodeSnippets = {
   author: string;
   title: string;
   description: string;
-  code: { headings: string; content: string; _id: string }[];
+  code: { heading: string; content: string; _id: string }[];
   tags: string[];
   createdAt: string;
 };
