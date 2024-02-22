@@ -7,6 +7,7 @@ import Snippets from "./components/Snippets";
 import FeedBack from "./components/FeedBack";
 import { cookies } from "next/headers";
 import { getCodeSnippets } from "./actions/action";
+import { CiSearch } from "react-icons/ci";
 
 export const metadata: Metadata = {
   title: "Code-snippets | Gerald",
@@ -45,7 +46,18 @@ export default async function CodeSnippets() {
         </div>
 
         <div className="flex flex-col gap-12">
-          <Search query="" data={snippets} />
+          {/* <Search query="" data={snippets} /> */}
+          <form
+            action=""
+            className="flex w-full items-center gap-2 rounded-lg bg-secondary p-2 text-secondary md:p-3"
+          >
+            <CiSearch className="text-lg md:text-xl" />
+            <input
+              className="w-full bg-inherit focus:outline-none"
+              type="text"
+              placeholder="Search for a snippet..."
+            />
+          </form>
           <Snippets data={snippets} />
         </div>
       </main>

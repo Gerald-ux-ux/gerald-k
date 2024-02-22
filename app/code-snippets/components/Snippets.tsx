@@ -60,7 +60,7 @@ export default function Snippets({ data }: SnippetProps) {
               </span>
             </span>
             <span className="flex w-full items-center justify-between  text-sm md:text-base">
-              <p className="truncate">{snippet.description}</p>
+              <p className="truncate w-96 ">{snippet.description}</p>
 
               <p>{formatDate(snippet.createdAt)}</p>
             </span>
