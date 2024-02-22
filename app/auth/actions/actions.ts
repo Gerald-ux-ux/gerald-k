@@ -1,10 +1,8 @@
 "use server";
-import {
-  LOGIN_URL,
-  REGISTER_URL,
-} from "@/app/api/codes-snippets/auth/constants";
+
 import axios from "axios";
 import { encrypt, errorMessage, secretKey, setCookie } from "@/lib/secrete";
+import { LOGIN_URL, REGISTER_URL } from "../constants/lib";
 
 type User = {
   username: string;

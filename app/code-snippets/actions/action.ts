@@ -1,12 +1,18 @@
-"use server"
+"use server";
 
+import { CodeSnippets } from "@/app/types/typings";
 import { errorMessage } from "@/lib/secrete";
+import { GET_SNIPPETS } from "../constants/lib";
 
-
-export async function getCodeSnippets (): Promise<any[]> {
-    try {
-
-    } catch (error) {
-    return error?.response?.data || errorMessage;
+export async function getCodeSnippets(): Promise<CodeSnippets[]> {
+  try {
+    const res = await fetch(GET_SNIPPETS, { next: { tags: ["code"] } });
+    const data = await res.json();
+    if (data.success) {
+      return data.data;
     }
+    return [];
+  } catch (error: any) {
+    return error?.response?.data || errorMessage;
+  }
 }
