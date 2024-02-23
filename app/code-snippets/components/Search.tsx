@@ -1,15 +1,14 @@
 "use client";
 import { CiSearch } from "react-icons/ci";
 import { useState, useEffect } from "react";
+import { CodeSnippets } from "@/app/types/typings";
 
 type SearchProps = {
-  query?: string;
   data?: any;
-  onResultClick?: (result: string) => void;
 };
 
-export default function Search({ query, data, onResultClick }: SearchProps) {
-  const [searchQuery, setSearchQuery] = useState<string>(query || "");
+export default function Search({ data }: SearchProps) {
+  const [searchQuery, setSearchQuery] = useState<string>("");
   const [searchResults, setSearchResults] = useState<string[]>([]);
   const [resultClicked, setResultClicked] = useState<boolean>(false);
 
@@ -32,22 +31,35 @@ export default function Search({ query, data, onResultClick }: SearchProps) {
   //   }
   // }, [searchQuery]);
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  // useEffect(() => {
+  //    let
+  // })
+
+  const handleInputChange = (event: any) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+    }
     setSearchQuery(event.target.value);
   };
 
-  useEffect(() => {
-    if (data && searchQuery) {
-      const filteredResults = data?.filter((item: any) =>
+  let filteredResults = data
+    ? data?.filter((item: CodeSnippets) =>
         item.title.toLowerCase().includes(searchQuery.toLowerCase()),
-      );
-
-      setSearchResults(filteredResults);
-    } else {
-      setSearchResults([]);
+      )
+    : [];
+  useEffect(() => {
+    if (!data && !searchQuery) {
+      return;
     }
-
-    setResultClicked(false);
+    // if (data && searchQuery) {
+    //   const filteredResults = data?.filter((item: any) =>
+    //     item.title.toLowerCase().includes(searchQuery.toLowerCase()),
+    //   );
+    //   setSearchResults(filteredResults);
+    // } else {
+    //   setSearchResults([]);
+    // }
+    // setResultClicked(false);
   }, [data, searchQuery]);
 
   const handleResultsClick = (result: any) => {
@@ -56,11 +68,9 @@ export default function Search({ query, data, onResultClick }: SearchProps) {
     setResultClicked(true);
   };
 
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-    }
-  };
+  // const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+
+  // };
 
   return (
     <div className="relative">
@@ -72,7 +82,6 @@ export default function Search({ query, data, onResultClick }: SearchProps) {
         <input
           className="w-full bg-inherit focus:outline-none"
           onChange={handleInputChange}
-          onKeyPress={handleKeyPress}
           value={searchQuery}
           type="text"
           placeholder="Search for a snippet..."
