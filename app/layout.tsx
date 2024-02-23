@@ -5,7 +5,7 @@
  * Code splitting("https://nextjs.org/learn-pages-router/foundations/how-nextjs-works/code-splitting") so you will get to see different components inside other components
  * Make sure to head over to the next.config.js and configure your external links in the domain array
  */
-
+export const dynamic = "force-dynamic";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
