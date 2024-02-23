@@ -1,4 +1,6 @@
 "use client";
+export const dynamic = "force-dynamic";
+
 import { CiSearch } from "react-icons/ci";
 import { useEffect } from "react";
 import { CodeSnippets } from "@/app/types/typings";
@@ -8,11 +10,8 @@ type SearchProps = {
   data?: any;
 };
 
-
 export default function Search({ data }: SearchProps) {
-
-
-  console.log("data here", data)
+  console.log("data here", data);
   const {
     handleResultsClick,
     searchQuery,
