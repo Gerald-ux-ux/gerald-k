@@ -12,22 +12,8 @@ export default function Search({ data }: SearchProps) {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [searchResults, setSearchResults] = useState<string[]>([]);
   const [resultClicked, setResultClicked] = useState<boolean>(false);
-  console.log("clicked result", resultClicked);
 
-  /**
-   * Allows to access the params ot the url
-   * @example
-   * /dashboard/setting?tab='money'
-   * param.tab is 'money
-   */
   const searchParams = useSearchParams();
-
-  /**
-   * Reads the current URL's pathname
-   * @example
-   * /dashboard/setting
-   * would return /dashboard/setting
-   */
   const pathname = usePathname();
 
   const { replace } = useRouter();
@@ -65,10 +51,14 @@ export default function Search({ data }: SearchProps) {
     setResultClicked(true);
   };
 
+
   return (
     <div className="relative">
       <form
         action=""
+        onSubmit={(e: any) => {
+          e.preventDefault();
+        }}
         className="flex w-full items-center gap-2 rounded-lg bg-secondary p-2 text-secondary md:p-3"
       >
         <CiSearch className="text-lg md:text-xl" />
@@ -78,6 +68,7 @@ export default function Search({ data }: SearchProps) {
             handleSearch(e.target.value);
           }}
           value={searchQuery}
+          name="searchQuery"
           type="text"
           placeholder="Search for a snippet..."
         />
