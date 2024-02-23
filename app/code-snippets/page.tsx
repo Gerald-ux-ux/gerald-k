@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import AddSnippet from "./components/AddSnippet";
 import Search from "./components/Search";
 import Snippets from "./components/Snippets";
-// import { getCodeSnippets } from "./actions/action";
+import { getCodeSnippets } from "./actions/action";
 
 export const metadata: Metadata = {
   title: "Code-snippets | Gerald",
@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 };
 
 export default async function CodeSnippets() {
-  // const snippets = await getCodeSnippets();
+  const snippets = await getCodeSnippets();
 
-  // const data = snippets ? snippets : [];
+
 
   return (
     <>
@@ -39,7 +39,7 @@ export default async function CodeSnippets() {
         </div>
 
         <div className="flex flex-col gap-12">
-          {/* <Search data={data} /> */}
+          <Search data={snippets} />
           {/* <form
             action=""
             className="flex w-full items-center gap-2 rounded-lg bg-secondary p-2 text-secondary md:p-3"
@@ -51,7 +51,7 @@ export default async function CodeSnippets() {
               placeholder="Search for a snippet..."
             />
           </form> */}
-          {/* <Snippets data={data} /> */}
+          <Snippets data={snippets} />
         </div>
       </main>
     </>
