@@ -1,78 +1,51 @@
 "use client";
 import { CiSearch } from "react-icons/ci";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { CodeSnippets } from "@/app/types/typings";
+import useSearch from "../hooks/useSearch";
 
 type SearchProps = {
-  query?: string;
   data?: any;
-  onResultClick?: (result: string) => void;
 };
 
-export default function Search({ query, data, onResultClick }: SearchProps) {
-  const [searchQuery, setSearchQuery] = useState<string>(query || "");
-  const [searchResults, setSearchResults] = useState<string[]>([]);
-  const [resultClicked, setResultClicked] = useState<boolean>(false);
-
-  console.log("searchResults", searchResults);
-
-  // useEffect(() => {
-  //   let newSearchParams: URLSearchParams | undefined;
-
-  //   if (searchQuery) {
-  //     newSearchParams = new URLSearchParams();
-  //     newSearchParams.set("q", searchQuery);
-  //   }
-
-  //   if (newSearchParams) {
-  //     window.history.replaceState({}, "", `?${newSearchParams.toString()}`);
-  //   } else {
-  //     const params = new URLSearchParams(window.location.search);
-  //     params.delete("q");
-  //     window.history.replaceState({}, "", `?${params.toString()}`);
-  //   }
-  // }, [searchQuery]);
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(event.target.value);
-  };
+export default function Search({ data }: SearchProps) {
+  const {
+    handleResultsClick,
+    searchQuery,
+    setSearchResults,
+    resultClicked,
+    searchResults,
+    handleSearch,
+  } = useSearch();
 
   useEffect(() => {
     if (data && searchQuery) {
-      const filteredResults = data?.filter((item: any) =>
-        item.title.toLowerCase().includes(searchQuery.toLowerCase()),
-      );
-
+      const filteredResults = data
+        ? data?.filter((item: CodeSnippets) =>
+            item.title.toLowerCase().includes(searchQuery.toLowerCase()),
+          )
+        : [];
       setSearchResults(filteredResults);
     } else {
       setSearchResults([]);
     }
-
-    setResultClicked(false);
-  }, [data, searchQuery]);
-
-  const handleResultsClick = (result: any) => {
-    setSearchQuery(result);
-
-    setResultClicked(true);
-  };
-
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-    }
-  };
+  }, [data, searchQuery, setSearchResults]);
 
   return (
     <div className="relative">
       <form
         action=""
+        onSubmit={(e: any) => {
+          e.preventDefault();
+        }}
         className="flex w-full items-center gap-2 rounded-lg bg-secondary p-2 text-secondary md:p-3"
       >
         <CiSearch className="text-lg md:text-xl" />
         <input
           className="w-full bg-inherit focus:outline-none"
-          onChange={handleInputChange}
-          onKeyPress={handleKeyPress}
+          onChange={(e) => {
+            handleSearch(e.target.value);
+          }}
           value={searchQuery}
           type="text"
           placeholder="Search for a snippet..."
@@ -95,8 +68,8 @@ export default function Search({ query, data, onResultClick }: SearchProps) {
         </ul>
       )}
 
-      {!resultClicked && searchQuery && searchResults.length === 0 && (
-        <span className="absolute mt-2 w-full">
+      {resultClicked && searchQuery && searchResults.length === 0 && (
+        <span className="absolute mt-6 w-full">
           No results found for <strong>{searchQuery}</strong>
         </span>
       )}
