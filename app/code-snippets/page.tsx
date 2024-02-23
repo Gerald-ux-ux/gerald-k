@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 };
 
 export default async function CodeSnippets() {
-  const snippets = await getCodeSnippets();
+  // const snippets = await getCodeSnippets();
 
-  const data = snippets ? snippets : [];
+  // const data = snippets ? snippets : [];
 
   return (
     <>
