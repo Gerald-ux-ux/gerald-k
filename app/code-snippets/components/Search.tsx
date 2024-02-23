@@ -1,5 +1,4 @@
 "use client";
-export const dynamic = "force-dynamic";
 
 import { CiSearch } from "react-icons/ci";
 import { useEffect } from "react";
