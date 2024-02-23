@@ -1,34 +1,22 @@
 "use client";
 import { CiSearch } from "react-icons/ci";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { CodeSnippets } from "@/app/types/typings";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import useSearch from "../hooks/useSearch";
 
 type SearchProps = {
   data?: any;
 };
 
 export default function Search({ data }: SearchProps) {
-  const [searchQuery, setSearchQuery] = useState<string>("");
-  const [searchResults, setSearchResults] = useState<string[]>([]);
-  const [resultClicked, setResultClicked] = useState<boolean>(false);
-
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
-
-  const { replace } = useRouter();
-
-  function handleSearch(query: string) {
-    setSearchQuery(query);
-
-    const params = new URLSearchParams(searchParams);
-    if (query) {
-      params.set("query", query.toLocaleLowerCase());
-    } else {
-      params.delete("query");
-    }
-    replace(`${pathname}?${params.toString()}`);
-  }
+  const {
+    handleResultsClick,
+    searchQuery,
+    setSearchResults,
+    resultClicked,
+    searchResults,
+    handleSearch,
+  } = useSearch();
 
   useEffect(() => {
     if (data && searchQuery) {
@@ -41,16 +29,7 @@ export default function Search({ data }: SearchProps) {
     } else {
       setSearchResults([]);
     }
-  }, [data, searchQuery]);
-
-  const handleResultsClick = (result: any) => {
-    setSearchQuery(result);
-    const params = new URLSearchParams(searchParams);
-    params.set("query", result.toLowerCase());
-    replace(`${pathname}?${params.toString()}`);
-    setResultClicked(true);
-  };
-
+  }, [data, searchQuery, setSearchResults]);
 
   return (
     <div className="relative">
@@ -68,7 +47,6 @@ export default function Search({ data }: SearchProps) {
             handleSearch(e.target.value);
           }}
           value={searchQuery}
-          name="searchQuery"
           type="text"
           placeholder="Search for a snippet..."
         />
