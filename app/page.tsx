@@ -1,4 +1,4 @@
-export const dynamic = "auto";
+export const dynamic = "force-dynamic";
 
 import Image from "next/image";
 import Avatar from "@/public/geraldavatar.jpeg";
