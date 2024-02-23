@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import AddSnippet from "./components/AddSnippet";
 import Search from "./components/Search";
 import Snippets from "./components/Snippets";
-import { getCodeSnippets } from "./actions/action";
+// import { getCodeSnippets } from "./actions/action";
 
 export const metadata: Metadata = {
   title: "Code-snippets | Gerald",
