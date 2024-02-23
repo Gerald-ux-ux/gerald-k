@@ -1,4 +1,5 @@
 "use client";
+
 import { CiSearch } from "react-icons/ci";
 import { useEffect } from "react";
 import { CodeSnippets } from "@/app/types/typings";
@@ -9,6 +10,7 @@ type SearchProps = {
 };
 
 export default function Search({ data }: SearchProps) {
+  console.log("data here", data);
   const {
     handleResultsClick,
     searchQuery,
@@ -20,7 +22,7 @@ export default function Search({ data }: SearchProps) {
 
   useEffect(() => {
     if (data && searchQuery) {
-      const filteredResults = data
+      const filteredResults = Array.isArray(data)
         ? data?.filter((item: CodeSnippets) =>
             item.title.toLowerCase().includes(searchQuery.toLowerCase()),
           )

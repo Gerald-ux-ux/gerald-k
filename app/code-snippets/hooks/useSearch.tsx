@@ -1,4 +1,5 @@
 "use client";
+
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
@@ -23,8 +24,6 @@ export default function useSearch() {
     }
     replace(`${pathname}?${params.toString()}`);
   }
-
-
 
   const handleResultsClick = (result: any) => {
     setSearchQuery(result);

@@ -5,6 +5,9 @@ const nextConfig = {
   experimental: {
     serverActions: true,
   },
+  reactStrictMode: true,
+  swcMinify: true,
+ 
 };
 
 module.exports = withContentlayer(nextConfig);

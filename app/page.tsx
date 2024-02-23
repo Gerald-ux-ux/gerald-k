@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import Avatar from "@/public/geraldavatar.jpeg";
 import Stats from "@/components/Stats";
@@ -10,12 +11,15 @@ import ProjectComponent from "./projects/components/projects";
 
 export default function Home() {
   const posts = allPosts
-    .sort(
-      (a, b) =>
-        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
-    )
-    // 3 most recent  (for now)
-    .filter((_, i) => i < 3);
+    ? allPosts
+        ?.sort(
+          (a, b) =>
+            new Date(b.publishedAt).getTime() -
+            new Date(a.publishedAt).getTime(),
+        )
+        // 3 most recent  (for now)
+        ?.filter((_, i) => i < 3)
+    : [];
 
   return (
     <div className="mx-auto flex max-w-[700px] flex-col gap-16 px-6 md:gap-24">
