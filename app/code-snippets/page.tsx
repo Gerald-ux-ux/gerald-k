@@ -39,7 +39,7 @@ export default async function CodeSnippets() {
         </div>
 
         <div className="flex flex-col gap-12">
-          <Search data={data} />
+          {/* <Search data={data} /> */}
           {/* <form
             action=""
             className="flex w-full items-center gap-2 rounded-lg bg-secondary p-2 text-secondary md:p-3"
@@ -51,7 +51,7 @@ export default async function CodeSnippets() {
               placeholder="Search for a snippet..."
             />
           </form> */}
-          <Snippets data={data} />
+          {/* <Snippets data={data} /> */}
         </div>
       </main>
     </>
