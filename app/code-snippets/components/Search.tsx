@@ -2,6 +2,7 @@
 import { CiSearch } from "react-icons/ci";
 import { useState, useEffect } from "react";
 import { CodeSnippets } from "@/app/types/typings";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 type SearchProps = {
   data?: any;
@@ -11,66 +12,58 @@ export default function Search({ data }: SearchProps) {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [searchResults, setSearchResults] = useState<string[]>([]);
   const [resultClicked, setResultClicked] = useState<boolean>(false);
+  console.log("clicked result", resultClicked);
 
-  console.log("searchResults", searchResults);
+  /**
+   * Allows to access the params ot the url
+   * @example
+   * /dashboard/setting?tab='money'
+   * param.tab is 'money
+   */
+  const searchParams = useSearchParams();
 
-  // useEffect(() => {
-  //   let newSearchParams: URLSearchParams | undefined;
+  /**
+   * Reads the current URL's pathname
+   * @example
+   * /dashboard/setting
+   * would return /dashboard/setting
+   */
+  const pathname = usePathname();
 
-  //   if (searchQuery) {
-  //     newSearchParams = new URLSearchParams();
-  //     newSearchParams.set("q", searchQuery);
-  //   }
+  const { replace } = useRouter();
 
-  //   if (newSearchParams) {
-  //     window.history.replaceState({}, "", `?${newSearchParams.toString()}`);
-  //   } else {
-  //     const params = new URLSearchParams(window.location.search);
-  //     params.delete("q");
-  //     window.history.replaceState({}, "", `?${params.toString()}`);
-  //   }
-  // }, [searchQuery]);
+  function handleSearch(query: string) {
+    setSearchQuery(query);
 
-  // useEffect(() => {
-  //    let
-  // })
-
-  const handleInputChange = (event: any) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
+    const params = new URLSearchParams(searchParams);
+    if (query) {
+      params.set("query", query.toLocaleLowerCase());
+    } else {
+      params.delete("query");
     }
-    setSearchQuery(event.target.value);
-  };
+    replace(`${pathname}?${params.toString()}`);
+  }
 
-  let filteredResults = data
-    ? data?.filter((item: CodeSnippets) =>
-        item.title.toLowerCase().includes(searchQuery.toLowerCase()),
-      )
-    : [];
   useEffect(() => {
-    if (!data && !searchQuery) {
-      return;
+    if (data && searchQuery) {
+      const filteredResults = data
+        ? data?.filter((item: CodeSnippets) =>
+            item.title.toLowerCase().includes(searchQuery.toLowerCase()),
+          )
+        : [];
+      setSearchResults(filteredResults);
+    } else {
+      setSearchResults([]);
     }
-    // if (data && searchQuery) {
-    //   const filteredResults = data?.filter((item: any) =>
-    //     item.title.toLowerCase().includes(searchQuery.toLowerCase()),
-    //   );
-    //   setSearchResults(filteredResults);
-    // } else {
-    //   setSearchResults([]);
-    // }
-    // setResultClicked(false);
   }, [data, searchQuery]);
 
   const handleResultsClick = (result: any) => {
     setSearchQuery(result);
-
+    const params = new URLSearchParams(searchParams);
+    params.set("query", result.toLowerCase());
+    replace(`${pathname}?${params.toString()}`);
     setResultClicked(true);
   };
-
-  // const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-
-  // };
 
   return (
     <div className="relative">
@@ -81,7 +74,9 @@ export default function Search({ data }: SearchProps) {
         <CiSearch className="text-lg md:text-xl" />
         <input
           className="w-full bg-inherit focus:outline-none"
-          onChange={handleInputChange}
+          onChange={(e) => {
+            handleSearch(e.target.value);
+          }}
           value={searchQuery}
           type="text"
           placeholder="Search for a snippet..."
@@ -104,8 +99,8 @@ export default function Search({ data }: SearchProps) {
         </ul>
       )}
 
-      {!resultClicked && searchQuery && searchResults.length === 0 && (
-        <span className="absolute mt-2 w-full">
+      {resultClicked && searchQuery && searchResults.length === 0 && (
+        <span className="absolute mt-6 w-full">
           No results found for <strong>{searchQuery}</strong>
         </span>
       )}
