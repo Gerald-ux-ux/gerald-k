@@ -1,16 +1,21 @@
-## [gerald.io](https://gerald-k.vercel.app/)
+## [g-k.io](https://gerald-k.vercel.app/)
+
 Welcome to my personal portfolio website designed to be minimalistic, clean and most importantly a place to learn from.
 
 ## Technologies
 
 #### backend:
+
 - [Next.js](nextjs.org) / TypeScript
 - [MDX](https://mdxjs.com) / Contentlayer (CMS)
 - [Vercel](vercel.com) (Hosting)
 - [PlanetScale](http://planetscale.com) (Database)
 - [Prisma](https://www.prisma.io) (ORM)
+- [Node] (https://nodejs.org/en)
+- [MongoDB] (https://www.mongodb.com/)
 
- #### frontend:
+#### frontend:
+
 - [Tailwind CSS](https://tailwindcss.com) (utility styles)
 - [Headless UI](https://headlessui.com) (UI components)
 - [Radix UI Colors](https://www.radix-ui.com/colors) (color system)
@@ -32,4 +37,3 @@ Copy `.env.example` to `.env.local` || `.env` and update the environment variabl
 Start the development server with `pnpm dev` || `npm run dev --turbo`.
 
 <!-- `````` -->
-
