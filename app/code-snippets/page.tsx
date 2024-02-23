@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import AddSnippet from "./components/AddSnippet";
 import Search from "./components/Search";
 import Snippets from "./components/Snippets";
-import { cookies } from "next/headers";
+// import { cookies } from "next/headers";
 import { getCodeSnippets } from "./actions/action";
 
 export const metadata: Metadata = {
@@ -16,7 +16,7 @@ export default async function CodeSnippets() {
   const snippets = await getCodeSnippets();
 
   const data = snippets ? snippets : [];
-  const isAuth = cookies().get("auth");
+  // const isAuth = cookies().get("auth");
 
   return (
     <>
@@ -30,8 +30,8 @@ export default async function CodeSnippets() {
             </div>
             {/* <FeedBack /> */}
           </span>
-
-          <AddSnippet isAuth={isAuth} message="" />
+          {/* Add auth */}
+          <AddSnippet message="" />
         </div>
 
         <div className="">

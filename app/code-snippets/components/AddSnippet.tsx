@@ -5,8 +5,8 @@ import { useState } from "react";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 
 type AddSnippetsProps = {
-  isAuth: { name: string; value: string } | undefined;
-  message: string;
+  isAuth?: { name: string; value: string } | undefined;
+  message?: string;
 };
 
 export default function AddSnippet({ message, isAuth }: AddSnippetsProps) {
