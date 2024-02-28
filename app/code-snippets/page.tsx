@@ -1,20 +1,18 @@
-"use client";
 import { PAGE_HEADER } from "@/lib/uiConstants";
-// import { Metadata } from "next";
+import { Metadata } from "next";
 
 import AddSnippet from "./components/AddSnippet";
 import Search from "./components/Search";
 import Snippets from "./components/Snippets";
 import { getCodeSnippets } from "./actions/action";
-import { useFetchSnippets } from "./hooks/useFetchSnippets";
 
-// export const metadata: Metadata = {
-//   title: "Code-snippets | Gerald",
-//   description: "Search for code snippets",
-// };
+export const metadata: Metadata = {
+  title: "Code-snippets | Gerald",
+  description: "Search for code snippets",
+};
 
-export default function CodeSnippets() {
-  const { snippets, loading, error } = useFetchSnippets();
+export default async function CodeSnippets() {
+  const snippets = await getCodeSnippets();
 
   return (
     <>
@@ -41,7 +39,7 @@ export default function CodeSnippets() {
         <div className="flex flex-col gap-12">
           <Search data={snippets} />
 
-          <Snippets data={snippets} loading={loading} />
+          <Snippets data={snippets} />
         </div>
       </main>
     </>
