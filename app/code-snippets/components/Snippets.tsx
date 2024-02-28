@@ -10,10 +10,9 @@ import { useSearchParams } from "next/navigation";
 type SnippetProps = {
   data?: any;
   setSearchQuery?: string;
-  loading: boolean
 };
 
-export default function Snippets({ data, loading }: SnippetProps) {
+export default function Snippets({ data }: SnippetProps) {
   const [expanded, setExpanded] = useState<boolean[]>([]);
 
   const searchQuery = useSearchParams();
@@ -26,10 +25,6 @@ export default function Snippets({ data, loading }: SnippetProps) {
       return newExpanded;
     });
   };
-
-  if(loading){
-    return <div>Loading...</div>
-  }
 
   return (
     <ul className="animated-list flex w-full flex-col gap-2">
