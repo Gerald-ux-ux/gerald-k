@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import Avatar from "@/public/geraldavatar.jpeg";
 import Stats from "@/components/Stats";
@@ -89,3 +88,4 @@ export default function Home() {
     </div>
   );
 }
+export const dynamic = "force-dynamic";

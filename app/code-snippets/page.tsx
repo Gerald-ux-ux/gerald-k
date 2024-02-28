@@ -1,20 +1,20 @@
+"use client";
 import { PAGE_HEADER } from "@/lib/uiConstants";
-import { Metadata } from "next";
+// import { Metadata } from "next";
 
 import AddSnippet from "./components/AddSnippet";
 import Search from "./components/Search";
 import Snippets from "./components/Snippets";
 import { getCodeSnippets } from "./actions/action";
+import { useFetchSnippets } from "./hooks/useFetchSnippets";
 
-export const metadata: Metadata = {
-  title: "Code-snippets | Gerald",
-  description: "Search for code snippets",
-};
+// export const metadata: Metadata = {
+//   title: "Code-snippets | Gerald",
+//   description: "Search for code snippets",
+// };
 
-export default async function CodeSnippets() {
-  const snippets = await getCodeSnippets();
-
-  const data = snippets ? snippets : [];
+export default function CodeSnippets() {
+  const { snippets, loading, error } = useFetchSnippets();
 
   return (
     <>
@@ -39,19 +39,9 @@ export default async function CodeSnippets() {
         </div>
 
         <div className="flex flex-col gap-12">
-          <Search data={data} />
-          {/* <form
-            action=""
-            className="flex w-full items-center gap-2 rounded-lg bg-secondary p-2 text-secondary md:p-3"
-          >
-            <CiSearch className="text-lg md:text-xl" />
-            <input
-              className="w-full bg-inherit focus:outline-none"
-              type="text"
-              placeholder="Search for a snippet..."
-            />
-          </form> */}
-          <Snippets data={data} />
+          <Search data={snippets} />
+
+          <Snippets data={snippets} loading={loading} />
         </div>
       </main>
     </>
