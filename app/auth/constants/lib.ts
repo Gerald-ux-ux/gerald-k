@@ -1,4 +1,4 @@
-import { baseUrl } from "@/app/api/codes-snippets/baseUrl";
+import { baseUrl } from "@/app/api/baseUrl";
 
-export const REGISTER_URL = `${baseUrl}/auth/register`;
-export const LOGIN_URL = `${baseUrl}/auth/login`;
+export const Register = `${baseUrl}/auth/register`;
+export const Login = `${baseUrl}/auth/login`;
