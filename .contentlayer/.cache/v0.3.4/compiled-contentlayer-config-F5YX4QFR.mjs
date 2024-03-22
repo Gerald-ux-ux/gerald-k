@@ -1,68 +1,57 @@
+// contentlayer.config.ts
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import rehypePrism from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
 import GithubSlugger from "github-slugger";
-
-const getSlug = (filePath: string) => path.basename(filePath, ".mdx");
-
-const postComputeFields = {
+var getSlug = (filePath) => path.basename(filePath, ".mdx");
+var postComputeFields = {
   slug: {
     type: "string",
-    resolve: (doc: any) => getSlug(doc._raw.sourceFileName),
+    resolve: (doc) => getSlug(doc._raw.sourceFileName)
   },
   image: {
     type: "string",
-    resolve: (doc: any) =>
-      `/blog/${getSlug(doc._raw.sourceFileName)}/image.png`,
+    resolve: (doc) => `/blog/${getSlug(doc._raw.sourceFileName)}/image.png`
   },
   og: {
     type: "string",
-    resolve: (doc: any) =>
-      `/blog/${getSlug(doc._raw.sourceFileName)}/image.png`,
+    resolve: (doc) => `/blog/${getSlug(doc._raw.sourceFileName)}/image.png`
   },
-
   headings: {
     type: "json",
-    resolve: async (doc: any) => {
+    resolve: async (doc) => {
       const slugger = new GithubSlugger();
       const regXHeader = /\n\n(?<flag>#{1,6})\s+(?<content>.+)/g;
-
       if (doc.body.raw && doc.body.raw.trim() !== "") {
         const matches = Array.from(doc.body.raw.matchAll(regXHeader));
-
-        const headings = matches.map(({ groups }: any) => {
+        const headings = matches.map(({ groups }) => {
           const flag = groups?.flag;
           const content = groups?.content;
           return {
             heading: flag?.length,
             text: content,
-            slug: content ? slugger.slug(content) : undefined,
+            slug: content ? slugger.slug(content) : void 0
           };
         });
-
         return headings;
       }
-
       return [];
-    },
-  },
+    }
+  }
 };
-
-const projectComputeFields = {
+var projectComputeFields = {
   slug: {
     type: "string",
-    resolve: (doc: any) => getSlug(doc._raw.sourceFileName),
+    resolve: (doc) => getSlug(doc._raw.sourceFileName)
   },
   image: {
     type: "string",
-    resolve: (doc: any) =>
-      `/projects/${getSlug(doc._raw.sourceFileName)}/image.png`,
-  },
+    resolve: (doc) => `/projects/${getSlug(doc._raw.sourceFileName)}/image.png`
+  }
 };
-
-const getDocumentType = (filePath: string) => {
+var getDocumentType = (filePath) => {
   if (filePath.includes("blog")) {
     return {
       name: "Post",
@@ -73,9 +62,9 @@ const getDocumentType = (filePath: string) => {
         updatedAt: { type: "string", required: false },
         tags: { type: "json", required: false },
         featured: { type: "boolean", required: false },
-        shortTitle: { type: "string", required: false },
+        shortTitle: { type: "string", required: false }
       },
-      computedFields: postComputeFields,
+      computedFields: postComputeFields
     };
   } else if (filePath.includes("project")) {
     return {
@@ -85,29 +74,20 @@ const getDocumentType = (filePath: string) => {
         description: { type: "string", required: true },
         time: { type: "string", required: true },
         url: { type: "string", required: false },
-        tags: { type: "json", required: false },
+        tags: { type: "json", required: false }
       },
-      computedFields: projectComputeFields,
+      computedFields: projectComputeFields
     };
   }
 };
-
-const parseFile = (filePath: string) => {
+var parseFile = (filePath) => {
   const fileContent = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(fileContent);
   return { ...data, body: content };
 };
-
-type DocumentType = {
-  name: string;
-  fields: Record<string, any>;
-  computedFields: Record<string, any>;
-};
-
-export const makeSource = ({ contentDirPath }: { contentDirPath: string }) => {
-  const documentTypes: DocumentType[] = [];
-
-  const walkSync = (dir: string) => {
+var makeSource = ({ contentDirPath }) => {
+  const documentTypes = [];
+  const walkSync = (dir) => {
     const files = fs.readdirSync(dir);
     files.forEach((file) => {
       const filePath = path.join(dir, file);
@@ -123,17 +103,19 @@ export const makeSource = ({ contentDirPath }: { contentDirPath: string }) => {
       }
     });
   };
-
   walkSync(contentDirPath);
-
   return {
     documentTypes,
     mdx: {
-      rehypePlugins: [rehypePrism, rehypeSlug],
-    },
+      rehypePlugins: [rehypePrism, rehypeSlug]
+    }
   };
 };
-
-export default makeSource({
-  contentDirPath: "content",
+var contentlayer_config_default = makeSource({
+  contentDirPath: "content"
 });
+export {
+  contentlayer_config_default as default,
+  makeSource
+};
+//# sourceMappingURL=compiled-contentlayer-config-F5YX4QFR.mjs.map
