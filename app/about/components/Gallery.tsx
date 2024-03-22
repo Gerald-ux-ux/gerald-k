@@ -6,9 +6,9 @@ import localFont from "next/font/local";
 import clsx from "clsx";
 import Hallo from "@/components/ui/Halo";
 import me from "@/public/gallery/me.jpg";
-import music from "@/public/gallery/makingmusic.jpg";
 import code from "@/public/gallery/code.jpg";
 import image from "@/public/gallery/image.jpg";
+import birthday from "@/public/gallery/birthday.jpeg";
 
 const ticketingFont = localFont({
   src: "../../../public/ticketing.woff2",
@@ -138,27 +138,6 @@ export default function Gallery() {
     <>
       <section className="relative flex h-[268px] gap-4">
         <Photo
-          src={image}
-          meta="2023-02-11"
-          alt="me"
-          width={250}
-          height={259}
-          rotate={-6}
-          left={-86}
-          index={1}
-        />
-        <Photo
-          src={music}
-          meta="2023-09-04"
-          alt="me making music"
-          width={220}
-          height={250}
-          rotate={6.3}
-          left={150}
-          index={2}
-          flipDirection="left"
-        />
-        <Photo
           src={code}
           meta="2022-05-20"
           alt="Coding..."
@@ -169,13 +148,35 @@ export default function Gallery() {
           index={3}
         />
         <Photo
+          src={image}
+          meta="2023-02-11"
+          alt="me"
+          width={250}
+          height={259}
+          rotate={-6}
+          left={-86}
+          index={1}
+        />
+        <Photo
+          src={birthday}
+          meta="2023-09-04"
+          alt="me making music"
+          width={280}
+          height={250}
+          rotate={180}
+          left={120}
+          index={2}
+          flipDirection="left"
+        />
+
+        <Photo
           src={me}
           meta="2022-12-28"
           alt="an old picture of me"
           width={240}
           height={240}
           rotate={7.6}
-          left={560}
+          left={580}
           index={4}
           flipDirection="left"
         />
