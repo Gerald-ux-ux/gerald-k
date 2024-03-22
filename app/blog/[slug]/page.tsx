@@ -122,7 +122,7 @@ export default async function Post({ params }: { params: any }) {
                       ? `(updated ${formatDate(post.publishedAt)})`
                       : ""}
 
-                    <ViewCounter views={views} post={post} />
+                    <ViewCounter views={views} />
                   </div>
                 </div>
               </div>
