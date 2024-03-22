@@ -82,10 +82,6 @@ export default async function Post({ params }: { params: any }) {
 
   const views = await getSpecificBlogViews(post.slug);
 
-  console.log("viewsHere", views);
-
-  console.log("Post img", post?.image);
-
   return (
     <>
       <OnThisPage headings={post.headings} />
@@ -126,7 +122,7 @@ export default async function Post({ params }: { params: any }) {
                       ? `(updated ${formatDate(post.publishedAt)})`
                       : ""}
 
-                    <ViewCounter viewsHere={views} post={post} />
+                    <ViewCounter views={views} post={post} />
                   </div>
                 </div>
               </div>
