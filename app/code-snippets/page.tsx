@@ -5,6 +5,8 @@ import AddSnippet from "./components/AddSnippet";
 import Search from "./components/Search";
 import Snippets from "./components/Snippets";
 import { getCodeSnippets } from "./actions/action";
+import { Suspense } from "react";
+import FeedBack from "./components/FeedBack";
 
 export const metadata: Metadata = {
   title: "Code-snippets | Gerald",
@@ -24,7 +26,7 @@ export default async function CodeSnippets() {
               <span className="h-2 w-2 rounded-full   bg-[#0070f3] p-0.5" />
               Beta
             </div>
-            {/* <FeedBack /> */}
+            <FeedBack />
           </span>
           {/* Add auth */}
           <AddSnippet message="" />
@@ -38,8 +40,9 @@ export default async function CodeSnippets() {
 
         <div className="flex flex-col gap-12">
           <Search data={snippets} />
-
-          <Snippets data={snippets} />
+          <Suspense fallback={<>Loading.....</>}>
+            <Snippets data={snippets} />
+          </Suspense>
         </div>
       </main>
     </>

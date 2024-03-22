@@ -50,6 +50,7 @@
     "react-flip-numbers": "^3.0.8",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.11.0",
+    "react-loading-skeleton": "^3.4.0",
     "react-parallax-tilt": "^1.7.175",
     "react-tooltip": "^5.25.2",
     "rehype-autolink-headings": "^7.1.0",
