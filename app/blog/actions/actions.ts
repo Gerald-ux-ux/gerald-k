@@ -13,9 +13,8 @@ export async function getTotalBlogViews(): Promise<BlogViews> {
   }
 }
 
-
-export async function getSpecificBlogViews (slug: string) {
-     try {
+export async function getSpecificBlogViews(slug: string) {
+  try {
     const response = await fetch(Specific_Blog_Views(slug));
     const data = await response.json();
     return data;
