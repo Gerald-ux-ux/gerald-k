@@ -9,7 +9,6 @@ export async function getTotalBlogViews(): Promise<BlogViews> {
     const data = await response.json();
     return data;
   } catch (error: any) {
-    console.error("error in fetching blogs", error);
     return error.response?.data;
   }
 }
@@ -21,7 +20,6 @@ export async function getSpecificBlogViews (slug: string) {
     const data = await response.json();
     return data;
   } catch (error: any) {
-    console.error("error in fetching blogs", error);
     return error.response?.data;
   }
 }
