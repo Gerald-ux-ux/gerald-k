@@ -7,8 +7,10 @@ import Link from "next/link";
 import { allPosts } from "@/.contentlayer/generated";
 import { PAGE_HEADER } from "@/lib/uiConstants";
 import ProjectComponent from "./projects/components/projects";
+import { getTotalBlogViews } from "./blog/actions/actions";
+import { BlogViews } from "./blog/types/blogs-type";
 
-export default function Home() {
+export default async function Home() {
   const posts = allPosts
     ? allPosts
         ?.sort(
@@ -19,6 +21,8 @@ export default function Home() {
         // 3 most recent  (for now)
         ?.filter((_, i) => i < 3)
     : [];
+
+  const views = await getTotalBlogViews();
 
   return (
     <div className="mx-auto flex max-w-[700px] flex-col gap-16 px-6 md:gap-24">
@@ -38,7 +42,7 @@ export default function Home() {
             alt="A photo of Gerald"
             className="rounded-full"
           />
-          <Stats />
+          <Stats views={views} />
         </div>
 
         <p className="max-w-lg animate-in text-primary">
@@ -88,4 +92,3 @@ export default function Home() {
     </div>
   );
 }
-export const dynamic = "force-dynamic";
