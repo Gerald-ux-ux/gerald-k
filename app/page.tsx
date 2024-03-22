@@ -61,9 +61,18 @@ export default async function Home() {
 
       <div className="flex animate-in flex-col gap-12  ">
         {/* <Projects /> */}
-        <h2 className="animate-in text-xl  font-semibold tracking-tight">
-          My innovative ventures
-        </h2>
+        <span className="mx-auto flex w-full  items-center justify-between ">
+          <h2 className="animate-in text-xl  font-semibold tracking-tight">
+            My innovative ventures
+          </h2>
+
+          <Link
+            href="/projects"
+            className="hover:text-primar text-secondary underline underline-offset-4"
+          >
+            View All
+          </Link>
+        </span>
 
         <ProjectComponent />
 
