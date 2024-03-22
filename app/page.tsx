@@ -8,7 +8,6 @@ import { allPosts } from "@/.contentlayer/generated";
 import { PAGE_HEADER } from "@/lib/uiConstants";
 import ProjectComponent from "./projects/components/projects";
 import { getTotalBlogViews } from "./blog/actions/actions";
-import { BlogViews } from "./blog/types/blogs-type";
 
 export default async function Home() {
   const posts = allPosts
@@ -47,8 +46,8 @@ export default async function Home() {
 
         <p className="max-w-lg animate-in text-primary">
           Hi, I&apos;m Gerald kamau, a software engineer who loves and enjoys
-          writing code. In addition to coding, I also do music production and
-          occasionally upload some beats on{" "}
+          writing code. In addition to coding, I&apos;m a big watching formula
+          one fan, I create music and occasionally upload some beats on{" "}
           <a
             href="https://www.youtube.com/@geralddd.g/featured"
             className="underline"
