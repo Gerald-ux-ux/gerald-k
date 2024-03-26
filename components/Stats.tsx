@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FaGithub, FaYoutube } from "react-icons/fa";
+import { FaYoutube } from "react-icons/fa";
 import FlipNumber from "./FlipNumber";
 
 import useSWR from "swr";
@@ -9,19 +9,11 @@ import Fetcher from "@/lib/fetcher";
 import { addCommas } from "@/lib/utils";
 import { ArrowTrendingUpIcon } from "@heroicons/react/20/solid";
 
-/** Github */
-// export function Github() {
-//   const { data: githubData, error: githubDataError } = useSWR(
-//     `/api/github?username=gerald-ux-ux`,
-//     Fetcher,
-//   );
+import { BlogViews } from "@/app/blog/types/blogs-type";
 
-//   console.log("It is", githubData);
-
-//   if (githubDataError) return <div>failed to load</div>;
-
-//   return addCommas(githubData?.stars);
-// }
+type Props = {
+  views: BlogViews;
+};
 
 /** Youtube */
 export function Youtube() {
@@ -34,19 +26,8 @@ export function Youtube() {
   return addCommas(youtubeData?.subscribers);
 }
 
-export default function Stats() {
-  const username = "gerald-ux-ux";
-  const url = `api/github?username=${username}`;
-
-  const { data: youtubeData, error: youtubeDataError } = useSWR(
-    `api/youtube`,
-    Fetcher,
-  );
-
-  const { data: postsData, error: postsError } = useSWR(
-    `/api/prisma/hitsTotal`,
-    Fetcher,
-  );
+export default function Stats({ views }: Props) {
+  const { data: youtubeData } = useSWR(`api/youtube`, Fetcher);
 
   return (
     <ul className="animated-list space-y-2">
@@ -54,9 +35,7 @@ export default function Stats() {
         <Link className="flex items-center gap-3" href="/blog">
           <ArrowTrendingUpIcon className="h-5 w-5" />
           <div className="flex items-center gap-2">
-            <FlipNumber>
-              {postsData ? addCommas(148) : addCommas(148)}
-            </FlipNumber>
+            <FlipNumber>{views ? addCommas(views.total) : "000"}</FlipNumber>
             <span> Total Blog Views</span>
           </div>
         </Link>

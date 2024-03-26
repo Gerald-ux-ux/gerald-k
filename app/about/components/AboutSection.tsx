@@ -23,7 +23,7 @@ export default function AboutSection() {
         </p>
         <p>
           The few times that I&apos;m not at my desk, i am out spending time
-          with my family or playing basketball
+          with my family or watching formula one
         </p>
       </div>
     </Section>

@@ -6,6 +6,8 @@ import { FaRegUser } from "react-icons/fa";
 import SnippetCodeList from "./SnippetCodeList";
 import { useSearchParams } from "next/navigation";
 // import { useSearchParams } from "next/navigation";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 type SnippetProps = {
   data?: any;

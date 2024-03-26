@@ -1,12 +1,12 @@
 "use server";
 
 import axios from "axios";
-import { encrypt, errorMessage, secretKey, setCookie } from "@/lib/secrete";
+import { encrypt, errorMessage, secretKey } from "@/lib/secrete";
 import { Login, Register } from "../constants/lib";
+import { cookies } from "next/headers";
 
 export async function registerUser(formData: FormData) {
   try {
-
     const data = {
       email: formData.get("email"),
       username: formData.get("name"),
@@ -18,8 +18,17 @@ export async function registerUser(formData: FormData) {
     const user = { username, email, _id };
     const encryptedUserInfo = encrypt(JSON.stringify(user), secretKey!);
     const encryptedSession = encrypt(sessionToken, secretKey as string);
-    setCookie("user_info", encryptedUserInfo);
-    setCookie("auth", encryptedSession);
+
+    cookies().set("user-info", encryptedUserInfo, {
+      expires: new Date(Date.now() + 1000 * 60 * 60 * 2),
+      httpOnly: true,
+    });
+
+    cookies().set("user-info", encryptedSession, {
+      expires: new Date(Date.now() + 1000 * 60 * 60 * 2),
+      httpOnly: true,
+    });
+
     return res.data;
   } catch (error: any) {
     return error?.response?.data || errorMessage;
@@ -38,8 +47,15 @@ export const loginUser = async (formData: FormData) => {
     const user = { username, email, _id };
     const encryptedUserInfo = encrypt(JSON.stringify(user), secretKey!);
     const encryptedSession = encrypt(sessionToken, secretKey!);
-    setCookie("user_info", encryptedUserInfo);
-    setCookie("auth", encryptedSession);
+    cookies().set("user-info", encryptedUserInfo, {
+      expires: new Date(Date.now() + 1000 * 60 * 60 * 2),
+      httpOnly: true,
+    });
+
+    cookies().set("user-info", encryptedSession, {
+      expires: new Date(Date.now() + 1000 * 60 * 60 * 2),
+      httpOnly: true,
+    });
     return res.data;
   } catch (error: any) {
     return error?.response?.data || errorMessage;

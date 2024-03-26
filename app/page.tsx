@@ -7,8 +7,9 @@ import Link from "next/link";
 import { allPosts } from "@/.contentlayer/generated";
 import { PAGE_HEADER } from "@/lib/uiConstants";
 import ProjectComponent from "./projects/components/projects";
+import { getTotalBlogViews } from "./blog/actions/actions";
 
-export default function Home() {
+export default async function Home() {
   const posts = allPosts
     ? allPosts
         ?.sort(
@@ -19,6 +20,8 @@ export default function Home() {
         // 3 most recent  (for now)
         ?.filter((_, i) => i < 3)
     : [];
+
+  const views = await getTotalBlogViews();
 
   return (
     <div className="mx-auto flex max-w-[700px] flex-col gap-16 px-6 md:gap-24">
@@ -38,13 +41,13 @@ export default function Home() {
             alt="A photo of Gerald"
             className="rounded-full"
           />
-          <Stats />
+          <Stats views={views} />
         </div>
 
         <p className="max-w-lg animate-in text-primary">
           Hi, I&apos;m Gerald kamau, a software engineer who loves and enjoys
-          writing code. In addition to coding, I also do music production and
-          occasionally upload some beats on{" "}
+          writing code. In addition to coding, I&apos;m a big watching formula
+          one fan, I create music and occasionally upload some beats on{" "}
           <a
             href="https://www.youtube.com/@geralddd.g/featured"
             className="underline"
@@ -58,9 +61,18 @@ export default function Home() {
 
       <div className="flex animate-in flex-col gap-12  ">
         {/* <Projects /> */}
-        <h2 className="animate-in text-xl  font-semibold tracking-tight">
-          My innovative ventures
-        </h2>
+        <span className="mx-auto flex w-full  items-center justify-between ">
+          <h2 className="animate-in text-xl  font-semibold tracking-tight">
+            My innovative ventures
+          </h2>
+
+          <Link
+            href="/projects"
+            className="hover:text-primar text-secondary underline underline-offset-4"
+          >
+            View All
+          </Link>
+        </span>
 
         <ProjectComponent />
 
@@ -88,4 +100,3 @@ export default function Home() {
     </div>
   );
 }
-export const dynamic = "force-dynamic";
