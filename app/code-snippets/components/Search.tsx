@@ -10,7 +10,6 @@ type SearchProps = {
 };
 
 export default function Search({ data }: SearchProps) {
-  console.log("data here", data);
   const {
     handleResultsClick,
     searchQuery,

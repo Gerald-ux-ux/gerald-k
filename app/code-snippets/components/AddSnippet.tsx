@@ -5,19 +5,17 @@ import { useState } from "react";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 
 type AddSnippetsProps = {
-  isAuth?: { name: string; value: string } | undefined;
+  isAuth: boolean;
   message?: string;
 };
 
 export default function AddSnippet({ message, isAuth }: AddSnippetsProps) {
-  const handleUploadSnippetFrom = () => {
-
-      router.push("/auth/login");
-
-  };
-
   const router = useRouter();
-
+  const handleUploadSnippetFrom = () => {
+    if (isAuth === false) {
+      router.push("/auth/login?message=Login to add a snippet");
+    }
+  };
   return (
     <>
       <div>

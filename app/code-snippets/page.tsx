@@ -7,6 +7,7 @@ import Snippets from "./components/Snippets";
 import { getCodeSnippets } from "./actions/action";
 import { Suspense } from "react";
 import FeedBack from "./components/FeedBack";
+import { checkLogin } from "../auth/actions/actions";
 
 export const metadata: Metadata = {
   title: "Code-snippets | Gerald",
@@ -15,6 +16,10 @@ export const metadata: Metadata = {
 
 export default async function CodeSnippets() {
   const snippets = await getCodeSnippets();
+
+  const isAuth = await checkLogin()
+
+  console.log("is auth", isAuth);
 
   return (
     <>
@@ -29,7 +34,7 @@ export default async function CodeSnippets() {
             <FeedBack />
           </span>
           {/* Add auth */}
-          <AddSnippet message="" />
+          <AddSnippet message="" isAuth={isAuth} />
         </div>
 
         <div className="">

@@ -1,14 +1,14 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { SlInfo } from "react-icons/sl";
 
-type CustomMessageProps = {
-  text: string;
-};
-
-function CustomMessage({ text }: CustomMessageProps) {
+function CustomMessage() {
   const [showMessage, setShowMessage] = useState(true);
+
+  const params = useSearchParams();
+  const text = params.get("message");
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -16,11 +16,13 @@ function CustomMessage({ text }: CustomMessageProps) {
     }, 3000);
 
     return () => clearTimeout(timeoutId);
-  }, []);
+  }, [text]);
 
   const handleDismiss = () => {
     setShowMessage(false);
   };
+
+  if (!text) return;
 
   return (
     <>
@@ -30,7 +32,7 @@ function CustomMessage({ text }: CustomMessageProps) {
             <div className="flex items-start">
               <div className="ml-3 flex w-full flex-1 items-center gap-2">
                 <SlInfo className="text-primary" />
-                <p className="text-sm font-bold text-primary">{text}</p>
+                <p className="text-sm font-bold text-primary">{text && text}</p>
               </div>
             </div>
           </div>

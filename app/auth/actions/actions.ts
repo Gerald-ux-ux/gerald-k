@@ -24,7 +24,7 @@ export async function registerUser(formData: FormData) {
       httpOnly: true,
     });
 
-    cookies().set("user-info", encryptedSession, {
+    cookies().set("auth", encryptedSession, {
       expires: new Date(Date.now() + 1000 * 60 * 60 * 2),
       httpOnly: true,
     });
@@ -52,7 +52,7 @@ export const loginUser = async (formData: FormData) => {
       httpOnly: true,
     });
 
-    cookies().set("user-info", encryptedSession, {
+    cookies().set("auth", encryptedSession, {
       expires: new Date(Date.now() + 1000 * 60 * 60 * 2),
       httpOnly: true,
     });
@@ -61,3 +61,19 @@ export const loginUser = async (formData: FormData) => {
     return error?.response?.data || errorMessage;
   }
 };
+
+export async function checkLogin() {
+  try {
+    const cookieSore = cookies();
+
+    const isAuthenticated = cookieSore.get("auth");
+
+    if (isAuthenticated) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    return false;
+  }
+}
