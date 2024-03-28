@@ -36,7 +36,7 @@ export default function FeedBack({ isAuth }: Props) {
 
   return (
     <Dialog open={open} onOpenChange={() => setOpen(!open)}>
-      <DialogTrigger asChild>
+      <DialogTrigger  asChild>
         <button className={clsx("rounded-lg bg-secondary p-1")}>
           Feedback
         </button>
@@ -52,7 +52,7 @@ export default function FeedBack({ isAuth }: Props) {
         <form action={handleSubmit}>
           <textarea
             className={clsx(INPUT_STYLE, "w-full ")}
-            placeholder="Leave some feedback on the code-snippet feature to help improve the  experience"
+            placeholder="Leave so∫me feedback on the code-snippet feature to help improve the  experience"
             rows={4}
             name="text"
           />
