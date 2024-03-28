@@ -21,6 +21,7 @@ export default function Search({ data }: SearchProps) {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
+
   useEffect(() => {
     // Handler to call on window 'keydown' event
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -44,7 +45,7 @@ export default function Search({ data }: SearchProps) {
     if (data && searchQuery) {
       const filteredResults = Array.isArray(data)
         ? data?.filter((item: CodeSnippets) =>
-            item.title.toLowerCase().includes(searchQuery.toLowerCase()),
+            item?.title?.toLowerCase()?.includes(searchQuery?.toLowerCase()),
           )
         : [];
       setSearchResults(filteredResults);
