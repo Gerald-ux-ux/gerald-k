@@ -1,7 +1,7 @@
 "use client";
 
 import { CiSearch } from "react-icons/ci";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { CodeSnippets } from "@/app/types/typings";
 import useSearch from "../hooks/useSearch";
 
@@ -19,6 +19,27 @@ export default function Search({ data }: SearchProps) {
     handleSearch,
   } = useSearch();
 
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    // Handler to call on window 'keydown' event
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Check if Command+K was pressed
+      if (e.metaKey && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        // If the ref is attached to the input, focus it
+        inputRef.current?.focus();
+      }
+    };
+
+    // Attach the event listener to the window
+    window.addEventListener("keydown", handleKeyDown);
+
+    // Remove the event listener on cleanup
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
   useEffect(() => {
     if (data && searchQuery) {
       const filteredResults = Array.isArray(data)
@@ -49,8 +70,10 @@ export default function Search({ data }: SearchProps) {
           }}
           value={searchQuery}
           type="text"
+          ref={inputRef}
           placeholder="Search for a snippet..."
         />
+        ⌘+K
       </form>
 
       {!resultClicked && searchResults && searchResults.length > 0 && (
