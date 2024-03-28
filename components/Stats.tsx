@@ -35,7 +35,7 @@ export default function Stats({ views }: Props) {
         <Link className="flex items-center gap-3" href="/blog">
           <ArrowTrendingUpIcon className="h-5 w-5" />
           <div className="flex items-center gap-2">
-            <FlipNumber>{views ? addCommas(views.total) : "000"}</FlipNumber>
+            <FlipNumber>{views ? addCommas(views?.total) : "000"}</FlipNumber>
             <span> Total Blog Views</span>
           </div>
         </Link>

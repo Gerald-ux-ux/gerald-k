@@ -28,12 +28,13 @@ export default function Snippets({ data }: SnippetProps) {
     });
   };
 
+
   return (
     <ul className="animated-list flex w-full flex-col gap-2">
       {data
         ?.filter((snippet: any) =>
           searchItem
-            ? snippet.title.toLowerCase().includes(searchItem.toLowerCase())
+            ? snippet?.title?.toLowerCase()?.includes(searchItem.toLowerCase())
             : true,
         )
         .map((snippet: any, i: number) => (
@@ -44,7 +45,7 @@ export default function Snippets({ data }: SnippetProps) {
           >
             <span className="flex w-full  items-center justify-between ">
               <p className=" text-sm font-medium tracking-tight md:text-xl md:font-semibold">
-                {snippet.title} ({snippet.code.length})
+                {snippet?.title} ({snippet.code.length})
               </p>
 
               <span className="hidden items-center gap-2 text-xs md:flex md:text-base">
