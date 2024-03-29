@@ -11,6 +11,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import clsx from "clsx";
 import SnippetView from "./chat/components/snippet-view";
+import SnippetTags from "./tags";
 
 type SnippetProps = {
   data?: any;
@@ -83,16 +84,7 @@ export default function Snippets({ data }: SnippetProps) {
                 </span>
               )}
 
-              <span className=" flex flex-row gap-2 ">
-                {snippet?.tags?.map((tag: string) => (
-                  <span
-                    key={tag}
-                    className=" whitespace-nowrap  rounded-lg bg-secondary p-1.5 text-sm text-primary "
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </span>
+              <SnippetTags snippet={snippet} />
             </li>
           </div>
         ))}
