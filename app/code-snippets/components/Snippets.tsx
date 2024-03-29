@@ -37,72 +37,65 @@ export default function Snippets({ data }: SnippetProps) {
   const pathname = usePathname();
 
   const handleClicked = (snippet: any) => {
-    console.log("snippet clicked", snippet);
     setClicked(snippet);
-    let params = new URLSearchParams(searchParams);
-    params.set("snippet", snippet._id);
-    return router.push(`${pathname}?${params}`);
+    // let params = new URLSearchParams(searchParams);
+    // params.set("snippet", snippet._id);
+    return router.push(`${pathname}/${snippet._id}`);
   };
 
   return (
     <ul className="animated-list flex w-full flex-col gap-2">
-      <Dialog>
-        {data
-          ?.filter((snippet: any) =>
-            searchItem
-              ? snippet?.title
-                  ?.toLowerCase()
-                  ?.includes(searchItem.toLowerCase())
-              : true,
-          )
-          .map((snippet: any, i: number) => (
-            <DialogTrigger key={i} onClick={() => handleClicked(snippet)}>
-              <SnippetView snippet={clicked} />
+      {data
+        ?.filter((snippet: any) =>
+          searchItem
+            ? snippet?.title?.toLowerCase()?.includes(searchItem.toLowerCase())
+            : true,
+        )
+        .map((snippet: any, i: number) => (
+          <div key={i} onClick={() => handleClicked(snippet)}>
+            <li className="flex cursor-pointer flex-col gap-3 rounded-lg border border-secondaryA  p-2">
+              <span className="flex w-full items-center  justify-between ">
+                <p className=" text-sm font-medium tracking-tight md:text-xl md:font-semibold">
+                  {snippet?.title} ({snippet.code.length})
+                </p>
 
-              <li className="flex cursor-pointer flex-col gap-3 rounded-lg border border-secondaryA  p-2">
-                <span className="flex w-full items-center  justify-between ">
-                  <p className=" text-sm font-medium tracking-tight md:text-xl md:font-semibold">
-                    {snippet?.title} ({snippet.code.length})
-                  </p>
+                <span className="hidden items-center gap-2 text-xs md:flex md:text-base">
+                  <p className="w-full">{snippet.author}</p>
 
-                  <span className="hidden items-center gap-2 text-xs md:flex md:text-base">
-                    <p className="w-full">{snippet.author}</p>
-
-                    <span className=" hidden rounded-full bg-secondaryA p-2  md:block">
-                      <FaRegUser />
-                    </span>
+                  <span className=" hidden rounded-full bg-secondaryA p-2  md:block">
+                    <FaRegUser />
                   </span>
                 </span>
-                <span className="flex w-full items-center justify-between  text-sm md:text-base">
-                  <p className="w-96 truncate text-start ">
-                    {snippet.description}
-                  </p>
+              </span>
+              <span className="flex w-full items-center justify-between  text-sm md:text-base">
+                <p className="w-96 truncate text-start ">
+                  {snippet.description}
+                </p>
 
-                  <p>{formatDate(snippet.createdAt)}</p>
-                </span>
+                <p>{formatDate(snippet.createdAt)}</p>
+              </span>
 
-                {expanded[i] && (
-                  <span>
-                    {snippet.code.map((code: any) => (
-                      <SnippetCodeList code={code} key={code._id} />
-                    ))}
-                  </span>
-                )}
-
-                <span className=" flex flex-row gap-2 ">
-                  {snippet?.tags?.map((tag: string) => (
-                    <span
-                      key={tag}
-                      className=" whitespace-nowrap  rounded-lg bg-secondary p-1.5 text-sm text-primary "
-                    >
-                      {tag}
-                    </span>
+              {expanded[i] && (
+                <span>
+                  {snippet.code.map((code: any) => (
+                    <SnippetCodeList code={code} key={code._id} />
                   ))}
                 </span>
-              </li>
-            </DialogTrigger>
-          ))}
-      </Dialog>
+              )}
+
+              <span className=" flex flex-row gap-2 ">
+                {snippet?.tags?.map((tag: string) => (
+                  <span
+                    key={tag}
+                    className=" whitespace-nowrap  rounded-lg bg-secondary p-1.5 text-sm text-primary "
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </span>
+            </li>
+          </div>
+        ))}
     </ul>
   );
 }

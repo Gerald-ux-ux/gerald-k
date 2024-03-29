@@ -7,6 +7,7 @@ import { jsonData } from "../json/data";
 import axios from "axios";
 
 export async function getCodeSnippets(): Promise<CodeSnippets[]> {
+  // console.log("being called")
   try {
     const res = await fetch(GET_SNIPPETS, { next: { tags: ["code"] } });
     const data = await res.json();
