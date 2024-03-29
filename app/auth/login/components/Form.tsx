@@ -5,7 +5,7 @@ import { loginUser } from "../../actions/actions";
 import { redirect } from "next/navigation";
 
 // @ts-ignore
-import { experimental_useFormStatus as useFormStatus } from "react-dom";
+import {   useFormStatus } from "react-dom";
 import { AUTH_BTN } from "../../styles/authStyles";
 import BtnLoader from "@/components/ui/btn-loader";
 
@@ -23,16 +23,16 @@ function Form() {
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (formData: FormData) => {
-    // const res = await loginUser(formData);
-    // if (res.success) {
-    //   redirect("/code-snippets");
-    // } else if (res?.success === false) {
-    //   setMessage(
-    //     res?.message || "An unexpected error occurred, please try again",
-    //   );
-    // } else {
-    //   setMessage(res);
-    // }
+    const res = await loginUser(formData);
+    if (res.success) {
+      redirect("/code-snippets");
+    } else if (res?.success === false) {
+      setMessage(
+        res?.message || "An unexpected error occurred, please try again",
+      );
+    } else {
+      setMessage(res);
+    }
   };
 
   return (

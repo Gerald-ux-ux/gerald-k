@@ -1,42 +1,35 @@
 "use server";
 
 import axios from "axios";
-import { encrypt, errorMessage, secretKey, setCookie } from "@/lib/secrete";
-import { LOGIN_URL, REGISTER_URL } from "../constants/lib";
-
-type User = {
-  username: string;
-  email: string;
-  _id: string;
-};
-
+import { encrypt, errorMessage, secretKey } from "@/lib/secrete";
+import { Login, Register } from "../constants/lib";
+import { cookies } from "next/headers";
 
 export async function registerUser(formData: FormData) {
   try {
-    /** Essentially gets the user inputs
-     * Like an onchange event
-     */
-    const email = formData.get("email");
-    const username = formData.get("name");
-    const password = formData.get("password");
+    const data = {
+      email: formData.get("email"),
+      username: formData.get("name"),
+      password: formData.get("password"),
+    };
+    const res = await axios.post(Register, data);
+    const { username, email, _id } = res?.data?.data;
+    const { sessionToken } = res?.data?.data?.authentication;
+    const user = { username, email, _id };
+    const encryptedUserInfo = encrypt(JSON.stringify(user), secretKey!);
+    const encryptedSession = encrypt(sessionToken, secretKey as string);
 
-    const res = await axios.post(REGISTER_URL, {
-      email,
-      username,
-      password,
+    cookies().set("user-info", encryptedUserInfo, {
+      expires: new Date(Date.now() + 1000 * 60 * 60 * 2),
+      httpOnly: true,
     });
 
-    if (res.data.success) {
-      const { username, email, _id } = res?.data?.data;
-      const { sessionToken } = res?.data?.data?.authentication;
+    cookies().set("auth", encryptedSession, {
+      expires: new Date(Date.now() + 1000 * 60 * 60 * 2),
+      httpOnly: true,
+    });
 
-      const user: User = { username, email, _id };
-      const encryptedUserInfo = encrypt(JSON.stringify(user), secretKey!);
-      const encryptedSession = encrypt(sessionToken, secretKey as string);
-      setCookie("user_info", encryptedUserInfo);
-      setCookie("auth", encryptedSession);
-      return res.data;
-    }
+    return res.data;
   } catch (error: any) {
     return error?.response?.data || errorMessage;
   }
@@ -44,25 +37,43 @@ export async function registerUser(formData: FormData) {
 
 export const loginUser = async (formData: FormData) => {
   try {
-    const email = formData.get("email");
-    const password = formData.get("password");
-    const res = await axios.post(LOGIN_URL, {
-      email,
-      password,
+    const data = {
+      email: formData.get("email"),
+      password: formData.get("password"),
+    };
+    const res = await axios.post(Login, data);
+    const { username, email, _id } = res.data?.data;
+    const { sessionToken } = res?.data.data?.authentication;
+    const user = { username, email, _id };
+    const encryptedUserInfo = encrypt(JSON.stringify(user), secretKey!);
+    const encryptedSession = encrypt(sessionToken, secretKey!);
+    cookies().set("user-info", encryptedUserInfo, {
+      expires: new Date(Date.now() + 1000 * 60 * 60 * 2),
+      httpOnly: true,
     });
 
-    if (res.data.success) {
-      const { username, email, _id } = res.data?.data;
-      const { sessionToken } = res?.data.data?.authentication;
-
-      const user: User = { username, email, _id };
-      const encryptedUserInfo = encrypt(JSON.stringify(user), secretKey!);
-      const encryptedSession = encrypt(sessionToken, secretKey!);
-      setCookie("user_info", encryptedUserInfo);
-      setCookie("auth", encryptedSession);
-      return res.data;
-    }
+    cookies().set("auth", encryptedSession, {
+      expires: new Date(Date.now() + 1000 * 60 * 60 * 2),
+      httpOnly: true,
+    });
+    return res.data;
   } catch (error: any) {
     return error?.response?.data || errorMessage;
   }
 };
+
+export async function checkLogin() {
+  try {
+    const cookieSore = cookies();
+
+    const isAuthenticated = cookieSore.get("auth");
+
+    if (isAuthenticated) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    return false;
+  }
+}

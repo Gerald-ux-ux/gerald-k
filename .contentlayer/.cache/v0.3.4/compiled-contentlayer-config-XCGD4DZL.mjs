@@ -1,11 +1,8 @@
 // contentlayer.config.ts
-import {
-  defineDocumentType,
-  makeSource
-} from "contentlayer/source-files";
+import { defineDocumentType, makeSource } from "contentlayer/source-files";
+import GithubSlugger from "github-slugger";
 import rehypePrism from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
-import GithubSlugger from "github-slugger";
 var getSlug = (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, "");
 var postComputeFields = {
   slug: {
@@ -101,4 +98,4 @@ export {
   Project,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-BNZ5FVBX.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-XCGD4DZL.mjs.map

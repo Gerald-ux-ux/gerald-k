@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function Login() {
   return (
     <div className="flex animate-in flex-col items-center justify-center   ">
-      {/* <CustomMessage text="Snippets will be available on Tuesday" /> */}
+      <CustomMessage/>
       <div className="flex flex-col items-center justify-center gap-6">
         <TagLine />
 

@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 import { useState } from "react";
 
 // @ts-ignore
-import { experimental_useFormStatus as useFormStatus } from "react-dom";
+import { useFormStatus } from "react-dom";
 import { FaEyeSlash, FaRegEye } from "react-icons/fa";
 import clsx from "clsx";
 import BtnLoader from "@/components/ui/btn-loader";

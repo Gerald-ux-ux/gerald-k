@@ -5,10 +5,9 @@ import { ReactNode } from "react";
 import localFont from "next/font/local";
 import clsx from "clsx";
 import Hallo from "@/components/ui/Halo";
-import me from "@/public/gallery/me.jpg";
-import music from "@/public/gallery/makingmusic.jpg";
-import code from "@/public/gallery/code.jpg";
+import outside from "@/public/gallery/outside.jpeg";
 import image from "@/public/gallery/image.jpg";
+import meet from "@/public/gallery/meet.jpeg";
 
 const ticketingFont = localFont({
   src: "../../../public/ticketing.woff2",
@@ -138,6 +137,16 @@ export default function Gallery() {
     <>
       <section className="relative flex h-[268px] gap-4">
         <Photo
+          src={outside}
+          meta="2022-05-20"
+          alt="Coding..."
+          width={240}
+          height={235}
+          rotate={-5.4}
+          left={360}
+          index={3}
+        />
+        <Photo
           src={image}
           meta="2023-02-11"
           alt="me"
@@ -148,37 +157,17 @@ export default function Gallery() {
           index={1}
         />
         <Photo
-          src={music}
+          src={meet}
           meta="2023-09-04"
           alt="me making music"
-          width={220}
-          height={250}
-          rotate={6.3}
-          left={150}
+          width={250}
+          height={270}
+          rotate={10}
+          left={120}
           index={2}
           flipDirection="left"
         />
-        <Photo
-          src={code}
-          meta="2022-05-20"
-          alt="Coding..."
-          width={240}
-          height={235}
-          rotate={-5.4}
-          left={360}
-          index={3}
-        />
-        <Photo
-          src={me}
-          meta="2022-12-28"
-          alt="an old picture of me"
-          width={240}
-          height={240}
-          rotate={7.6}
-          left={560}
-          index={4}
-          flipDirection="left"
-        />
+
       </section>
     </>
   );

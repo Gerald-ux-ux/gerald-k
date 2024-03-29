@@ -1,82 +1,80 @@
 "use client";
+
 import { CiSearch } from "react-icons/ci";
-import { useState, useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { CodeSnippets } from "@/app/types/typings";
+import useSearch from "../hooks/useSearch";
 
 type SearchProps = {
-  query?: string;
   data?: any;
-  onResultClick?: (result: string) => void;
 };
 
-export default function Search({ query, data, onResultClick }: SearchProps) {
-  const [searchQuery, setSearchQuery] = useState<string>(query || "");
-  const [searchResults, setSearchResults] = useState<string[]>([]);
-  const [resultClicked, setResultClicked] = useState<boolean>(false);
+export default function Search({ data }: SearchProps) {
+  const {
+    handleResultsClick,
+    searchQuery,
+    setSearchResults,
+    resultClicked,
+    searchResults,
+    handleSearch,
+  } = useSearch();
 
-  console.log("searchResults", searchResults);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  // useEffect(() => {
-  //   let newSearchParams: URLSearchParams | undefined;
-
-  //   if (searchQuery) {
-  //     newSearchParams = new URLSearchParams();
-  //     newSearchParams.set("q", searchQuery);
-  //   }
-
-  //   if (newSearchParams) {
-  //     window.history.replaceState({}, "", `?${newSearchParams.toString()}`);
-  //   } else {
-  //     const params = new URLSearchParams(window.location.search);
-  //     params.delete("q");
-  //     window.history.replaceState({}, "", `?${params.toString()}`);
-  //   }
-  // }, [searchQuery]);
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(event.target.value);
-  };
 
   useEffect(() => {
-    if (data && searchQuery) {
-      const filteredResults = data?.filter((item: any) =>
-        item.title.toLowerCase().includes(searchQuery.toLowerCase()),
-      );
+    // Handler to call on window 'keydown' event
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Check if Command+K was pressed
+      if (e.metaKey && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        // If the ref is attached to the input, focus it
+        inputRef.current?.focus();
+      }
+    };
 
+    // Attach the event listener to the window
+    window.addEventListener("keydown", handleKeyDown);
+
+    // Remove the event listener on cleanup
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+  useEffect(() => {
+    if (data && searchQuery) {
+      const filteredResults = Array.isArray(data)
+        ? data?.filter((item: CodeSnippets) =>
+            item?.title?.toLowerCase()?.includes(searchQuery?.toLowerCase()),
+          )
+        : [];
       setSearchResults(filteredResults);
     } else {
       setSearchResults([]);
     }
-
-    setResultClicked(false);
-  }, [data, searchQuery]);
-
-  const handleResultsClick = (result: any) => {
-    setSearchQuery(result);
-
-    setResultClicked(true);
-  };
-
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-    }
-  };
+  }, [data, searchQuery, setSearchResults]);
 
   return (
     <div className="relative">
       <form
         action=""
+        onSubmit={(e: any) => {
+          e.preventDefault();
+        }}
         className="flex w-full items-center gap-2 rounded-lg bg-secondary p-2 text-secondary md:p-3"
       >
         <CiSearch className="text-lg md:text-xl" />
         <input
           className="w-full bg-inherit focus:outline-none"
-          onChange={handleInputChange}
-          onKeyPress={handleKeyPress}
+          onChange={(e) => {
+            handleSearch(e.target.value);
+          }}
           value={searchQuery}
           type="text"
+          ref={inputRef}
           placeholder="Search for a snippet..."
         />
+        ⌘+K
       </form>
 
       {!resultClicked && searchResults && searchResults.length > 0 && (
@@ -95,8 +93,8 @@ export default function Search({ query, data, onResultClick }: SearchProps) {
         </ul>
       )}
 
-      {!resultClicked && searchQuery && searchResults.length === 0 && (
-        <span className="absolute mt-2 w-full">
+      {resultClicked && searchQuery && searchResults.length === 0 && (
+        <span className="absolute mt-6 w-full">
           No results found for <strong>{searchQuery}</strong>
         </span>
       )}

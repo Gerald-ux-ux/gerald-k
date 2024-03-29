@@ -13,6 +13,7 @@ import MdxWrapper from "../components/ui/MdxWrapper";
 import Link from "next/link";
 import OnThisPage from "../components/ui/OnThisPage";
 import Tags from "@/components/Tags";
+import { getSpecificBlogViews } from "../actions/actions";
 
 type PostProps = {
   post: PostType;
@@ -79,7 +80,7 @@ export default async function Post({ params }: { params: any }) {
     notFound();
   }
 
-  console.log("Post img", post?.image);
+  const views = await getSpecificBlogViews(post.slug);
 
   return (
     <>
@@ -92,7 +93,7 @@ export default async function Post({ params }: { params: any }) {
               style={{ "--index": 1 } as React.CSSProperties}
             >
               <div className="max-w-xl space-y-2">
-                <h1 className="text-xl md:text-3xl font-bold leading-tight tracking-tight text-primary">
+                <h1 className="text-xl font-bold leading-tight tracking-tight text-primary md:text-3xl">
                   {post.title}
                 </h1>
                 <p className="text-lg leading-tight text-secondary md:text-xl">
@@ -121,7 +122,7 @@ export default async function Post({ params }: { params: any }) {
                       ? `(updated ${formatDate(post.publishedAt)})`
                       : ""}
 
-                    <ViewCounter post={post} />
+                    <ViewCounter views={views} />
                   </div>
                 </div>
               </div>

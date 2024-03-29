@@ -1,9 +1,6 @@
 import { Metadata } from "next";
-import { signupInputs } from "../components/AuthInputs";
-// import Form from "../login/components/Form";
 import Info from "../components/Info";
 import TagLine from "../components/TagLine";
-import CustomMessage from "../components/CustomMessage";
 import Form from "./components/Form";
 
 export const metadata: Metadata = {
@@ -14,7 +11,6 @@ export const metadata: Metadata = {
 export default function SignUp() {
   return (
     <div className="flex animate-in flex-col items-center justify-center  ">
-      {/* <CustomMessage text="Snippets will be available on Tuesday" /> */}
       <div className="flex flex-col items-center   justify-center gap-6">
         <TagLine />
 

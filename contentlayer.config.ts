@@ -1,11 +1,8 @@
-import {
-  defineDocumentType,
-  makeSource,
-  ComputedFields,
-} from "contentlayer/source-files"; // eslint-disable-line
+import { ComputedFields, defineDocumentType, makeSource } from "contentlayer/source-files";
+import GithubSlugger from "github-slugger";
+// eslint-disable-line
 import rehypePrism from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
-import GithubSlugger from "github-slugger";
 
 const getSlug = (doc: any) => doc._raw.sourceFileName.replace(/\.mdx$/, "");
 
@@ -24,7 +21,6 @@ const postComputeFields: ComputedFields = {
     type: "string",
     resolve: (doc) => `/blog/${getSlug(doc)}/image.png`,
   },
-
 
   /**This section is not necessary. I personally added it to make the UX(user-experience) better so people can easily jump into a heading title
    * References: ["https://delba.dev/blog/next-blog-structured-mdx-content-with-contentlayer#complete-code", "https://youtu.be/YC6LqIYVHxI?si=iyYVOlqRuAXSpjiS"]
