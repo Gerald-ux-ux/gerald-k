@@ -1,3 +1,9 @@
+import { notFound } from "next/navigation";
+import { getCodeSnippets } from "../actions/action";
+import { Snippet } from "../types/snippets";
+
+// Module-level variable to store the snippets.
+let specificSnippet: Snippet[] | null = null;
 type Props = {
   params: {
     title: string;
@@ -6,31 +12,38 @@ type Props = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-import { getCodeSnippets } from "../actions/action";
-
-// This could be a separate module that you import where needed
-let cachedSnippets: any = null;
-
-async function fetchAndCacheSnippets() {
-  if (!cachedSnippets) {
-    cachedSnippets = await getCodeSnippets();
+async function getCodeSnippetsHere() {
+  if (specificSnippet === null) {
+    specificSnippet = await getCodeSnippets();
   }
-  return cachedSnippets;
+  return specificSnippet;
 }
 
 export async function generateMetadata({ params }: Props) {
-  const snippets = await fetchAndCacheSnippets();
-  const code = snippets.find((snippet: any) => snippet._id === params.slug);
+  if (!specificSnippet) {
+    await getCodeSnippetsHere();
+  }
+  const code = specificSnippet?.find((snippet) => snippet?._id === params.slug);
 
+  // Assuming code is not undefined, but you might want to handle that case as well.
   return {
     title: `${code?.title} | ${code?.author}`,
     description: `${code?.description}`,
   };
 }
 
-export default async function Code({ params}: Props) {
-  const snippets = await fetchAndCacheSnippets();
-  const code = snippets.find((snippet: any) => snippet._id === params.slug);
+export default async function Code({ params }: { params: any }) {
+  if (!specificSnippet) {
+    await getCodeSnippetsHere();
+  }
+  const code = specificSnippet?.find((snippet) => snippet?._id === params.slug);
 
-  return <div className="">Yes</div>;
+  if (!code) return notFound();
+  return (
+    <div className="">
+      <h1 className="text-xl font-bold leading-tight tracking-tight text-primary md:text-3xl">
+        {code.title}
+      </h1>
+    </div>
+  );
 }
