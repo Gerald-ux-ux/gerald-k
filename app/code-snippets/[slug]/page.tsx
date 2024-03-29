@@ -40,10 +40,10 @@ export default async function Code({ params }: { params: any }) {
     await getCodeSnippetsHere();
   }
   const code = specificSnippet?.find((snippet) => snippet?._id === params.slug);
-  console.log("code", code?.code.length);
+  console.log("code", code);
   if (!code) return notFound();
   return (
-    <div className="mx-auto flex  max-w-[700px]  flex-col  gap-4">
+    <div className="mx-auto flex w-6/12 max-w-[700px]  flex-col gap-4   p-5">
       <h1 className="text-xl font-bold leading-tight tracking-tight text-primary md:text-3xl">
         {code.title} ({code.code.length})
       </h1>
@@ -55,19 +55,12 @@ export default async function Code({ params }: { params: any }) {
       </span>
       <h6 className="text-secondary">{code.author}</h6>
       <div className="prose prose-neutral animate-in">
-        <ul className="animated-list flex w-full flex-col  justify-start ">
-          {code.code.map((tag) => (
-            <li
-              className="flex w-full cursor-pointer flex-col  gap-3 rounded-lg border border-secondaryA p-2"
-              key={tag._id}
-            >
-              {tag.heading}
-            </li>
-          ))}
-        </ul>
-
-          <SnippetTags snippet={code} />
-       
+        {code.code.map((tag) => (
+          <pre className="border border-primary bg-inherit" key={tag._id}>
+            <code className="text-sm text-primary">{tag.heading}</code>
+          </pre>
+        ))}
+        <SnippetTags snippet={code} />
       </div>
     </div>
   );

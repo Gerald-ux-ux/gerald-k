@@ -9,7 +9,7 @@ type SnippetCodeListProps = {
 };
 
 export default function SnippetCodeList({ code, key }: SnippetCodeListProps) {
-  console.log("SnippetCodeList");
+  console.log("SnippetCodeList", code);
   return (
     <Accordion.Root
       type="single"
@@ -20,7 +20,13 @@ export default function SnippetCodeList({ code, key }: SnippetCodeListProps) {
       <div key={key} className="flex w-full justify-between gap-2 p-2.5">
         <Accordion.Item value="snippet" className="flex w-full justify-between">
           <Accordion.Trigger className="text-sm md:text-base">
-            <code>{code.heading}</code>
+            <span>
+              {code.code.map((heading: any) => (
+                <span key={heading}>
+                  <span className="font-bold">{heading.heading}</span>
+                </span>
+              ))}
+            </span>
           </Accordion.Trigger>
 
           {/* Right side action items */}
