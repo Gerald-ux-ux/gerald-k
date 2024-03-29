@@ -5,8 +5,10 @@ import { errorMessage } from "@/lib/secrete";
 import { GET_SNIPPETS, Give_Feedback } from "../constants/lib";
 import { jsonData } from "../json/data";
 import axios from "axios";
+import { Snippet } from "../types/snippets";
 
-export async function getCodeSnippets(): Promise<CodeSnippets[]> {
+export async function getCodeSnippets(): Promise<Snippet[]> {
+  console.log("being called one");
   try {
     const res = await fetch(GET_SNIPPETS, { next: { tags: ["code"] } });
     const data = await res.json();
