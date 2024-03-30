@@ -55,7 +55,7 @@ export default async function Code({ params }: { params: any }) {
         </span>
       </span>
       <h6 className="text-secondary">{code.author}</h6>
-      <div className=" prose prose-neutral flex animate-in flex-col gap-4">
+      <div className=" prose prose-neutral flex animate-in flex-col gap-2">
         {code.code.map((tag) => (
           <SnippetCodeList code={tag} key={tag._id} />
         ))}

@@ -14,9 +14,13 @@ type SnippetCodeListProps = {
 
 export default function SnippetCodeList({ code }: SnippetCodeListProps) {
   return (
-    <Accordion type="single" collapsible>
-      <AccordionItem value="item-1">
-        <AccordionTrigger className="flex w-full  items-center justify-between">
+    <Accordion
+      type="single"
+      className="m"
+      collapsible
+    >
+      <AccordionItem value="item-1" className="mt-0">
+        <AccordionTrigger className="b flex  w-full items-center  justify-between ">
           {code.heading}
           <div className="mr-4  flex w-full  cursor-pointer items-center  justify-end gap-2 ">
             <IoClipboardOutline />
