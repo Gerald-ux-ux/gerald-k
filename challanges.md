@@ -2,13 +2,10 @@
 
 ### _Dependencies_
 
-##### Using Next 14.0.1
+##### Using Contentlayer
 
-- This version of next is pretty amazing and it has some cool features
-- Although I had to downgrade to a lower version due to
-  `content layer` not being compatible with Next 14 [Read More](https://github.com/contentlayerdev/contentlayer/issues/575#issuecomment-1823718698)
-- I advise to use a different solution like [mintlify](https://mintlify.com/). I will also be switching to [mintlify](https://mintlify.com) because content layer is not being maintained
-- Referee to this [issue](https://github.com/contentlayerdev/contentlayer/issues/575) before installing content layer
+- Check package.json for compatibility issues with next 14.0.1
+
 
 ### _Environment setup_
 
