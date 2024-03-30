@@ -1,36 +1,28 @@
 "use client";
 import { IoClipboardOutline } from "react-icons/io5";
 import { BsThreeDots } from "react-icons/bs";
-import * as Accordion from "@radix-ui/react-accordion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 type SnippetCodeListProps = {
   code: any;
-  key: string;
 };
 
-export default function SnippetCodeList({ code, key }: SnippetCodeListProps) {
-  console.log("SnippetCodeList", code);
+export default function SnippetCodeList({ code }: SnippetCodeListProps) {
   return (
-    <Accordion.Root
+    <Accordion
       type="single"
+      className="m"
       collapsible
-      defaultValue="item-1"
-      className="my-4 flex  w-full gap-2 rounded-lg bg-secondaryA"
     >
-      <div key={key} className="flex w-full justify-between gap-2 p-2.5">
-        <Accordion.Item value="snippet" className="flex w-full justify-between">
-          <Accordion.Trigger className="text-sm md:text-base">
-            <span>
-              {code.code.map((heading: any) => (
-                <span key={heading}>
-                  <span className="font-bold">{heading.heading}</span>
-                </span>
-              ))}
-            </span>
-          </Accordion.Trigger>
-
-          {/* Right side action items */}
-          <div className="flex  items-center  justify-end gap-2  ">
+      <AccordionItem value="item-1" className="mt-0">
+        <AccordionTrigger className="b flex  w-full items-center  justify-between ">
+          {code.heading}
+          <div className="mr-4  flex w-full  cursor-pointer items-center  justify-end gap-2 ">
             <IoClipboardOutline />
             <small>Copy code</small>
 
@@ -38,9 +30,9 @@ export default function SnippetCodeList({ code, key }: SnippetCodeListProps) {
               <BsThreeDots />
             </div>
           </div>
-          <Accordion.Content>{code.content}</Accordion.Content>
-        </Accordion.Item>
-      </div>
-    </Accordion.Root>
+        </AccordionTrigger>
+        <AccordionContent className="">{code.content}</AccordionContent>
+      </AccordionItem>
+    </Accordion>
   );
 }

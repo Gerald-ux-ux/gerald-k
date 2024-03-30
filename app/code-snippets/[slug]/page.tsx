@@ -1,9 +1,11 @@
-import { notFound } from "next/navigation";
-import { getCodeSnippets } from "../actions/action";
 import { Snippet } from "../types/snippets";
-import { FaRegUser } from "react-icons/fa";
 import Tags from "@/components/Tags";
+import { notFound } from "next/navigation";
+import { FaRegUser } from "react-icons/fa";
+
+import { getCodeSnippets } from "../actions/action";
 import SnippetTags from "../components/tags";
+import SnippetCodeList from "../components/SnippetCodeList";
 
 // Module-level variable to store the snippets.
 let specificSnippet: Snippet[] | null = null;
@@ -28,7 +30,6 @@ export async function generateMetadata({ params }: Props) {
   }
   const code = specificSnippet?.find((snippet) => snippet?._id === params.slug);
 
-  // Assuming code is not undefined, but you might want to handle that case as well.
   return {
     title: `${code?.title} | ${code?.author}`,
     description: `${code?.description}`,
@@ -54,11 +55,9 @@ export default async function Code({ params }: { params: any }) {
         </span>
       </span>
       <h6 className="text-secondary">{code.author}</h6>
-      <div className="prose prose-neutral animate-in">
+      <div className=" prose prose-neutral flex animate-in flex-col gap-2">
         {code.code.map((tag) => (
-          <pre className="border border-primary bg-inherit" key={tag._id}>
-            <code className="text-sm text-primary">{tag.heading}</code>
-          </pre>
+          <SnippetCodeList code={tag} key={tag._id} />
         ))}
         <SnippetTags snippet={code} />
       </div>
