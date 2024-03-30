@@ -18,7 +18,7 @@ export default function SnippetCodeList({ code }: SnippetCodeListProps) {
       <AccordionItem value="item-1">
         <AccordionTrigger className="flex w-full  items-center justify-between">
           {code.heading}
-          <div className="mr-4  flex w-full cursor-pointer items-center justify-end  gap-2 no-underline ">
+          <div className="mr-4  flex w-full  cursor-pointer items-center  justify-end gap-2 ">
             <IoClipboardOutline />
             <small>Copy code</small>
 
