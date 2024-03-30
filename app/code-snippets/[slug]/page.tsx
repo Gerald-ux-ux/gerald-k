@@ -1,8 +1,9 @@
-import { notFound } from "next/navigation";
-import { getCodeSnippets } from "../actions/action";
 import { Snippet } from "../types/snippets";
-import { FaRegUser } from "react-icons/fa";
 import Tags from "@/components/Tags";
+import { notFound } from "next/navigation";
+import { FaRegUser } from "react-icons/fa";
+
+import { getCodeSnippets } from "../actions/action";
 import SnippetTags from "../components/tags";
 
 // Module-level variable to store the snippets.
@@ -28,7 +29,6 @@ export async function generateMetadata({ params }: Props) {
   }
   const code = specificSnippet?.find((snippet) => snippet?._id === params.slug);
 
-  // Assuming code is not undefined, but you might want to handle that case as well.
   return {
     title: `${code?.title} | ${code?.author}`,
     description: `${code?.description}`,
