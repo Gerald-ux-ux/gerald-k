@@ -1,5 +1,4 @@
 import { Snippet } from "../types/snippets";
-import Tags from "@/components/Tags";
 import { notFound } from "next/navigation";
 import { FaRegUser } from "react-icons/fa";
 
@@ -7,7 +6,6 @@ import { getCodeSnippets } from "../actions/action";
 import SnippetCodeList from "../components/SnippetCodeList";
 import SnippetTags from "../components/tags";
 
-// Module-level variable to store the snippets.
 let specificSnippet: Snippet[] | null = null;
 type Props = {
   params: {
