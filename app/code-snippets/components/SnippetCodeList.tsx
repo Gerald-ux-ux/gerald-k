@@ -36,7 +36,7 @@ export default function SnippetCodeList({ code }: SnippetCodeListProps) {
 `;
 
   return (
-    <Accordion type="single" className="m" collapsible>
+    <Accordion type="single" className="mt-0 " collapsible>
       <AccordionItem value="item-1" className="mt-0">
         <AccordionTrigger className=" flex  w-full items-center  justify-between ">
           {code.heading}
