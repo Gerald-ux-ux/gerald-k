@@ -7,31 +7,69 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import dark from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { useTheme } from "next-themes";
 
 type SnippetCodeListProps = {
   code: any;
 };
 
 export default function SnippetCodeList({ code }: SnippetCodeListProps) {
-  return (
-    <Accordion
-      type="single"
-      className="m"
-      collapsible
-    >
-      <AccordionItem value="item-1" className="mt-0">
-        <AccordionTrigger className="b flex  w-full items-center  justify-between ">
-          {code.heading}
-          <div className="mr-4  flex w-full  cursor-pointer items-center  justify-end gap-2 ">
-            <IoClipboardOutline />
-            <small>Copy code</small>
+  const theme = useTheme();
 
-            <div className=" ">
-              <BsThreeDots />
-            </div>
-          </div>
+  const codeString = `export default function SnippetTags({ snippet }: { snippet: any }) {
+  return (
+    <span className=" mt-2 flex flex-row gap-2 ">
+      {snippet?.tags?.map((tag: string) => (
+        <span
+          key={tag}
+          className=" whitespace-nowrap  rounded-lg bg-secondary p-1.5 text-sm  "
+        >
+          {tag}
+        </span>
+      ))}
+    </span>
+  );
+}
+
+`;
+
+  return (
+    <Accordion type="single" className="m" collapsible>
+      <AccordionItem value="item-1" className="mt-0">
+        <AccordionTrigger className=" flex  w-full items-center  justify-between ">
+          {code.heading}
         </AccordionTrigger>
-        <AccordionContent className="">{code.content}</AccordionContent>
+        <AccordionContent className="">
+          <div className="rounded-lg  p-2">
+            <div className="mr-4 flex w-full  cursor-pointer  items-center justify-end gap-2  rounded-lg p-2 text-secondary ">
+              <IoClipboardOutline />
+              <small>Copy code</small>
+
+              <div className=" ">
+                <BsThreeDots />
+              </div>
+            </div>
+            <SyntaxHighlighter
+              style={dark}
+              wrapLongLines={true}
+              customStyle={{
+                padding: "12px",
+                backgroundColor:
+                  theme.theme === "light"
+                    ? "#F5F5F5"
+                    : "dark"
+                      ? "#F5F5F5"
+                      : "#F5F5F5",
+              }}
+              showLineNumbers
+              language="jsx"
+            >
+              {codeString}
+            </SyntaxHighlighter>
+          </div>
+        </AccordionContent>
       </AccordionItem>
     </Accordion>
   );
