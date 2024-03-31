@@ -1,13 +1,11 @@
 import { Snippet } from "../types/snippets";
-import Tags from "@/components/Tags";
 import { notFound } from "next/navigation";
 import { FaRegUser } from "react-icons/fa";
 
 import { getCodeSnippets } from "../actions/action";
-import SnippetTags from "../components/tags";
 import SnippetCodeList from "../components/SnippetCodeList";
+import SnippetTags from "../components/tags";
 
-// Module-level variable to store the snippets.
 let specificSnippet: Snippet[] | null = null;
 type Props = {
   params: {
@@ -49,12 +47,19 @@ export default async function Code({ params }: { params: any }) {
         {code.title} ({code.code.length})
       </h1>
       <span className="flex items-center justify-between text-lg leading-tight text-secondary md:text-xl">
-        {code.description}{" "}
+        {code.description}
+      </span>
+      <span className="flex items-center justify-between gap-2 text-secondary">
+        <span className="flex items-center gap-2">
+          <span className=" hidden rounded-full bg-secondaryA p-2  md:block ">
+            <FaRegUser />
+          </span>
+          {code.author}
+        </span>
         <span>
           Clones <strong>{code.copy_count}</strong>
         </span>
       </span>
-      <h6 className="text-secondary">{code.author}</h6>
       <div className=" prose prose-neutral flex animate-in flex-col gap-2">
         {code.code.map((tag) => (
           <SnippetCodeList code={tag} key={tag._id} />
