@@ -24,15 +24,13 @@ export default function SnippetCodeList({ code }: SnippetCodeListProps) {
       {snippet?.tags?.map((tag: string) => (
         <span
           key={tag}
-          className=" whitespace-nowrap  rounded-lg bg-secondary p-1.5 text-sm  "
-        >
+          className="whitespace-nowrap rounded-lg bg-secondary p-1.5 text-sm">
           {tag}
         </span>
       ))}
     </span>
   );
 }
-
 `;
 
   return (
@@ -43,13 +41,16 @@ export default function SnippetCodeList({ code }: SnippetCodeListProps) {
         </AccordionTrigger>
         <AccordionContent className="">
           <div className="rounded-lg  p-2">
-            <div className="mr-4 flex w-full  cursor-pointer  items-center justify-end gap-2  rounded-lg p-2 text-secondary ">
-              <IoClipboardOutline />
-              <small>Copy code</small>
+            <div className="mr-4 flex w-full  cursor-pointer  items-center justify-between   rounded-lg p-2 text-secondary ">
+              React
+              <span className="flex items-center gap-2">
+                <IoClipboardOutline />
+                <small>Copy code</small>
 
-              <div className=" ">
-                <BsThreeDots />
-              </div>
+                <div className=" ">
+                  <BsThreeDots />
+                </div>
+              </span>
             </div>
             <SyntaxHighlighter
               style={dark}
