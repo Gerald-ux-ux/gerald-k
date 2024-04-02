@@ -6,6 +6,7 @@ import { TrashIcon } from "@heroicons/react/24/outline";
 import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
 import { useFormStatus } from "react-dom";
 import clsx from "clsx";
+import { useTheme } from "next-themes";
 
 const inputClass =
   "w-full rounded-md border border-primary bg-secondary p-2 focus:border-none";
@@ -21,6 +22,7 @@ function Button() {
   );
 }
 export default function Form() {
+  const theme = useTheme();
   return (
     <form action="" className="flex w-full flex-col gap-4">
       <input type="text" placeholder="Title" className={inputClass} />
@@ -35,19 +37,19 @@ export default function Form() {
       <span className=" w-full p-2">
         <input
           type="text"
-          className="w-full rounded-md border-t border-primary bg-secondary p-2 focus:border-none"
+          className="w-full rounded-md rounded-b-none border-b border-primary bg-secondary p-2 focus:border-none"
           placeholder="Code heading"
         />
 
         <Editor
-          className="rounded-lg"
+          className="bg-secondary p-2 "
           height="25vh"
-          theme="vs-dark"
+          theme={theme.theme === "light" ? "vs-primary" : "vs-dark"}
           defaultLanguage="javascript"
           defaultValue="//Hello world!"
         />
 
-        <div className="flex w-full items-center justify-between rounded-md border-t border-primary bg-secondary p-2 focus:border-none">
+        <div className="flex w-full items-center justify-between rounded-t-none rounded-md border-t border-primary bg-secondary p-2 focus:border-none">
           <span className="">Select Language</span>
           <button className="flex ">
             <TrashIcon width={20} height={20} />
