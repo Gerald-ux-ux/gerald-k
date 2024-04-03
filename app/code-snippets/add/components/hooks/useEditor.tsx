@@ -9,10 +9,9 @@ export default function useEditor() {
     values[0],
   );
 
-  const onSelect = (language: { label: string; value: string }) => {
-    console.log("selected", language);
+  function onSelect(language: { label: string; value: string }) {
     setLanguage(language);
-  };
+  }
 
   return {
     language,

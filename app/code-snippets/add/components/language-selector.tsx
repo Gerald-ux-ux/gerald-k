@@ -9,28 +9,27 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { values } from "./languages";
-import useEditor from "./hooks/useEditor";
 
-export default function LanguageSelector() {
-  const { language, onSelect } = useEditor();
+
+type Props = {
+    language: {label: string, value: string}
+    onSelect : (language: { label: string; value: string }) => void
+}
+export default function LanguageSelector({language, onSelect}: Props) {
 
   return (
     <div className="">
-      <Select>
+      <Select onValueChange={(value) => onSelect({ label: value, value })}>
         <SelectTrigger className="w-[180px] border-none">
           <SelectValue placeholder={language.label} />
         </SelectTrigger>
         <SelectContent className="border-none bg-secondary">
-          <SelectGroup className=" ">
+          <SelectGroup>
             {values.map((value) => (
               <SelectItem
                 key={value.value}
                 className="w-full rounded-md p-2 hover:bg-primary"
                 value={value.value}
-                onClick={() => {
-                  console.log("yes");
-                  onSelect(language);
-                }}
               >
                 {value.label}
               </SelectItem>
