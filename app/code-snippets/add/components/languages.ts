@@ -1,0 +1,16 @@
+export const values = [
+  { label: "JavaScript", value: "javascript" },
+  { label: "Python", value: "python" },
+  { label: "React.js", value: "react" },
+  { label: "Vue.js", value: "vue" },
+  { label: "HTML", value: "html" },
+  { label: "CSS", value: "css" },
+  { label: "SASS", value: "sass" },
+  { label: "TypeScript", value: "typescript" },
+  { label: "Node.js", value: "nodejs" },
+  { label: "PHP", value: "php" },
+  { label: "Go", value: "go" },
+  { label: "Java", value: "java" },
+  { label: "Kotlin", value: "kotlin" },
+  { label: "Swift", value: "swift" },
+];

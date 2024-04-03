@@ -8,6 +8,8 @@ import { useFormStatus } from "react-dom";
 import clsx from "clsx";
 import { useTheme } from "next-themes";
 import LanguageSelector from "./language-selector";
+import { language } from "gray-matter";
+import useEditor from "./hooks/useEditor";
 
 const inputClass =
   "w-full rounded-md border border-primary bg-secondary p-2 focus:border-none";
@@ -24,6 +26,8 @@ function Button() {
 }
 export default function Form() {
   const theme = useTheme();
+  const { language } = useEditor();
+
   return (
     <form action="" className="flex w-full flex-col gap-4">
       <input type="text" placeholder="Title" className={inputClass} />
@@ -46,12 +50,17 @@ export default function Form() {
           className="bg-secondary p-2 "
           height="25vh"
           theme={theme.theme === "light" ? "vs-primary" : "vs-dark"}
-          defaultLanguage="javascript"
+          defaultLanguage={language.value}
+          options={{
+            minimap: {
+              enabled: false,
+            },
+          }}
           defaultValue="//Hello world!"
         />
 
-        <div className="flex w-full px-2 py-1 items-center justify-between rounded-t-none rounded-md border-t border-primary bg-secondary  focus:border-none">
-         <LanguageSelector />
+        <div className="flex w-full items-center justify-between rounded-md rounded-t-none border-t border-primary bg-secondary px-2 py-1  focus:border-none">
+          <LanguageSelector />
           <button className="flex  ">
             <TrashIcon width={20} height={20} />
           </button>
