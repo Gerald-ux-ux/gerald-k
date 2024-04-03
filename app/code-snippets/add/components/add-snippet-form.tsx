@@ -8,8 +8,7 @@ import { useFormStatus } from "react-dom";
 import clsx from "clsx";
 import { useTheme } from "next-themes";
 import LanguageSelector from "./language-selector";
-import useEditor from "./hooks/useEditor";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { values } from "./languages";
 
 const inputClass =
@@ -34,7 +33,6 @@ export default function Form() {
   function onSelect(language: { label: string; value: string }) {
     setLanguage(language);
   }
-
 
   return (
     <form action="" className="flex w-full flex-col gap-4">
