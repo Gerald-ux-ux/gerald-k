@@ -28,6 +28,8 @@ export default function Form() {
   const theme = useTheme();
   const { language } = useEditor();
 
+  console.log("language: ", language.value);
+
   return (
     <form action="" className="flex w-full flex-col gap-4">
       <input type="text" placeholder="Title" className={inputClass} />

@@ -12,5 +12,6 @@ export const values = [
   { label: "Go", value: "go" },
   { label: "Java", value: "java" },
   { label: "Kotlin", value: "kotlin" },
+  { label: "Rust", value: "rust" },
   { label: "Swift", value: "swift" },
 ];
