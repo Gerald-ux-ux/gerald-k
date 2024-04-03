@@ -1,17 +1,16 @@
 "use client";
 import { AUTH_BTN } from "@/app/auth/styles/authStyles";
 import BtnLoader from "@/components/ui/btn-loader";
-import { PlusIcon } from "@heroicons/react/20/solid";
 import { TrashIcon } from "@heroicons/react/24/outline";
 import Editor from "@monaco-editor/react";
 import { useFormStatus } from "react-dom";
 import clsx from "clsx";
 import { useTheme } from "next-themes";
 import LanguageSelector from "./language-selector";
-import { useState } from "react";
-import { values } from "./languages";
+
 import AddEditor from "./add-editor";
 import toast from "react-hot-toast";
+import useUploadSnippet from "./hooks/useUploadSnippet";
 
 const inputClass =
   "w-full rounded-md border border-primary bg-secondary p-2 focus:border-none";
@@ -26,57 +25,15 @@ function Button() {
   );
 }
 export default function Form() {
-  const theme = useTheme();
-  const [language, setLanguage] = useState<{ label: string; value: string }>(
-    values[0],
-  );
-
-  function onSelect(language: { label: string; value: string }) {
-    setLanguage(language);
-  }
-
-  const [editor, setEditor] = useState([
-    {
-      heading: "",
-      lang: values[0], // Set the default language for the first editor
-      codeEditor: "",
-    },
-  ]);
-
-  // Handler to update the individual editor's language
-  const handleLanguageSelect = (
-    index: number,
-    language: { label: string; value: string },
-  ) => {
-    const newEditors = [...editor];
-    newEditors[index].lang = language;
-    setEditor(newEditors);
-  };
-
-  // Handler to update the individual editor's heading
-  const handleHeadingChange = (index: number, newHeading: string) => {
-    const newEditors = [...editor];
-    newEditors[index].heading = newHeading;
-    setEditor(newEditors);
-  };
-  const handleAdd = (e: any) => {
-    e.preventDefault();
-    toast.success("Added");
-    setEditor([...editor, { heading: "", lang: values[0], codeEditor: "" }]);
-  };
-
-  const handleCodeChange = (index: number, newCode: string) => {
-    const newEditors = [...editor];
-    newEditors[index].codeEditor = newCode;
-    setEditor(newEditors);
-  };
-
-  const handleDelete = (id: number, e: any) => {
-    e.preventDefault();
-    setEditor(editor.filter((_, i) => i !== id));
-  };
-
-  console.log("editor", editor);
+  const {
+    editor,
+    handleLanguageSelect,
+    handleHeadingChange,
+    handleAdd,
+    handleCodeChange,
+    theme,
+    handleDelete,
+  } = useUploadSnippet();
 
   return (
     <form action="" className="flex w-full flex-col gap-4">
@@ -106,7 +63,7 @@ export default function Form() {
               value={edit.codeEditor}
               className="bg-secondary p-2"
               height="25vh"
-              key={edit.lang.value} // Use the individual editor's language for the key
+              key={edit.lang.value}
               theme={theme.theme === "light" ? "vs-primary" : "vs-dark"}
               defaultLanguage={edit.lang.value}
               options={{

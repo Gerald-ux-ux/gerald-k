@@ -1,0 +1,57 @@
+"use client";
+
+import { useState } from "react";
+import { values } from "../languages";
+import { useTheme } from "next-themes";
+
+export default function useUploadSnippet() {
+  const theme = useTheme();
+
+  const [editor, setEditor] = useState([
+    {
+      heading: "",
+      lang: values[0],
+      codeEditor: "",
+    },
+  ]);
+
+  const handleLanguageSelect = (
+    index: number,
+    language: { label: string; value: string },
+  ) => {
+    const newEditors = [...editor];
+    newEditors[index].lang = language;
+    setEditor(newEditors);
+  };
+
+  const handleHeadingChange = (index: number, newHeading: string) => {
+    const newEditors = [...editor];
+    newEditors[index].heading = newHeading;
+    setEditor(newEditors);
+  };
+  const handleAdd = (e: any) => {
+    e.preventDefault();
+    setEditor([...editor, { heading: "", lang: values[0], codeEditor: "" }]);
+  };
+
+  const handleCodeChange = (index: number, newCode: string) => {
+    const newEditors = [...editor];
+    newEditors[index].codeEditor = newCode;
+    setEditor(newEditors);
+  };
+
+  const handleDelete = (id: number, e: any) => {
+    e.preventDefault();
+    setEditor(editor.filter((_, i) => i !== id));
+  };
+
+  return {
+    editor,
+    handleLanguageSelect,
+    handleHeadingChange,
+    handleAdd,
+    theme,
+    handleCodeChange,
+    handleDelete,
+  };
+}
