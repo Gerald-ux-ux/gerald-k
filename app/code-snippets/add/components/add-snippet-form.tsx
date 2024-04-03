@@ -49,6 +49,11 @@ export default function Form() {
     setEditor([...editor, { heading: "", lang: "", codeEditor: "" }]);
   };
 
+  const handleDelete = (id: number, e: any) => {
+    e.preventDefault();
+    setEditor(editor.filter((_, i) => i !== id));
+  };
+
   return (
     <form action="" className="flex w-full flex-col gap-4">
       <input type="text" placeholder="Title" className={inputClass} />
@@ -60,7 +65,7 @@ export default function Form() {
       />
       <span className="border border-primary" />
 
-      <div className="flex max-h-[500px]  flex-col gap-6 overflow-x-auto  p-2 ">
+      <div className="flex max-h-[800px]  flex-col gap-6 overflow-x-auto  p-2 ">
         {editor.map((edit, i) => (
           <div key={i} className=" my-2 ">
             <input
@@ -86,9 +91,12 @@ export default function Form() {
 
             <div className="flex w-full items-center justify-between rounded-md rounded-t-none border-t border-primary bg-secondary px-2 py-1  focus:border-none">
               <LanguageSelector onSelect={onSelect} language={language} />
-              <button className="flex  ">
-                <TrashIcon width={20} height={20} />
-              </button>
+
+              {i === 0 ? null : (
+                <button onClick={(e) => handleDelete(i, e)} className="flex  ">
+                  <TrashIcon width={20} height={20} />
+                </button>
+              )}
             </div>
           </div>
         ))}
