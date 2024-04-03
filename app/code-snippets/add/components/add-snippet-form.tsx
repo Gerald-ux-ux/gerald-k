@@ -7,6 +7,7 @@ import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
 import { useFormStatus } from "react-dom";
 import clsx from "clsx";
 import { useTheme } from "next-themes";
+import LanguageSelector from "./language-selector";
 
 const inputClass =
   "w-full rounded-md border border-primary bg-secondary p-2 focus:border-none";
@@ -49,9 +50,9 @@ export default function Form() {
           defaultValue="//Hello world!"
         />
 
-        <div className="flex w-full items-center justify-between rounded-t-none rounded-md border-t border-primary bg-secondary p-2 focus:border-none">
-          <span className="">Select Language</span>
-          <button className="flex ">
+        <div className="flex w-full px-2 py-1 items-center justify-between rounded-t-none rounded-md border-t border-primary bg-secondary  focus:border-none">
+         <LanguageSelector />
+          <button className="flex  ">
             <TrashIcon width={20} height={20} />
           </button>
         </div>
