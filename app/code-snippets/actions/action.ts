@@ -41,8 +41,7 @@ export async function handleUpload(formData: FormData, editor: any) {
     };
 
     console.log("data", data);
-    const res = axios.post(Give_Feedback, data);
-    return res;
+
   } catch (error: any) {
     return error?.response?.data || errorMessage;
   }

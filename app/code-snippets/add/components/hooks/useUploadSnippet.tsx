@@ -48,11 +48,8 @@ export default function useUploadSnippet() {
   };
 
 
-  console.log("editor", editor)
   const handleSubmit = async (formData: FormData) => {
-    const code = formData.set("code", JSON.stringify(editor));
 
-    console.log("code", code);
 
     const res = await handleUpload(formData, editor);
     return res;
