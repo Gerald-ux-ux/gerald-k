@@ -30,3 +30,19 @@ export async function submitFeedBack(formData: FormData) {
     return error?.response?.data || errorMessage;
   }
 }
+
+export async function handleUpload(formData: FormData, editor: any) {
+  try {
+    const data = {
+      from: formData.get("tags"),
+      text: formData.get("description"),
+      title: formData.get("name"),
+      newCode: editor,
+    };
+
+    console.log("data", data);
+
+  } catch (error: any) {
+    return error?.response?.data || errorMessage;
+  }
+}

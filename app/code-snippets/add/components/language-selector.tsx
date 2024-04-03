@@ -11,10 +11,11 @@ import { values } from "./languages";
 
 
 type Props = {
-    language: {label: string, value: string}
+    language:   {label: string, value: string}
     onSelect : (language: { label: string; value: string }) => void
 }
 export default function LanguageSelector({language, onSelect}: Props) {
+
 
   return (
     <div className="">
