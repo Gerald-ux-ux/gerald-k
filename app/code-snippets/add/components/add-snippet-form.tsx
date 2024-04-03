@@ -38,21 +38,45 @@ export default function Form() {
   const [editor, setEditor] = useState([
     {
       heading: "",
-      lang: "",
+      lang: values[0], // Set the default language for the first editor
       codeEditor: "",
     },
   ]);
 
+  // Handler to update the individual editor's language
+  const handleLanguageSelect = (
+    index: number,
+    language: { label: string; value: string },
+  ) => {
+    const newEditors = [...editor];
+    newEditors[index].lang = language;
+    setEditor(newEditors);
+  };
+
+  // Handler to update the individual editor's heading
+  const handleHeadingChange = (index: number, newHeading: string) => {
+    const newEditors = [...editor];
+    newEditors[index].heading = newHeading;
+    setEditor(newEditors);
+  };
   const handleAdd = (e: any) => {
     e.preventDefault();
     toast.success("Added");
-    setEditor([...editor, { heading: "", lang: "", codeEditor: "" }]);
+    setEditor([...editor, { heading: "", lang: values[0], codeEditor: "" }]);
+  };
+
+  const handleCodeChange = (index: number, newCode: string) => {
+    const newEditors = [...editor];
+    newEditors[index].codeEditor = newCode;
+    setEditor(newEditors);
   };
 
   const handleDelete = (id: number, e: any) => {
     e.preventDefault();
     setEditor(editor.filter((_, i) => i !== id));
   };
+
+  console.log("editor", editor);
 
   return (
     <form action="" className="flex w-full flex-col gap-4">
@@ -67,20 +91,24 @@ export default function Form() {
 
       <div className="flex max-h-[800px]  flex-col gap-6 overflow-x-auto  p-2 ">
         {editor.map((edit, i) => (
-          <div key={i} className=" my-2 ">
+          <div key={i} className="my-2">
             <input
               type="text"
               className="w-full rounded-md rounded-b-none border-b border-primary bg-secondary p-2 focus:border-none"
               value={edit.heading}
+              onChange={(e) => handleHeadingChange(i, e.target.value)}
               placeholder="Code heading"
             />
             <Editor
+              onChange={(newValue) =>
+                newValue !== undefined && handleCodeChange(i, newValue)
+              }
               value={edit.codeEditor}
-              className="bg-secondary p-2 "
+              className="bg-secondary p-2"
               height="25vh"
-              key={language.value}
+              key={edit.lang.value} // Use the individual editor's language for the key
               theme={theme.theme === "light" ? "vs-primary" : "vs-dark"}
-              defaultLanguage={language.value}
+              defaultLanguage={edit.lang.value}
               options={{
                 minimap: {
                   enabled: false,
@@ -88,15 +116,16 @@ export default function Form() {
               }}
               defaultValue="/** Hello world! */"
             />
-
-            <div className="flex w-full items-center justify-between rounded-md rounded-t-none border-t border-primary bg-secondary px-2 py-1  focus:border-none">
-              <LanguageSelector onSelect={onSelect} language={language} />
-
+            <div className="flex w-full items-center justify-between rounded-md rounded-t-none border-t border-primary bg-secondary px-2 py-1 focus:border-none">
+              <LanguageSelector
+                onSelect={(language) => handleLanguageSelect(i, language)}
+                language={edit.lang}
+              />
               {i === 0 ? null : (
                 <button onClick={(e) => handleDelete(i, e)} className="flex  ">
                   <TrashIcon width={20} height={20} />
                 </button>
-              )}
+              )}{" "}
             </div>
           </div>
         ))}
