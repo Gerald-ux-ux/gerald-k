@@ -30,3 +30,20 @@ export async function submitFeedBack(formData: FormData) {
     return error?.response?.data || errorMessage;
   }
 }
+
+export async function handleUpload(formData: FormData, editor: any) {
+  try {
+    const data = {
+      from: formData.get("tags"),
+      text: formData.get("description"),
+      title: formData.get("name"),
+      newCode: editor,
+    };
+
+    console.log("data", data);
+    const res = axios.post(Give_Feedback, data);
+    return res;
+  } catch (error: any) {
+    return error?.response?.data || errorMessage;
+  }
+}

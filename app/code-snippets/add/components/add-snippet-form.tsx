@@ -30,14 +30,16 @@ export default function Form() {
     handleCodeChange,
     theme,
     handleDelete,
+    handleSubmit,
     handleAdd,
   } = useUploadSnippet();
   return (
-    <form action="" className="flex w-full flex-col gap-4">
-      <input type="text" placeholder="Title" className={inputClass} />
+    <form action={handleSubmit} className="flex w-full flex-col gap-4">
+      <input name="title" type="text" placeholder="Title" className={inputClass} />
       <textarea
         rows={3}
         cols={5}
+        name="description"
         placeholder="Description"
         className={inputClass}
       />
@@ -53,6 +55,7 @@ export default function Form() {
       <AddEditor handleAdd={handleAdd} />
       <input
         type="text"
+        name="tags"
         className={inputClass}
         placeholder="Add tags up to 3 max (e.g JavaScript, Python, React.Js)"
       />

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { values } from "../languages";
 import { useTheme } from "next-themes";
+import { handleUpload } from "@/app/code-snippets/actions/action";
 
 export default function useUploadSnippet() {
   const theme = useTheme();
@@ -29,13 +30,11 @@ export default function useUploadSnippet() {
     newEditors[index].heading = newHeading;
     setEditor(newEditors);
   };
-const handleAdd = (e: any) => {
-  e.preventDefault();
-  const newEditor = { heading: "", lang: values[0], codeEditor: "" };
-  setEditor((prevEditors) => [...prevEditors, newEditor]);
-  console.log("Added new editor", newEditor);
-};
-
+  const handleAdd = (e: any) => {
+    console.log("run");
+    e.preventDefault();
+    setEditor([...editor, { heading: "", lang: values[0], codeEditor: "" }]);
+  };
 
   const handleCodeChange = (index: number, newCode: string) => {
     const newEditors = [...editor];
@@ -48,10 +47,22 @@ const handleAdd = (e: any) => {
     setEditor(editor.filter((_, i) => i !== id));
   };
 
+
+  console.log("editor", editor)
+  const handleSubmit = async (formData: FormData) => {
+    const code = formData.set("code", JSON.stringify(editor));
+
+    console.log("code", code);
+
+    const res = await handleUpload(formData, editor);
+    return res;
+  };
+
   return {
     editor,
     handleLanguageSelect,
     handleHeadingChange,
+    handleSubmit,
     handleAdd,
     theme,
     handleCodeChange,
