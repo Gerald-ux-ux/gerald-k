@@ -10,10 +10,11 @@ import { useTheme } from "next-themes";
 import LanguageSelector from "./language-selector";
 import { useState } from "react";
 import { values } from "./languages";
+import AddEditor from "./add-editor";
+import toast from "react-hot-toast";
 
 const inputClass =
   "w-full rounded-md border border-primary bg-secondary p-2 focus:border-none";
-const editorClass = "rounded-lg p-4";
 
 function Button() {
   const { pending } = useFormStatus();
@@ -34,6 +35,20 @@ export default function Form() {
     setLanguage(language);
   }
 
+  const [editor, setEditor] = useState([
+    {
+      heading: "",
+      lang: "",
+      codeEditor: "",
+    },
+  ]);
+
+  const handleAdd = (e: any) => {
+    e.preventDefault();
+    toast.success("Added");
+    setEditor([...editor, { heading: "", lang: "", codeEditor: "" }]);
+  };
+
   return (
     <form action="" className="flex w-full flex-col gap-4">
       <input type="text" placeholder="Title" className={inputClass} />
@@ -45,39 +60,41 @@ export default function Form() {
       />
       <span className="border border-primary" />
 
-      <span className=" w-full p-2">
-        <input
-          type="text"
-          className="w-full rounded-md rounded-b-none border-b border-primary bg-secondary p-2 focus:border-none"
-          placeholder="Code heading"
-        />
+      <div className="flex max-h-[500px]  flex-col gap-6 overflow-x-auto  p-2 ">
+        {editor.map((edit, i) => (
+          <div key={i} className=" my-2 ">
+            <input
+              type="text"
+              className="w-full rounded-md rounded-b-none border-b border-primary bg-secondary p-2 focus:border-none"
+              value={edit.heading}
+              placeholder="Code heading"
+            />
+            <Editor
+              value={edit.codeEditor}
+              className="bg-secondary p-2 "
+              height="25vh"
+              key={language.value}
+              theme={theme.theme === "light" ? "vs-primary" : "vs-dark"}
+              defaultLanguage={language.value}
+              options={{
+                minimap: {
+                  enabled: false,
+                },
+              }}
+              defaultValue="/** Hello world! */"
+            />
 
-        <Editor
-          className="bg-secondary p-2 "
-          height="25vh"
-          key={language.value}
-          theme={theme.theme === "light" ? "vs-primary" : "vs-dark"}
-          defaultLanguage={language.value}
-          options={{
-            minimap: {
-              enabled: false,
-            },
-          }}
-          defaultValue="/** Hello world! */"
-        />
+            <div className="flex w-full items-center justify-between rounded-md rounded-t-none border-t border-primary bg-secondary px-2 py-1  focus:border-none">
+              <LanguageSelector onSelect={onSelect} language={language} />
+              <button className="flex  ">
+                <TrashIcon width={20} height={20} />
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
 
-        <div className="flex w-full items-center justify-between rounded-md rounded-t-none border-t border-primary bg-secondary px-2 py-1  focus:border-none">
-          <LanguageSelector onSelect={onSelect} language={language} />
-          <button className="flex  ">
-            <TrashIcon width={20} height={20} />
-          </button>
-        </div>
-      </span>
-      <button className="flex items-center gap-2  text-primary">
-        Add another snippet
-        <PlusIcon width={20} height={20} />
-      </button>
-
+      <AddEditor handleAdd={handleAdd} />
       <input
         type="text"
         className={inputClass}
