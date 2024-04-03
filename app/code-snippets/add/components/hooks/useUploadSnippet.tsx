@@ -29,10 +29,13 @@ export default function useUploadSnippet() {
     newEditors[index].heading = newHeading;
     setEditor(newEditors);
   };
-  const handleAdd = (e: any) => {
-    e.preventDefault();
-    setEditor([...editor, { heading: "", lang: values[0], codeEditor: "" }]);
-  };
+const handleAdd = (e: any) => {
+  e.preventDefault();
+  const newEditor = { heading: "", lang: values[0], codeEditor: "" };
+  setEditor((prevEditors) => [...prevEditors, newEditor]);
+  console.log("Added new editor", newEditor);
+};
+
 
   const handleCodeChange = (index: number, newCode: string) => {
     const newEditors = [...editor];
