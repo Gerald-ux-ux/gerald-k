@@ -16,6 +16,7 @@ export default function useUploadSnippet() {
       code: "",
     },
   ]);
+  const user_id = "535434";
 
   const handleLanguageSelect = (
     index: number,
@@ -48,8 +49,7 @@ export default function useUploadSnippet() {
   };
 
   const handleSubmit = async (formData: FormData) => {
-    
-    const res = await postSnippet(formData, editor);
+    const res = await postSnippet(formData, editor, user_id);
     return res;
   };
 

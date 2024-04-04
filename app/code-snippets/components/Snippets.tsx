@@ -22,6 +22,8 @@ export default function Snippets({ data }: SnippetProps) {
   const [expanded, setExpanded] = useState<boolean[]>([]);
   const [clicked, setClicked] = useState();
 
+
+
   const searchQuery = useSearchParams();
   const searchItem = searchQuery.get("query");
 
