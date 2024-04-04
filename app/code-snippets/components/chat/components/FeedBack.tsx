@@ -24,7 +24,7 @@ function SubmitBtn() {
       type="submit"
       className={clsx(
         " mt-4 w-full rounded-lg bg-secondaryA p-2 hover:bg-primary",
-        pending ? "cursor-progress backdrop-opacity-50" : "",
+        pending ? "cursor-not-allowed " : "",
       )}
     >
       Submit
@@ -36,7 +36,7 @@ export default function FeedBack({ isAuth }: Props) {
 
   return (
     <Dialog open={open} onOpenChange={() => setOpen(!open)}>
-      <DialogTrigger  asChild>
+      <DialogTrigger asChild>
         <button className={clsx("rounded-lg bg-secondary p-1")}>
           Feedback
         </button>

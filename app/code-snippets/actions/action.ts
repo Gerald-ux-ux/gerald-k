@@ -1,9 +1,7 @@
 "use server";
 
-import { CodeSnippets } from "@/app/types/typings";
 import { errorMessage } from "@/lib/secrete";
-import { GET_SNIPPETS, Give_Feedback } from "../constants/lib";
-import { jsonData } from "../json/data";
+import { Add_Snippet, GET_SNIPPETS, Give_Feedback } from "../constants/lib";
 import axios from "axios";
 import { Snippet } from "../types/snippets";
 
@@ -24,6 +22,7 @@ export async function submitFeedBack(formData: FormData) {
       from: formData.get("from"),
       text: formData.get("text"),
     };
+
     const res = await axios.post(Give_Feedback, data);
     return res?.data;
   } catch (error: any) {
@@ -31,17 +30,22 @@ export async function submitFeedBack(formData: FormData) {
   }
 }
 
-export async function handleUpload(formData: FormData, editor: any) {
+export async function postCodeSnippet(formData: FormData, editor: any, user_id: string) {
   try {
+    const sanitizedSnippet = editor.map((code: any) => ({
+      heading: code.heading,
+      language: code.lang.label,
+      content: code.code,
+    }));
     const data = {
-      from: formData.get("tags"),
-      text: formData.get("description"),
-      title: formData.get("name"),
-      newCode: editor,
+      title: formData.get("title"),
+      description: formData.get("description"),
+      tags: formData.get("tags"),
+      code: sanitizedSnippet,
     };
 
-    console.log("data", data);
-
+    const res = await axios.post(Add_Snippet, data);
+    return res?.data;
   } catch (error: any) {
     return error?.response?.data || errorMessage;
   }

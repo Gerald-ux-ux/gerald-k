@@ -6,9 +6,12 @@ import Editor from "@monaco-editor/react";
 import { useFormStatus } from "react-dom";
 import clsx from "clsx";
 import LanguageSelector from "./language-selector";
-import AddEditor from "./add-editor";
 import useUploadSnippet from "./hooks/useUploadSnippet";
 import CodeEditor from "./code-editor";
+import AddEditorBtn from "./add-editor";
+import Select from "react-select";
+import { values } from "./languages";
+import { customDropDownStyle } from "@/app/styles/style";
 
 const inputClass =
   "w-full rounded-md border border-primary bg-secondary p-2 focus:border-none";
@@ -34,8 +37,13 @@ export default function Form() {
     handleAdd,
   } = useUploadSnippet();
   return (
-    <form action={handleSubmit} className="flex w-full flex-col gap-4">
-      <input name="title" type="text" placeholder="Title" className={inputClass} />
+    <form action={handleSubmit} className="flex w-full flex-col gap-4 py-4">
+      <input
+        name="title"
+        type="text"
+        placeholder="Title"
+        className={inputClass}
+      />
       <textarea
         rows={3}
         cols={5}
@@ -52,13 +60,17 @@ export default function Form() {
         theme={theme}
         handleDelete={handleDelete}
       />
-      <AddEditor handleAdd={handleAdd} />
-      <input
-        type="text"
-        name="tags"
-        className={inputClass}
-        placeholder="Add tags up to 3 max (e.g JavaScript, Python, React.Js)"
-      />
+      <AddEditorBtn handleAdd={handleAdd} />
+      <span className="">
+        <Select
+          placeholder="Add tags (e.g JavaScript, Python, React.Js)"
+          isMulti
+          name="tags"
+          options={values}
+          styles={customDropDownStyle}
+        />
+      </span>
+
       <Button />
     </form>
   );

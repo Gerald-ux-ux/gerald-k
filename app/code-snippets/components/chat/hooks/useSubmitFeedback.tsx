@@ -9,7 +9,7 @@ type Props = {
 };
 export default function useSubmitFeedback({ isAuth }: Props) {
   const [open, setOpen] = useState<boolean>(false);
-  const [user, setUser] = useState<string>("Anonymous");
+  const [user, setUser] = useState<string>("user@gmail.com");
 
   if (isAuth !== false) {
     // do something

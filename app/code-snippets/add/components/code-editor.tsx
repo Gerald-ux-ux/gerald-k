@@ -20,14 +20,15 @@ export default function CodeEditor({
   theme,
   handleDelete,
 }: Props) {
+
   return (
     <div className="flex max-h-[800px]  flex-col gap-6 overflow-x-auto  p-2 ">
-      {editor.map((edit: any, i: number) => (
+      {editor.map((value: any, i: number) => (
         <div key={i} className="my-2">
           <input
             type="text"
             className="w-full rounded-md rounded-b-none border-b border-primary bg-secondary p-2 focus:border-none"
-            value={edit.heading}
+            value={value.heading}
             onChange={(e) => handleHeadingChange(i, e.target.value)}
             placeholder="Code heading"
           />
@@ -35,12 +36,12 @@ export default function CodeEditor({
             onChange={(newValue) =>
               newValue !== undefined && handleCodeChange(i, newValue)
             }
-            value={edit.codeEditor}
+            value={value.code}
             className="bg-secondary p-2"
             height="25vh"
-            key={edit.lang.value}
+            key={value.lang.value}
             theme={theme.theme === "light" ? "vs-primary" : "vs-dark"}
-            defaultLanguage={edit.lang.value}
+            defaultLanguage={value.lang.value}
             options={{
               minimap: {
                 enabled: false,
@@ -51,13 +52,13 @@ export default function CodeEditor({
           <div className="flex w-full items-center justify-between rounded-md rounded-t-none border-t border-primary bg-secondary px-2 py-1 focus:border-none">
             <LanguageSelector
               onSelect={(language) => handleLanguageSelect(i, language)}
-              language={edit.lang}
+              language={value.lang}
             />
             {i === 0 ? null : (
               <button onClick={(e) => handleDelete(i, e)} className="flex  ">
                 <TrashIcon width={20} height={20} />
               </button>
-            )}{" "}
+            )}
           </div>
         </div>
       ))}
