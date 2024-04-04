@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { values } from "../languages";
 import { useTheme } from "next-themes";
-import { postSnippet } from "@/app/code-snippets/actions/action";
+import { postCodeSnippet } from "@/app/code-snippets/actions/action";
 
 export default function useUploadSnippet() {
   const theme = useTheme();
@@ -49,7 +49,7 @@ export default function useUploadSnippet() {
   };
 
   const handleSubmit = async (formData: FormData) => {
-    const res = await postSnippet(formData, editor, user_id);
+    const res = await postCodeSnippet(formData, editor, user_id);
     return res;
   };
 

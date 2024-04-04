@@ -1,9 +1,7 @@
 "use server";
 
-import { CodeSnippets } from "@/app/types/typings";
 import { errorMessage } from "@/lib/secrete";
 import { Add_Snippet, GET_SNIPPETS, Give_Feedback } from "../constants/lib";
-import { jsonData } from "../json/data";
 import axios from "axios";
 import { Snippet } from "../types/snippets";
 
@@ -32,7 +30,7 @@ export async function submitFeedBack(formData: FormData) {
   }
 }
 
-export async function postSnippet(formData: FormData, editor: any, user_id: string) {
+export async function postCodeSnippet(formData: FormData, editor: any, user_id: string) {
   try {
     const sanitizedSnippet = editor.map((code: any) => ({
       heading: code.heading,

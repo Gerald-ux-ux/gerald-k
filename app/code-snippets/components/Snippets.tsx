@@ -5,12 +5,8 @@ import React, { useEffect, useState } from "react";
 import { FaRegUser } from "react-icons/fa";
 import SnippetCodeList from "./SnippetCodeList";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-// import { useSearchParams } from "next/navigation";
-import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import clsx from "clsx";
-import SnippetView from "./chat/components/snippet-view";
+
 import SnippetTags from "./tags";
 
 type SnippetProps = {
@@ -21,8 +17,6 @@ type SnippetProps = {
 export default function Snippets({ data }: SnippetProps) {
   const [expanded, setExpanded] = useState<boolean[]>([]);
   const [clicked, setClicked] = useState();
-
-
 
   const searchQuery = useSearchParams();
   const searchItem = searchQuery.get("query");
@@ -41,8 +35,6 @@ export default function Snippets({ data }: SnippetProps) {
 
   const handleClicked = (snippet: any) => {
     setClicked(snippet);
-    // let params = new URLSearchParams(searchParams);
-    // params.set("snippet", snippet._id);
     return router.push(`${pathname}/${snippet._id}`);
   };
 
