@@ -31,17 +31,23 @@ export async function submitFeedBack(formData: FormData) {
   }
 }
 
-export async function handleUpload(formData: FormData, editor: any) {
+
+
+export async function postSnippet(formData: FormData, editor: any) {
   try {
+    const sanitizedSnippet = editor.map((code : any) => ({
+      heading: code.heading,
+      lang: code.lang.label,
+      content: code.code,
+    }));
     const data = {
-      from: formData.get("tags"),
-      text: formData.get("description"),
-      title: formData.get("name"),
-      newCode: editor,
+      title: formData.get("title"),
+      description: formData.get("description"),
+      tags: formData.get("tags"),
+      code: sanitizedSnippet,
     };
 
     console.log("data", data);
-
   } catch (error: any) {
     return error?.response?.data || errorMessage;
   }

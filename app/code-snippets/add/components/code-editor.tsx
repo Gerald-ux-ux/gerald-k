@@ -20,6 +20,7 @@ export default function CodeEditor({
   theme,
   handleDelete,
 }: Props) {
+
   return (
     <div className="flex max-h-[800px]  flex-col gap-6 overflow-x-auto  p-2 ">
       {editor.map((edit: any, i: number) => (
@@ -35,7 +36,7 @@ export default function CodeEditor({
             onChange={(newValue) =>
               newValue !== undefined && handleCodeChange(i, newValue)
             }
-            value={edit.codeEditor}
+            value={edit.code}
             className="bg-secondary p-2"
             height="25vh"
             key={edit.lang.value}

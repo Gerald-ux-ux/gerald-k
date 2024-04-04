@@ -3,16 +3,17 @@
 import { useState } from "react";
 import { values } from "../languages";
 import { useTheme } from "next-themes";
-import { handleUpload } from "@/app/code-snippets/actions/action";
+import { postSnippet } from "@/app/code-snippets/actions/action";
 
 export default function useUploadSnippet() {
   const theme = useTheme();
 
+  // Code editor state
   const [editor, setEditor] = useState([
     {
       heading: "",
       lang: values[0],
-      codeEditor: "",
+      code: "",
     },
   ]);
 
@@ -31,14 +32,13 @@ export default function useUploadSnippet() {
     setEditor(newEditors);
   };
   const handleAdd = (e: any) => {
-    console.log("run");
     e.preventDefault();
-    setEditor([...editor, { heading: "", lang: values[0], codeEditor: "" }]);
+    setEditor([...editor, { heading: "", lang: values[0], code: "" }]);
   };
 
   const handleCodeChange = (index: number, newCode: string) => {
     const newEditors = [...editor];
-    newEditors[index].codeEditor = newCode;
+    newEditors[index].code = newCode;
     setEditor(newEditors);
   };
 
@@ -47,11 +47,9 @@ export default function useUploadSnippet() {
     setEditor(editor.filter((_, i) => i !== id));
   };
 
-
   const handleSubmit = async (formData: FormData) => {
-
-
-    const res = await handleUpload(formData, editor);
+    
+    const res = await postSnippet(formData, editor);
     return res;
   };
 

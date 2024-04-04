@@ -1,6 +1,6 @@
 import { PlusIcon } from "lucide-react";
 
-export default function AddEditor({ handleAdd }: { handleAdd: any }) {
+export default function AddEditorBtn({ handleAdd }: { handleAdd: any }) {
   return (
     <button
       onClick={(e) => handleAdd(e)}

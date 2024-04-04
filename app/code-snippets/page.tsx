@@ -32,7 +32,6 @@ export default async function CodeSnippets() {
             </div>
             <FeedBack isAuth={isAuth} />
           </span>
-          {/* Add auth */}
           <AddSnippet message="" isAuth={isAuth} />
         </div>
 
