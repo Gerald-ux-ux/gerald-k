@@ -14,6 +14,8 @@ import useSubmitFeedback from "../hooks/useSubmitFeedback";
 import { useFormStatus } from "react-dom";
 import { IoChatbubblesOutline } from "react-icons/io5";
 
+import { useState } from "react";
+import { ToolTip } from "@/components/custom/tooltip";
 type Props = {
   isAuth: boolean;
 };
@@ -35,14 +37,20 @@ function SubmitBtn() {
 export default function FeedBack({ isAuth }: Props) {
   const { open, setOpen, handleSubmit } = useSubmitFeedback({ isAuth });
 
+  const [isTipOpen, setIsTipOpen] = useState(false);
+
+  const openToolTip = () => {
+    setIsTipOpen(!isTipOpen);
+  };
+
   return (
     <Dialog open={open} onOpenChange={() => setOpen(!open)}>
-      <DialogTrigger asChild>
+      <ToolTip content="Leave us your feedback!">
         <button className={clsx("")}>
           <IoChatbubblesOutline className="text-xl" />
         </button>
-      </DialogTrigger>
-
+      </ToolTip>
+      <DialogTrigger asChild></DialogTrigger>
       <DialogContent
         className={clsx(
           "fixed inset-0 m-auto  flex max-h-80 max-w-[445px] flex-col  overflow-y-auto border-none bg-secondary p-4  outline-none",
