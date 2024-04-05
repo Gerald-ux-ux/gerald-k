@@ -12,6 +12,7 @@ import { INPUT_STYLE } from "../../../styles/inputStyle";
 import { DialogClose } from "@radix-ui/react-dialog";
 import useSubmitFeedback from "../hooks/useSubmitFeedback";
 import { useFormStatus } from "react-dom";
+import { IoChatbubblesOutline } from "react-icons/io5";
 
 type Props = {
   isAuth: boolean;
@@ -37,8 +38,8 @@ export default function FeedBack({ isAuth }: Props) {
   return (
     <Dialog open={open} onOpenChange={() => setOpen(!open)}>
       <DialogTrigger asChild>
-        <button className={clsx("rounded-lg bg-secondary p-1")}>
-          Feedback
+        <button className={clsx("")}>
+          <IoChatbubblesOutline className="text-xl" />
         </button>
       </DialogTrigger>
 
