@@ -1,7 +1,7 @@
 "use server";
 
 import axios from "axios";
-import { encrypt, errorMessage, secretKey } from "@/lib/secrete";
+import { decrypt, encrypt, errorMessage, secretKey } from "@/lib/secrete";
 import { Login, Register } from "../constants/lib";
 import { cookies } from "next/headers";
 
@@ -75,5 +75,25 @@ export async function checkLogin() {
     }
   } catch (error) {
     return false;
+  }
+}
+
+export async function getUserInfo() {
+  try {
+    const cookieSore = cookies();
+
+    const userInfo = cookieSore?.get("user-info");
+
+    console.log("authenticated", userInfo);
+
+    if (userInfo) {
+      const decryptedData = decrypt(userInfo?.value, secretKey!);
+      
+      return JSON.parse(decryptedData);
+    } else {
+      return;
+    }
+  } catch (error) {
+    return;
   }
 }

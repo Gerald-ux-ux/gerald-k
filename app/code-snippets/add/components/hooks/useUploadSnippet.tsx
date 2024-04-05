@@ -4,10 +4,12 @@ import { useState } from "react";
 import { values } from "../languages";
 import { useTheme } from "next-themes";
 import { postCodeSnippet } from "@/app/code-snippets/actions/action";
+import { redirect, useRouter } from "next/navigation";
 
-export default function useUploadSnippet() {
+export default function useUploadSnippet({user}: {user : any}) {
   const theme = useTheme();
-
+  const router = useRouter();
+  const [message, setMessage] = useState();
   // Code editor state
   const [editor, setEditor] = useState([
     {
@@ -16,7 +18,9 @@ export default function useUploadSnippet() {
       code: "",
     },
   ]);
-  const user_id = "535434";
+  const user_id = user?._id
+
+  console.log("user", user_id)
 
   const handleLanguageSelect = (
     index: number,
@@ -50,6 +54,11 @@ export default function useUploadSnippet() {
 
   const handleSubmit = async (formData: FormData) => {
     const res = await postCodeSnippet(formData, editor, user_id);
+
+    if (res.success) {
+      router.push("/code-snippets");
+    } else
+      setMessage(res.message || "Error creating code snippet, try again later");
     return res;
   };
 

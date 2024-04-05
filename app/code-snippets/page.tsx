@@ -2,7 +2,7 @@ import { PAGE_HEADER } from "@/lib/uiConstants";
 import { Metadata } from "next";
 import { Suspense } from "react";
 
-import { checkLogin } from "../auth/actions/actions";
+import { checkLogin, getUserInfo } from "../auth/actions/actions";
 import { getCodeSnippets } from "./actions/action";
 import AddSnippet from "./components/AddSnippet";
 import FeedBack from "./components/chat/components/FeedBack";
