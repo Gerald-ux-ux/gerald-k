@@ -45,12 +45,14 @@ export default function FeedBack({ isAuth }: Props) {
 
   return (
     <Dialog open={open} onOpenChange={() => setOpen(!open)}>
-      <ToolTip content="Leave us your feedback!">
-        <button className={clsx("")}>
-          <IoChatbubblesOutline className="text-xl" />
-        </button>
+      <ToolTip content="Leave some feedback">
+        <DialogTrigger asChild>
+          <button className={clsx("")}>
+            <IoChatbubblesOutline className="text-xl" />
+          </button>
+        </DialogTrigger>
       </ToolTip>
-      <DialogTrigger asChild></DialogTrigger>
+
       <DialogContent
         className={clsx(
           "fixed inset-0 m-auto  flex max-h-80 max-w-[445px] flex-col  overflow-y-auto border-none bg-secondary p-4  outline-none",
