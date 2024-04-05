@@ -63,7 +63,7 @@ export default function FeedBack({ isAuth }: Props) {
         <form action={handleSubmit}>
           <textarea
             className={clsx(INPUT_STYLE, "w-full ")}
-            placeholder="Leave so∫me feedback on the code-snippet feature to help improve the  experience"
+            placeholder="Leave some feedback on the code-snippet feature to help improve the  experience"
             rows={4}
             name="text"
           />
