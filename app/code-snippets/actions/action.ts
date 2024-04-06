@@ -53,7 +53,6 @@ export async function postCodeSnippet(
       user_id,
       title: formData.get("title"),
       description: formData.get("description"),
-      tags: formData.get("tags"),
       code: sanitizedSnippet,
     };
 

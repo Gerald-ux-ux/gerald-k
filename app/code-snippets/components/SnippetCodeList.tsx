@@ -65,7 +65,7 @@ export default function SnippetCodeList({ code }: SnippetCodeListProps) {
                       : "#F5F5F5",
               }}
               showLineNumbers
-              language="python"
+              language="javascript"
             >
               {code.content}
             </SyntaxHighlighter>

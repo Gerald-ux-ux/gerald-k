@@ -9,16 +9,7 @@ import useUploadSnippet from "./hooks/useUploadSnippet";
 import CodeEditor from "./code-editor";
 import AddEditorBtn from "./add-editor";
 
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { useState } from "react";
+
 const inputClass =
   "w-full rounded-md border border-primary bg-secondary p-2 focus:border-none";
 
@@ -67,30 +58,7 @@ export default function Form({user}: {user : any}) {
         handleDelete={handleDelete}
       />
       <AddEditorBtn handleAdd={handleAdd} />
-      <input
-        type="text"
-        className={inputClass}
-        placeholder="Add a tag (e.g JavaScript, Python, React.Js)"
-        name="tags"
-      />
-      {/* <Select onOpenChange={(option: any) => handleSelect(option.value)}>
-        <SelectTrigger className="w-full">
-          <SelectValue placeholder="Add a tag (e.g JavaScript, Python, React.Js)" />
-        </SelectTrigger>
-        <SelectContent className="border-none bg-secondary">
-          <SelectGroup>
-            {values.map((option) => (
-              <SelectItem
-                className="w-full rounded-md p-2 hover:bg-primary"
-                key={option.label}
-                value={option.value}
-              >
-                {option.label}
-              </SelectItem>
-            ))}
-          </SelectGroup>
-        </SelectContent>
-      </Select> */}
+
 
       <Button />
     </form>
