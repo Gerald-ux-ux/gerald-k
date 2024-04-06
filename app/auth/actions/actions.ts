@@ -88,7 +88,7 @@ export async function getUserInfo() {
 
     if (userInfo) {
       const decryptedData = decrypt(userInfo?.value, secretKey!);
-      
+
       return JSON.parse(decryptedData);
     } else {
       return;
@@ -96,4 +96,14 @@ export async function getUserInfo() {
   } catch (error) {
     return;
   }
+}
+
+export async function getHeaders() {
+  const authCookie = cookies().get("auth")?.value;
+  const decryptedToken = decrypt(authCookie!, secretKey as string);
+  const headers = {
+    Authorization: `Bearer ${decryptedToken}`,
+  };
+
+  return headers;
 }

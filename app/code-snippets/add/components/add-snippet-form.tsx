@@ -22,7 +22,7 @@ function Button() {
     </button>
   );
 }
-export default function Form({ user }: { user: any }) {
+export default function Form() {
   const {
     editor,
     handleLanguageSelect,
@@ -33,9 +33,9 @@ export default function Form({ user }: { user: any }) {
     handleSubmit,
     handleAdd,
     message,
-  } = useUploadSnippet({ user });
+  } = useUploadSnippet();
   return (
-    <form action={handleSubmit} className="flex w-full flex-col gap-4 py-4">
+    <form action={handleSubmit} className="flex w-full flex-col gap-2 py-4">
       <input
         name="title"
         type="text"
