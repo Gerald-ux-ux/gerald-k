@@ -1,11 +1,10 @@
 "use server";
 
-import { decrypt, errorMessage, secretKey } from "@/lib/secrete";
+import { errorMessage } from "@/lib/secrete";
 import { Add_Snippet, GET_SNIPPETS, Give_Feedback } from "../constants/lib";
 import axios from "axios";
 import { Snippet } from "../types/snippets";
 import { revalidateTag } from "next/cache";
-import { cookies } from "next/headers";
 import { getHeaders } from "@/app/auth/actions/actions";
 
 export async function getCodeSnippets(): Promise<Snippet[]> {
