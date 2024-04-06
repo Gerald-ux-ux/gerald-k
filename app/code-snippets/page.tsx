@@ -26,10 +26,7 @@ export default async function CodeSnippets() {
         <div className="flex  w-full items-center justify-between">
           <span className="flex items-center  gap-6">
             <h1 className={PAGE_HEADER}>Code snippets</h1>
-            {/* <div className="mt-1 flex animate-pulse items-center gap-1 rounded-md p-1.5 text-sm font-medium text-[#0070f3] hover:cursor-pointer  hover:bg-secondary">
-              <span className="h-2 w-2 rounded-full   bg-[#0070f3] p-0.5" />
-              Beta
-            </div> */}
+            
             <FeedBack isAuth={isAuth} />
           </span>
           <AddSnippet message="" isAuth={isAuth} />

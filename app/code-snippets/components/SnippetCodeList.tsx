@@ -29,7 +29,7 @@ export default function SnippetCodeList({ code }: SnippetCodeListProps) {
     if (res.success) {
       setSuccess(true);
       navigator.clipboard.writeText(snippetCode);
-      setTimeout(() => setSuccess(false), 1000);
+      setTimeout(() => setSuccess(false), 2000);
     } else {
       toast.error(res.message);
     }
