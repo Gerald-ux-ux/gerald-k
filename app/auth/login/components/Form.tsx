@@ -26,7 +26,7 @@ function Form() {
   const handleSubmit = async (formData: FormData) => {
     const res = await loginUser(formData);
     if (res.success) {
-      redirect("/code-snippets");
+      redirect("/code-snippets/add");
     } else if (res?.success === false) {
       setMessage(
         res?.message || "An unexpected error occurred, please try again",

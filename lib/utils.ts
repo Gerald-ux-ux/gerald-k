@@ -17,3 +17,7 @@ export function capsFirstLetter (x: string) {
 }
 
 
+
+export function removeDuplicates(arr: any) {
+  return arr?.filter((item: any, i: any) => arr.indexOf(item) === i)
+}
