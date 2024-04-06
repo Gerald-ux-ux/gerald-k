@@ -8,7 +8,7 @@ import clsx from "clsx";
 import useUploadSnippet from "./hooks/useUploadSnippet";
 import CodeEditor from "./code-editor";
 import AddEditorBtn from "./add-editor";
-
+import ErrorMessage from "@/components/custom/error-message";
 
 const inputClass =
   "w-full rounded-md border border-primary bg-secondary p-2 focus:border-none";
@@ -22,7 +22,7 @@ function Button() {
     </button>
   );
 }
-export default function Form({user}: {user : any}) {
+export default function Form({ user }: { user: any }) {
   const {
     editor,
     handleLanguageSelect,
@@ -32,19 +32,22 @@ export default function Form({user}: {user : any}) {
     handleDelete,
     handleSubmit,
     handleAdd,
-  } = useUploadSnippet({user});
+    message,
+  } = useUploadSnippet({ user });
   return (
     <form action={handleSubmit} className="flex w-full flex-col gap-4 py-4">
       <input
         name="title"
         type="text"
         placeholder="Title"
+        required
         className={inputClass}
       />
       <textarea
         rows={3}
         cols={5}
         name="description"
+        required
         placeholder="Description"
         className={inputClass}
       />
@@ -59,6 +62,7 @@ export default function Form({user}: {user : any}) {
       />
       <AddEditorBtn handleAdd={handleAdd} />
 
+      {message ? <ErrorMessage message={message} /> : null}
 
       <Button />
     </form>
