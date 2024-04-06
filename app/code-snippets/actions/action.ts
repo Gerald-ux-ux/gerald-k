@@ -1,7 +1,12 @@
 "use server";
 
 import { errorMessage } from "@/lib/secrete";
-import { Add_Snippet, GET_SNIPPETS, Give_Feedback } from "../constants/lib";
+import {
+  Add_Snippet,
+  Copy_Snippet,
+  GET_SNIPPETS,
+  Give_Feedback,
+} from "../constants/lib";
 import axios from "axios";
 import { Snippet } from "../types/snippets";
 import { revalidateTag } from "next/cache";
@@ -46,9 +51,23 @@ export async function postCodeSnippet(formData: FormData, editor: any) {
       code: sanitizedSnippet,
     };
 
-    console.log("data", data);
-
     const res = await axios.post(Add_Snippet, data, { headers });
+    revalidateTag("code");
+    return res?.data;
+  } catch (error: any) {
+    return error?.response?.data || errorMessage;
+  }
+}
+
+export async function copySnippet(id: string) {
+  try {
+    const headers = await getHeaders();
+
+    const data = {
+      id: id,
+    };
+
+    const res = await axios.post(Copy_Snippet, data, { headers });
     revalidateTag("code");
     return res?.data;
   } catch (error: any) {
