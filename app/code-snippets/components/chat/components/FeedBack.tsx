@@ -12,7 +12,10 @@ import { INPUT_STYLE } from "../../../styles/inputStyle";
 import { DialogClose } from "@radix-ui/react-dialog";
 import useSubmitFeedback from "../hooks/useSubmitFeedback";
 import { useFormStatus } from "react-dom";
+import { IoChatbubblesOutline } from "react-icons/io5";
 
+import { useState } from "react";
+import { ToolTip } from "@/components/custom/tooltip";
 type Props = {
   isAuth: boolean;
 };
@@ -34,13 +37,21 @@ function SubmitBtn() {
 export default function FeedBack({ isAuth }: Props) {
   const { open, setOpen, handleSubmit } = useSubmitFeedback({ isAuth });
 
+  const [isTipOpen, setIsTipOpen] = useState(false);
+
+  const openToolTip = () => {
+    setIsTipOpen(!isTipOpen);
+  };
+
   return (
     <Dialog open={open} onOpenChange={() => setOpen(!open)}>
-      <DialogTrigger asChild>
-        <button className={clsx("rounded-lg bg-secondary p-1")}>
-          Feedback
-        </button>
-      </DialogTrigger>
+      <ToolTip content="Leave some feedback">
+        <DialogTrigger asChild>
+          <button className={clsx("")}>
+            <IoChatbubblesOutline className="text-xl" />
+          </button>
+        </DialogTrigger>
+      </ToolTip>
 
       <DialogContent
         className={clsx(
@@ -52,7 +63,7 @@ export default function FeedBack({ isAuth }: Props) {
         <form action={handleSubmit}>
           <textarea
             className={clsx(INPUT_STYLE, "w-full ")}
-            placeholder="Leave so∫me feedback on the code-snippet feature to help improve the  experience"
+            placeholder="Leave some feedback on the code-snippet feature to help improve the  experience"
             rows={4}
             name="text"
           />

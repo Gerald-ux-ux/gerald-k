@@ -1,17 +1,14 @@
 "use client";
 import { AUTH_BTN } from "@/app/auth/styles/authStyles";
 import BtnLoader from "@/components/ui/btn-loader";
-import { TrashIcon } from "@heroicons/react/24/outline";
-import Editor from "@monaco-editor/react";
+
 import { useFormStatus } from "react-dom";
 import clsx from "clsx";
-import LanguageSelector from "./language-selector";
+
 import useUploadSnippet from "./hooks/useUploadSnippet";
 import CodeEditor from "./code-editor";
 import AddEditorBtn from "./add-editor";
-import Select from "react-select";
-import { values } from "./languages";
-import { customDropDownStyle } from "@/app/styles/style";
+import ErrorMessage from "@/components/custom/error-message";
 
 const inputClass =
   "w-full rounded-md border border-primary bg-secondary p-2 focus:border-none";
@@ -35,19 +32,22 @@ export default function Form() {
     handleDelete,
     handleSubmit,
     handleAdd,
+    message,
   } = useUploadSnippet();
   return (
-    <form action={handleSubmit} className="flex w-full flex-col gap-4 py-4">
+    <form action={handleSubmit} className="flex w-full flex-col gap-2 py-4">
       <input
         name="title"
         type="text"
         placeholder="Title"
+        required
         className={inputClass}
       />
       <textarea
         rows={3}
         cols={5}
         name="description"
+        required
         placeholder="Description"
         className={inputClass}
       />
@@ -61,15 +61,8 @@ export default function Form() {
         handleDelete={handleDelete}
       />
       <AddEditorBtn handleAdd={handleAdd} />
-      <span className="">
-        <Select
-          placeholder="Add tags (e.g JavaScript, Python, React.Js)"
-          isMulti
-          name="tags"
-          options={values}
-          styles={customDropDownStyle}
-        />
-      </span>
+
+      {message ? <ErrorMessage message={message} /> : null}
 
       <Button />
     </form>

@@ -1,9 +1,16 @@
 "use server";
 
 import { errorMessage } from "@/lib/secrete";
-import { Add_Snippet, GET_SNIPPETS, Give_Feedback } from "../constants/lib";
+import {
+  Add_Snippet,
+  Copy_Snippet,
+  GET_SNIPPETS,
+  Give_Feedback,
+} from "../constants/lib";
 import axios from "axios";
 import { Snippet } from "../types/snippets";
+import { revalidateTag } from "next/cache";
+import { getHeaders } from "@/app/auth/actions/actions";
 
 export async function getCodeSnippets(): Promise<Snippet[]> {
   console.log("being called one");
@@ -30,8 +37,9 @@ export async function submitFeedBack(formData: FormData) {
   }
 }
 
-export async function postCodeSnippet(formData: FormData, editor: any, user_id: string) {
+export async function postCodeSnippet(formData: FormData, editor: any) {
   try {
+    const headers = await getHeaders();
     const sanitizedSnippet = editor.map((code: any) => ({
       heading: code.heading,
       language: code.lang.label,
@@ -40,11 +48,27 @@ export async function postCodeSnippet(formData: FormData, editor: any, user_id: 
     const data = {
       title: formData.get("title"),
       description: formData.get("description"),
-      tags: formData.get("tags"),
       code: sanitizedSnippet,
     };
 
-    const res = await axios.post(Add_Snippet, data);
+    const res = await axios.post(Add_Snippet, data, { headers });
+    revalidateTag("code");
+    return res?.data;
+  } catch (error: any) {
+    return error?.response?.data || errorMessage;
+  }
+}
+
+export async function copySnippet(id: string) {
+  try {
+    const headers = await getHeaders();
+
+    const data = {
+      id: id,
+    };
+
+    const res = await axios.post(Copy_Snippet, data, { headers });
+    revalidateTag("code");
     return res?.data;
   } catch (error: any) {
     return error?.response?.data || errorMessage;

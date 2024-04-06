@@ -12,11 +12,11 @@ type AddSnippetsProps = {
 export default function AddSnippet({ message, isAuth }: AddSnippetsProps) {
   const router = useRouter();
   const handleUploadSnippetFrom = () => {
-    // if (isAuth === false) {
-    //   router.push("/auth/login?message=Login to add a snippet");
-    // }  else  {
+    if (isAuth === false) {
+      router.push("/auth/login?message=Login to add a snippet");
+    } else {
       router.push("/code-snippets/add");
-    // }
+    }
   };
   return (
     <>

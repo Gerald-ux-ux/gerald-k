@@ -5,9 +5,10 @@ import { loginUser } from "../../actions/actions";
 import { redirect } from "next/navigation";
 
 // @ts-ignore
-import {   useFormStatus } from "react-dom";
+import { useFormStatus } from "react-dom";
 import { AUTH_BTN } from "../../styles/authStyles";
 import BtnLoader from "@/components/ui/btn-loader";
+import ErrorMessage from "@/components/custom/error-message";
 
 function Button() {
   const { pending } = useFormStatus();
@@ -51,11 +52,7 @@ function Form() {
         placeholder="Password"
         required
       />
-      {message ? (
-        <div className="animate-in  truncate rounded-lg bg-error p-2 text-center text-base text-error">
-          <p className="text-center">{message}</p>
-        </div>
-      ) : null}
+      {message ? <ErrorMessage message={message} /> : null}
       <Button />
     </form>
   );

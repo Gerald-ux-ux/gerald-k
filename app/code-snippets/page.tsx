@@ -1,13 +1,13 @@
 import { PAGE_HEADER } from "@/lib/uiConstants";
 import { Metadata } from "next";
+import { Suspense } from "react";
 
+import { checkLogin, getUserInfo } from "../auth/actions/actions";
+import { getCodeSnippets } from "./actions/action";
 import AddSnippet from "./components/AddSnippet";
+import FeedBack from "./components/chat/components/FeedBack";
 import Search from "./components/Search";
 import Snippets from "./components/Snippets";
-import { getCodeSnippets } from "./actions/action";
-import { Suspense } from "react";
-import FeedBack from "./components/chat/components/FeedBack";
-import { checkLogin } from "../auth/actions/actions";
 
 export const metadata: Metadata = {
   title: "Code-snippets | Gerald",
@@ -24,12 +24,12 @@ export default async function CodeSnippets() {
     <>
       <main className="mx-auto flex w-full max-w-[700px] animate-in flex-col gap-8 px-6">
         <div className="flex  w-full items-center justify-between">
-          <span className="flex items-center  gap-2">
+          <span className="flex items-center  gap-6">
             <h1 className={PAGE_HEADER}>Code snippets</h1>
-            <div className="mt-1 flex animate-pulse items-center gap-1 rounded-md p-1.5 text-sm font-medium text-[#0070f3] hover:cursor-pointer  hover:bg-secondary">
+            {/* <div className="mt-1 flex animate-pulse items-center gap-1 rounded-md p-1.5 text-sm font-medium text-[#0070f3] hover:cursor-pointer  hover:bg-secondary">
               <span className="h-2 w-2 rounded-full   bg-[#0070f3] p-0.5" />
               Beta
-            </div>
+            </div> */}
             <FeedBack isAuth={isAuth} />
           </span>
           <AddSnippet message="" isAuth={isAuth} />
