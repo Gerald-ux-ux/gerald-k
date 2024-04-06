@@ -62,7 +62,6 @@ export async function postCodeSnippet(
     revalidateTag("code");
     return res?.data;
   } catch (error: any) {
-    console.log("eero", error?.response?.data);
     return error?.response?.data || errorMessage;
   }
 }
