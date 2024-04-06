@@ -33,10 +33,7 @@ export async function submitFeedBack(formData: FormData) {
   }
 }
 
-export async function postCodeSnippet(
-  formData: FormData,
-  editor: any,
-) {
+export async function postCodeSnippet(formData: FormData, editor: any) {
   try {
     const headers = await getHeaders();
     const sanitizedSnippet = editor.map((code: any) => ({
