@@ -1,9 +1,11 @@
 import { capsFirstLetter } from "@/lib/utils";
 
 export default function SnippetTags({ snippet }: { snippet: any }) {
+
+
   return (
     <>
-      <p className="text-brand font-semibold">Tags</p>
+      <p className="text-primary font-semibold">Tags</p>
       <span className="flex flex-row gap-2 ">
         {snippet?.code?.map((tag: any) => (
           <span
