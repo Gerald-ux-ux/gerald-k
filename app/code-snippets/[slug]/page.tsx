@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props) {
   const code = specificSnippet?.find((snippet) => snippet?._id === params.slug);
 
   return {
-    title: `${code?.title} | ${code?.author}`,
+    title: `${code?.title} | ${code?.author.name}`,
     description: `${code?.description}`,
   };
 }
@@ -39,6 +39,7 @@ export default async function Code({ params }: { params: any }) {
     await getCodeSnippetsHere();
   }
   const code = specificSnippet?.find((snippet) => snippet?._id === params.slug);
+
   console.log("code", code);
   if (!code) return notFound();
   return (
@@ -46,6 +47,7 @@ export default async function Code({ params }: { params: any }) {
       <h1 className="text-xl font-bold leading-tight tracking-tight text-primary md:text-3xl">
         {code.title} ({code.code.length})
       </h1>
+
       <span className="flex items-center justify-between text-lg leading-tight text-secondary md:text-xl">
         {code.description}
       </span>
@@ -54,7 +56,7 @@ export default async function Code({ params }: { params: any }) {
           <span className=" hidden rounded-full bg-secondaryA p-2  md:block ">
             <FaRegUser />
           </span>
-          {code.author}
+          {code.author.name}
         </span>
         <span>
           Clones <strong>{code.copy_count}</strong>

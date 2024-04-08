@@ -1,7 +1,7 @@
 export type Snippet = {
   copy_count: number;
   _id: string;
-  author: string;
+  author: { name: string; id: string; email: string };
   title: string;
   description: string;
   code: { heading: string; content: string; _id: string }[];
@@ -9,4 +9,4 @@ export type Snippet = {
   createdAt: string;
   updatedAt: string;
   _v: number;
-}  | null;
+} | null;

@@ -15,6 +15,7 @@ import { copySnippet } from "../actions/action";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import { IoMdCheckmark } from "react-icons/io";
+import EditSnippet from "./actions-snippet";
 
 type SnippetCodeListProps = {
   code: any;
@@ -45,7 +46,7 @@ export default function SnippetCodeList({ code }: SnippetCodeListProps) {
           <div className="rounded-lg  p-2">
             <div className="mr-4 flex w-full  cursor-pointer  items-center justify-between   rounded-lg p-2 text-secondary ">
               {capsFirstLetter(code.language)}
-              <span className="flex items-center gap-2">
+              <span className="flex items-center gap-4">
                 <button
                   onClick={() => copyCode(code.content, code._id)}
                   className="flex  items-center gap-2"
@@ -63,9 +64,7 @@ export default function SnippetCodeList({ code }: SnippetCodeListProps) {
                   )}
                 </button>
 
-                <div className=" ">
-                  <BsThreeDots />
-                </div>
+                {/* <DeleteSnippet snippet={code} /> */}
               </span>
             </div>
             <SyntaxHighlighter

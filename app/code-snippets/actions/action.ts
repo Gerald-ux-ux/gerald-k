@@ -4,6 +4,8 @@ import { errorMessage } from "@/lib/secrete";
 import {
   Add_Snippet,
   Copy_Snippet,
+  Delete_Code,
+  Delete_Snippet,
   GET_SNIPPETS,
   Give_Feedback,
 } from "../constants/lib";
@@ -68,6 +70,40 @@ export async function copySnippet(id: string) {
     };
 
     const res = await axios.post(Copy_Snippet, data, { headers });
+    revalidateTag("code");
+    return res?.data;
+  } catch (error: any) {
+    return error?.response?.data || errorMessage;
+  }
+}
+
+export async function deleteSnippet(id: string, objId: any) {
+  try {
+    const headers = await getHeaders();
+
+    const data = {
+      code_id: id,
+      object_id: objId,
+    };
+
+    const res = await axios.delete(Delete_Snippet, {
+      data: data,
+      headers: headers,
+    });
+    revalidateTag("code");
+    return res?.data;
+  } catch (error: any) {
+    return error?.response?.data || errorMessage;
+  }
+}
+
+export async function deleteCode(id: string) {
+  try {
+    const headers = await getHeaders();
+
+    const res = await axios.delete(Delete_Code(id), {
+      headers: headers,
+    });
     revalidateTag("code");
     return res?.data;
   } catch (error: any) {
