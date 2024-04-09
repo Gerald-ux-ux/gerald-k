@@ -5,6 +5,7 @@ import { FaRegUser } from "react-icons/fa";
 import { getCodeSnippets } from "../actions/action";
 import SnippetCodeList from "../components/SnippetCodeList";
 import SnippetTags from "../components/tags";
+import DeleteSnippet from "../components/actions/delete-snippet";
 
 let specificSnippet: Snippet[] | null = null;
 type Props = {
@@ -44,9 +45,12 @@ export default async function Code({ params }: { params: any }) {
   if (!code) return notFound();
   return (
     <div className="mx-auto flex w-6/12 max-w-[700px]  flex-col gap-4   p-5">
-      <h1 className="text-xl font-bold leading-tight tracking-tight text-primary md:text-3xl">
-        {code.title} ({code.code.length})
-      </h1>
+      <div className="my-4 flex items-center justify-between">
+        <h1 className="text-xl font-bold leading-tight tracking-tight text-primary md:text-3xl">
+          {code.title}
+        </h1>
+        <DeleteSnippet code_id={code._id} snippet="Object" />
+      </div>
 
       <span className="flex items-center justify-between text-lg leading-tight text-secondary md:text-xl">
         {code.description}
