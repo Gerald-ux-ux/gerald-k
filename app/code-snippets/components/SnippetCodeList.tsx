@@ -64,6 +64,7 @@ export default function SnippetCodeList({ code }: SnippetCodeListProps) {
                   )}
                 </button>
 
+                <EditSnippet snippet={code} />
                 {/* <DeleteSnippet snippet={code} /> */}
               </span>
             </div>

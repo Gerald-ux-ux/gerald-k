@@ -1,6 +1,6 @@
 "use client";
 
-import { deleteSnippet } from "@/app/code-snippets/actions/action";
+import { deleteSnippet, getCodeSnippets } from "@/app/code-snippets/actions/action";
 import { useParams, usePathname } from "next/navigation";
 import toast from "react-hot-toast";
 
@@ -15,8 +15,11 @@ export default function useDelete({ setOpen, id }: Props) {
 
     const res = await deleteSnippet(id, objId.slug);
 
+
+    console.log("res", res);
     if (res?.success) {
       setOpen(false);
+      // getCodeSnippets()
     } else {
       setOpen(true);
       toast.error(res?.message);

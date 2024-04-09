@@ -8,6 +8,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import "react-loading-skeleton/dist/skeleton.css";
 
 import SnippetTags from "./tags";
+import EditSnippet from "./actions-snippet";
 
 type SnippetProps = {
   data?: any;
@@ -57,6 +58,8 @@ export default function Snippets({ data }: SnippetProps) {
                   <p className=" text-sm font-medium tracking-tight md:text-xl md:font-semibold">
                     {snippet?.title} ({snippet.code.length})
                   </p>
+
+                  {/* <EditSnippet snippet={code} /> */}
 
                   <span className="hidden items-center gap-2 text-xs md:flex md:text-base">
                     <p className="w-full">{snippet.author.name}</p>

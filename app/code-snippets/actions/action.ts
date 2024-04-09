@@ -90,6 +90,9 @@ export async function deleteSnippet(id: string, objId: any) {
       data: data,
       headers: headers,
     });
+
+    console.log("data", data)
+
     revalidateTag("code");
     return res?.data;
   } catch (error: any) {

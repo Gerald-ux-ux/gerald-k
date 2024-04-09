@@ -1,4 +1,5 @@
 import { capsFirstLetter } from "@/lib/utils";
+import { removeDuplicates } from '../../../lib/utils';
 
 export default function SnippetTags({ snippet }: { snippet: any }) {
 
@@ -12,7 +13,7 @@ export default function SnippetTags({ snippet }: { snippet: any }) {
             key={tag}
             className=" whitespace-nowrap  rounded-lg bg-secondary p-1.5 text-sm text-primary "
           >
-            {capsFirstLetter(tag.language)}
+            {removeDuplicates(capsFirstLetter(tag.language))}
           </span>
         ))}
       </span>
