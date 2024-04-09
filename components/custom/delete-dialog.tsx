@@ -9,6 +9,7 @@ type Props = {
   setOpen: (value: boolean) => void;
   actionItem: string;
   id: string;
+  snippet: string;
 };
 
 function SubmitBtn() {
@@ -27,10 +28,16 @@ function SubmitBtn() {
     </span>
   );
 }
-export default function DeleteDialog({ setOpen, actionItem, id }: Props) {
+export default function DeleteDialog({
+  setOpen,
+  actionItem,
+  id,
+  snippet,
+}: Props) {
   const { handleDelete } = useDelete({
     setOpen,
     id,
+    snippet
   });
   return (
     <form action={handleDelete} className="flex  h-full  flex-col gap-2">
