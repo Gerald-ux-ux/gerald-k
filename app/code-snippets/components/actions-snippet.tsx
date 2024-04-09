@@ -42,7 +42,7 @@ export default function EditSnippet({ snippet }: Props) {
 
   return (
     <div className=" ">
-      {open && (
+      {/* {open && (
         <div>
           <Modal
             triggerButton="Delete"
@@ -60,7 +60,7 @@ export default function EditSnippet({ snippet }: Props) {
             }
           />
         </div>
-      )}
+      )} */}
 
       <DropdownMenu>
         <DropdownMenuTrigger>

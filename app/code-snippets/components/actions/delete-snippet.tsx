@@ -27,12 +27,11 @@ const actions = [
 export default function DeleteSnippet({ id, code_id, snippet }: Props) {
   console.log("code", code_id);
   const [open, setOpen] = useState<boolean>(false);
-  const [selectedSnippet, setSelectedSnippet] = useState<any>({});
   return (
     <div className="">
       <DropDownMenuComponent
         actions={actions}
-        snippet={selectedSnippet}
+        setSelectedSnippet={code_id}
         setOpen={setOpen}
       />
       {open && (
@@ -53,6 +52,7 @@ export default function DeleteSnippet({ id, code_id, snippet }: Props) {
           }
         />
       )}
+      ¥
     </div>
   );
 }

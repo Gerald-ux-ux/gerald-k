@@ -13,6 +13,7 @@ type Props = {
   actions: any;
   snippet: any;
   setOpen: any;
+  setSelectedSnippet?: any;
 };
 
 export default function DropDownMenuComponent({
