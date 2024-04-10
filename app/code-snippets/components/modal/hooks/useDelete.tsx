@@ -31,10 +31,8 @@ export default function useDelete({ setOpen, id, snippet }: Props) {
     } else if (snippet === "Code") {
       const res = await deleteSnippet(id, objId.slug);
 
-      console.log("res", res);
       if (res?.success) {
-
-        if(res.data.length === 0 ) {
+        if (res.data.length === 0) {
           router.push("/code-snippets");
         }
         setOpen(false);

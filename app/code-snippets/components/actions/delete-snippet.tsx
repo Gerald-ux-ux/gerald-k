@@ -20,13 +20,10 @@ const actions = [
     icon: <CiTrash />,
     onClick: (snippet: any, setOpen: any, setSelectedSnippet: any) => {
       setOpen(true);
-      console.log("id", snippet);
-      // setSelectedSnippet(snippet._id);
     },
   },
 ];
 export default function DeleteSnippet({ id, code_id, snippet, text }: Props) {
-  console.log("code", code_id);
   const [open, setOpen] = useState<boolean>(false);
   return (
     <div className="">
@@ -53,7 +50,6 @@ export default function DeleteSnippet({ id, code_id, snippet, text }: Props) {
           }
         />
       )}
-
     </div>
   );
 }

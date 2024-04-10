@@ -79,9 +79,6 @@ export async function copySnippet(id: string) {
 export async function deleteSnippet(id: any, objId: any) {
   try {
     const headers = await getHeaders();
-    console.log("Bearer", headers);
-
-    // const code_id = id
 
     const data = {
       code_id: id._id,

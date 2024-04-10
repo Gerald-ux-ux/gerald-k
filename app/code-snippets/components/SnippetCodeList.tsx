@@ -71,7 +71,7 @@ export default function SnippetCodeList({
                   )}
                 </button>
 
-                {user._id === author && (
+                {user?._id === author && (
                   <DeleteSnippet text="Delete this specific code" code_id={code} snippet="Code" />
                 )}
               </span>
