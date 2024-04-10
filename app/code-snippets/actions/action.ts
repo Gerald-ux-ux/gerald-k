@@ -77,21 +77,26 @@ export async function copySnippet(id: string) {
   }
 }
 
-export async function deleteSnippet(id: string, objId: any) {
+export async function deleteSnippet(id: any, objId: any) {
   try {
     const headers = await getHeaders();
+    console.log("Bearer", headers);
+
+    // const code_id = id
 
     const data = {
-      code_id: id,
+      code_id: id._id,
       object_id: objId,
     };
+
+    console.log("data sent", data);
 
     const res = await axios.delete(Delete_Snippet, {
       data: data,
       headers: headers,
     });
 
-    console.log("data", data)
+    console.log("data", data);
 
     revalidateTag("code");
     return res?.data;

@@ -5,7 +5,7 @@ import {
   deleteSnippet,
   getCodeSnippets,
 } from "@/app/code-snippets/actions/action";
-import { useParams, usePathname } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 type Props = {
@@ -14,13 +14,15 @@ type Props = {
   snippet: string;
 };
 export default function useDelete({ setOpen, id, snippet }: Props) {
+  const router = useRouter();
   const objId = useParams();
   async function handleDelete(formData: FormData) {
     formData.append("id", String(id));
 
     if (snippet === "Object") {
       const res = await deleteCode(id);
-      if (res.status === 200) {
+      if (res.success) {
+        router.push("/code-snippets");
         setOpen(false);
       } else {
         setOpen(true);

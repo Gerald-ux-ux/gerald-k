@@ -20,7 +20,7 @@ const actions = [
     onClick: (snippet: any, setOpen: any, setSelectedSnippet: any) => {
       setOpen(true);
       console.log("id", snippet);
-      setSelectedSnippet(snippet._id);
+      // setSelectedSnippet(snippet._id);
     },
   },
 ];
@@ -31,7 +31,7 @@ export default function DeleteSnippet({ id, code_id, snippet }: Props) {
     <div className="">
       <DropDownMenuComponent
         actions={actions}
-        setSelectedSnippet={code_id}
+        snippet={code_id}
         setOpen={setOpen}
       />
       {open && (
@@ -45,14 +45,14 @@ export default function DeleteSnippet({ id, code_id, snippet }: Props) {
           formComponent={
             <DeleteDialog
               snippet={snippet}
-              id={selectedSnippet}
+              id={code_id}
               setOpen={setOpen}
               actionItem="Snippet"
             />
           }
         />
       )}
-      ¥
+
     </div>
   );
 }

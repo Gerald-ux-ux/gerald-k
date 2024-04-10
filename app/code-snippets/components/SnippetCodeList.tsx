@@ -42,7 +42,6 @@ export default function SnippetCodeList({ code }: SnippetCodeListProps) {
       <AccordionItem value="item-1" className="mt-0">
         <AccordionTrigger className=" flex  w-full items-center  justify-between ">
           {code.heading}
-
         </AccordionTrigger>
         <AccordionContent className="">
           <div className="rounded-lg  p-2">
@@ -66,7 +65,7 @@ export default function SnippetCodeList({ code }: SnippetCodeListProps) {
                   )}
                 </button>
 
-                <EditSnippet snippet={code} />
+                <DeleteSnippet code_id={code} snippet="Code" />
                 {/* <DeleteSnippet snippet={code} /> */}
               </span>
             </div>
