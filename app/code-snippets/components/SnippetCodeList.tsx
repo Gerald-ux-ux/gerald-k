@@ -20,8 +20,8 @@ import DeleteSnippet from "./actions/delete-snippet";
 
 type SnippetCodeListProps = {
   code: any;
-  user: any;
-  author: string;
+  user?: any;
+  author?: string;
 };
 
 export default function SnippetCodeList({
@@ -72,7 +72,7 @@ export default function SnippetCodeList({
                 </button>
 
                 {user._id === author && (
-                  <DeleteSnippet code_id={code} snippet="Code" />
+                  <DeleteSnippet text="Delete this specific code" code_id={code} snippet="Code" />
                 )}
               </span>
             </div>

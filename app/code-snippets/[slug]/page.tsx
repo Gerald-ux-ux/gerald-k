@@ -53,7 +53,7 @@ export default async function Code({ params }: { params: any }) {
           {code.title}
         </h1>
         {user._id === code.author.id && (
-          <DeleteSnippet code_id={code._id} snippet="Object" />
+          <DeleteSnippet text="Delete the whole snippet" code_id={code._id} snippet="Object" />
         )}
       </div>
 

@@ -11,6 +11,7 @@ type Props = {
   id?: string;
   code_id?: string;
   snippet: string;
+  text: string;
 };
 
 const actions = [
@@ -24,7 +25,7 @@ const actions = [
     },
   },
 ];
-export default function DeleteSnippet({ id, code_id, snippet }: Props) {
+export default function DeleteSnippet({ id, code_id, snippet, text }: Props) {
   console.log("code", code_id);
   const [open, setOpen] = useState<boolean>(false);
   return (
@@ -37,7 +38,7 @@ export default function DeleteSnippet({ id, code_id, snippet }: Props) {
       {open && (
         <Modal
           triggerButton="Delete"
-          dialogTitle="Delete Snippet"
+          dialogTitle={text}
           open={open}
           maxHeight="max-h-[210px]"
           setOpen={setOpen}

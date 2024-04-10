@@ -84,8 +84,6 @@ export async function getUserInfo() {
 
     const userInfo = cookieSore?.get("user-info");
 
-    console.log("authenticated", userInfo);
-
     if (userInfo) {
       const decryptedData = decrypt(userInfo?.value, secretKey!);
 

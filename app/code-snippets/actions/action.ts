@@ -11,15 +11,14 @@ import {
 } from "../constants/lib";
 import axios from "axios";
 import { Snippet } from "../types/snippets";
-import { revalidateTag } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { getHeaders } from "@/app/auth/actions/actions";
 
 export async function getCodeSnippets(): Promise<Snippet[]> {
   console.log("being called one");
   try {
-    const res = await fetch(GET_SNIPPETS, { next: { tags: ["code"] } });
-    const data = await res.json();
-    return data?.data;
+    const res = await axios.get(GET_SNIPPETS);
+    return res?.data.data;
   } catch (error: any) {
     return error?.response?.data || errorMessage;
   }
@@ -54,7 +53,7 @@ export async function postCodeSnippet(formData: FormData, editor: any) {
     };
 
     const res = await axios.post(Add_Snippet, data, { headers });
-    revalidateTag("code");
+    revalidatePath("code-snippets");
     return res?.data;
   } catch (error: any) {
     return error?.response?.data || errorMessage;
@@ -70,7 +69,7 @@ export async function copySnippet(id: string) {
     };
 
     const res = await axios.post(Copy_Snippet, data, { headers });
-    revalidateTag("code");
+    revalidatePath("code-snippets");
     return res?.data;
   } catch (error: any) {
     return error?.response?.data || errorMessage;
@@ -98,7 +97,7 @@ export async function deleteSnippet(id: any, objId: any) {
 
     console.log("data", data);
 
-    revalidateTag("code");
+    revalidatePath("code-snippets");
     return res?.data;
   } catch (error: any) {
     return error?.response?.data || errorMessage;
@@ -112,7 +111,7 @@ export async function deleteCode(id: string) {
     const res = await axios.delete(Delete_Code(id), {
       headers: headers,
     });
-    revalidateTag("code");
+    revalidatePath("code-snippets");
     return res?.data;
   } catch (error: any) {
     return error?.response?.data || errorMessage;

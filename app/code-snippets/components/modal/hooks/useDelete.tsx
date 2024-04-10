@@ -33,6 +33,10 @@ export default function useDelete({ setOpen, id, snippet }: Props) {
 
       console.log("res", res);
       if (res?.success) {
+
+        if(res.data.length === 0 ) {
+          router.push("/code-snippets");
+        }
         setOpen(false);
       } else {
         setOpen(true);
