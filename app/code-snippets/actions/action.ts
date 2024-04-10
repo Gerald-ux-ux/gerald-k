@@ -11,11 +11,10 @@ import {
 } from "../constants/lib";
 import axios from "axios";
 import { Snippet } from "../types/snippets";
-import { revalidateTag } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { getHeaders } from "@/app/auth/actions/actions";
 
 export async function getCodeSnippets(): Promise<Snippet[]> {
-  console.log("being called one");
   try {
     const res = await fetch(GET_SNIPPETS, { next: { tags: ["code"] } });
     const data = await res.json();
@@ -77,12 +76,12 @@ export async function copySnippet(id: string) {
   }
 }
 
-export async function deleteSnippet(id: string, objId: any) {
+export async function deleteSnippet(id: any, objId: any) {
   try {
     const headers = await getHeaders();
 
     const data = {
-      code_id: id,
+      code_id: id._id,
       object_id: objId,
     };
 
@@ -91,7 +90,7 @@ export async function deleteSnippet(id: string, objId: any) {
       headers: headers,
     });
 
-    console.log("data", data)
+    console.log("data", data);
 
     revalidateTag("code");
     return res?.data;

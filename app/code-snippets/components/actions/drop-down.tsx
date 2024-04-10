@@ -13,14 +13,14 @@ type Props = {
   actions: any;
   snippet: any;
   setOpen: any;
-  setSelectedSnippet?: any;
+  // setSelectedSnippet?: any;
 };
 
 export default function DropDownMenuComponent({
   actions,
   snippet,
   setOpen,
-}: any) {
+}: Props) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>

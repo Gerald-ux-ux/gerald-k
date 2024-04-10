@@ -10,6 +10,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import SnippetTags from "./tags";
 import EditSnippet from "./actions-snippet";
 import DeleteSnippet from "./actions/delete-snippet";
+import { getCodeSnippets } from "../actions/action";
 
 type SnippetProps = {
   data?: any;
@@ -36,6 +37,8 @@ export default function Snippets({ data }: SnippetProps) {
   const pathname = usePathname();
 
   const handleClicked = (snippet: any) => {
+    getCodeSnippets();
+
     console.log("snippet id", snippet);
     setClicked(snippet);
     return router.push(`${pathname}/${snippet._id}`);
@@ -58,9 +61,7 @@ export default function Snippets({ data }: SnippetProps) {
                 <span className="flex w-full items-center  justify-between ">
                   <p className=" text-sm font-medium tracking-tight md:text-xl md:font-semibold">
                     {snippet?.title} ({snippet.code.length})
-                      
                   </p>
-
 
                   <span className="hidden items-center gap-2 text-xs md:flex md:text-base">
                     <p className="w-full">{snippet.author.name}</p>

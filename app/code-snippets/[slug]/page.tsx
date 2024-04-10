@@ -6,6 +6,7 @@ import { getCodeSnippets } from "../actions/action";
 import SnippetCodeList from "../components/SnippetCodeList";
 import SnippetTags from "../components/tags";
 import DeleteSnippet from "../components/actions/delete-snippet";
+import { getUserInfo } from "@/app/auth/actions/actions";
 
 let specificSnippet: Snippet[] | null = null;
 type Props = {
@@ -40,6 +41,8 @@ export default async function Code({ params }: { params: any }) {
     await getCodeSnippetsHere();
   }
   const code = specificSnippet?.find((snippet) => snippet?._id === params.slug);
+  const user = await getUserInfo();
+  const author = code?.author.id;
 
   console.log("code", code);
   if (!code) return notFound();
@@ -49,7 +52,9 @@ export default async function Code({ params }: { params: any }) {
         <h1 className="text-xl font-bold leading-tight tracking-tight text-primary md:text-3xl">
           {code.title}
         </h1>
-        <DeleteSnippet code_id={code._id} snippet="Object" />
+        {user?._id === code.author.id && (
+          <DeleteSnippet text="Delete the whole snippet" code_id={code._id} snippet="Object" />
+        )}
       </div>
 
       <span className="flex items-center justify-between text-lg leading-tight text-secondary md:text-xl">
@@ -68,7 +73,12 @@ export default async function Code({ params }: { params: any }) {
       </span>
       <div className=" prose prose-neutral flex animate-in flex-col gap-2">
         {code.code.map((tag) => (
-          <SnippetCodeList code={tag} key={tag._id} />
+          <SnippetCodeList
+            code={tag}
+            key={tag._id}
+            user={user}
+            author={author!}
+          />
         ))}
         <SnippetTags snippet={code} />
       </div>

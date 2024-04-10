@@ -8,7 +8,7 @@ import useDelete from "@/app/code-snippets/components/modal/hooks/useDelete";
 type Props = {
   setOpen: (value: boolean) => void;
   actionItem: string;
-  id: string;
+  id: any;
   snippet: string;
 };
 

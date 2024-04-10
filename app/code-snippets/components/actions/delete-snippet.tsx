@@ -11,6 +11,7 @@ type Props = {
   id?: string;
   code_id?: string;
   snippet: string;
+  text: string;
 };
 
 const actions = [
@@ -19,25 +20,22 @@ const actions = [
     icon: <CiTrash />,
     onClick: (snippet: any, setOpen: any, setSelectedSnippet: any) => {
       setOpen(true);
-      console.log("id", snippet);
-      setSelectedSnippet(snippet._id);
     },
   },
 ];
-export default function DeleteSnippet({ id, code_id, snippet }: Props) {
-  console.log("code", code_id);
+export default function DeleteSnippet({ id, code_id, snippet, text }: Props) {
   const [open, setOpen] = useState<boolean>(false);
   return (
     <div className="">
       <DropDownMenuComponent
         actions={actions}
-        setSelectedSnippet={code_id}
+        snippet={code_id}
         setOpen={setOpen}
       />
       {open && (
         <Modal
           triggerButton="Delete"
-          dialogTitle="Delete Snippet"
+          dialogTitle={text}
           open={open}
           maxHeight="max-h-[210px]"
           setOpen={setOpen}
@@ -45,14 +43,13 @@ export default function DeleteSnippet({ id, code_id, snippet }: Props) {
           formComponent={
             <DeleteDialog
               snippet={snippet}
-              id={selectedSnippet}
+              id={code_id}
               setOpen={setOpen}
               actionItem="Snippet"
             />
           }
         />
       )}
-      ¥
     </div>
   );
 }
