@@ -20,9 +20,15 @@ import DeleteSnippet from "./actions/delete-snippet";
 
 type SnippetCodeListProps = {
   code: any;
+  user: any;
+  author: string;
 };
 
-export default function SnippetCodeList({ code }: SnippetCodeListProps) {
+export default function SnippetCodeList({
+  code,
+  user,
+  author,
+}: SnippetCodeListProps) {
   const theme = useTheme();
 
   const [success, setSuccess] = useState(false);
@@ -65,8 +71,9 @@ export default function SnippetCodeList({ code }: SnippetCodeListProps) {
                   )}
                 </button>
 
-                <DeleteSnippet code_id={code} snippet="Code" />
-                {/* <DeleteSnippet snippet={code} /> */}
+                {user._id === author && (
+                  <DeleteSnippet code_id={code} snippet="Code" />
+                )}
               </span>
             </div>
             <SyntaxHighlighter
