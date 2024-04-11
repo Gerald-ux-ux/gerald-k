@@ -58,12 +58,12 @@ export default function Snippets({ data }: SnippetProps) {
           .map((snippet: any, i: number) => (
             <div key={i} onClick={() => handleClicked(snippet)}>
               <li className="flex cursor-pointer flex-col gap-3 rounded-lg border border-secondaryA  p-2">
-                <span className="flex w-full items-center  justify-between ">
-                  <p className=" text-sm font-medium tracking-tight md:text-xl md:font-semibold">
+                <span className="flex w-full items-center gap-2 justify-between ">
+                  <p className=" text-sm  truncate w-9/12 font-medium tracking-tight md:text-xl md:font-semibold">
                     {snippet?.title} ({snippet.code.length})
                   </p>
 
-                  <span className="hidden items-center gap-2 text-xs md:flex md:text-base">
+                  <span className="hidden items-center gap-2  text-xs md:flex md:text-base">
                     <p className="w-full">{snippet.author.name}</p>
 
                     <span className=" hidden rounded-full bg-secondaryA p-2  md:block">
