@@ -37,9 +37,7 @@ export default function Snippets({ data }: SnippetProps) {
   const pathname = usePathname();
 
   const handleClicked = (snippet: any) => {
-    getCodeSnippets();
-
-    console.log("snippet id", snippet);
+    // getCodeSnippets();
     setClicked(snippet);
     return router.push(`${pathname}/${snippet._id}`);
   };
@@ -58,8 +56,8 @@ export default function Snippets({ data }: SnippetProps) {
           .map((snippet: any, i: number) => (
             <div key={i} onClick={() => handleClicked(snippet)}>
               <li className="flex cursor-pointer flex-col gap-3 rounded-lg border border-secondaryA  p-2">
-                <span className="flex w-full items-center gap-2 justify-between ">
-                  <p className=" text-sm  truncate  md:w-9/12 font-medium tracking-tight md:text-xl md:font-semibold">
+                <span className="flex w-full items-center justify-between gap-2 ">
+                  <p className=" truncate  text-sm  font-medium tracking-tight md:w-9/12 md:text-xl md:font-semibold">
                     {snippet?.title} ({snippet.code.length})
                   </p>
 
@@ -72,7 +70,7 @@ export default function Snippets({ data }: SnippetProps) {
                   </span>
                 </span>
                 <span className="flex w-full items-center justify-between  text-sm md:text-base">
-                  <p className="md:w-96 w-44  truncate text-start ">
+                  <p className="w-44 truncate  text-start md:w-96 ">
                     {snippet.description}
                   </p>
 
