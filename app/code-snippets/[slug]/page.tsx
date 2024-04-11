@@ -37,7 +37,7 @@ export default async function Code({ params }: { params: any }) {
   console.log("code", code);
   if (!code) return notFound();
   return (
-    <div className="mx-auto flex w-6/12 max-w-[700px]  flex-col gap-4   p-5">
+    <div className="mx-auto flex w-full md:w-6/12 max-w-[700px]  flex-col gap-4   p-5">
       <div className="my-4 flex items-center justify-between">
         <h1 className="text-xl font-bold leading-tight tracking-tight text-primary md:text-3xl">
           {code.title}
@@ -56,7 +56,7 @@ export default async function Code({ params }: { params: any }) {
       </span>
       <span className="flex items-center justify-between gap-2 text-secondary">
         <span className="flex items-center gap-2">
-          <span className=" hidden rounded-full bg-secondaryA p-2  md:block ">
+          <span className="  rounded-full bg-secondaryA p-2  md:block ">
             <FaRegUser />
           </span>
           {code.author.name}

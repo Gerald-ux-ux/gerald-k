@@ -59,7 +59,7 @@ export default function Snippets({ data }: SnippetProps) {
             <div key={i} onClick={() => handleClicked(snippet)}>
               <li className="flex cursor-pointer flex-col gap-3 rounded-lg border border-secondaryA  p-2">
                 <span className="flex w-full items-center gap-2 justify-between ">
-                  <p className=" text-sm  truncate w-9/12 font-medium tracking-tight md:text-xl md:font-semibold">
+                  <p className=" text-sm  truncate  md:w-9/12 font-medium tracking-tight md:text-xl md:font-semibold">
                     {snippet?.title} ({snippet.code.length})
                   </p>
 
@@ -72,7 +72,7 @@ export default function Snippets({ data }: SnippetProps) {
                   </span>
                 </span>
                 <span className="flex w-full items-center justify-between  text-sm md:text-base">
-                  <p className="w-96 truncate text-start ">
+                  <p className="md:w-96 w-44  truncate text-start ">
                     {snippet.description}
                   </p>
 
