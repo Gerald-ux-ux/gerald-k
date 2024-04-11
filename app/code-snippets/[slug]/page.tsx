@@ -8,7 +8,6 @@ import SnippetTags from "../components/tags";
 import DeleteSnippet from "../components/actions/delete-snippet";
 import { getUserInfo } from "@/app/auth/actions/actions";
 
-let specificSnippet: Snippet[] | null = null;
 type Props = {
   params: {
     title: string;
@@ -17,17 +16,9 @@ type Props = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-async function getCodeSnippetsHere() {
-  if (specificSnippet === null) {
-    specificSnippet = await getCodeSnippets();
-  }
-  return specificSnippet;
-}
-
 export async function generateMetadata({ params }: Props) {
-  if (!specificSnippet) {
-    await getCodeSnippetsHere();
-  }
+  const specificSnippet = await getCodeSnippets();
+
   const code = specificSnippet?.find((snippet) => snippet?._id === params.slug);
 
   return {
@@ -37,9 +28,8 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function Code({ params }: { params: any }) {
-  if (!specificSnippet) {
-    await getCodeSnippetsHere();
-  }
+  const specificSnippet = await getCodeSnippets();
+
   const code = specificSnippet?.find((snippet) => snippet?._id === params.slug);
   const user = await getUserInfo();
   const author = code?.author.id;
@@ -53,7 +43,11 @@ export default async function Code({ params }: { params: any }) {
           {code.title}
         </h1>
         {user?._id === code.author.id && (
-          <DeleteSnippet text="Delete the whole snippet" code_id={code._id} snippet="Object" />
+          <DeleteSnippet
+            text="Delete the whole snippet"
+            code_id={code._id}
+            snippet="Object"
+          />
         )}
       </div>
 
