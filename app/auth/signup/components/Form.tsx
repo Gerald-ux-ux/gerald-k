@@ -26,16 +26,16 @@ export default function Form() {
   const [showPass, setShowPass] = useState<boolean>(false);
 
   async function handleSubmit(formData: FormData) {
-    // const res = await registerUser(formData);
-    // if (res.success) {
-    //   redirect("/code-snippets");
-    // } else if (res?.success === false) {
-    //   setMessage(
-    //     res?.message || "An unexpected error occurred, please try again",
-    //   );
-    // } else {
-    //   setMessage(res);
-    // }
+    const res = await registerUser(formData);
+    if (res.success) {
+      redirect("/code-snippets/add");
+    } else if (res?.success === false) {
+      setMessage(
+        res?.message || "An unexpected error occurred, please try again",
+      );
+    } else {
+      setMessage(res);
+    }
   }
   return (
     <form action={handleSubmit} className="flex w-full flex-col gap-4">

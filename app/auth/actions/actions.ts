@@ -12,6 +12,7 @@ export async function registerUser(formData: FormData) {
       username: formData.get("name"),
       password: formData.get("password"),
     };
+
     const res = await axios.post(Register, data);
     const { username, email, _id } = res?.data?.data;
     const { sessionToken } = res?.data?.data?.authentication;

@@ -10,14 +10,10 @@ export function addCommas(x: any) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-export function capsFirstLetter(x: string) {
+export function capsFirstLetter(x: any) {
   return x?.charAt(0)?.toUpperCase() + x?.slice(1);
 }
 
-export function removeDuplicates(arr: any) {
-  if (Array.isArray(arr)) {
-    return Array.from(new Set(arr));
-  } else {
-    return arr;
-  }
+export function removeDuplicates(arr: any[]): string[] {
+  return Array.from(new Set(arr));
 }

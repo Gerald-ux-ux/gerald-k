@@ -8,7 +8,6 @@ import SnippetTags from "../components/tags";
 import DeleteSnippet from "../components/actions/delete-snippet";
 import { getUserInfo } from "@/app/auth/actions/actions";
 
-let specificSnippet: Snippet[] | null = null;
 type Props = {
   params: {
     title: string;
@@ -17,17 +16,9 @@ type Props = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-async function getCodeSnippetsHere() {
-  if (specificSnippet === null) {
-    specificSnippet = await getCodeSnippets();
-  }
-  return specificSnippet;
-}
-
 export async function generateMetadata({ params }: Props) {
-  if (!specificSnippet) {
-    await getCodeSnippetsHere();
-  }
+  const specificSnippet = await getCodeSnippets();
+
   const code = specificSnippet?.find((snippet) => snippet?._id === params.slug);
 
   return {
@@ -37,9 +28,8 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function Code({ params }: { params: any }) {
-  if (!specificSnippet) {
-    await getCodeSnippetsHere();
-  }
+  const specificSnippet = await getCodeSnippets();
+
   const code = specificSnippet?.find((snippet) => snippet?._id === params.slug);
   const user = await getUserInfo();
   const author = code?.author.id;
@@ -47,13 +37,17 @@ export default async function Code({ params }: { params: any }) {
   console.log("code", code);
   if (!code) return notFound();
   return (
-    <div className="mx-auto flex w-6/12 max-w-[700px]  flex-col gap-4   p-5">
+    <div className="mx-auto flex w-full md:w-6/12 max-w-[700px]  flex-col gap-4   p-5">
       <div className="my-4 flex items-center justify-between">
         <h1 className="text-xl font-bold leading-tight tracking-tight text-primary md:text-3xl">
           {code.title}
         </h1>
         {user?._id === code.author.id && (
-          <DeleteSnippet text="Delete the whole snippet" code_id={code._id} snippet="Object" />
+          <DeleteSnippet
+            text="Delete the whole snippet"
+            code_id={code._id}
+            snippet="Object"
+          />
         )}
       </div>
 
@@ -62,7 +56,7 @@ export default async function Code({ params }: { params: any }) {
       </span>
       <span className="flex items-center justify-between gap-2 text-secondary">
         <span className="flex items-center gap-2">
-          <span className=" hidden rounded-full bg-secondaryA p-2  md:block ">
+          <span className="  rounded-full bg-secondaryA p-2  md:block ">
             <FaRegUser />
           </span>
           {code.author.name}
