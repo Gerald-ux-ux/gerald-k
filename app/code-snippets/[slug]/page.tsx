@@ -34,7 +34,6 @@ export default async function Code({ params }: { params: any }) {
   const user = await getUserInfo();
   const author = code?.author.id;
 
-  console.log("code", code)
 
   if (!code) return notFound();
   return (

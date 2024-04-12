@@ -17,7 +17,6 @@ type SnippetProps = {
 export default function Snippets({ data }: SnippetProps) {
   const [expanded, setExpanded] = useState<boolean[]>([]);
 
-  console.log("snippets", data);
 
   const searchQuery = useSearchParams();
   const searchItem = searchQuery.get("query");
