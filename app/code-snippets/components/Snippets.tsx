@@ -19,7 +19,8 @@ type SnippetProps = {
 
 export default function Snippets({ data }: SnippetProps) {
   const [expanded, setExpanded] = useState<boolean[]>([]);
-  const [clicked, setClicked] = useState();
+
+  console.log("snippets", data);
 
   const searchQuery = useSearchParams();
   const searchItem = searchQuery.get("query");
@@ -32,13 +33,10 @@ export default function Snippets({ data }: SnippetProps) {
     });
   };
 
-  const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
 
   const handleClicked = (snippet: any) => {
-    // getCodeSnippets();
-    setClicked(snippet);
     return router.push(`${pathname}/${snippet._id}`);
   };
 
