@@ -8,7 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import dark from "react-syntax-highlighter/dist/esm/styles/hljs";
+import dark from "react-syntax-highlighter/dist/esm/styles/prism";
 import { useTheme } from "next-themes";
 import { capsFirstLetter } from "@/lib/utils";
 import { copySnippet } from "../actions/action";

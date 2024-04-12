@@ -1,16 +1,13 @@
 "use client";
 
 import { formatDate } from "@/lib/formatdate";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaRegUser } from "react-icons/fa";
 import SnippetCodeList from "./SnippetCodeList";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import "react-loading-skeleton/dist/skeleton.css";
 
 import SnippetTags from "./tags";
-import EditSnippet from "./actions-snippet";
-import DeleteSnippet from "./actions/delete-snippet";
-import { getCodeSnippets } from "../actions/action";
 
 type SnippetProps = {
   data?: any;
@@ -19,26 +16,16 @@ type SnippetProps = {
 
 export default function Snippets({ data }: SnippetProps) {
   const [expanded, setExpanded] = useState<boolean[]>([]);
-  const [clicked, setClicked] = useState();
+
+  console.log("snippets", data);
 
   const searchQuery = useSearchParams();
   const searchItem = searchQuery.get("query");
 
-  const handleToggle = (id: number) => {
-    setExpanded((prevExpanded: any) => {
-      const newExpanded = [...prevExpanded];
-      newExpanded[id] = !prevExpanded[id];
-      return newExpanded;
-    });
-  };
-
-  const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
 
   const handleClicked = (snippet: any) => {
-    // getCodeSnippets();
-    setClicked(snippet);
     return router.push(`${pathname}/${snippet._id}`);
   };
 
