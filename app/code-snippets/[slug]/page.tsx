@@ -34,6 +34,8 @@ export default async function Code({ params }: { params: any }) {
   const user = await getUserInfo();
   const author = code?.author.id;
 
+  console.log("code", code)
+
   if (!code) return notFound();
   return (
     <div className="mx-auto flex w-full max-w-[700px] flex-col  gap-4 p-5   md:w-6/12">
