@@ -62,13 +62,12 @@ export async function postCodeSnippet(formData: FormData, editor: any) {
 
 export async function copySnippet(id: string) {
   try {
-    const headers = await getHeaders();
-
     const data = {
       id: id,
     };
 
-    const res = await axios.post(Copy_Snippet, data, { headers });
+    const res = await axios.post(Copy_Snippet, data);
+
     revalidateTag("code");
     return res?.data;
   } catch (error: any) {

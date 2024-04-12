@@ -34,6 +34,8 @@ export default function SnippetCodeList({
   const [success, setSuccess] = useState(false);
   const copyCode = async (snippetCode: string, snippetId: string) => {
     const res = await copySnippet(snippetId);
+
+    console.log("res", res)
     if (res.success) {
       setSuccess(true);
       navigator.clipboard.writeText(snippetCode);
