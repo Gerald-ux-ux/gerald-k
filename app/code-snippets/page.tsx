@@ -16,6 +16,7 @@ export const metadata: Metadata = {
 
 export default async function CodeSnippets() {
   const snippets = await getCodeSnippets();
+  console.log("available snippets", snippets.length)
 
   const isAuth = await checkLogin();
 
@@ -26,7 +27,7 @@ export default async function CodeSnippets() {
         <div className="flex  w-full items-center justify-between">
           <span className="flex items-center  gap-6">
             <h1 className={PAGE_HEADER}>Code snippets</h1>
-            
+
             <FeedBack isAuth={isAuth} />
           </span>
           <AddSnippet message="" isAuth={isAuth} />
