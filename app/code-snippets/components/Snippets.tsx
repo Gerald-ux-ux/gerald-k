@@ -44,51 +44,48 @@ export default function Snippets({ data }: SnippetProps) {
 
   return (
     <ul className="animated-list flex w-full flex-col gap-2">
-      {data &&
-        data
-          ?.filter((snippet: any) =>
-            searchItem
-              ? snippet?.title
-                  ?.toLowerCase()
-                  ?.includes(searchItem.toLowerCase())
-              : true,
-          )
-          .map((snippet: any, i: number) => (
-            <div key={i} onClick={() => handleClicked(snippet)}>
-              <li className="flex cursor-pointer flex-col gap-3 rounded-lg border border-secondaryA  p-2">
-                <span className="flex w-full items-center justify-between gap-2 ">
-                  <p className=" truncate  text-sm  font-medium tracking-tight md:w-9/12 md:text-xl md:font-semibold">
-                    {snippet?.title} ({snippet.code.length})
-                  </p>
+      {data
+        ?.filter((snippet: any) =>
+          searchItem
+            ? snippet?.title?.toLowerCase()?.includes(searchItem.toLowerCase())
+            : true,
+        )
+        .map((snippet: any, i: number) => (
+          <div key={i} onClick={() => handleClicked(snippet)}>
+            <li className="flex cursor-pointer flex-col gap-3 rounded-lg border border-secondaryA  p-2">
+              <span className="flex w-full items-center justify-between gap-2 ">
+                <p className=" truncate  text-sm  font-medium tracking-tight md:w-9/12 md:text-xl md:font-semibold">
+                  {snippet?.title} ({snippet.code.length})
+                </p>
 
-                  <span className="hidden items-center gap-2  text-xs md:flex md:text-base">
-                    <p className="w-full">{snippet.author.name}</p>
+                <span className="hidden items-center gap-2  text-xs md:flex md:text-base">
+                  <p className="w-full">{snippet.author.name}</p>
 
-                    <span className=" hidden rounded-full bg-secondaryA p-2  md:block">
-                      <FaRegUser />
-                    </span>
+                  <span className=" hidden rounded-full bg-secondaryA p-2  md:block">
+                    <FaRegUser />
                   </span>
                 </span>
-                <span className="flex w-full items-center justify-between  text-sm md:text-base">
-                  <p className="w-44 truncate  text-start md:w-96 ">
-                    {snippet.description}
-                  </p>
+              </span>
+              <span className="flex w-full items-center justify-between  text-sm md:text-base">
+                <p className="w-44 truncate  text-start md:w-96 ">
+                  {snippet.description}
+                </p>
 
-                  <p>{formatDate(snippet.createdAt)}</p>
+                <p>{formatDate(snippet.createdAt)}</p>
+              </span>
+
+              {expanded[i] && (
+                <span>
+                  {snippet.code.map((code: any) => (
+                    <SnippetCodeList code={code} key={code._id} />
+                  ))}
                 </span>
+              )}
 
-                {expanded[i] && (
-                  <span>
-                    {snippet.code.map((code: any) => (
-                      <SnippetCodeList code={code} key={code._id} />
-                    ))}
-                  </span>
-                )}
-
-                <SnippetTags snippet={snippet} />
-              </li>
-            </div>
-          ))}
+              <SnippetTags snippet={snippet} />
+            </li>
+          </div>
+        ))}
     </ul>
   );
 }
