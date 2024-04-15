@@ -15,12 +15,12 @@ import { copySnippet } from "../actions/action";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import { IoMdCheckmark } from "react-icons/io";
-import EditSnippet from "./actions-snippet";
 import DeleteSnippet from "./actions/delete-snippet";
+import { UserInfo } from "@/app/types/typings";
 
 type SnippetCodeListProps = {
   code: any;
-  user?: any;
+  user?: UserInfo;
   author?: string;
 };
 
@@ -31,11 +31,13 @@ export default function SnippetCodeList({
 }: SnippetCodeListProps) {
   const theme = useTheme();
 
+  console.log("code", code);
+
   const [success, setSuccess] = useState(false);
   const copyCode = async (snippetCode: string, snippetId: string) => {
     const res = await copySnippet(snippetId);
 
-    console.log("res", res)
+    console.log("res", res);
     if (res.success) {
       setSuccess(true);
       navigator.clipboard.writeText(snippetCode);
@@ -74,7 +76,11 @@ export default function SnippetCodeList({
                 </button>
 
                 {user?._id === author && (
-                  <DeleteSnippet text="Delete this specific code" code_id={code} snippet="Code" />
+                  <DeleteSnippet
+                    text="Delete this specific code"
+                    code_id={code}
+                    snippet="Code"
+                  />
                 )}
               </span>
             </div>

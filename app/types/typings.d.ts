@@ -14,3 +14,11 @@ export type UserInfo = {
   email: string,
   _id: string
 }
+
+
+export type CodeSnippetObj = {
+  content: string;
+  heading: string;
+  language: string;
+  _id: string;
+}
