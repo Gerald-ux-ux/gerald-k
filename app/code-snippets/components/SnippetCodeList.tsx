@@ -31,7 +31,6 @@ export default function SnippetCodeList({
 }: SnippetCodeListProps) {
   const theme = useTheme();
 
-  console.log("code", code);
 
   const [success, setSuccess] = useState(false);
   const copyCode = async (snippetCode: string, snippetId: string) => {
