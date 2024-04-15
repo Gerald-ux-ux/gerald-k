@@ -7,3 +7,10 @@ export type CodeSnippets = {
   tags: string[];
   createdAt: string;
 };
+
+
+export type UserInfo = {
+  username: string,
+  email: string,
+  _id: string
+}
