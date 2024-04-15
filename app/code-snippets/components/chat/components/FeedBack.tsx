@@ -16,8 +16,9 @@ import { IoChatbubblesOutline } from "react-icons/io5";
 
 import { useState } from "react";
 import { ToolTip } from "@/components/custom/tooltip";
+import { UserInfo } from "@/app/types/typings";
 type Props = {
-  isAuth: boolean;
+  user: UserInfo;
 };
 
 function SubmitBtn() {
@@ -34,8 +35,8 @@ function SubmitBtn() {
     </button>
   );
 }
-export default function FeedBack({ isAuth }: Props) {
-  const { open, setOpen, handleSubmit } = useSubmitFeedback({ isAuth });
+export default function FeedBack({ user }: Props) {
+  const { open, setOpen, handleSubmit } = useSubmitFeedback({ user });
 
   const [isTipOpen, setIsTipOpen] = useState(false);
 

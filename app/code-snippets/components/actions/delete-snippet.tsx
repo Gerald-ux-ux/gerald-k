@@ -2,10 +2,9 @@
 
 import { useState } from "react";
 import DropDownMenuComponent from "./drop-down";
-import { CiEdit, CiTrash } from "react-icons/ci";
+import { CiTrash } from "react-icons/ci";
 import DeleteDialog from "@/components/custom/delete-dialog";
 import Modal from "../modal/modal-component";
-import { Snippet } from "../../types/snippets";
 
 type Props = {
   id?: string;
@@ -18,7 +17,7 @@ const actions = [
   {
     label: "Delete",
     icon: <CiTrash />,
-    onClick: (snippet: any, setOpen: any, setSelectedSnippet: any) => {
+    onClick: (setOpen: any) => {
       setOpen(true);
     },
   },

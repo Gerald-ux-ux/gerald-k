@@ -16,10 +16,10 @@ export const metadata: Metadata = {
 
 export default async function CodeSnippets() {
   const snippets = await getCodeSnippets();
-  console.log("available snippets", snippets.length)
+  console.log("available snippets", snippets.length);
 
   const isAuth = await checkLogin();
-
+  const user = await getUserInfo();
 
   return (
     <>
@@ -28,7 +28,7 @@ export default async function CodeSnippets() {
           <span className="flex items-center  gap-6">
             <h1 className={PAGE_HEADER}>Code snippets</h1>
 
-            <FeedBack isAuth={isAuth} />
+            <FeedBack user={user} />
           </span>
           <AddSnippet message="" isAuth={isAuth} />
         </div>
