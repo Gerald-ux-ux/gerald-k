@@ -18,6 +18,7 @@ import { useState } from "react";
 import { ToolTip } from "@/components/custom/tooltip";
 type Props = {
   isAuth: boolean;
+  user?: any
 };
 
 function SubmitBtn() {
@@ -34,8 +35,8 @@ function SubmitBtn() {
     </button>
   );
 }
-export default function FeedBack({ isAuth }: Props) {
-  const { open, setOpen, handleSubmit } = useSubmitFeedback({ isAuth });
+export default function FeedBack({ isAuth, user }: Props) {
+  const { open, setOpen, handleSubmit } = useSubmitFeedback({ isAuth, user });
 
   const [isTipOpen, setIsTipOpen] = useState(false);
 

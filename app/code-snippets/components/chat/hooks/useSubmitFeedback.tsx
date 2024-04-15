@@ -6,14 +6,11 @@ import toast from "react-hot-toast";
 
 type Props = {
   isAuth: boolean;
+  user: any;
 };
-export default function useSubmitFeedback({ isAuth }: Props) {
+export default function useSubmitFeedback({ user: userEmail }: Props) {
   const [open, setOpen] = useState<boolean>(false);
-  const [user, setUser] = useState<string>("user@gmail.com");
-
-  if (isAuth !== false) {
-    // do something
-  }
+  const [user] = useState<string>(userEmail?.email || "username@gmail.com");
 
   const handleSubmit = async (formData: FormData) => {
     formData.set("from", user);
