@@ -1,4 +1,3 @@
-import { Snippet } from "../types/snippets";
 import { getUserInfo } from "@/app/auth/actions/actions";
 import { notFound } from "next/navigation";
 import { FaRegUser } from "react-icons/fa";
