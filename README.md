@@ -1,4 +1,4 @@
-## [g-k.io](https://gerald-k.vercel.app/)
+## [me](https://gerald-k.vercel.app/)
 
 Welcome to my personal portfolio website designed to be minimalistic, clean and most importantly a place to learn from.
 
@@ -9,8 +9,7 @@ Welcome to my personal portfolio website designed to be minimalistic, clean and 
 - [Next.js](nextjs.org) / TypeScript
 - [MDX](https://mdxjs.com) / Contentlayer (CMS)
 - [Vercel](vercel.com) (Hosting)
-- [PlanetScale](http://planetscale.com) (Database)
-- [Prisma](https://www.prisma.io) (ORM)
+- [Node] (http://nodejs.org)
 - [Node] (https://nodejs.org/en)
 - [MongoDB] (https://www.mongodb.com/)
 
@@ -19,15 +18,14 @@ Welcome to my personal portfolio website designed to be minimalistic, clean and 
 - [Tailwind CSS](https://tailwindcss.com) (utility styles)
 - [Headless UI](https://headlessui.com) (UI components)
 - [Radix UI Colors](https://www.radix-ui.com/colors) (color system)
+- [shadcn](https://ui.shadcn.com/)
 - [Framer Motion](https://www.framer.com/motion/) (Animations)
-
-_checkout the package.json file_
 
 ## Prerequisites
 
 [Node.js](https://nodejs.org/en/)
-[PlanetScale account](https://planetscale.com/)
-Prisma CLI installed (npm i -g prisma)
+[MongoDb account](https://www.mongodb.com/)
+
 
 ## Installation
 
