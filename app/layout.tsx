@@ -15,6 +15,7 @@ import ThemeProvider from "@/components/ThemeProvider";
 import Footer from "@/components/ui/Footer";
 import { Tooltip } from "react-tooltip";
 import { Toaster } from "react-hot-toast";
+import ClientInfo from "@/components/custom/info";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,6 +37,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const today = new Date();
+  const endDate = new Date("2024-05-04"); // Set the end date for the message display
+
+
+  const showMessage = today <= endDate
   return (
     <html lang="en">
       <body
@@ -46,6 +52,12 @@ export default function RootLayout({
       >
         {/* Wrap the whole app in the ThemeProvider & Set some props */}
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {showMessage && (
+            <ClientInfo
+              message="I sincerely apologize for the recent interruption on Code-Snippets over the last two days. I recognize the disruption it may have caused and truly value your patience and understanding as I worked to resolve the issue."
+              duration={10000}
+            />
+          )}
           <Navigation />
           <div className="mx-auto  flex flex-col px-6 pb-8 pt-16 md:px-6 md:pt-16">
             {children}

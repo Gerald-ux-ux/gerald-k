@@ -17,19 +17,17 @@ export const metadata: Metadata = {
 
 export default async function CodeSnippets() {
   const snippets = await getCodeSnippets();
-  console.log("available snippets", snippets.length);
-  console.log("available ", snippets);
+
 
   const isAuth = await checkLogin();
   const user = await getUserInfo();
 
   return (
     <>
-      <main className="mx-auto flex w-full max-w-[700px] animate-in flex-col gap-8 px-6">
-        <div className="flex flex-col items-center">
-          <ClientInfo message="No" duration={10000} />
-        </div>
+      <div className="flex w-full flex-col items-center">
 
+      </div>
+      <main className="mx-auto flex w-full max-w-[700px] animate-in flex-col gap-8 px-6">
         <div className="flex  w-full items-center justify-between">
           <span className="flex items-center  gap-6">
             <h1 className={PAGE_HEADER}>Code snippets</h1>
@@ -47,11 +45,8 @@ export default async function CodeSnippets() {
         <div className="flex flex-col gap-12">
           <Search data={snippets} />
           <Suspense fallback={<>Loading.....</>}>
-            {Array.isArray(snippets) ? (
-              <Snippets data={snippets} />
-            ) : (
-              <p>No data available</p>
-            )}
+            <Snippets data={snippets} />
+           
           </Suspense>
         </div>
       </main>
