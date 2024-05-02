@@ -15,7 +15,7 @@ import ThemeProvider from "@/components/ThemeProvider";
 import Footer from "@/components/ui/Footer";
 import { Tooltip } from "react-tooltip";
 import { Toaster } from "react-hot-toast";
-import ClientInfo from "@/components/custom/info";
+import ClientInfo from "@/components/custom/client-info";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -49,14 +49,15 @@ export default function RootLayout({
           "width-full bg-primary text-primary antialiased",
         )}
       >
-        {/* Wrap the whole app in the ThemeProvider & Set some props */}
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {showMessage && (
+         {showMessage && (
             <ClientInfo
               message="I sincerely apologize for the recent interruption on Code-Snippets over the last two days. I recognize the disruption it may have caused and truly value your patience and understanding as I worked to resolve the issue."
-              duration={10000}
+              duration={15000}
             />
           )}
+        {/* Wrap the whole app in the ThemeProvider & Set some props */}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+
           <Navigation />
           <div className="mx-auto  flex flex-col px-6 pb-8 pt-16 md:px-6 md:pt-16">
             {children}

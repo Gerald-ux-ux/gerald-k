@@ -39,7 +39,7 @@ export default async function CodeSnippets() {
 
         <div className="flex flex-col gap-12">
           <Search data={snippets} />
-          <Suspense fallback={<>Loading.....</>}>
+          <Suspense fallback={<>Loading...</>}>
             <Snippets data={snippets} />
           </Suspense>
         </div>

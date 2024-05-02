@@ -25,7 +25,7 @@ export default function ClientInfo({ message, duration }: CustomMessageProps) {
   return (
     <>
       {showMessage && (
-        <div className="pointer-events-auto  flex   w-full  bg-[#282219] shadow-lg ring-black ring-opacity-5 md:mb-4">
+        <div className="pointer-events-auto flex w-full  bg-[#282219] shadow-lg ring-black ring-opacity-5 md:mb-4">
           <div className="flex w-full p-6">
             <div className="flex w-full items-start">
               <div className=" flex w-full  items-center gap-4">
