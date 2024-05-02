@@ -28,9 +28,12 @@ export default function Snippets({ data }: SnippetProps) {
     return router.push(`${pathname}/${snippet._id}`);
   };
 
+
+  console.log("data", data)
+
   return (
     <ul className="animated-list flex w-full flex-col gap-2">
-      {data
+      { data
         ?.filter((snippet: any) =>
           searchItem
             ? snippet?.title?.toLowerCase()?.includes(searchItem.toLowerCase())
