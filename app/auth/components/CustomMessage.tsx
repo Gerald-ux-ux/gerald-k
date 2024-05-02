@@ -4,7 +4,8 @@ import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { SlInfo } from "react-icons/sl";
 
-function CustomMessage() {
+
+function CustomMessage( ) {
   const [showMessage, setShowMessage] = useState(true);
 
   const params = useSearchParams();
