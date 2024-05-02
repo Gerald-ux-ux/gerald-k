@@ -8,7 +8,6 @@ import AddSnippet from "./components/AddSnippet";
 import FeedBack from "./components/chat/components/FeedBack";
 import Search from "./components/Search";
 import Snippets from "./components/Snippets";
-import ClientInfo from "@/components/custom/info";
 
 export const metadata: Metadata = {
   title: "Code-snippets | Gerald",
@@ -18,15 +17,11 @@ export const metadata: Metadata = {
 export default async function CodeSnippets() {
   const snippets = await getCodeSnippets();
 
-
   const isAuth = await checkLogin();
   const user = await getUserInfo();
 
   return (
     <>
-      <div className="flex w-full flex-col items-center">
-
-      </div>
       <main className="mx-auto flex w-full max-w-[700px] animate-in flex-col gap-8 px-6">
         <div className="flex  w-full items-center justify-between">
           <span className="flex items-center  gap-6">
@@ -46,7 +41,6 @@ export default async function CodeSnippets() {
           <Search data={snippets} />
           <Suspense fallback={<>Loading.....</>}>
             <Snippets data={snippets} />
-           
           </Suspense>
         </div>
       </main>

@@ -38,10 +38,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const today = new Date();
-  const endDate = new Date("2024-05-04"); // Set the end date for the message display
+  const endDate = new Date("2024-05-04");
 
-
-  const showMessage = today <= endDate
+  const showMessage = today <= endDate;
   return (
     <html lang="en">
       <body
