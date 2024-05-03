@@ -7,7 +7,7 @@ export default function BackBtn() {
 
   return (
     <button
-      className="flex w-32 items-center  gap-2 rounded-lg p-2 hover:bg-secondaryA"
+      className="flex w-32 items-center md:text-base text-sm gap-2 rounded-lg p-2 hover:bg-secondaryA"
       onClick={() => router.back()}
     >
       <IoMdArrowRoundBack className="text-2xl" />

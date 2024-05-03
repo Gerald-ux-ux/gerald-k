@@ -45,7 +45,7 @@ export default function FeedBack({ user }: Props) {
   };
 
   return (
-    <Dialog open={open} onOpenChange={() => setOpen(!open)}>
+    <Dialog  open={open} onOpenChange={() => setOpen(!open)}>
       <ToolTip content="Leave some feedback">
         <DialogTrigger asChild>
           <button className={clsx("")}>
@@ -56,7 +56,7 @@ export default function FeedBack({ user }: Props) {
 
       <DialogContent
         className={clsx(
-          "fixed inset-0 m-auto  flex max-h-80 max-w-[445px] flex-col  overflow-y-auto border-none bg-secondary p-4  outline-none",
+          "fixed inset-0  m-auto  flex max-h-80 max-w-[445px] flex-col  overflow-y-auto border-none bg-secondary p-4  outline-none",
         )}
       >
         <DialogTitle className="mb-2 mt-3"> Leave some feedback 😀</DialogTitle>
