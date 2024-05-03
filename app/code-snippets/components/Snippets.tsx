@@ -50,7 +50,7 @@ export default function Snippets({ data }: SnippetProps) {
             <li
               className={clsx(
                 "flex cursor-pointer flex-col gap-3 rounded-lg border border-secondaryA  p-2",
-                maxCopyCountNumber ? "border border-green-300" : "",
+                // maxCopyCountNumber ? "border border-green-300" : "",
               )}
             >
               <span className="flex w-full items-center justify-between gap-2 ">
