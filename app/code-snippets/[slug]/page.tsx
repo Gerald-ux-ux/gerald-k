@@ -37,11 +37,12 @@ export default async function Code({ params }: { params: any }) {
   if (!code) return notFound();
   return (
     <div className="mx-auto flex w-full max-w-[700px] flex-col  gap-4 p-5   md:w-6/12">
-      <div className="my-4 flex items-center justify-between">
-        <h1 className="text-xl font-bold leading-tight tracking-tight text-primary md:text-3xl">
+      <div className="my-4 flex items-center  gap-4 w-full ">
+        <BackBtn />
+        <h1 className="text-xl w-full  font-bold leading-tight tracking-tight text-primary md:text-3xl">
           {code.title}
         </h1>
-        <BackBtn />
+
         {user?._id === code.author.id && (
           <DeleteSnippet
             text="Delete the whole snippet"
