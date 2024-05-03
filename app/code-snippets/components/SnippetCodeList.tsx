@@ -44,6 +44,7 @@ export default function SnippetCodeList({
     }
   };
 
+
   return (
     <Accordion type="single" className="mt-0 " collapsible>
       <AccordionItem value="item-1" className="mt-0">
