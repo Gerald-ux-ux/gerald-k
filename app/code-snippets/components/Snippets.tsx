@@ -29,22 +29,22 @@ export default function Snippets({ data }: SnippetProps) {
   const handleClicked = (snippet: any) => {
     return router.push(`${pathname}/${snippet._id}`);
   };
-const today = new Date();
-const formattedToday = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "2-digit",
-  year: "numeric",
-}).format(today);
+  const today = new Date();
+  const formattedToday = new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "2-digit",
+    year: "numeric",
+  }).format(today);
 
-const endDate = new Date();
-endDate.setDate(today.getDate() + 2);
-const formattedEndDate = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "2-digit",
-  year: "numeric",
-}).format(endDate);
+  const endDate = new Date();
+  endDate.setDate(today.getDate() + 2);
+  const formattedEndDate = new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "2-digit",
+    year: "numeric",
+  }).format(endDate);
 
-const isNew = today <= endDate;
+  const isNew = today <= endDate;
 
   return (
     <ul className="animated-list flex w-full flex-col gap-2">
@@ -58,6 +58,10 @@ const isNew = today <= endDate;
           searchItem
             ? snippet?.title?.toLowerCase()?.includes(searchItem.toLowerCase())
             : true,
+        )
+        .sort(
+          (a: any, b: any) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
         )
         .map((snippet: any, i: number) => (
           <div key={i} onClick={() => handleClicked(snippet)}>
@@ -73,7 +77,7 @@ const isNew = today <= endDate;
                 </p>
                 {formattedToday === formatDate(snippet.createdAt) ||
                 formattedEndDate === formatDate(snippet.createdAt) ? (
-                  <span className="rounded-md bg-beta p-1 text-xs text-secondaryA">
+                  <span className="text-secondaryA rounded-md bg-beta p-1 text-xs">
                     New
                   </span>
                 ) : null}
