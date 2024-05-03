@@ -34,11 +34,11 @@ export default function Snippets({ data }: SnippetProps) {
 
   return (
     <ul className="animated-list flex w-full flex-col gap-2">
-      <div className="my-2 flex flex-row items-center gap-4">
+      {/* <div className="my-2 flex flex-row items-center gap-4">
         <span className="rounded-lg bg-success p-2  text-black ">
           Most Relevant
         </span>
-      </div>
+      </div> */}
       {data
         ?.filter((snippet: any) =>
           searchItem
@@ -50,6 +50,7 @@ export default function Snippets({ data }: SnippetProps) {
             <li
               className={clsx(
                 "flex cursor-pointer flex-col gap-3 rounded-lg border border-secondaryA  p-2",
+                maxCopyCountNumber ? "border border-green-300" : "",
               )}
             >
               <span className="flex w-full items-center justify-between gap-2 ">
