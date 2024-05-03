@@ -17,6 +17,7 @@ import { useState } from "react";
 import { IoMdCheckmark } from "react-icons/io";
 import DeleteSnippet from "./actions/delete-snippet";
 import { UserInfo } from "@/app/types/typings";
+import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 type SnippetCodeListProps = {
   code: any;
@@ -42,6 +43,12 @@ export default function SnippetCodeList({
     } else {
       toast.error(res.message);
     }
+  };
+  const customStyleLight = {
+    ...a11yDark,
+    "hljs-comment": { color: "#6a737d" },
+    "hljs-keyword": { color: "#0550ae" },
+    "hljs-string": { color: "#0a3069" },
   };
 
   return (
@@ -82,16 +89,12 @@ export default function SnippetCodeList({
               </span>
             </div>
             <SyntaxHighlighter
-              style={dark}
+              style={theme.theme === "light" ? customStyleLight : a11yDark}
               wrapLongLines={true}
               customStyle={{
                 padding: "12px",
                 backgroundColor:
-                  theme.theme === "light"
-                    ? "#F5F5F5"
-                    : "dark"
-                      ? "#F5F5F5"
-                      : "#F5F5F5",
+                  theme.theme === "light" ? "#AAAAAA" : "#2a2a2a",
               }}
               showLineNumbers
               language={code.language.toLowerCase()}

@@ -51,6 +51,7 @@ export default function RootLayout({
       >
          {showMessage && (
             <ClientInfo
+            
               message="I sincerely apologize for the recent interruption on Code-Snippets over the last two days. I recognize the disruption it may have caused and truly value your patience and understanding as I worked to resolve the issue."
               duration={15000}
             />

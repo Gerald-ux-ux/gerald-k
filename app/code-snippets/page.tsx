@@ -1,6 +1,8 @@
 import { PAGE_HEADER } from "@/lib/uiConstants";
 import { Metadata } from "next";
+import Link from "next/link";
 import { Suspense } from "react";
+import { FaDiscord } from "react-icons/fa";
 
 import { checkLogin, getUserInfo } from "../auth/actions/actions";
 import { getCodeSnippets } from "./actions/action";
@@ -27,6 +29,15 @@ export default async function CodeSnippets() {
           <span className="flex items-center  gap-6">
             <h1 className={PAGE_HEADER}>Code snippets</h1>
             <FeedBack user={user} />
+
+            <Link
+              target="blank"
+              className="flex items-center gap-2 text-primary hover:text-tertiary"
+              href="https://discord.gg/tqm4eKy2"
+            >
+              <p>Join our discord</p>
+              <FaDiscord className="text-2xl" />
+            </Link>
           </span>
           <AddSnippet message="" isAuth={isAuth} />
         </div>
