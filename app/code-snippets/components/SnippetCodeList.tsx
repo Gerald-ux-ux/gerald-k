@@ -44,6 +44,12 @@ export default function SnippetCodeList({
       toast.error(res.message);
     }
   };
+  const customStyleLight = {
+    ...a11yDark,
+    "hljs-comment": { color: "#6a737d" },
+    "hljs-keyword": { color: "#0550ae" },
+    "hljs-string": { color: "#0a3069" },
+  };
 
   return (
     <Accordion type="single" className="mt-0 " collapsible>
@@ -83,17 +89,12 @@ export default function SnippetCodeList({
               </span>
             </div>
             <SyntaxHighlighter
-              style={a11yDark}
+              style={theme.theme === "light" ? customStyleLight : a11yDark}
               wrapLongLines={true}
               customStyle={{
                 padding: "12px",
-
                 backgroundColor:
-                  theme.theme === "light"
-                    ? "#d0d0d0"
-                    : "dark"
-                      ? "#2A2A2A"
-                      : "#F5F5F5",
+                  theme.theme === "light" ? "#AAAAAA" : "#2a2a2a",
               }}
               showLineNumbers
               language={code.language.toLowerCase()}
