@@ -1,11 +1,12 @@
 import { getUserInfo } from "@/app/auth/actions/actions";
 import { notFound } from "next/navigation";
-import { FaRegUser } from "react-icons/fa";
+import { FaLongArrowAltLeft, FaRegUser } from "react-icons/fa";
 
 import { getCodeSnippets } from "../actions/action";
 import DeleteSnippet from "../components/actions/delete-snippet";
 import SnippetCodeList from "../components/SnippetCodeList";
 import SnippetTags from "../components/tags";
+import BackBtn from "../components/back-btn";
 
 type Props = {
   params: {
@@ -33,7 +34,6 @@ export default async function Code({ params }: { params: any }) {
   const user = await getUserInfo();
   const author = code?.author.id;
 
-
   if (!code) return notFound();
   return (
     <div className="mx-auto flex w-full max-w-[700px] flex-col  gap-4 p-5   md:w-6/12">
@@ -41,6 +41,7 @@ export default async function Code({ params }: { params: any }) {
         <h1 className="text-xl font-bold leading-tight tracking-tight text-primary md:text-3xl">
           {code.title}
         </h1>
+        <BackBtn />
         {user?._id === code.author.id && (
           <DeleteSnippet
             text="Delete the whole snippet"
