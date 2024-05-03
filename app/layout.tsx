@@ -41,7 +41,6 @@ export default function RootLayout({
   const endDate = new Date("2024-05-04");
 
   const showMessage = today <= endDate;
-  
   return (
     <html lang="en">
       <body
@@ -52,7 +51,7 @@ export default function RootLayout({
       >
          {showMessage && (
             <ClientInfo
-            theme
+            
               message="I sincerely apologize for the recent interruption on Code-Snippets over the last two days. I recognize the disruption it may have caused and truly value your patience and understanding as I worked to resolve the issue."
               duration={15000}
             />
