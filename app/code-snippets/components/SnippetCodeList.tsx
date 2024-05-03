@@ -46,9 +46,11 @@ export default function SnippetCodeList({
   };
   const customStyleLight = {
     ...a11yDark,
-    "hljs-comment": { color: "#6a737d" },
-    "hljs-keyword": { color: "#0550ae" },
-    "hljs-string": { color: "#0a3069" },
+    "hljs-comment": { color: "#6a737d" }, // Ensure this is a soft but readable gray
+    "hljs-keyword": { color: "#0550ae" }, // A strong blue for keywords
+    "hljs-string": { color: "#0a3069" }, // A darker blue for strings, might need adjustment
+    hljs: { backgroundColor: "#f5f5f5", color: "#333333" }, // General text color
+    "hljs-function .hljs-keyword": { color: "#007700" }, // Function names in a different color
   };
 
   return (
@@ -94,7 +96,7 @@ export default function SnippetCodeList({
               customStyle={{
                 padding: "12px",
                 backgroundColor:
-                  theme.theme === "light" ? "#AAAAAA" : "#2a2a2a",
+                  theme.theme === "light" ? "#2a2a2a" : "#2a2a2a",
               }}
               showLineNumbers
               language={code.language.toLowerCase()}

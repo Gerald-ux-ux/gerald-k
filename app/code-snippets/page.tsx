@@ -32,11 +32,11 @@ export default async function CodeSnippets() {
 
             <Link
               target="blank"
-              className="flex items-center gap-2 text-primary hover:text-tertiary"
+              className="flex  items-center gap-2 underline underline-offset-2 text-primary hover:text-tertiary"
               href="https://discord.gg/tqm4eKy2"
             >
               <p>Join our discord</p>
-              <FaDiscord className="text-2xl" />
+              <FaDiscord className="text-2xl " />
             </Link>
           </span>
           <AddSnippet message="" isAuth={isAuth} />

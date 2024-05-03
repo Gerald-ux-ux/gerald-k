@@ -6,8 +6,12 @@ export default function BackBtn() {
   const router = useRouter();
 
   return (
-    <button className="hover:bg-secondaryA rounded-lg p-2" onClick={() => router.back()}>
+    <button
+      className="flex w-32 items-center  gap-2 rounded-lg p-2 hover:bg-secondaryA"
+      onClick={() => router.back()}
+    >
       <IoMdArrowRoundBack className="text-2xl" />
+      Go back
     </button>
   );
 }

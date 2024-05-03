@@ -13,17 +13,18 @@ type Props = {
   text: string;
 };
 
-const actions = [
-  {
-    label: "Delete",
-    icon: <CiTrash />,
-    onClick: (setOpen: any) => {
-      setOpen(true);
-    },
-  },
-];
 export default function DeleteSnippet({ id, code_id, snippet, text }: Props) {
   const [open, setOpen] = useState<boolean>(false);
+
+  const actions = [
+    {
+      label: "Delete",
+      icon: <CiTrash />,
+      onClick: () => {
+        setOpen(true);
+      },
+    },
+  ];
   return (
     <div className="">
       <DropDownMenuComponent
