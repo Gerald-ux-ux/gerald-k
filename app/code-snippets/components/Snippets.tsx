@@ -21,7 +21,7 @@ export default function Snippets({ data }: SnippetProps) {
 
   const searchQuery = useSearchParams();
   const searchItem = searchQuery.get("query");
-  const { relevantSnippet } = useShowMostRelevant({ data, searchItem });
+  const { maxCopyCountNumber } = useShowMostRelevant({ data, searchItem });
 
   const router = useRouter();
   const pathname = usePathname();
@@ -30,7 +30,7 @@ export default function Snippets({ data }: SnippetProps) {
     return router.push(`${pathname}/${snippet._id}`);
   };
 
-  console.log("relevantSnippet", relevantSnippet);
+  console.log("relevantSnippet", maxCopyCountNumber);
 
   return (
     <ul className="animated-list flex w-full flex-col gap-2">

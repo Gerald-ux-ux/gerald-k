@@ -20,7 +20,13 @@ export default function useShowMostRelevant({
     filteredSnippets.includes(code.title),
   );
 
+  const mostRelevant = relevantSnippet.map(
+    (snippet: any) => snippet.copy_count,
+  );
+
+  const maxCopyCountNumber = Math.max(...mostRelevant);
+
   return {
-    relevantSnippet,
+    maxCopyCountNumber,
   };
 }
