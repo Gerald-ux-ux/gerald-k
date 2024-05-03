@@ -29,8 +29,22 @@ export default function Snippets({ data }: SnippetProps) {
   const handleClicked = (snippet: any) => {
     return router.push(`${pathname}/${snippet._id}`);
   };
+const today = new Date();
+const formattedToday = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "2-digit",
+  year: "numeric",
+}).format(today);
 
-  console.log("relevantSnippet", maxCopyCountNumber);
+const endDate = new Date();
+endDate.setDate(today.getDate() + 2);
+const formattedEndDate = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "2-digit",
+  year: "numeric",
+}).format(endDate);
+
+const isNew = today <= endDate;
 
   return (
     <ul className="animated-list flex w-full flex-col gap-2">
@@ -57,6 +71,12 @@ export default function Snippets({ data }: SnippetProps) {
                 <p className=" truncate  text-sm  font-medium tracking-tight md:w-9/12 md:text-xl md:font-semibold">
                   {snippet?.title} ({snippet.code.length})
                 </p>
+                {formattedToday === formatDate(snippet.createdAt) ||
+                formattedEndDate === formatDate(snippet.createdAt) ? (
+                  <span className="rounded-md bg-beta p-1 text-xs text-secondaryA">
+                    New
+                  </span>
+                ) : null}
 
                 <span className="hidden items-center gap-2  text-xs md:flex md:text-base">
                   <p className="w-full">{snippet.author.name}</p>
