@@ -14,3 +14,5 @@ Whether you're aiming to speed up your coding tasks or contribute to a growing c
 ### Feedback
 You can send feedback using the chat icon on the app or join the [discord channel](https://discord.gg/tqm4eKy2) and interact with a wider community of developers
 
+
+
