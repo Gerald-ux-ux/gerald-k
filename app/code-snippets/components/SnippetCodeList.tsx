@@ -17,6 +17,7 @@ import { useState } from "react";
 import { IoMdCheckmark } from "react-icons/io";
 import DeleteSnippet from "./actions/delete-snippet";
 import { UserInfo } from "@/app/types/typings";
+import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 type SnippetCodeListProps = {
   code: any;
@@ -43,7 +44,6 @@ export default function SnippetCodeList({
       toast.error(res.message);
     }
   };
-
 
   return (
     <Accordion type="single" className="mt-0 " collapsible>
@@ -83,16 +83,14 @@ export default function SnippetCodeList({
               </span>
             </div>
             <SyntaxHighlighter
-              // style={code}
-
+              style={a11yDark}
               wrapLongLines={true}
               customStyle={{
-                color: theme.theme === "light" ? "#000000" : "#FFFFFF", // Ensuring text color contrasts with background
-
                 padding: "12px",
+
                 backgroundColor:
                   theme.theme === "light"
-                    ? "#F5F5F5"
+                    ? "#d0d0d0"
                     : "dark"
                       ? "#2A2A2A"
                       : "#F5F5F5",
