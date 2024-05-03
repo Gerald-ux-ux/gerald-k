@@ -21,7 +21,6 @@ export default function Search({ data }: SearchProps) {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-
   useEffect(() => {
     // Handler to call on window 'keydown' event
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -76,6 +75,8 @@ export default function Search({ data }: SearchProps) {
         />
         ⌘+K
       </form>
+
+   
 
       {!resultClicked && searchResults && searchResults.length > 0 && (
         <ul className="animated-list absolute left-0 z-10 mt-1 max-h-[250px] w-full overflow-y-scroll rounded-lg bg-secondary shadow-md">

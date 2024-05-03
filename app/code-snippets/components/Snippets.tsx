@@ -17,7 +17,6 @@ type SnippetProps = {
 export default function Snippets({ data }: SnippetProps) {
   const [expanded, setExpanded] = useState<boolean[]>([]);
 
-
   const searchQuery = useSearchParams();
   const searchItem = searchQuery.get("query");
 
@@ -28,12 +27,28 @@ export default function Snippets({ data }: SnippetProps) {
     return router.push(`${pathname}/${snippet._id}`);
   };
 
+  const allSnippets = data.map((code: any) => code.title);
+  console.log("all", allSnippets);
 
-  console.log("data", data)
+  const item = searchItem?.replace(/\+/g, " ");
+
+  const filteredSnippets = allSnippets.filter((snippet: any) =>
+    snippet.toLowerCase().includes(item?.toLowerCase()),
+  );
+  const neededSnippets = data.filter((code: any) =>
+    filteredSnippets.includes(code.title),
+  );
+  console.log("needed", neededSnippets);
+  console.log("search item", filteredSnippets);
 
   return (
     <ul className="animated-list flex w-full flex-col gap-2">
-      { data
+      <div className="my-2 flex flex-row items-center gap-4">
+        <span className="rounded-lg bg-success p-2  text-black ">
+          Most Relevant
+        </span>
+      </div>
+      {data
         ?.filter((snippet: any) =>
           searchItem
             ? snippet?.title?.toLowerCase()?.includes(searchItem.toLowerCase())
