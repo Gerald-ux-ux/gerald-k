@@ -82,15 +82,18 @@ export default function SnippetCodeList({
               </span>
             </div>
             <SyntaxHighlighter
-              style={dark}
+              // style={code}
+
               wrapLongLines={true}
               customStyle={{
+                color: theme.theme === "light" ? "#000000" : "#FFFFFF", // Ensuring text color contrasts with background
+
                 padding: "12px",
                 backgroundColor:
                   theme.theme === "light"
                     ? "#F5F5F5"
                     : "dark"
-                      ? "#F5F5F5"
+                      ? "#2A2A2A"
                       : "#F5F5F5",
               }}
               showLineNumbers
