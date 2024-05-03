@@ -20,11 +20,11 @@ export default function AddSnippet({ message, isAuth }: AddSnippetsProps) {
   };
   return (
     <>
-      <div>
+      <div className="w-44">
         <button
           onClick={handleUploadSnippetFrom}
           data-tooltip-id="my-tooltip-1"
-          className="rounded-lg bg-secondaryA p-1.5 text-sm text-primary hover:text-secondary md:p-2 md:text-base"
+          className="rounded-lg bg-secondaryA p-1.5 w-full text-sm text-primary hover:text-secondary md:p-2 md:text-base"
         >
           Add a snippet
         </button>

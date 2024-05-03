@@ -26,16 +26,16 @@ export default async function CodeSnippets() {
     <>
       <main className="mx-auto flex w-full max-w-[700px] animate-in flex-col gap-8 px-6">
         <div className="flex  w-full items-center justify-between">
-          <span className="flex items-center  gap-6">
+          <span className="flex items-center  w-full  gap-2 md:gap-6">
             <h1 className={PAGE_HEADER}>Code snippets</h1>
             <FeedBack user={user} />
 
             <Link
               target="blank"
-              className="flex  items-center gap-2 underline underline-offset-2 text-primary hover:text-tertiary"
+              className="flex  items-center gap-2  underline underline-offset-2 text-primary hover:text-tertiary"
               href="https://discord.gg/tqm4eKy2"
             >
-              <p>Join our discord</p>
+              <p className="hidden md:flex">Join our discord</p>
               <FaDiscord className="text-2xl " />
             </Link>
           </span>

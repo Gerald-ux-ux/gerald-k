@@ -36,7 +36,7 @@ export default function ClientInfo({ message, duration }: CustomMessageProps) {
           <div className="flex w-full p-6">
             <div className="flex w-full items-start">
               <div className=" flex w-full  items-center gap-4">
-                <SlInfo className="text-xl text-secondary" />
+                <SlInfo className="text-xl  md:flex hidden text-secondary" />
                 <p className="text-sm  font-bold text-white">
                   {message && message}
                 </p>{" "}
