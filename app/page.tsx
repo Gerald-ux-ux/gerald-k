@@ -1,13 +1,14 @@
-import Image from "next/image";
-import Avatar from "@/public/geraldavatar.jpeg";
-import Stats from "@/components/Stats";
-import Connect from "@/components/home/Connect";
-import PostList from "./blog/components/ui/PostList";
-import Link from "next/link";
 import { allPosts } from "@/.contentlayer/generated";
+import Connect from "@/components/home/Connect";
+import Stats from "@/components/Stats";
 import { PAGE_HEADER } from "@/lib/uiConstants";
-import ProjectComponent from "./projects/components/projects";
+import Avatar from "@/public/geraldavatar.jpeg";
+import Image from "next/image";
+import Link from "next/link";
+
 import { getTotalBlogViews } from "./blog/actions/actions";
+import PostList from "./blog/components/ui/PostList";
+import ProjectComponent from "./projects/components/projects";
 
 export default async function Home() {
   const posts = allPosts
@@ -48,12 +49,13 @@ export default async function Home() {
           Hi, I&apos;m Gerald kamau, a software engineer who loves and enjoys
           writing code. In addition to coding, I&apos;m a big watching formula
           one fan, I create music and occasionally upload some beats on{" "}
-          <a
+          <Link
+            target="blank"
             href="https://www.youtube.com/@geralddd.g/featured"
             className="underline"
           >
             YouTube
-          </a>
+          </Link>
         </p>
 
         <Connect />
