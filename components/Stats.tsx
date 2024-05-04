@@ -42,7 +42,8 @@ export default function Stats({ views }: Props) {
       </li>
 
       <li className="transition-opacity">
-        <a
+        <Link
+          target="blank"
           className="flex items-center gap-3"
           href={"https://www.youtube.com/@geralddd.g/featured"}
         >
@@ -53,7 +54,7 @@ export default function Stats({ views }: Props) {
             </FlipNumber>
             <span> Total Youtube Views</span>
           </div>
-        </a>
+        </Link>
       </li>
     </ul>
   );

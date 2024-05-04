@@ -24,6 +24,7 @@ export default function ConnectSection() {
           {ConnectLinks.map((link) => (
             <li className=" col-span-1 transition-opacity" key={link.label}>
               <Link
+                target="blank"
                 href={link.href}
                 className="inline-grid w-full rounded-lg border border-primary p-4 no-underline"
               >

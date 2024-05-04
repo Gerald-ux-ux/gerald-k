@@ -1,7 +1,8 @@
 /**
  *This component is in charge of defining the structure of the links
  */
-import { FaYoutube, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { IoIosMail } from "react-icons/io";
 
 // Creating the interface type
@@ -37,6 +38,12 @@ const ConnectLinks: ConnectLink[] = [
     label: "Instagram",
     href: "https://www.instagram.com/geralddd.g/",
     icon: <FaInstagram />,
+  },
+
+  {
+    label: "Twitter",
+    href: "https://twitter.com/1geralddd",
+    icon: <FaXTwitter />,
   },
 ];
 
