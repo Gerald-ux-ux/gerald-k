@@ -3,6 +3,7 @@ import { Editor } from "@monaco-editor/react";
 import useUploadSnippet from "./hooks/useUploadSnippet";
 import LanguageSelector from "./language-selector";
 import { TrashIcon } from "@heroicons/react/20/solid";
+import clsx from "clsx";
 
 type Props = {
   editor: any;
@@ -20,15 +21,17 @@ export default function CodeEditor({
   theme,
   handleDelete,
 }: Props) {
-
   return (
     <div className="flex max-h-[800px]  flex-col gap-6 overflow-x-auto  p-2 ">
       {editor.map((value: any, i: number) => (
         <div key={i} className="my-2">
           <input
             type="text"
-            className="w-full rounded-md rounded-b-none border-b border-primary bg-secondary p-2 focus:border-none"
+            className={clsx(
+              "w-full rounded-md rounded-b-none border-b border-primary bg-secondary p-2 focus:border-none",
+            )}
             value={value.heading}
+            required
             onChange={(e) => handleHeadingChange(i, e.target.value)}
             placeholder="Code heading"
           />

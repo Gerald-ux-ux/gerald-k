@@ -43,6 +43,8 @@ module.exports = {
         primary: "var(--gray-6)",
         secondary: "var(--gray-4)",
         success: "#D4EFDF",
+        error: "#FF0000",
+
         secondaryA: "var(--gray-a8)",
       },
       ringOffsetColor: {
