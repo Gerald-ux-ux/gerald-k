@@ -3,18 +3,17 @@ import DeleteSnippet from "./delete-snippet";
 type Props = {
   code?: any;
   id?: string;
-  text: string;
-  snippetType: string;
+  text?: string;
+  snippetType?: string;
 };
-export default function ActionsComponent({
-  code,
-  id,
-  snippetType,
-  text,
-}: Props) {
+export default function ActionsComponent({ code }: Props) {
   return (
     <>
-      <DeleteSnippet text={text} code_id={code || id} snippet={snippetType} />
+      <DeleteSnippet
+        text="Delete this specific code"
+        code_id={code}
+        snippet="Code"
+      />
     </>
   );
 }

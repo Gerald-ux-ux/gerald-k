@@ -1,10 +1,22 @@
+"use client";
+
 import { useState } from "react";
 import { CiEdit, CiTrash } from "react-icons/ci";
 
 export default function useActions() {
   const [open, setOpen] = useState<boolean>(false);
 
-  const actions = [
+  const deleteAction = [
+    {
+      label: "Delete",
+      icon: <CiTrash />,
+      onClick: () => {
+        setOpen(true);
+      },
+    },
+  ];
+
+  const allActions = [
     {
       label: "Edit",
       icon: <CiEdit />,
@@ -22,7 +34,8 @@ export default function useActions() {
   ];
 
   return {
-    actions,
+    deleteAction,
+    allActions,
     setOpen,
     open,
   };

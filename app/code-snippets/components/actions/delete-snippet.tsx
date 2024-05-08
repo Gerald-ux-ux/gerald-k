@@ -9,18 +9,18 @@ import useActions from "../../hooks/useAction";
 
 type Props = {
   id?: string;
-  code_id?: string;
+  code_id?: any;
   snippet: string;
   text: string;
 };
 
 export default function DeleteSnippet({ id, code_id, snippet, text }: Props) {
-  const { actions, setOpen, open } = useActions();
+  const { deleteAction, setOpen, open } = useActions();
 
   return (
     <div className="">
       <DropDownMenuComponent
-        actions={actions}
+        actions={deleteAction}
         snippet={code_id}
         setOpen={setOpen}
       />

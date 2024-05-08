@@ -18,7 +18,6 @@ import { IoMdCheckmark } from "react-icons/io";
 import DeleteSnippet from "./actions/delete-snippet";
 import { UserInfo } from "@/app/types/typings";
 import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import ActionsComponent from "./actions/actions-component";
 
 type SnippetCodeListProps = {
   code: any;
@@ -83,10 +82,10 @@ export default function SnippetCodeList({
                 </button>
 
                 {user?._id === author && (
-                  <ActionsComponent
+                  <DeleteSnippet
                     text="Delete this specific code"
-                    snippetType="Code"
-                    code={code}
+                    code_id={code}
+                    snippet="Code"
                   />
                 )}
               </span>
