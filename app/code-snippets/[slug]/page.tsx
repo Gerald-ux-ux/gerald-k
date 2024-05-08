@@ -7,6 +7,7 @@ import DeleteSnippet from "../components/actions/delete-snippet";
 import SnippetCodeList from "../components/SnippetCodeList";
 import SnippetTags from "../components/tags";
 import BackBtn from "../components/back-btn";
+import ActionsComponent from "../components/actions/actions-component";
 
 type Props = {
   params: {
@@ -44,10 +45,10 @@ export default async function Code({ params }: { params: any }) {
         </h1>
 
         {user?._id === code.author.id && (
-          <DeleteSnippet
+          <ActionsComponent
             text="Delete the whole snippet"
-            code_id={code._id}
-            snippet="Object"
+            snippetType="Object"
+            id={code._id}
           />
         )}
       </div>
