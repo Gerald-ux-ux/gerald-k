@@ -5,30 +5,22 @@ import DropDownMenuComponent from "./drop-down";
 import { CiTrash } from "react-icons/ci";
 import DeleteDialog from "@/components/custom/delete-dialog";
 import Modal from "../modal/modal-component";
+import useActions from "../../hooks/useAction";
 
 type Props = {
   id?: string;
-  code_id?: string;
+  code_id?: any;
   snippet: string;
   text: string;
 };
 
 export default function DeleteSnippet({ id, code_id, snippet, text }: Props) {
-  const [open, setOpen] = useState<boolean>(false);
+  const { deleteAction, setOpen, open } = useActions();
 
-  const actions = [
-    {
-      label: "Delete",
-      icon: <CiTrash />,
-      onClick: () => {
-        setOpen(true);
-      },
-    },
-  ];
   return (
     <div className="">
       <DropDownMenuComponent
-        actions={actions}
+        actions={deleteAction}
         snippet={code_id}
         setOpen={setOpen}
       />

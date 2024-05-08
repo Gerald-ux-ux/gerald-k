@@ -39,6 +39,7 @@ export default function DeleteDialog({
     id,
     snippet
   });
+
   return (
     <form action={handleDelete} className="flex  h-full  flex-col gap-2">
       <span>
