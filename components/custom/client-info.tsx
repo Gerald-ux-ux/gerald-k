@@ -5,7 +5,7 @@ import { SlInfo } from "react-icons/sl";
 import clsx from 'clsx';
 
 type CustomMessageProps = {
-  message?: string;
+  message?: JSX.Element;
   duration?: number;
 };
 
@@ -38,7 +38,7 @@ export default function ClientInfo({ message, duration }: CustomMessageProps) {
               <div className=" flex w-full  items-center gap-4">
                 <SlInfo className="text-xl  md:flex hidden text-secondary" />
                 <p className="text-sm  font-bold text-white">
-                  {message && message}
+                  {message && message }
                 </p>{" "}
               </div>
             </div>

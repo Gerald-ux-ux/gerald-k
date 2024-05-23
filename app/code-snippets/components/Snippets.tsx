@@ -75,12 +75,12 @@ export default function Snippets({ data }: SnippetProps) {
                 <p className=" truncate  text-sm  font-medium tracking-tight md:w-9/12 md:text-xl md:font-semibold">
                   {snippet?.title} ({snippet.code.length})
                 </p>
-                {formattedToday === formatDate(snippet.createdAt) ||
+                {/* {formattedToday === formatDate(snippet.createdAt) ||
                 formattedEndDate === formatDate(snippet.createdAt) ? (
                   <span className="text-secondaryA rounded-md bg-beta p-1 text-xs">
                     New
                   </span>
-                ) : null}
+                ) : null} */}
 
                 <span className="hidden items-center gap-2  text-xs md:flex md:text-base">
                   <p className="w-full">{snippet.author.name}</p>
