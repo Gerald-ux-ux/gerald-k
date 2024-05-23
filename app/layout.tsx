@@ -16,6 +16,7 @@ import Footer from "@/components/ui/Footer";
 import { Tooltip } from "react-tooltip";
 import { Toaster } from "react-hot-toast";
 import ClientInfo from "@/components/custom/client-info";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const today = new Date();
-  const endDate = new Date("2024-05-04");
+  const endDate = new Date("2024-05-30");
 
   const showMessage = today <= endDate;
   return (
@@ -49,16 +50,28 @@ export default function RootLayout({
           "width-full bg-primary text-primary antialiased",
         )}
       >
-         {showMessage && (
-            <ClientInfo
-            
-              message="I sincerely apologize for the recent interruption on Code-Snippets over the last two days. I recognize the disruption it may have caused and truly value your patience and understanding as I worked to resolve the issue."
-              duration={15000}
-            />
-          )}
+        {showMessage && (
+          <ClientInfo
+            message={
+              <>
+                🎉 Hello everyone! I&apos;m excited to announce that version 1
+                of codes-nippets is now live! Check out the latest features and
+                improvements at {""}
+                <Link
+                  href="https://codesnippets-six.vercel.app/"
+                  className="text-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://codesnippets-six.vercel.app/
+                </Link>
+              </>
+            }
+            duration={30000}
+          />
+        )}
         {/* Wrap the whole app in the ThemeProvider & Set some props */}
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-
           <Navigation />
           <div className="mx-auto  flex flex-col px-6 pb-8 pt-16 md:px-6 md:pt-16">
             {children}
