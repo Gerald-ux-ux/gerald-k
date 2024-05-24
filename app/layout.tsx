@@ -55,7 +55,7 @@ export default function RootLayout({
             message={
               <>
                 🎉 Hello everyone! I&apos;m excited to announce that version 1
-                of codes-nippets is now live! Check out the latest features and
+                of code-snippets is now live! Check out the latest features and
                 improvements at {""}
                 <Link
                   href="https://codesnippets-six.vercel.app/"
