@@ -14,15 +14,7 @@ export default function WorkSection() {
           development experience.
         </p>
 
-        <p>
-          I kicked off my tech adventure by immersing myself in an intensive
-          bootcamp, mastering the foundational aspects of software development.
-          This journey led me to a rewarding role as a full-stack software
-          developer, with a special focus on front-end expertise at{" "}
-          <Link href="https://www.thecbgroup.io/" className="underline">
-            Creative Brands
-          </Link>
-        </p>
+        <p>This are the different companies i have worked for.</p>
         <WorkPlaces items={workplaces} />
       </div>
     </Section>

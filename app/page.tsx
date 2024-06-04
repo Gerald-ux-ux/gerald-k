@@ -30,7 +30,7 @@ export default async function Home() {
         <div className="">
           <h1 className={PAGE_HEADER}>Gerald Kamau</h1>
           <p className="animate-in  text-secondary">
-            I write code and make beats.
+            Have a look at some of the things i have done
           </p>
         </div>
 
