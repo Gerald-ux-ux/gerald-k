@@ -20,6 +20,16 @@ export default function Connect() {
           <span>More ways to connect with me</span>
         </Link>
       </li>
+      <li className="transition-opacity">
+        <Link
+          href="https://discord.gg/SGhEc2qPVm"
+          target="_blank"
+          className="flex items-center gap-2 no-underline"
+        >
+          <MdArrowOutward className="h-5 w-5" />
+          <span>Join my discord</span>
+        </Link>
+      </li>
     </ul>
   );
 }
