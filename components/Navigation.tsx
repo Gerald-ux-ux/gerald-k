@@ -22,7 +22,11 @@ const links = [
 
 export default function Navigation() {
   return (
-    <header className={clsx("relative top-0 z-20 bg-primary md:sticky")}>
+    <header
+      className={clsx(
+        "bg-primary/40 relative top-0 z-20 backdrop-blur-sm	  md:sticky",
+      )}
+    >
       <nav className="lg mx-auto flex max-w-[700px] items-center justify-between gap-3 px-4 py-3 md:px-6">
         <Link href="/" className="mt-2 shrink-0 text-primary">
           {/* Used svg due to changing themes. Svg images can pick the {currentColor} so when ever the theme changes the image changes accordingly */}
