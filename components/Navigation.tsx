@@ -8,7 +8,6 @@ import Link from "next/link";
 import NavLink from "./ui/NavLink";
 import MobileNav from "./ui/MobileNav";
 import ThemeSwitcher from "./ThemeSwitcher";
-import { isExternal } from "util/types";
 
 const links = [
   { label: "About", href: "/about" },

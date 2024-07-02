@@ -1,7 +1,6 @@
 import Section from "@/components/Section";
 import cblogo from "@/public/work/cblogo.png";
 import cloudpaylogo from "@/public/work/cplogo.png";
-import Link from "next/link";
 import Avatar from "@/public/geraldavatar.jpeg";
 
 import WorkPlaces from "./WorkPlaces";
