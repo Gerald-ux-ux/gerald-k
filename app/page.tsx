@@ -6,7 +6,6 @@ import Avatar from "@/public/geraldavatar.jpeg";
 import Image from "next/image";
 import Link from "next/link";
 
-import { getTotalBlogViews } from "./blog/actions/actions";
 import PostList from "./blog/components/ui/PostList";
 import ProjectComponent from "./projects/components/projects";
 
@@ -22,7 +21,11 @@ export default async function Home() {
         ?.filter((_, i) => i < 3)
     : [];
 
-  const views = await getTotalBlogViews();
+
+
+  const views = {
+    total: 85,
+  };
 
   return (
     <div className="mx-auto flex max-w-[700px] flex-col gap-16 px-6 md:gap-24">
