@@ -29,6 +29,9 @@ export function Youtube() {
 export default function Stats({ views }: Props) {
   const { data: youtubeData } = useSWR(`api/youtube`, Fetcher);
 
+  console.log("views on blogs", views);
+  console.log("views on yt", youtubeData);
+
   return (
     <ul className="animated-list space-y-2">
       <li className="transition-opacity">
