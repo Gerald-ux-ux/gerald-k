@@ -8,12 +8,17 @@ import Link from "next/link";
 import NavLink from "./ui/NavLink";
 import MobileNav from "./ui/MobileNav";
 import ThemeSwitcher from "./ThemeSwitcher";
+import { isExternal } from "util/types";
 
 const links = [
   { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
   { label: "Projects", href: "/projects" },
-  { label: "Code Snippets", href: "/code-snippets" },
+  {
+    label: "Code Snippets",
+    href: "https://codesnippets-six.vercel.app/",
+    isExternal: true,
+  },
 ];
 
 export default function Navigation() {
@@ -41,7 +46,9 @@ export default function Navigation() {
         <ul className="hidden items-center gap-1 md:flex">
           {links.map((link, index) => (
             <li key={index}>
-              <NavLink href={link.href}>{link.label}</NavLink>
+              <NavLink isExternal={link.isExternal} href={link.href}>
+                {link.label}
+              </NavLink>
             </li>
           ))}
         </ul>

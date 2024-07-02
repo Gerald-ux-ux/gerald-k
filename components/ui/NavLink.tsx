@@ -7,18 +7,20 @@ import { ReactNode } from "react";
 
 type NavLinkProps = {
   href: string;
+  isExternal?: boolean;
   children: ReactNode;
 };
 
-export default function NavLink({ href, children }: NavLinkProps) {
+export default function NavLink({ href, children, isExternal }: NavLinkProps) {
   const pathname = `/${usePathname().split("/")[1]}`;
   const active = href === pathname;
 
   return (
     <Link
+      target={isExternal ? "_blank" : undefined}
       className={clsx(
-        "px-4 py-2 rounded-lg text-sm hover:text-primary transition-colors",
-        active ? "bg-secondaryA text-primary" : "text-secondary"
+        "rounded-lg px-4 py-2 text-sm transition-colors hover:text-primary",
+        active ? "bg-secondaryA text-primary" : "text-secondary",
       )}
       href={href}
     >
