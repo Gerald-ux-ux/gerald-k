@@ -64,14 +64,15 @@ export default async function Home() {
 
       <div className="flex animate-in flex-col gap-12  ">
         {/* <Projects /> */}
-        <span className="mx-auto flex w-full  items-center justify-between ">
-          <h2 className="animate-in text-xl  font-semibold tracking-tight">
-            My innovative ventures
+        <span className="mx-auto flex w-full items-center  justify-between text-base ">
+          <h2 className="animate-in text-base  font-semibold tracking-tight">
+            My innovative ventures ranging from Mobile, Web Apps and UI/UX
+            designs
           </h2>
 
           <Link
             href="/projects"
-            className="hover:text-primar text-secondary underline underline-offset-4"
+            className="text-sm text-secondary underline underline-offset-4 hover:text-primary"
           >
             View All
           </Link>
