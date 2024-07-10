@@ -21,8 +21,6 @@ export default async function Home() {
         ?.filter((_, i) => i < 3)
     : [];
 
-
-
   const views = {
     total: 85,
   };
@@ -95,7 +93,8 @@ export default async function Home() {
           </Link>
 
           <Link
-            href="/code-snippets"
+            target="_blank"
+            href="https://codesnippets-six.vercel.app/"
             className=" text-secondary underline underline-offset-4 hover:text-primary"
           >
             See all code snippets
