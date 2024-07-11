@@ -28,13 +28,6 @@ export default async function Home() {
   return (
     <div className="mx-auto flex max-w-[700px] flex-col gap-16 px-6 md:gap-24">
       <div className="flex animate-in flex-col gap-8">
-        <div className="">
-          <h1 className={PAGE_HEADER}>Gerald Kamau</h1>
-          <p className="animate-in  text-secondary">
-            Have a look at some of the things i have done
-          </p>
-        </div>
-
         <div className="flex animate-in flex-col gap-6 text-secondary md:flex-row md:items-center">
           <Image
             src={Avatar}
@@ -43,27 +36,34 @@ export default async function Home() {
             alt="A photo of Gerald"
             className="rounded-full"
           />
-          <Stats views={views} />
+          <div className="">
+            <h1 className={PAGE_HEADER}>Hey I&apos;m Gerald 👋</h1>
+            <p className="animate-in  text-secondary">
+              Have a look at some of the things i have done
+            </p>
+          </div>
+          {/* <Stats views={views} /> */}
         </div>
 
         <p className="max-w-lg animate-in text-primary">
-          Hi, I&apos;m Gerald kamau, a software engineer who loves and enjoys
-          writing code. In addition to coding, I&apos;m a big watching formula
-          one fan, I create music and occasionally upload some beats on{" "}
+          I&apos;m a fullstack developer and community builder. I recently
+          launched a beta version of an app to boost productivity amongst
+          developers. Check
           <Link
             target="blank"
-            href="https://www.youtube.com/@geralddd.g/featured"
-            className="underline"
+            href="https://codesnippets-six.vercel.app/"
+            className="text-link "
           >
-            YouTube
+            {" "}
+            It{" "}
           </Link>
+          out
         </p>
 
         <Connect />
       </div>
 
       <div className="flex animate-in flex-col gap-12  ">
-        {/* <Projects /> */}
         <span className="mx-auto flex w-full items-center  justify-between text-base ">
           <h2 className="animate-in text-base  font-semibold tracking-tight">
             My innovative ventures ranging from Mobile, Web Apps and UI/UX

@@ -29,8 +29,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 // Static metadata
 export const metadata: Metadata = {
-  title: "Home | Gerald",
-  description: "Passionate software developer",
+  title: "Gerald Kamau",
+  description: "Full Stack Engineer",
 };
 
 export default function RootLayout({
