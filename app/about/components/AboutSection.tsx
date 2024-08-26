@@ -5,7 +5,7 @@ export default function AboutSection() {
   return (
     <Section heading="About" headingAlignment="left">
       <div className="flex flex-col gap-6">
-        <p>Hello World My name is Gerald Kamau</p>
+        <p>Hello My name is Gerald Kamau</p>
 
         <p>
           From crafting elegant solutions to embracing the occasional debugging
