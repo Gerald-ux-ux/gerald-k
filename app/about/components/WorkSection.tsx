@@ -1,7 +1,7 @@
 import Section from "@/components/Section";
+import Avatar from "@/public/geraldavatar.jpeg";
 import cblogo from "@/public/work/cblogo.png";
 import cloudpaylogo from "@/public/work/cplogo.png";
-import Avatar from "@/public/geraldavatar.jpeg";
 
 import WorkPlaces from "./WorkPlaces";
 
@@ -10,7 +10,7 @@ export default function WorkSection() {
     <Section heading="Work" headingAlignment="left">
       <div className="flex w-full flex-col gap-8">
         <p>
-          {new Date().getFullYear() - 2022} + year(s) of professional software
+          {new Date().getFullYear() - 2020} + years of  software
           development experience.
         </p>
 
@@ -25,7 +25,7 @@ const workplaces = [
   {
     title: "FullStack Engineer",
     company: "Free lance",
-    time: "May 2024 - ",
+    time: "2020 - Present ",
     imageSrc: Avatar,
   },
   {
