@@ -7,6 +7,7 @@ import AboutSection from "./components/AboutSection";
 import ConnectSection from "./components/ConnectSection";
 import WorkSection from "./components/WorkSection";
 import meet from "@/public/gallery/meet.jpeg";
+import { TechStack } from "./components/tech";
 
 export const metadata: Metadata = {
   title: "About | Gerald ",
@@ -50,8 +51,10 @@ export default function About() {
 
       <div className="flex animate-in flex-col gap-16 md:gap-24">
         <AboutSection />
-        <ConnectSection />
+        <TechStack />
+
         <WorkSection />
+        <ConnectSection />
       </div>
     </main>
   );
