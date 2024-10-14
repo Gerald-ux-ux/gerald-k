@@ -1,6 +1,6 @@
-import Image from "next/image";
-import Avatar from "@/public/geraldavatar.jpeg";
 import ConnectLinks from "@/components/ConnectLinks";
+import Avatar from "@/public/geraldavatar.jpeg";
+import Image from "next/image";
 import Link from "next/link";
 import { MdArrowOutward } from "react-icons/md";
 

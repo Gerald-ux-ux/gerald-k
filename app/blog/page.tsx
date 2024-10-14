@@ -1,5 +1,6 @@
 import { allPosts } from "@/.contentlayer/generated";
 import { Metadata } from "next";
+
 import PostList from "./components/ui/PostList";
 
 export const metadata: Metadata = {

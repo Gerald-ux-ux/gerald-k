@@ -8,17 +8,15 @@ export type CodeSnippets = {
   createdAt: string;
 };
 
-
 export type UserInfo = {
-  username: string,
-  email: string,
-  _id: string
-}
-
+  username: string;
+  email: string;
+  _id: string;
+};
 
 export type CodeSnippetObj = {
   content: string;
   heading: string;
   language: string;
   _id: string;
-}
+};

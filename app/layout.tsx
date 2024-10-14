@@ -53,7 +53,7 @@ export default function RootLayout({
         {showMessage && (
           <ClientInfo
             message={
-              <>
+              <div>
                 🎉 Hello everyone! I&apos;m excited to announce that version 1
                 of code-snippets is now live! Check out the latest features and
                 improvements at {""}
@@ -65,7 +65,7 @@ export default function RootLayout({
                 >
                   https://codesnippets-six.vercel.app/
                 </Link>
-              </>
+              </div>
             }
             duration={30000}
           />

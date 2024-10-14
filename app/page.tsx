@@ -2,9 +2,9 @@ import { allPosts } from "@/.contentlayer/generated";
 import Connect from "@/components/home/Connect";
 import Stats from "@/components/Stats";
 import { PAGE_HEADER } from "@/lib/uiConstants";
-import Avatar from "@/public/geraldavatar.jpeg";
 import Image from "next/image";
 import Link from "next/link";
+import Avatar from "public/geraldavatar.jpeg";
 
 import PostList from "./blog/components/ui/PostList";
 import ProjectComponent from "./projects/components/projects";
@@ -12,13 +12,13 @@ import ProjectComponent from "./projects/components/projects";
 export default async function Home() {
   const posts = allPosts
     ? allPosts
-        ?.sort(
-          (a, b) =>
-            new Date(b.publishedAt).getTime() -
-            new Date(a.publishedAt).getTime(),
-        )
-        // 3 most recent  (for now)
-        ?.filter((_, i) => i < 3)
+      ?.sort(
+        (a, b) =>
+          new Date(b.publishedAt).getTime() -
+          new Date(a.publishedAt).getTime(),
+      )
+      // 3 most recent  (for now)
+      ?.filter((_, i) => i < 3)
     : [];
 
   const views = {
@@ -26,7 +26,7 @@ export default async function Home() {
   };
 
   return (
-    <div className="mx-auto flex max-w-[700px] flex-col gap-16 px-6 md:gap-24">
+    <div className="mx-auto flex max-w-[700px]  flex-col gap-16 px-6 md:gap-24">
       <div className="flex animate-in flex-col gap-8">
         <div className="flex animate-in flex-col gap-6 text-secondary md:flex-row md:items-center">
           <Image
@@ -46,9 +46,8 @@ export default async function Home() {
         </div>
 
         <p className="max-w-lg animate-in text-primary">
-          I&apos;m a fullstack developer and community builder. I recently
-          launched a beta version of an app to boost productivity amongst
-          developers. Check
+          I&apos;m a fullstack developer and community builder. I launched a
+          beta version of an app to boost productivity amongst developers. Check
           <Link
             target="blank"
             href="https://codesnippets-six.vercel.app/"
