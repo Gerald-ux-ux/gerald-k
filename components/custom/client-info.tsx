@@ -2,7 +2,7 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { SlInfo } from "react-icons/sl";
-import clsx from 'clsx';
+import clsx from "clsx";
 
 type CustomMessageProps = {
   message?: JSX.Element;
@@ -11,7 +11,7 @@ type CustomMessageProps = {
 
 export default function ClientInfo({ message, duration }: CustomMessageProps) {
   const [showMessage, setShowMessage] = useState(true);
-  const theme = useTheme()
+  const theme = useTheme();
 
   const handleDismiss = () => {
     setShowMessage(false);
@@ -23,7 +23,7 @@ export default function ClientInfo({ message, duration }: CustomMessageProps) {
     }, duration);
 
     return () => clearTimeout(timeoutId);
-  }, []);
+  }, [duration]);
 
   return (
     <>
@@ -36,9 +36,9 @@ export default function ClientInfo({ message, duration }: CustomMessageProps) {
           <div className="flex w-full p-6">
             <div className="flex w-full items-start">
               <div className=" flex w-full  items-center gap-4">
-                <SlInfo className="text-xl  md:flex hidden text-secondary" />
+                <SlInfo className="hidden  text-xl text-secondary md:flex" />
                 <p className="text-sm  font-bold text-white">
-                  {message && message }
+                  {message && message}
                 </p>{" "}
               </div>
             </div>

@@ -11,7 +11,10 @@ export default function Categories() {
   return (
     <ul className="animated-list flex items-center justify-center gap-4 ">
       {categories.map((category) => (
-        <ul className=" flex w-full cursor-pointer rounded-md bg-secondary p-2 text-sm transition-opacity ">
+        <ul
+          key={category}
+          className=" flex w-full cursor-pointer rounded-md bg-secondary p-2 text-sm transition-opacity "
+        >
           {category}
         </ul>
       ))}
