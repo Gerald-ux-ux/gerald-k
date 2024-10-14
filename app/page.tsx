@@ -8,6 +8,7 @@ import Avatar from "public/geraldavatar.jpeg";
 
 import PostList from "./blog/components/ui/PostList";
 import ProjectComponent from "./projects/components/projects";
+import Categories from "@/components/home/categories";
 
 export default async function Home() {
   const posts = allPosts
@@ -68,7 +69,6 @@ export default async function Home() {
             My innovative ventures ranging from Mobile, Web Apps and UI/UX
             designs
           </h2>
-
           <Link
             href="/projects"
             className="text-sm text-secondary underline underline-offset-4 hover:text-primary"
