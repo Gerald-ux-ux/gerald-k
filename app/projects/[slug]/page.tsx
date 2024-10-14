@@ -25,11 +25,10 @@ export default function Project({ params }: { params: any }) {
       <article>
         <div className="flex animate-in flex-col gap-3">
           <div className="flex gap-3 text-secondary">
-            <p>{project.time}</p>
+            <p>{project.time}.</p>
 
             {project.url && (
-              <>
-                <span>&middot;</span>
+              <div className="flex items-center justify-center ">
                 <Link
                   target="_blank"
                   href={project.url}
@@ -37,7 +36,7 @@ export default function Project({ params }: { params: any }) {
                 >
                   {isAMobileApp(project)}
                 </Link>
-              </>
+              </div>
             )}
           </div>
           <h1 className="text-3xl font-bold leading-tight tracking-tight text-primary">
