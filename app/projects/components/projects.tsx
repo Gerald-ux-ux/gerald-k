@@ -1,37 +1,51 @@
 import { allProjects } from "@/.contentlayer/generated";
-import Hallo from "@/components/ui/Halo";
 import Link from "@/components/ui/Link";
 import clsx from "clsx";
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 
 const projects = allProjects.sort(
   (a, b) => new Date(b.time).getTime() - new Date(a.time).getTime(),
 );
 
-export default function ProjectComponent() {
+type IProps = {
+  isProjectPage?: boolean;
+};
+
+export default function ProjectComponent({ isProjectPage = false }: IProps) {
   return (
-    <ul className="animated-list flex animate-in flex-col">
+    <div
+      className={clsx(
+        "animated-list grid animate-in gap-4",
+        isProjectPage
+          ? "grid-cols-1 md:grid-cols-2"
+          : "grid-cols-1 md:grid-cols-2",
+      )}
+    >
       {projects.map((project, i) => (
-        <li
-          className={clsx(
-            "flex flex-col gap-4 py-3 transition-opacity first:pt-0 last:pb-0 md:flex-row md:gap-6",
-          )}
+        <div
+          className="bg-card group flex h-full flex-col overflow-hidden rounded-xl border border-secondary transition-all"
           key={i}
         >
           <Link
             href={`/projects/${project.slug}`}
-            className="aspect-video w-full select-none overflow-clip rounded-lg border border-secondary bg-tertiary md:w-2/5"
+            className="relative w-full select-none overflow-hidden"
           >
-            {/* <Hallo strength={10}> */}
-            <Image
-              src={project.image}
-              alt={project.title}
-              width={300}
-              height={150}
-            />
-            {/* </Hallo> */}
+            <div className="aspect-[16/9] md:aspect-[3/2] lg:aspect-[2/1]">
+              <Image
+                src={project.image}
+                alt={project.title}
+                layout="fill"
+                objectFit="cover"
+                className="transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
+            <div className="absolute inset-0 bg-black/10 transition-colors duration-300 group-hover:bg-black/20" />
+            <div className="bg-background/80 absolute right-2 top-2 rounded-full p-2 opacity-0 transition-opacity group-hover:opacity-100">
+              <ArrowUpRight className="text-foreground h-4 w-4" />
+            </div>
           </Link>
-          <div className="w-full space-y-2 md:w-3/5">
+          <div className="flex flex-grow flex-col justify-between p-4">
             <div>
               <Link
                 href={`/projects/${project.slug}`}
@@ -39,12 +53,16 @@ export default function ProjectComponent() {
               >
                 {project.title}
               </Link>
-              <time className="text-secondary"> . {project.time}</time>
+              <time className="text-muted-foreground ml-2 text-sm">
+                {project.time}
+              </time>
             </div>
-            <p className="line-clamp-3 text-tertiary">{project.description}</p>
+            <p className="text-muted-foreground mt-2 line-clamp-3">
+              {project.description}
+            </p>
           </div>
-        </li>
+        </div>
       ))}
-    </ul>
+    </div>
   );
 }
