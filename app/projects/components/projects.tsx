@@ -24,7 +24,7 @@ export default function ProjectComponent({ isProjectPage = false }: IProps) {
     >
       {projects.map((project, i) => (
         <div
-          className="bg-card group flex h-full flex-col overflow-hidden rounded-xl border border-secondary transition-all"
+          className="  group flex h-full flex-col overflow-hidden rounded-xl border border-secondary transition-all  hover:cursor-pointer"
           key={i}
         >
           <Link
@@ -41,7 +41,7 @@ export default function ProjectComponent({ isProjectPage = false }: IProps) {
               />
             </div>
             <div className="absolute inset-0 bg-black/10 transition-colors duration-300 group-hover:bg-black/20" />
-            <div className="bg-background/80 absolute right-2 top-2 rounded-full p-2 opacity-0 transition-opacity group-hover:opacity-100">
+            <div className="absolute right-2 top-2 rounded-full bg-tertiary p-2 opacity-0 transition-opacity group-hover:opacity-100">
               <ArrowUpRight className="text-foreground h-4 w-4" />
             </div>
           </Link>

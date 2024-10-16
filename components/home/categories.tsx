@@ -11,7 +11,7 @@ const categories = [
 
 export default function Categories() {
   return (
-    <div className="w-full overflow-hidden">
+    <div className="w-80 overflow-hidden md:w-full">
       <div className="scrollbar-hide -mb-4 overflow-x-auto pb-4">
         <ul className="animated-list flex items-center justify-start gap-2 whitespace-nowrap px-4 sm:gap-4 sm:px-0">
           {categories.map((category) => (
