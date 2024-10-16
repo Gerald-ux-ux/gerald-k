@@ -66,8 +66,7 @@ export default async function Home() {
       <div className="flex animate-in flex-col gap-12  ">
         <span className="mx-auto flex w-full items-center  justify-between text-base ">
           <h2 className="animate-in text-base  font-semibold tracking-tight">
-            My innovative ventures ranging from Mobile, Web Apps and UI/UX
-            designs
+            Innovative ventures
           </h2>
           <Link
             href="/projects"
@@ -76,7 +75,7 @@ export default async function Home() {
             View All
           </Link>
         </span>
-
+        <Categories />
         <ProjectComponent />
 
         <div className="flex flex-col py-4">
