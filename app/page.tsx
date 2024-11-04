@@ -1,4 +1,5 @@
 import { allPosts } from "@/.contentlayer/generated";
+import Categories from "@/components/home/categories";
 import Connect from "@/components/home/Connect";
 import Stats from "@/components/Stats";
 import { PAGE_HEADER } from "@/lib/uiConstants";
@@ -8,7 +9,6 @@ import Avatar from "public/geraldavatar.jpeg";
 
 import PostList from "./blog/components/ui/PostList";
 import ProjectComponent from "./projects/components/projects";
-import Categories from "@/components/home/categories";
 
 export default async function Home() {
   const posts = allPosts
