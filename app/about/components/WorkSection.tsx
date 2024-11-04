@@ -2,7 +2,7 @@ import Section from "@/components/Section";
 import Avatar from "@/public/geraldavatar.jpeg";
 import cblogo from "@/public/work/cblogo.png";
 import cloudpaylogo from "@/public/work/cplogo.png";
-
+import jqc from "public/work/JQC_SVG_LOGO.svg";
 import WorkPlaces from "./WorkPlaces";
 
 export default function WorkSection() {
@@ -10,8 +10,8 @@ export default function WorkSection() {
     <Section heading="Work" headingAlignment="left">
       <div className="flex w-full flex-col gap-8">
         <p>
-          {new Date().getFullYear() - 2020} + years of  software
-          development experience.
+          {new Date().getFullYear() - 2020} + years of software development
+          experience.
         </p>
 
         <p>This are the different companies i have worked for.</p>
@@ -24,8 +24,15 @@ export default function WorkSection() {
 const workplaces = [
   {
     title: "FullStack Engineer",
+    company: "JQCreative",
+    time: "2024 - Present",
+    imageSrc: jqc,
+  },
+
+  {
+    title: "FullStack Engineer",
     company: "Free lance",
-    time: "2020 - Present ",
+    time: "2020  - 2024 ",
     imageSrc: Avatar,
   },
   {
