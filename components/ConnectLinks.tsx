@@ -19,11 +19,11 @@ const ConnectLinks: ConnectLink[] = [
     href: "mailto:kamaugerald36@gmail.com",
     icon: <IoIosMail />,
   },
-  {
-    label: "Youtube",
-    href: "https://www.youtube.com/@geralddd.g/featured",
-    icon: <FaYoutube />,
-  },
+  // {
+  //   label: "Youtube",
+  //   href: "https://www.youtube.com/@geralddd.g/featured",
+  //   icon: <FaYoutube />,
+  // },
   {
     label: "Github",
     href: "https://github.com/Gerald-ux-ux",
@@ -40,11 +40,11 @@ const ConnectLinks: ConnectLink[] = [
     icon: <FaInstagram />,
   },
 
-  {
-    label: "Twitter",
-    href: "https://twitter.com/1geralddd",
-    icon: <FaXTwitter />,
-  },
+  // {
+  //   label: "Twitter",
+  //   href: "https://twitter.com/1geralddd",
+  //   icon: <FaXTwitter />,
+  // },
 ];
 
 export default ConnectLinks;
