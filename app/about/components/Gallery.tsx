@@ -7,7 +7,7 @@ import clsx from "clsx";
 import Hallo from "@/components/ui/Halo";
 import outside from "@/public/gallery/outside.jpeg";
 import image from "@/public/gallery/image.jpg";
-import meet from "@/public/gallery/meet.jpeg";
+import mobile from "@/public/gallery/mobile-dev.jpeg";
 
 const ticketingFont = localFont({
   src: "../../../public/ticketing.woff2",
@@ -157,7 +157,7 @@ export default function Gallery() {
           index={1}
         />
         <Photo
-          src={meet}
+          src={mobile}
           meta="2023-09-04"
           alt="me making music"
           width={250}

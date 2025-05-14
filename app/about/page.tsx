@@ -6,7 +6,7 @@ import Gallery from "./components/Gallery";
 import AboutSection from "./components/AboutSection";
 import ConnectSection from "./components/ConnectSection";
 import WorkSection from "./components/WorkSection";
-import meet from "@/public/gallery/meet.jpeg";
+import mobile from "@/public/gallery/mobile-dev.jpeg";
 import { TechStack } from "./components/tech";
 
 export const metadata: Metadata = {
@@ -36,7 +36,7 @@ export default function About() {
 
         <div className="animate-in">
           <Image
-            src={meet}
+            src={mobile}
             alt={"family photo"}
             width={324}
             height={129}
