@@ -5,5 +5,6 @@ import project__cloudpayMdx from './project__cloudpay.mdx.json' assert { type: '
 import project__fooddeliveryMdx from './project__fooddelivery.mdx.json' assert { type: 'json' }
 import project__investmentappMdx from './project__investmentapp.mdx.json' assert { type: 'json' }
 import project__pesabookMdx from './project__pesabook.mdx.json' assert { type: 'json' }
+import project__volcalMdx from './project__volcal.mdx.json' assert { type: 'json' }
 
-export const allProjects = [project__bigstoreMdx, project__cloudpayMdx, project__fooddeliveryMdx, project__investmentappMdx, project__pesabookMdx]
+export const allProjects = [project__bigstoreMdx, project__cloudpayMdx, project__fooddeliveryMdx, project__investmentappMdx, project__pesabookMdx, project__volcalMdx]
