@@ -6,7 +6,7 @@
  * Make sure to head over to the next.config.js and configure your external links in the domain array
  */
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import clsx from "clsx";
 import Navigation from "@/components/Navigation";
@@ -17,8 +17,6 @@ import { Tooltip } from "react-tooltip";
 import { Toaster } from "react-hot-toast";
 import ClientInfo from "@/components/custom/client-info";
 import Link from "next/link";
-
-const inter = Inter({ subsets: ["latin"] });
 
 /**
  * Clsx is just like using the $ to set the styles of a certain element based on a specific condition.
@@ -46,7 +44,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={clsx(
-          inter.className,
+          GeistSans.className,
           "width-full bg-primary text-primary antialiased",
         )}
       >

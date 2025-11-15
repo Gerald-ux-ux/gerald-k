@@ -1,35 +1,26 @@
 "use client";
 import Link from "next/link";
-import { MdArrowOutward } from "react-icons/md";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import ConnectLinks from "@/components/ConnectLinks";
 
 export default function Connect() {
   return (
-    <ul className="animated-list flex animate-in flex-col gap-2 text-secondary md:flex-row md:gap-6">
-      <li className="transition-opacity">
+    <div className="flex animate-in items-center gap-3">
+      {ConnectLinks.map((link, index) => (
         <Link
-          href="mailto:kamaugerald36@gmail.com"
-          className="flex items-center gap-2 no-underline"
+          key={index}
+          href={link.href}
+          target={link.href.startsWith("http") ? "_blank" : undefined}
+          rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+          className="transition-transform hover:scale-110"
         >
-          <MdArrowOutward className="h-5 w-5" />
-          <span>Email me</span>
+          <Avatar className="h-10 w-10 border border-secondary bg-secondary hover:bg-tertiary">
+            <AvatarFallback className="text-primary">
+              {link.icon}
+            </AvatarFallback>
+          </Avatar>
         </Link>
-      </li>
-      <li className="transition-opacity">
-        <Link href="/connect" className="flex items-center gap-2 no-underline">
-          <MdArrowOutward className="h-5 w-5" />
-          <span>More ways to connect with me</span>
-        </Link>
-      </li>
-      {/* <li className="transition-opacity">
-        <Link
-          href="https://discord.gg/SGhEc2qPVm"
-          target="_blank"
-          className="flex items-center gap-2 no-underline"
-        >
-          <MdArrowOutward className="h-5 w-5" />
-          <span>Join my discord</span>
-        </Link>
-      </li> */}
-    </ul>
+      ))}
+    </div>
   );
 }

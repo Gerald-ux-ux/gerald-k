@@ -1,6 +1,4 @@
 import ConnectLinks from "@/components/ConnectLinks";
-import Avatar from "@/public/geraldavatar.jpeg";
-import Image from "next/image";
 import Link from "next/link";
 import { MdArrowOutward } from "react-icons/md";
 
@@ -9,32 +7,6 @@ export default function Connect() {
     <div className="">
       {/* About section */}
       <div className="mx-auto flex max-w-[700px] flex-col gap-16 px-6 md:gap-24">
-        <div className="flex animate-in flex-col gap-8">
-          <Image
-            src={Avatar}
-            width={70}
-            height={70}
-            alt="A photo of Gerald"
-            className="mx-auto animate-in rounded-full"
-          />
-          <div className="animate-in space-y-1">
-            <h1 className="text-center text-2xl font-bold tracking-tight">
-              Gerald Kamau
-            </h1>
-            <p className="mx-auto max-w-sm text-center text-secondary">
-              A Software Engineer who believes in the power of consistency. In
-              addition to code i also make beats and you can always reach out to
-              me on{" "}
-              <Link
-                href="https://www.instagram.com/geralddd.g/"
-                className="underline"
-              >
-                Instagram
-              </Link>
-            </p>
-          </div>
-        </div>
-
         {/* Links to connect with me */}
         <ul
           className="animated-list grid flex-grow animate-in grid-cols-1 gap-2 lg:gap-3"
