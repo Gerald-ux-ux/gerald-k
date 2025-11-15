@@ -1,4 +1,8 @@
-import { ComputedFields, defineDocumentType, makeSource } from "contentlayer/source-files";
+import {
+  ComputedFields,
+  defineDocumentType,
+  makeSource,
+} from "contentlayer/source-files";
 import GithubSlugger from "github-slugger";
 // eslint-disable-line
 import rehypePrism from "rehype-prism-plus";
@@ -77,37 +81,10 @@ export const Post = defineDocumentType(() => ({
   computedFields: postComputeFields,
 }));
 
-/** Projects definition */
-
-const projectComputeFields: ComputedFields = {
-  slug: {
-    type: "string",
-    resolve: (doc) => getSlug(doc),
-  },
-  image: {
-    type: "string",
-    resolve: (doc) => `/projects/${getSlug(doc)}/image.png`,
-  },
-};
-
-export const Project = defineDocumentType(() => ({
-  name: "Project",
-  contentType: "mdx",
-  filePathPattern: `project/**/*.mdx`,
-  fields: {
-    title: { type: "string", required: true },
-    description: { type: "string", required: true },
-    time: { type: "string", required: true },
-    url: { type: "string", required: false },
-    tags: { type: "json", required: false },
-  },
-  computedFields: projectComputeFields,
-}));
-
 export default makeSource({
   contentDirPath: "content",
 
-  documentTypes: [Post, Project],
+  documentTypes: [Post],
   mdx: {
     // @ts-expect-error
     rehypePlugins: [rehypePrism, rehypeSlug],

@@ -1,5 +1,8 @@
 // contentlayer.config.ts
-import { defineDocumentType, makeSource } from "contentlayer/source-files";
+import {
+  defineDocumentType,
+  makeSource
+} from "contentlayer/source-files";
 import GithubSlugger from "github-slugger";
 import rehypePrism from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
@@ -62,32 +65,9 @@ var Post = defineDocumentType(() => ({
   },
   computedFields: postComputeFields
 }));
-var projectComputeFields = {
-  slug: {
-    type: "string",
-    resolve: (doc) => getSlug(doc)
-  },
-  image: {
-    type: "string",
-    resolve: (doc) => `/projects/${getSlug(doc)}/image.png`
-  }
-};
-var Project = defineDocumentType(() => ({
-  name: "Project",
-  contentType: "mdx",
-  filePathPattern: `project/**/*.mdx`,
-  fields: {
-    title: { type: "string", required: true },
-    description: { type: "string", required: true },
-    time: { type: "string", required: true },
-    url: { type: "string", required: false },
-    tags: { type: "json", required: false }
-  },
-  computedFields: projectComputeFields
-}));
 var contentlayer_config_default = makeSource({
   contentDirPath: "content",
-  documentTypes: [Post, Project],
+  documentTypes: [Post],
   mdx: {
     // @ts-expect-error
     rehypePlugins: [rehypePrism, rehypeSlug]
@@ -95,7 +75,6 @@ var contentlayer_config_default = makeSource({
 });
 export {
   Post,
-  Project,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-XCGD4DZL.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-RQA6DM4D.mjs.map
