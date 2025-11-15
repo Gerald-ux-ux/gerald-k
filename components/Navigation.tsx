@@ -10,9 +10,7 @@ import MobileNav from "./ui/MobileNav";
 import ThemeSwitcher from "./ThemeSwitcher";
 
 const links = [
-  { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
-  { label: "Projects", href: "/projects" },
   {
     label: "Code Snippets",
     href: "https://codesnippets-six.vercel.app/",
@@ -24,7 +22,7 @@ export default function Navigation() {
   return (
     <header
       className={clsx(
-        "bg-primary/40 relative top-0 z-20 backdrop-blur-sm	  md:sticky",
+        "bg-primary/40 relative top-10 z-20 mb-10 backdrop-blur-sm	  md:sticky",
       )}
     >
       <nav className="lg mx-auto flex max-w-[700px] items-center justify-between gap-3 px-4 py-3 md:px-6">
