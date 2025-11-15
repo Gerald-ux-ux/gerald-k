@@ -18,7 +18,7 @@ function WorkPlace({ title, company, imageSrc, time, link }: WorkPlaceProps) {
           alt={company}
           width={48}
           height={48}
-          className="rounded-full"
+          className="rounded-full bg-white"
         />
 
         <div className="flex flex-col gap-px">

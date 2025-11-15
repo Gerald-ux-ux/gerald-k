@@ -1,39 +1,18 @@
-## [g-k.io](https://gerald-k.vercel.app/)
+# [code-snippets](https://gerald-k.vercel.app/code-snippets)
 
-Welcome to my personal portfolio website designed to be minimalistic, clean and most importantly a place to learn from.
+Welcome to my personal portfolio website which also houses code-snippets.
 
-## Technologies
+## A shared code snippets library designed to streamline the coding process by offering quick and easy access to a repository of reusable code snippets.
 
-#### backend:
+Whether you're aiming to speed up your coding tasks or contribute to a growing collection of efficient solutions, this library is the ideal tool. It allows developers to effortlessly copy snippets for personal use and contribute their own tried-and-tested snippets to benefit the wider developer community.
 
-- [Next.js](nextjs.org) / TypeScript
-- [MDX](https://mdxjs.com) / Contentlayer (CMS)
-- [Vercel](vercel.com) (Hosting)
-- [PlanetScale](http://planetscale.com) (Database)
-- [Prisma](https://www.prisma.io) (ORM)
-- [Node] (https://nodejs.org/en)
-- [MongoDB] (https://www.mongodb.com/)
+### Use
+- Simply click on the add snippets button, after which you will create a new account or login to your existing account.
+- Add a snippet which you believe will be used by a variety of engineers. You can add up to however many snippets you wish
+- Just provide a meaningful title, description code-title and then the code snippet itself.
 
-#### frontend:
+### Feedback
+You can send feedback using the chat icon on the app or join the [discord channel](https://discord.gg/tqm4eKy2) and interact with a wider community of developers
 
-- [Tailwind CSS](https://tailwindcss.com) (utility styles)
-- [Headless UI](https://headlessui.com) (UI components)
-- [Radix UI Colors](https://www.radix-ui.com/colors) (color system)
-- [Framer Motion](https://www.framer.com/motion/) (Animations)
 
-_checkout the package.json file_
 
-## Prerequisites
-
-[Node.js](https://nodejs.org/en/)
-[PlanetScale account](https://planetscale.com/)
-Prisma CLI installed (npm i -g prisma)
-
-## Installation
-
-Clone this repository to your local machine
-Install dependencies with `pnpm install` || `npm install`
-Copy `.env.example` to `.env.local` || `.env` and update the environment variables as needed
-Start the development server with `pnpm dev` || `npm run dev --turbo`.
-
-<!-- `````` -->

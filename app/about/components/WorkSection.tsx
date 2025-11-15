@@ -1,27 +1,20 @@
 import Section from "@/components/Section";
-import Link from "next/link";
-import WorkPlaces from "./WorkPlaces";
+import Avatar from "@/public/geraldavatar.jpeg";
 import cblogo from "@/public/work/cblogo.png";
 import cloudpaylogo from "@/public/work/cplogo.png";
+import jqc from "public/work/JQC_SVG_LOGO.svg";
+import WorkPlaces from "./WorkPlaces";
 
 export default function WorkSection() {
   return (
     <Section heading="Work" headingAlignment="left">
       <div className="flex w-full flex-col gap-8">
         <p>
-          {new Date().getFullYear() - 2023} + year(s) of professional software
-          development experience.
+          {new Date().getFullYear() - 2020} + years of software development
+          experience.
         </p>
 
-        <p>
-          I kicked off my tech adventure by immersing myself in an intensive
-          bootcamp, mastering the foundational aspects of software development.
-          This journey led me to a rewarding role as a full-stack software
-          developer, with a special focus on front-end expertise at{" "}
-          <Link href="https://www.thecbgroup.io/" className="underline">
-            Creative Brands
-          </Link>
-        </p>
+        <p>This are the different companies i have worked for.</p>
         <WorkPlaces items={workplaces} />
       </div>
     </Section>
@@ -30,16 +23,29 @@ export default function WorkSection() {
 
 const workplaces = [
   {
+    title: "FullStack Engineer",
+    company: "JQCreative",
+    time: "2024 - Present",
+    imageSrc: jqc,
+  },
+
+  {
+    title: "FullStack Engineer",
+    company: "Free lance",
+    time: "2020  - 2024 ",
+    imageSrc: Avatar,
+  },
+  {
     title: "Full Stack Engineer",
     company: "Creative Brands",
-    time: "2022 -",
+    time: "2022 - June 2024",
     imageSrc: cblogo,
     link: "https://www.thecbgroup.io/",
   },
   {
-    title: "Fronted end software Engineer",
+    title: "Fronted end Engineer",
     company: "Cloudpay Finance",
-    time: "2022 - ",
+    time: "2022 - June 2024 ",
     imageSrc: cloudpaylogo,
     link: "https://cloudpay.finance/",
   },

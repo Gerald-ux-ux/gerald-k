@@ -13,12 +13,20 @@ const links = [
   { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
   { label: "Projects", href: "/projects" },
-  { label: "Code Snippets", href: "/code-snippets" },
+  {
+    label: "Code Snippets",
+    href: "https://codesnippets-six.vercel.app/",
+    isExternal: true,
+  },
 ];
 
 export default function Navigation() {
   return (
-    <header className={clsx("relative top-0 z-20 bg-primary md:sticky")}>
+    <header
+      className={clsx(
+        "bg-primary/40 relative top-0 z-20 backdrop-blur-sm	  md:sticky",
+      )}
+    >
       <nav className="lg mx-auto flex max-w-[700px] items-center justify-between gap-3 px-4 py-3 md:px-6">
         <Link href="/" className="mt-2 shrink-0 text-primary">
           {/* Used svg due to changing themes. Svg images can pick the {currentColor} so when ever the theme changes the image changes accordingly */}
@@ -41,7 +49,9 @@ export default function Navigation() {
         <ul className="hidden items-center gap-1 md:flex">
           {links.map((link, index) => (
             <li key={index}>
-              <NavLink href={link.href}>{link.label}</NavLink>
+              <NavLink isExternal={link.isExternal} href={link.href}>
+                {link.label}
+              </NavLink>
             </li>
           ))}
         </ul>

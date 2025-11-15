@@ -15,6 +15,8 @@ import ThemeProvider from "@/components/ThemeProvider";
 import Footer from "@/components/ui/Footer";
 import { Tooltip } from "react-tooltip";
 import { Toaster } from "react-hot-toast";
+import ClientInfo from "@/components/custom/client-info";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,8 +29,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 // Static metadata
 export const metadata: Metadata = {
-  title: "Home | Gerald",
-  description: "Passionate software developer",
+  title: "Gerald Kamau",
+  description: "Full Stack Engineer",
 };
 
 export default function RootLayout({
@@ -36,6 +38,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const today = new Date();
+  const endDate = new Date("2024-05-30");
+
+  const showMessage = today <= endDate;
   return (
     <html lang="en">
       <body
@@ -44,6 +50,26 @@ export default function RootLayout({
           "width-full bg-primary text-primary antialiased",
         )}
       >
+        {showMessage && (
+          <ClientInfo
+            message={
+              <div>
+                🎉 Hello everyone! I&apos;m excited to announce that version 1
+                of code-snippets is now live! Check out the latest features and
+                improvements at {""}
+                <Link
+                  href="https://codesnippets-six.vercel.app/"
+                  className="text-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://codesnippets-six.vercel.app/
+                </Link>
+              </div>
+            }
+            duration={30000}
+          />
+        )}
         {/* Wrap the whole app in the ThemeProvider & Set some props */}
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navigation />

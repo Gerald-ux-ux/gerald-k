@@ -1,6 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
+  // darkMode: "selector",
+
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
@@ -40,6 +42,9 @@ module.exports = {
       borderColor: {
         primary: "var(--gray-6)",
         secondary: "var(--gray-4)",
+        success: "#D4EFDF",
+        error: "#FF0000",
+
         secondaryA: "var(--gray-a8)",
       },
       ringOffsetColor: {
@@ -54,10 +59,20 @@ module.exports = {
           "0%": { transform: "translateY(-18px)", opacity: 0 },
           "100%": { transform: "translateY(0px)", opacity: 1 },
         },
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
       },
       animation: {
         in: "in .6s both",
         "in-reverse": "in-reverse .6s both",
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },

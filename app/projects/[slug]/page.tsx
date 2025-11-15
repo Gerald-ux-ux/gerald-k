@@ -12,23 +12,31 @@ export default function Project({ params }: { params: any }) {
   const project = allProjects.find((project) => project.slug === params.slug);
 
   if (!project) return notFound();
+
+  function isAMobileApp(project: any) {
+    if (project.tags.includes("Mobile App")) {
+      return <p>Download Apk</p>;
+    }
+    return <p>Visit Project</p>;
+  }
+
   return (
     <div className="mx-auto flex max-w-[700px] flex-col gap-20 px-6">
       <article>
         <div className="flex animate-in flex-col gap-3">
           <div className="flex gap-3 text-secondary">
-            <p>{project.time}</p>
+            <p>{project.time}.</p>
 
             {project.url && (
-              <>
-                <span>&middot;</span>
+              <div className="flex items-center justify-center ">
                 <Link
+                  target="_blank"
                   href={project.url}
                   className="underline underline-offset-2 hover:text-primary"
                 >
-                  Visit Project
+                  {isAMobileApp(project)}
                 </Link>
-              </>
+              </div>
             )}
           </div>
           <h1 className="text-3xl font-bold leading-tight tracking-tight text-primary">
