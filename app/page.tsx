@@ -17,6 +17,14 @@ export default async function Home() {
         </div>
 
         <div className="flex animate-in flex-col gap-2">
+          <h3 className="animate-in  font-medium">Connect</h3>
+          <p className="animate-in text-secondary">
+            Reach out to me at{" "}
+            <a href="mailto:kamaugerald36@gmail.com" className="text-link">
+              kamaugerald36@gmail.com
+            </a>{" "}
+            for business.
+          </p>
           <Connect />
         </div>
 

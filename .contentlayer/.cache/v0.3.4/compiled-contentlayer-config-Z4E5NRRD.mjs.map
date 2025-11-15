@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../contentlayer.config.ts"],
-  "sourcesContent": ["import {\n  defineDocumentType,\n  makeSource,\n  ComputedFields,\n} from \"contentlayer/source-files\"; // eslint-disable-line\n\nconst getSlug = (doc: any) => doc._raw.sourceFileName.replace(/\\.mdx$/, \"\");\n\nconst postComputeFields: ComputedFields = {\n  slug: {\n    type: \"string\",\n    resolve: (doc) => getSlug(doc),\n  },\n  image: {\n    type: \"string\",\n    reslove: (doc) => `/blog/${getSlug(doc)}/image.png`,\n  },\n  og: {\n    type: \"string\",\n    resolve: (doc) => `/blog/${getSlug(doc)}/image.png`,\n  },\n};\n\nexport const Post = defineDocumentType(() => ({\n  name: \"Post\",\n  contentType: \"mdx\",\n  filePathPattern: `blog/**/*.mdx`,\n  fields: {\n    title: {}\n  },\n\n  computedFields: postComputeFields,\n}));\n\nexport default makeSource({\n  contentDirPath: \"content\",\n  documentTypes: [Post],\n});\n"],
-  "mappings": ";AAAA;AAAA,EACE;AAAA,EACA;AAAA,OAEK;AAEP,IAAM,UAAU,CAAC,QAAa,IAAI,KAAK,eAAe,QAAQ,UAAU,EAAE;AAE1E,IAAM,oBAAoC;AAAA,EACxC,MAAM;AAAA,IACJ,MAAM;AAAA,IACN,SAAS,CAAC,QAAQ,QAAQ,GAAG;AAAA,EAC/B;AAAA,EACA,OAAO;AAAA,IACL,MAAM;AAAA,IACN,SAAS,CAAC,QAAQ,SAAS,QAAQ,GAAG,CAAC;AAAA,EACzC;AAAA,EACA,IAAI;AAAA,IACF,MAAM;AAAA,IACN,SAAS,CAAC,QAAQ,SAAS,QAAQ,GAAG,CAAC;AAAA,EACzC;AACF;AAEO,IAAM,OAAO,mBAAmB,OAAO;AAAA,EAC5C,MAAM;AAAA,EACN,aAAa;AAAA,EACb,iBAAiB;AAAA,EACjB,QAAQ;AAAA,IACN,OAAO,CAAC;AAAA,EACV;AAAA,EAEA,gBAAgB;AAClB,EAAE;AAEF,IAAO,8BAAQ,WAAW;AAAA,EACxB,gBAAgB;AAAA,EAChB,eAAe,CAAC,IAAI;AACtB,CAAC;",
-  "names": []
-}

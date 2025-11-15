@@ -10,7 +10,6 @@ import MobileNav from "./ui/MobileNav";
 import ThemeSwitcher from "./ThemeSwitcher";
 
 const links = [
-  { label: "Blog", href: "/blog" },
   {
     label: "Code Snippets",
     href: "https://codesnippets-six.vercel.app/",

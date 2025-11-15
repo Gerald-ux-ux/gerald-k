@@ -6,7 +6,7 @@
  * Make sure to head over to the next.config.js and configure your external links in the domain array
  */
 import type { Metadata } from "next";
-import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import clsx from "clsx";
 import Navigation from "@/components/Navigation";
@@ -44,7 +44,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={clsx(
-          GeistMono.className,
+          GeistSans.className,
           "width-full bg-primary text-primary antialiased",
         )}
       >

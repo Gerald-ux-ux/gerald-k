@@ -20,8 +20,7 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"],
-      "contentlayer/generated": ["./.contentlayer/generated"]
+      "@/*": ["./*"]
     }
   },
   "include": [
@@ -30,7 +29,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "next/types/index.d.ts",
-    ".contentlayer/generated",
     "lib/fetcher.js"
   ],
   "exclude": ["node_modules"]
